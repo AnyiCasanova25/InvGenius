@@ -1,0 +1,287 @@
+body {
+    background-color: #e9d8c8;
+}
+
+.body {
+    background-color: #e9d8c8;
+}
+
+.border-bottom {
+    border-bottom: var(--bs-border-width) var(--bs-border-style) #000000 !important;
+}
+
+.link-body-emphasis:hover .link-text,
+.link-body-emphasis:hover i {
+    transform: scale(1.4);
+    /* Puedes ajustar el valor según lo deseado */
+    transition: transform 1s ease;
+    /* Agrega una transición suave */
+}
+
+.negro {
+    color: black;
+}
+
+.centradoNombre {
+    margin: 20%;
+}
+
+.centradoInfo {
+    margin: 1% 10% 5% 10%;
+    text-align: center;
+}
+
+
+.tamañoFotoIcono {
+    font-size: 50px;
+    margin: 5%;
+}
+
+.card {
+    height: 300px;
+    width: auto;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.tamañoIcono {
+    margin: 4%;
+    margin-left: 45%;
+    font-size: 50px;
+    color: #99B2B7;
+    transition: 1s all;
+}
+
+.alinearDato {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.tamañoIcono:hover {
+    color: #000000;
+    /* width: 200px;
+    height: 200px; */
+}
+
+.cuadroIconos {
+    font-size: 35px;
+    margin: 7% 7% 10% 7%;
+}
+
+.social-icon {
+    color: #ffffff;
+    margin-right: 10%;
+    margin-top: 5%;
+    display: inline-block;
+    vertical-align: middle;
+    transition: 0.5s all;
+}
+
+.social-icon:hover {
+    color: #ffffff;
+    /* width: 200px;
+    height: 200px; */
+}
+
+.fondoDatoTarjeta {
+    background-color: #DBD7D7;
+}
+
+.fondoDatoTarjeta {
+    background-color: #f8f9fa;
+    padding: 3%;
+    border-radius: 15px;
+    margin: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.fondoDatoTarjeta:hover {
+    transform: scale(1.2);
+}
+
+.centrarTexto {
+    text-align: center;
+}
+
+.fondoDato {
+    background-color: #DBD7D7;
+}
+
+.fondoDato {
+    border: 2px solid rgb(179, 179, 179);
+    transition: background-color 1s ease
+}
+
+.fondoDato:hover {
+    border-color: rgb(179, 179, 179);
+    background-color: rgb(179, 179, 179);
+}
+
+.reseñas {
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Modals */
+.modal-content {
+    background-color: #DBD7D7;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    flex-direction: column;
+}
+
+.centrarTextoModal {
+    text-align: center;
+}
+
+.centrarCuadroCheck {
+    padding-left: 24%;
+}
+
+/* stock */
+
+.shop-card {
+    width: 170px;
+    height: 220px;
+    background: #f5f5f5;
+    box-shadow: 0 10px 20px rgb(0, 0, 0, 0.3);
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    z-index: 2;
+}
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-row-gap: 20px; 
+
+}
+
+.shop-card figure {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    outline: none !important;
+    height: 100px; /* Altura deseada */
+}
+
+.shop-card figure img {
+    width: 100%; /* Para asegurar que la imagen se ajuste correctamente */
+    height: 100%; /* Para asegurar que la imagen se ajuste correctamente */
+    object-fit: cover; /* Esto hará que la imagen se ajuste al contenedor sin distorsión */
+}
+
+
+.title{
+    margin-top: 13%;
+}
+
+.margimg{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+.fa-cart-plus {
+    font-size: 40px;
+    color: #7FDBFF; /* Color azul claro */
+}
+
+
+.fa-trash {
+    position: absolute; /* Establece una posición absoluta para el icono */
+    top: 50%; /* Coloca el icono en el centro vertical */
+    left: 50%; /* Coloca el icono en el centro horizontal */
+    transform: translate(-50%, -50%); /* Centra el icono exactamente */
+    font-size: 90px; /* Tamaño inicial del icono */
+    transition: font-size 0.3s ease; /* Transición suave para el cambio de tamaño */
+}
+
+.agregaCategoria:hover .fa-trash {
+    font-size: 100px; /* Tamaño más grande del icono al pasar el ratón por encima */
+}
+
+
+.fa-trash {
+    font-size: 40px;
+    color: #FF4136; /* Color rojo */
+}
+
+/* vista previa */
+
+.col-4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile {
+    margin-left: auto;
+    /* Mover al fondo */
+    margin-right: 20px;
+    /* Mover 20px hacia la derecha */
+}
+
+.profile img {
+    width: 20%;
+    /* Mantener el mismo tamaño para el icono del perfil */
+    height: auto;
+    /* Ajustar altura automáticamente */
+}
+
+.profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.profile:hover .dropdown-content {
+    display: block;
+}
+
+.profile .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.profile .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.profile img {
+    margin-left: -5em;
+    height: 63px;
+    width: auto;
+}
+
+.profile .dropdown-content {
+    margin-left: -58px;
+    border-radius: 10px;
+}
+
+.col-6 {
+    flex: 0 0 auto;
+    width: 70%;
+}
