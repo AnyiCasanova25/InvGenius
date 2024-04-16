@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-InvGeniusApplication<seguridad>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.InvGenius.InvGenius.InvGeniusApplication",
+            "projectName": "seguridad",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
