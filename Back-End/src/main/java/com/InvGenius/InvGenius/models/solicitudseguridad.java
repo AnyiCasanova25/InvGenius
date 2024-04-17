@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "solicitudseguridad")
-public class solicitudseguridad {
+@Entity(name = "solicitudSeguridad")
+public class solicitudSeguridad {
     /*
      * id Solicitud Seguridad
      * id usuario
