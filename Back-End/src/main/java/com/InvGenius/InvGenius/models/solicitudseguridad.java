@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name = "solicitudseguridad")
-public class solicitudseguridad {
+@Entity(name = "solicitudSeguridad")
+public class solicitudSeguridad {
     /*
      * id Solicitud Seguridad
      * id usuario
@@ -32,10 +32,10 @@ public class solicitudseguridad {
     @Column(name = "codigoSeguridad", nullable = false, length = 36)
     private String codigoSeguridad;
 
-    public solicitudseguridad() {
+    public solicitudSeguridad() {
     }
 
-    public solicitudseguridad(String idSoliSeguridad, String idUsuario, String fechaHora, String estadoSoliSeguridad,
+    public solicitudSeguridad(String idSoliSeguridad, String idUsuario, String fechaHora, String estadoSoliSeguridad,
             String codigoSeguridad) {
         this.idSoliSeguridad = idSoliSeguridad;
         this.idUsuario = idUsuario;
