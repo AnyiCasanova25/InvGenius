@@ -27,4 +27,41 @@ public class registroProveedorMarca {
     @OneToOne
     @JoinColumn(name = "idProveedor")
     private  proveedor proveedor;
+
+    public registroProveedorMarca() {
+    }
+
+    public registroProveedorMarca(String idSoliSeguridad, com.InvGenius.InvGenius.models.marca marca,
+            com.InvGenius.InvGenius.models.proveedor proveedor) {
+        this.idSoliSeguridad = idSoliSeguridad;
+        this.marca = marca;
+        this.proveedor = proveedor;
+    }
+
+    public String getIdSoliSeguridad() {
+        return idSoliSeguridad;
+    }
+
+    public void setIdSoliSeguridad(String idSoliSeguridad) {
+        this.idSoliSeguridad = idSoliSeguridad;
+    }
+
+    public marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(marca marca) {
+        this.marca = marca;
+    }
+
+    public proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    
+
 }
