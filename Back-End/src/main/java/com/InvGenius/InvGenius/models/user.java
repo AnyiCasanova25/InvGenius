@@ -40,16 +40,16 @@ public class user {
      @Column(name = "segundoApellido", nullable = false, length = 36)
      private String segundoApellido;
 
-     @Column(name = "Celular", nullable = false, length = 36)
+     @Column(name = "Celular", nullable = false, length = 13)
      private String Celular;
 
      @Column(name = "Correo", nullable = false, length = 36)
      private String Correo;
 
-     @Column(name = "Contraseña", nullable = false, length = 36)
+     @Column(name = "Contraseña", nullable = false, length = 8)
      private String Contraseña;
 
-     @Column(name = "confirmarContraseña", nullable = false, length = 36)
+     @Column(name = "confirmarContraseña", nullable = false, length = 8 )
      private String confirmarContraseña;
 
      @Column(name = "rol", nullable = false, length = 36)
