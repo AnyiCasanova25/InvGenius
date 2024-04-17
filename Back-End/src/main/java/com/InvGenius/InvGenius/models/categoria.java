@@ -12,7 +12,7 @@ import jakarta.persistence.OneToOne;
 public class categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID);
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "idCategoria", nullable = false, length = 36)
     private String idCategoria;
 

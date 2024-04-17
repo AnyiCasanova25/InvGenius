@@ -5,14 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 
 @Entity(name = "ubicacion")
 public class ubicacion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID);
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "idUbicacion", nullable = false, length = 36)
     private String idUbicacion;
 
