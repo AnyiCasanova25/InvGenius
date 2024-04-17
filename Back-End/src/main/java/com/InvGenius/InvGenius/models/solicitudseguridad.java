@@ -32,10 +32,10 @@ public class solicitudSeguridad {
     @Column(name = "codigoSeguridad", nullable = false, length = 36)
     private String codigoSeguridad;
 
-    public solicitudseguridad() {
+    public solicitudSeguridad() {
     }
 
-    public solicitudseguridad(String idSoliSeguridad, String idUsuario, String fechaHora, String estadoSoliSeguridad,
+    public solicitudSeguridad(String idSoliSeguridad, String idUsuario, String fechaHora, String estadoSoliSeguridad,
             String codigoSeguridad) {
         this.idSoliSeguridad = idSoliSeguridad;
         this.idUsuario = idUsuario;
