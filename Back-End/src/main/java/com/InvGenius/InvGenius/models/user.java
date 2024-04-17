@@ -17,6 +17,7 @@ public class user {
      * correo
      * contraseña
      * confirmar contraseña
+     * rol
      */
 
      @Id
@@ -51,12 +52,15 @@ public class user {
      @Column(name = "confirmarContraseña", nullable = false, length = 36)
      private String confirmarContraseña;
 
+     @Column(name = "rol", nullable = false, length = 36)
+     private String rol;
+
     public user() {
     }
 
     public user(String idUser, String documentoIdentidad, String primerNombre, String segundoNombre,
             String primerApellido, String segundoApellido, String celular, String correo, String contraseña,
-            String confirmarContraseña) {
+            String confirmarContraseña, String rol) {
         this.idUser = idUser;
         this.documentoIdentidad = documentoIdentidad;
         this.primerNombre = primerNombre;
@@ -67,6 +71,7 @@ public class user {
         Correo = correo;
         Contraseña = contraseña;
         this.confirmarContraseña = confirmarContraseña;
+        this.rol = rol;
     }
 
     public String getIdUser() {
@@ -147,6 +152,14 @@ public class user {
 
     public void setConfirmarContraseña(String confirmarContraseña) {
         this.confirmarContraseña = confirmarContraseña;
-    }  
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
 }
