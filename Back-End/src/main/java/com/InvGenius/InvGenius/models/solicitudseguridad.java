@@ -14,6 +14,7 @@ public class solicitudSeguridad {
      * fecha y hora
      * estado solicitud seguridad
      * codigo seguridad 
+     * laura
      */
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
