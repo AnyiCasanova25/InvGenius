@@ -15,6 +15,7 @@ public interface IuserService {
 
     public Optional<user> findOne(String id);
 
+    //cambiar el int
     public int delete(String id);
 
 
