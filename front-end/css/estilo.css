@@ -315,3 +315,12 @@ body {
 }
 
  
+
+
+
+@media (max-width: 1024px) {
+    .fondoDatoTarjeta {
+      margin-left: auto; /* Centrar el cuadro a la derecha */
+      margin-right: auto; /* Centrar el cuadro a la izquierda */
+    }
+  }
