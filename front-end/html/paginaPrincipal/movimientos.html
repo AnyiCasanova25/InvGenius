@@ -69,7 +69,10 @@
                     </div>
                     <div class="col-lg-5 fondoDatoTarjeta" id="salida">
                         <h5 class="fw-normal alinearDato"><b>SALIDA</b></h5>
-                        <div id="gifContainer"></div> <!-- Contenedor para el GIF -->
+                        <div id="gifContainer">
+                            <img src="/front-end/img/Pagina/salida.gif" alt="GIF">
+                        </div>
+                    
                     </div>
                 </div>
             </div>
@@ -241,20 +244,7 @@
 
 
 
-        // Obtener el contenedor del GIF
-        const gifContainer = document.getElementById('gifContainer');
-
-// Cuando el cursor entra en el cuadro "SALIDA"
-document.getElementById('salida').addEventListener('mouseenter', function() {
-    // Cambiar el contenido del contenedor al GIF
-    gifContainer.innerHTML = '<img src="/front-end/img/Pagina/salida.gif" alt="GIF">';
-});
-
-// Cuando el cursor sale del cuadro "SALIDA"
-document.getElementById('salida').addEventListener('mouseleave', function() {
-    // Restaurar el contenido original del contenedor
-    gifContainer.innerHTML = '';
-});
+        
     </script>
 </body>
 
