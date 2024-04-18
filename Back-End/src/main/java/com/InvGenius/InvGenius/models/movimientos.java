@@ -1,12 +1,15 @@
 package com.InvGenius.InvGenius.models;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+
 
 @Entity(name = "movimientos")
 public class movimientos {
@@ -24,7 +27,7 @@ public class movimientos {
      @Column(name = "idMovimiento", nullable = false, length = 36)
      private String idMovimiento;
 
-     @OneToMany
+     @ManyToOne
      @JoinColumn(name = "idProducto")
      private  producto producto;
 
@@ -34,8 +37,9 @@ public class movimientos {
      @Column(name = "CantidadProducto", nullable = false, length = 36)
      private String CantidadProducto;
 
-     @Column(name = "id_User", nullable = false, length = 36)
-     private String id_User;
+     @ManyToOne
+     @JoinColumn(name = "idUser")
+     private user idUser;
 
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
      private String FechaMovimiento;
@@ -44,12 +48,12 @@ public class movimientos {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
-            String cantidadProducto, String id_User, String fechaMovimiento) {
+            String cantidadProducto, user idUser, String fechaMovimiento) {
         this.idMovimiento = idMovimiento;
         this.producto = producto;
         this.tipomovimiento = tipomovimiento;
         CantidadProducto = cantidadProducto;
-        this.id_User = id_User;
+        this.idUser = idUser;
         FechaMovimiento = fechaMovimiento;
     }
 
@@ -85,12 +89,12 @@ public class movimientos {
         CantidadProducto = cantidadProducto;
     }
 
-    public String getId_User() {
-        return id_User;
+    public user getidUser() {
+        return idUser;
     }
 
-    public void setId_User(String id_User) {
-        this.id_User = id_User;
+    public void setId_User(user idUser) {
+        this.idUser = idUser;
     }
 
     public String getFechaMovimiento() {
