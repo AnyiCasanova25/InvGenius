@@ -1,5 +1,6 @@
 package com.InvGenius.InvGenius.interfaces;
 
-public class movimientos {
+
+public class Imovimientos {
 
 }
