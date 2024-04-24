@@ -1,0 +1,97 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url(/front-end/img/Pagina/Fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    max-width: 90%;
+}
+
+.combined {
+    display: flex;
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.8); /* Color de fondo con transparencia */
+    padding: 40px;
+    border-radius: 70px;
+}
+
+.product {
+    flex: 1;
+    background-color: #ffffff8f;
+    border-radius: 70px 0 0 70px; /* Esquinas redondeadas solo en el lado izquierdo */
+}
+
+.Descrip {
+    flex: 1;
+    background-color: #ffffffbf;
+    border-radius: 0 70px 70px 0; /* Esquinas redondeadas solo en el lado derecho */
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 70px; /* Redondear la imagen */
+}
+
+.Descrip h1 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    margin-top: 16px;
+}
+
+.Descrip h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px;
+}
+
+.Descrip h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 43px;
+}
+
+/* Media query para dispositivos móviles con un ancho máximo de 993px */
+@media screen and (max-width: 993px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .combined {
+        flex-direction: column; /* Cambiar la dirección a columna en dispositivos móviles */
+    }
+
+    .product,
+    .Descrip {
+        width: 100%;
+        max-width: none;
+        margin: 0 0 20px;
+        border-radius: 70px; /* Redondear los bordes en dispositivos móviles */
+    }
+
+    .product img {
+        width: 100%;
+        height: auto;
+        margin-left: 0; /* Eliminar el margen izquierdo en dispositivos móviles */
+    }
+}
