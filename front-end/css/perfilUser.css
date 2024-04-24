@@ -29,3 +29,23 @@
         flex-direction: column;
     }
 }
+
+.rounded {
+    border-radius: 50%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Para distribuir los botones horizontalmente */
+    margin-top: 20px; /* Ajusta el espacio entre los botones y la imagen de perfil */
+}
+
+/* Opcional: ajustes de estilo para los botones */
+.button-container button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
