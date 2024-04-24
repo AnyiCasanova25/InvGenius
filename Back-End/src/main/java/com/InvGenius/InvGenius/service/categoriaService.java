@@ -33,6 +33,13 @@ public class categoriaService implements IcategoriaService {
         Optional<categoria> categoria = data.findById(id);
         return categoria;
     }
+
+    //Filtros de categoria
+    @Override
+    public List<categoria> categoriaExist(String nombreCategoria, String estado) {
+            List<categoria> listaCategoria = data.categoriaExist( nombreCategoria, estado);
+            return listaCategoria;
+    }
     
     @Override
     public int delete(String id) {
