@@ -22,23 +22,20 @@
     <div class="container">
         <header class="border-bottom lh-1 py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-4 pt-1">
+                <div class="col-8 pt-1">
                     <a href="/front-end/html/paginaPrincipal/vistaPrevia.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="20%" height="20%"><img src="/front-end/img/Pagina/Nombre.png" width="40%"
-                            height="20%"></a>
+                            width="50px" height="50px"><img src="/front-end/img/Pagina/Nombre.png" width="200px"
+                            height="50px"></a>
                 </div>
-                <div class="col-6 d-flex justify-content-end align-items-center ">
-                    <div class="col-6 d-flex justify-content-end align-items-center ">
+
+                <div class="col-2 d-flex justify-content-end align-items-center ">
                         <div class="profile">
-                            <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="20%" height="auto">
+                            <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
                             <div class="dropdown-content">
-                                <a href="/front-end/html/Perfil/perfilUser.html">Perfil</a>
-                                <a href="#">Configuración</a>
+                                <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
                                 <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
                             </div>
                         </div>
-                    </div>
-
                 </div>
             </div>
         </header>
@@ -66,10 +63,17 @@
                     <div class="col-lg-5 fondoDatoTarjeta" data-bs-toggle="modal"
                     data-bs-target="#modalEntrada">
                         <h5 class="fw-normal alinearDato"><b>ENTRADA</b></h5>
+                        <div id="gifContainer">
+                            <img src="/front-end/img/Pagina/entrada.gif" alt="GIF">
+                        </div>
                     </div>
                     <div class="col-lg-5 fondoDatoTarjeta" data-bs-toggle="modal"
                     data-bs-target="#modalSalida">
                         <h5 class="fw-normal alinearDato"><b>SALIDA</b></h5>
+                        <div id="gifContainer">
+                            <img src="/front-end/img/Pagina/salida.gif" alt="GIF">
+                        </div>
+                    
                     </div>
                 </div>
             </div>
@@ -86,8 +90,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <img src="/front-end/img/Pagina/Logo.png" width="25%" height="25%"><br>
+                <h2>Entrada     </h2>
             </div>
             <div class="modal-body">
                 <!-- Formulario de entrada de datos -->
@@ -161,8 +164,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <img src="/front-end/img/Pagina/Logo.png" width="25%" height="25%"><br>
+                <h2>Salida     </h2>
             </div>
             <div class="modal-body">
                 <!-- Formulario de registro -->
@@ -238,6 +240,10 @@
     
         // Establecer el valor predeterminado del campo de fecha
         document.getElementById('fechaSalida').value = `${anioo}-${mess}-${diaa}`;
+
+
+
+        
     </script>
 </body>
 

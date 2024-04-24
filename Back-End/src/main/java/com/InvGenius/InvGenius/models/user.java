@@ -46,11 +46,11 @@ public class user {
      @Column(name = "Correo", nullable = false, length = 36)
      private String Correo;
 
-     @Column(name = "Contraseña", nullable = false, length = 8)
-     private String Contraseña;
+     @Column(name = "password", nullable = false, length = 8)
+     private String password;
 
-     @Column(name = "confirmarContraseña", nullable = false, length = 8 )
-     private String confirmarContraseña;
+
+     private String confirmarPassword;
 
      @Column(name = "rol", nullable = false, length = 36)
      private String rol;
@@ -58,9 +58,11 @@ public class user {
     public user() {
     }
 
+   
+
     public user(String idUser, String documentoIdentidad, String primerNombre, String segundoNombre,
-            String primerApellido, String segundoApellido, String celular, String correo, String contraseña,
-            String confirmarContraseña, String rol) {
+            String primerApellido, String segundoApellido, String celular, String correo, String password,
+            String confirmarPassword, String rol) {
         this.idUser = idUser;
         this.documentoIdentidad = documentoIdentidad;
         this.primerNombre = primerNombre;
@@ -69,10 +71,36 @@ public class user {
         this.segundoApellido = segundoApellido;
         Celular = celular;
         Correo = correo;
-        Contraseña = contraseña;
-        this.confirmarContraseña = confirmarContraseña;
+        this.password = password;
+        this.confirmarPassword = confirmarPassword;
         this.rol = rol;
     }
+
+
+
+    public String getPassword() {
+        return password;
+    }
+
+
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+
+    public String getConfirmarPassword() {
+        return confirmarPassword;
+    }
+
+
+
+    public void setConfirmarPassword(String confirmarPassword) {
+        this.confirmarPassword = confirmarPassword;
+    }
+
+
 
     public String getIdUser() {
         return idUser;
@@ -138,21 +166,7 @@ public class user {
         Correo = correo;
     }
 
-    public String getContraseña() {
-        return Contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
-    }
-
-    public String getConfirmarContraseña() {
-        return confirmarContraseña;
-    }
-
-    public void setConfirmarContraseña(String confirmarContraseña) {
-        this.confirmarContraseña = confirmarContraseña;
-    }
+   
 
     public String getRol() {
         return rol;

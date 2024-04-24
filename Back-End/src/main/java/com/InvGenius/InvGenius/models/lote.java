@@ -8,7 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+
 
 @Entity(name = "lote")
 public class lote {
@@ -27,7 +28,7 @@ public class lote {
     @Column(name = "cantidad", nullable = false, length = 36)
     private String cantidad;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "idProducto")
     private producto producto;
 

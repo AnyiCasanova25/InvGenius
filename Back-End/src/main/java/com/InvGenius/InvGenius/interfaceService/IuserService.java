@@ -11,5 +11,12 @@ public interface IuserService {
 
     public List<user> findAll();
 
+    public List<user> userExist(String Celular, String Correo);
+
     public Optional<user> findOne(String id);
+
+    //cambiar el int
+    public int delete(String id);
+
+
 }

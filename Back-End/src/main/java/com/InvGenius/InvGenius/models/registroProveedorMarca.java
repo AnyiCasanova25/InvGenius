@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+
 
 @Entity(name = "registroProveedorMarca")
 public class registroProveedorMarca {
@@ -20,11 +20,11 @@ public class registroProveedorMarca {
     @Column(name = "idSoliSeguridad", nullable = false, length = 36)
     private String idSoliSeguridad;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "idMarca")
     private  marca marca;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idProveedor")
     private  proveedor proveedor;
 

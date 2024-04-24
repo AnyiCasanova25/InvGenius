@@ -6,7 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+
 
 @Entity(name = "movimientos")
 public class movimientos {
@@ -24,7 +25,7 @@ public class movimientos {
      @Column(name = "idMovimiento", nullable = false, length = 36)
      private String idMovimiento;
 
-     @OneToMany
+     @ManyToOne
      @JoinColumn(name = "idProducto")
      private  producto producto;
 
@@ -34,8 +35,10 @@ public class movimientos {
      @Column(name = "CantidadProducto", nullable = false, length = 36)
      private String CantidadProducto;
 
-     @Column(name = "id_Usuario", nullable = false, length = 36)
-     private String id_Usuario;
+     @ManyToOne
+     @JoinColumn(name = "idUser")
+     private user idUser;
+
 
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
      private String FechaMovimiento;
@@ -44,12 +47,14 @@ public class movimientos {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
-            String cantidadProducto, String id_Usuario, String fechaMovimiento) {
+
+            String cantidadProducto, user idUser, String fechaMovimiento) {
+
         this.idMovimiento = idMovimiento;
         this.producto = producto;
         this.tipomovimiento = tipomovimiento;
         CantidadProducto = cantidadProducto;
-        this.id_Usuario = id_Usuario;
+        this.idUser = idUser;
         FechaMovimiento = fechaMovimiento;
     }
 
@@ -85,12 +90,13 @@ public class movimientos {
         CantidadProducto = cantidadProducto;
     }
 
-    public String getId_User() {
-        return id_Usuario;
+    public user getidUser() {
+        return idUser;
     }
 
-    public void setId_Usuario(String id_Usuario) {
-        this.id_Usuario = id_Usuario;
+    public void setidUser(user idUser) {
+        this.idUser = idUser;
+
     }
 
     public String getFechaMovimiento() {

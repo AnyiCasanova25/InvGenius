@@ -35,4 +35,18 @@ public class userService implements IuserService{
         Optional<user> user = data.findById(id);
         return user;
     }
+
+    @Override
+    public List<user> userExist(String Celular, String Correo) {
+            List<user> listaUser =data.userExist( Celular,  Correo);
+            return listaUser;
+    }
+
+    //corregiiiiiirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+    //tipo de dato de retorno IIIIIIIIIIIIIIIIIIIIIIIINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+    @Override
+    public int delete(String id) {
+        data.deleteById(id);
+        return 1;
+    }
 }
