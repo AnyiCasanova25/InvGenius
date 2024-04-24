@@ -11,6 +11,10 @@ public interface ImovimientoService {
 
     public List<movimientos> findAll();
 
+    public List<movimientos> movimientosExist(String Fechamovimiento);
+
     public Optional<movimientos> findOne(String id);
+
+    public int delete(String id);
 }
 

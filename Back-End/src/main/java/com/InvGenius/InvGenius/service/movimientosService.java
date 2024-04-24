@@ -37,5 +37,17 @@ public class movimientosService implements ImovimientoService{
         Optional<movimientos> movimientos = data.findById(id);
         return movimientos;
     }
+
+    @Override
+    public List<movimientos> movimientosExist(String Fechamovimiento) {
+            List<movimientos> listaMovimientos =data.movimientosExist( Fechamovimiento);
+            return listaMovimientos;
+    }
+
+    @Override
+    public int delete(String id) {
+        data.deleteById(id);
+        return 1;
     
+}
 }
