@@ -30,11 +30,12 @@ public class securityConfig {
              * /api/v1/public/
              * van a ser permitidas sin restriccion de usuario
              */
-            .requestMatchers("/api/v1/public/")
-            .permitAll()
+            // .requestMatchers("/api/v1/public/")
+            // .permitAll()
             //para el resto de peticiones 
             //es requerido que se autentique
-            .anyRequest().authenticated()
+            // .anyRequest().authenticated()
+            .anyRequest().permitAll()
         ).build();
     }
 }

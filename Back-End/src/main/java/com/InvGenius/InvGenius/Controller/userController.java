@@ -123,7 +123,7 @@ public class userController {
 
             return new ResponseEntity<>(user, HttpStatus.OK);
         }else{
-            return new ResponseEntity<>("Error usuario no encontrado", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error usuario NO encontrado", HttpStatus.BAD_REQUEST);
         }
     }
 

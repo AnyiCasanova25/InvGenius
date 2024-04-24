@@ -49,7 +49,6 @@ public class user {
      @Column(name = "password", nullable = false, length = 8)
      private String password;
 
-
      private String confirmarPassword;
 
      @Column(name = "rol", nullable = false, length = 36)
