@@ -15,7 +15,7 @@ public class movimientos {
      * tipo de movimiento
      * id producto "llave foranea"
      * cantidad de producto 
-     * id usuario "llave"
+     * id usuario 
      * fecha de movimiento
      */
 
@@ -34,8 +34,8 @@ public class movimientos {
      @Column(name = "CantidadProducto", nullable = false, length = 36)
      private String CantidadProducto;
 
-     @Column(name = "id_User", nullable = false, length = 36)
-     private String id_User;
+     @Column(name = "id_Usuario", nullable = false, length = 36)
+     private String id_Usuario;
 
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
      private String FechaMovimiento;
@@ -44,12 +44,12 @@ public class movimientos {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
-            String cantidadProducto, String id_User, String fechaMovimiento) {
+            String cantidadProducto, String id_Usuario, String fechaMovimiento) {
         this.idMovimiento = idMovimiento;
         this.producto = producto;
         this.tipomovimiento = tipomovimiento;
         CantidadProducto = cantidadProducto;
-        this.id_User = id_User;
+        this.id_Usuario = id_Usuario;
         FechaMovimiento = fechaMovimiento;
     }
 
@@ -86,11 +86,11 @@ public class movimientos {
     }
 
     public String getId_User() {
-        return id_User;
+        return id_Usuario;
     }
 
-    public void setId_User(String id_User) {
-        this.id_User = id_User;
+    public void setId_Usuario(String id_Usuario) {
+        this.id_Usuario = id_Usuario;
     }
 
     public String getFechaMovimiento() {
