@@ -10,8 +10,7 @@ import com.InvGenius.InvGenius.models.marca;
 public interface Imarca extends CrudRepository<marca , String>{
     
 
-    @Query("SELECT ma FROM marca ma WHERE ma.nombreMarca =")
-    List<marca> userExist(String nombreMarca);
-
+    @Query("SELECT ma FROM marca ma WHERE ma.nombreMarca LIKE %?1%")
     List<marca> marcaExist(String nombreMarca);
+
 }
