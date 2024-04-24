@@ -16,7 +16,8 @@ public class producto {
      * id marca
      * precio
      * id categoria
-     * stock precio compra
+     * stock 
+     * precio compra
      * precio venta
      * id unidad
      */
