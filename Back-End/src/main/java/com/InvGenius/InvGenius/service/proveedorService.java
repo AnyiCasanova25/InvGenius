@@ -35,6 +35,12 @@ public class proveedorService implements IproveedorService {
     }
 
     @Override
+    public List<proveedor> proveedorExist(String marcasProveedor){
+        List<proveedor> listaProveedor = data.proveedorExist(marcasProveedor);
+        return listaProveedor;
+    }
+
+    @Override
     public int delete(String id) {
         data.deleteById(id);
         return 1;

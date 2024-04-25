@@ -2,6 +2,7 @@ package com.InvGenius.InvGenius.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,13 @@ public class loteService implements IloteService {
         Optional<lote> lote = data.findById(id);
         return lote;
     } 
+
+    //Filtro de lote
+    @Override
+    public List<lote> loteExist(Date fechaIngreso, Date fechaVencimiento){
+        List<lote> listaLote = data.loteExist(fechaIngreso, fechaVencimiento);
+        return listaLote;
+    }
 
     @Override
     public int delete(String id) {

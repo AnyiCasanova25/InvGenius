@@ -20,13 +20,17 @@ public class ubicacion {
     @Column(name = "listarProductoEnUbicacion", nullable = false, length = 30)
     private String listarProductoEnUbicacion;
 
+    @Column(name =  "bloques", nullable = false, length = 10)
+    private String bloques;
+
     public ubicacion() {
     }
 
-    public ubicacion(String idUbicacion, String asignarUbicacion, String listarProductoEnUbicacion) {
+    public ubicacion(String idUbicacion, String asignarUbicacion, String listarProductoEnUbicacion, String bloques) {
         this.idUbicacion = idUbicacion;
         this.asignarUbicacion = asignarUbicacion;
         this.listarProductoEnUbicacion = listarProductoEnUbicacion;
+        this.bloques = bloques;
     }
 
     public String getIdUbicacion() {
@@ -53,5 +57,12 @@ public class ubicacion {
         this.listarProductoEnUbicacion = listarProductoEnUbicacion;
     }
 
+    public String getBloques() {
+        return bloques;
+    }
+
+    public void setBloques(String bloques) {
+        this.bloques = bloques;
+    }
 
 }
