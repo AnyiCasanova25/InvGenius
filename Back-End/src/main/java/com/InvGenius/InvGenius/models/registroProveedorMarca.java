@@ -17,8 +17,8 @@ public class registroProveedorMarca {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "idSoliSeguridad", nullable = false, length = 36)
-    private String idSoliSeguridad;
+    @Column(name = "idRegistro", nullable = false, length = 36)
+    private String idRegistro;
 
     @ManyToOne
     @JoinColumn(name = "idMarca")
@@ -31,19 +31,19 @@ public class registroProveedorMarca {
     public registroProveedorMarca() {
     }
 
-    public registroProveedorMarca(String idSoliSeguridad, com.InvGenius.InvGenius.models.marca marca,
+    public registroProveedorMarca(String idRegistro, com.InvGenius.InvGenius.models.marca marca,
             com.InvGenius.InvGenius.models.proveedor proveedor) {
-        this.idSoliSeguridad = idSoliSeguridad;
+        this.idRegistro = idRegistro;
         this.marca = marca;
         this.proveedor = proveedor;
     }
 
-    public String getIdSoliSeguridad() {
-        return idSoliSeguridad;
+    public String getIdRegistro() {
+        return idRegistro;
     }
 
-    public void setIdSoliSeguridad(String idSoliSeguridad) {
-        this.idSoliSeguridad = idSoliSeguridad;
+    public void setIdRegistro(String idRegistro) {
+        this.idRegistro = idRegistro;
     }
 
     public marca getMarca() {

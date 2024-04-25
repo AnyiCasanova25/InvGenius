@@ -1,5 +1,8 @@
 package com.InvGenius.InvGenius.models;
 
+
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,14 +44,14 @@ public class movimientos {
 
 
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
-     private String FechaMovimiento;
+     private Date FechaMovimiento;
 
     public movimientos() {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
 
-            String cantidadProducto, user idUser, String fechaMovimiento) {
+            String cantidadProducto, user idUser, Date fechaMovimiento) {
 
         this.idMovimiento = idMovimiento;
         this.producto = producto;
@@ -99,11 +102,11 @@ public class movimientos {
 
     }
 
-    public String getFechaMovimiento() {
+    public Date getFechaMovimiento() {
         return FechaMovimiento;
     }
 
-    public void setFechaMovimiento(String fechaMovimiento) {
+    public void setFechaMovimiento(Date fechaMovimiento) {
         FechaMovimiento = fechaMovimiento;
     }
 

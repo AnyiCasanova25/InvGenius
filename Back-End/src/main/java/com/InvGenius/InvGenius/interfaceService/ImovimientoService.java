@@ -1,5 +1,7 @@
 package com.InvGenius.InvGenius.interfaceService;
 
+
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +13,7 @@ public interface ImovimientoService {
 
     public List<movimientos> findAll();
 
-    public List<movimientos> movimientosExist(String Fechamovimiento);
+    public List<movimientos> movimientosExist(Date Fechamovimiento);
 
     public Optional<movimientos> findOne(String id);
 

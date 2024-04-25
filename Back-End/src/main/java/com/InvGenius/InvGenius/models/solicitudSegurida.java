@@ -1,5 +1,7 @@
 package com.InvGenius.InvGenius.models;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class solicitudSegurida {
     private String idUsuario;
 
     @Column(name = "fechaHora", nullable = false, length = 36)
-    private String fechaHora;
+    private Date fechaHora;
 
     @Column(name = "estadoSoliSeguridad", nullable = false, length = 36)
     private String estadoSoliSeguridad;
@@ -36,7 +38,7 @@ public class solicitudSegurida {
     public solicitudSegurida() {
     }
 
-    public solicitudSegurida(String idSoliSeguridad, String idUsuario, String fechaHora, String estadoSoliSeguridad,
+    public solicitudSegurida(String idSoliSeguridad, String idUsuario, Date fechaHora, String estadoSoliSeguridad,
             String codigoSeguridad) {
         this.idSoliSeguridad = idSoliSeguridad;
         this.idUsuario = idUsuario;
@@ -61,11 +63,11 @@ public class solicitudSegurida {
         this.idUsuario = idUsuario;
     }
 
-    public String getFechaHora() {
+    public Date getFechaHora() {
         return fechaHora;
     }
 
-    public void setFechaHora(String fechaHora) {
+    public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
 
@@ -85,6 +87,7 @@ public class solicitudSegurida {
         this.codigoSeguridad = codigoSeguridad;
     }
 
+    
      
     
 }

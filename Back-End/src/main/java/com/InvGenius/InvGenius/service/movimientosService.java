@@ -1,7 +1,7 @@
 package com.InvGenius.InvGenius.service;
 
 
-    
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,10 +37,11 @@ public class movimientosService implements ImovimientoService{
         Optional<movimientos> movimientos = data.findById(id);
         return movimientos;
     }
+    
 
     @Override
-    public List<movimientos> movimientosExist(String Fechamovimiento) {
-            List<movimientos> listaMovimientos =data.movimientosExist( Fechamovimiento);
+    public List<movimientos> movimientosExist(Date Fechamovimiento) {
+            List<movimientos> listaMovimientos = data.movimientosExist( Fechamovimiento);
             return listaMovimientos;
     }
 

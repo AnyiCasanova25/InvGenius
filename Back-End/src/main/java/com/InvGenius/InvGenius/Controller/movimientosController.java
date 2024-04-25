@@ -25,7 +25,7 @@ public class movimientosController {
    @PostMapping("/")
    public ResponseEntity<Object> save (@ModelAttribute("movimientos") movimientos movimientos){
 
-       //Verificar que no exista numero de telefono 
+       //Verificar que no exista una fecha igual 
     var listaMovimientos = movimientosService.movimientosExist(movimientos.getFechaMovimiento());
 
    if (listaMovimientos.size() !=0) {
@@ -33,7 +33,7 @@ public class movimientosController {
        }
 
 
-       //Verificar que el campo de de documento de identidad sea diferente a vacio
+       
        //Añadir campos obligatorios
 
        if (movimientos.getTipomovimiento().equals("")) {
