@@ -110,6 +110,24 @@ tbody tr:hover {
 }
 
 
+#search {
+    margin-left: 4.5em;
+    width: 40em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 13px;
+    }
+    
+    input[type="submit"] {
+    background-color: rgb(129, 129, 129);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    }
+
+
 /* Media query para dispositivos móviles con un ancho máximo de 993px */
 @media screen and (max-width: 993px) {
     .container {
