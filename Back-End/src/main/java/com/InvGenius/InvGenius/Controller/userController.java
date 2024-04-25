@@ -18,78 +18,74 @@ import lombok.var;
 
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-
 @RestController
 @RequestMapping("/api/v1/user")
 
 public class userController {
-    
-     @Autowired
-     private IuserService userService;
+
+    @Autowired
+    private IuserService userService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save (@ModelAttribute("user") user user){
+    public ResponseEntity<Object> save(@ModelAttribute("user") user user) {
 
-        //Verificar que no exista numero de telefono 
-     var listaUser = userService.userExist(user.getCelular(),user.getCorreo());
+        // Verificar que no exista numero de telefono
+        var listaUser = userService.userExist(user.getCelular(), user.getCorreo());
 
-    if (listaUser.size() !=0) {
+        if (listaUser.size() != 0) {
             return new ResponseEntity<>("El correo y/o el numero de celular ya existe", HttpStatus.BAD_REQUEST);
         }
 
-
-        //Verificar que el campo de de documento de identidad sea diferente a vacio
-        //Añadir campos obligatorios
+        // Verificar que el campo de de documento de identidad sea diferente a vacio
+        // Añadir campos obligatorios
 
         if (user.getDocumentoIdentidad().equals("")) {
-            
+
             return new ResponseEntity<>("El documento de identidad es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (user.getPrimerNombre().equals("")) {
-            
+
             return new ResponseEntity<>("El primer nombre es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (user.getPrimerApellido().equals("")) {
-            
+
             return new ResponseEntity<>("El primer apellido es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (user.getCelular().equals("")) {
-            
+
             return new ResponseEntity<>("El numero de telefono es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (user.getCorreo().equals("")) {
-            
+
             return new ResponseEntity<>("El correo es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (user.getPassword().equals("")) {
-            
+
             return new ResponseEntity<>("La contraseña es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (user.getConfirmarPassword().equals("")) {
-            
+
             return new ResponseEntity<>("Confirme su contraseña correctamente", HttpStatus.BAD_REQUEST);
         }
 
-        //todo bien
+        // todo bien
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity <Object> findOne(@PathVariable String id) {
+    public ResponseEntity<Object> findOne(@PathVariable String id) {
         var user = userService.findOne(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-    
+
     @GetMapping("/")
     public String home() {
 
@@ -107,7 +103,7 @@ public class userController {
         var user = userService.findOne(id).get();
 
         if (user != null) {
-            
+
             user.setDocumentoIdentidad(userUpdate.getDocumentoIdentidad());
             user.setPrimerNombre(userUpdate.getPrimerNombre());
             user.setSegundoNombre(userUpdate.getSegundoNombre());
@@ -122,7 +118,7 @@ public class userController {
             userService.save(user);
 
             return new ResponseEntity<>(user, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>("Error usuario NO encontrado", HttpStatus.BAD_REQUEST);
         }
     }
