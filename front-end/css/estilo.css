@@ -6,6 +6,14 @@ body {
     background-color: #f3ece5;
 }
 
+hr{
+    margin: 0rem 0;
+    color: black;
+    border: 0;
+    border-top: var(--bs-border-width) solid;
+    opacity: .25;
+}
+
 .border-bottom {
     border-bottom: var(--bs-border-width) var(--bs-border-style) #000000 !important;
 }
