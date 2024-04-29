@@ -1,49 +1,32 @@
-package com.InvGenius.InvGenius.Controller;
+package com.InvGenius.InvGenius.Controller.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.IuserService;
 import com.InvGenius.InvGenius.models.user;
 
-import lombok.var;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+
+
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/user/security")
 
-public class userController {
-
+public class userControllerSecurity {
+    
     @Autowired
     private IuserService userService;
-
-    @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("user") user user) {
-
-        // Verificar que no exista numero de telefono
-        var listaUser = userService.userExist(user.getCelular(), user.getCorreo());
-
-        if (listaUser.size() != 0) {
-            return new ResponseEntity<>("El correo y/o el numero de celular ya existe", HttpStatus.BAD_REQUEST);
-        }
-
-        // Verificar que el campo de de documento de identidad sea diferente a vacio
-        // Añadir campos obligatorios
-
-        if (user.getDocumentoIdentidad().equals("")) {
-
-            return new ResponseEntity<>("El documento de identidad es un campo obligatorio", HttpStatus.BAD_REQUEST);
-        }
-
+    @PostMapping("path")
+    public ResponseEntity <Object> save(@ModelAttribute("user") user user) {
         if (user.getPrimerNombre().equals("")) {
 
             return new ResponseEntity<>("El primer nombre es un campo obligatorio", HttpStatus.BAD_REQUEST);
@@ -77,10 +60,9 @@ public class userController {
         // todo bien
         userService.save(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
-
     }
-
-    @GetMapping("/{id}")
+    
+     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var user = userService.findOne(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
@@ -116,5 +98,5 @@ public class userController {
             return new ResponseEntity<>("Error usuario NO encontrado", HttpStatus.BAD_REQUEST);
         }
     }
-
+    
 }
