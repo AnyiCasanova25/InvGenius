@@ -18,6 +18,6 @@ public interface Imovimientos extends CrudRepository<movimientos , String>{
     //   "JOIN p.categoria c "+
     //   "WHERE p.nombreProducto LIKE %?1% OR ma.nombreMarca LIKE %?2% OR c.nombreCategoria LIKE %?3%")
 
-    @Query("SELECT mo FROM movimientos mo WHERE mo.FechaMovimiento LIKE %?1%")
+    @Query("SELECT mo FROM movimientos mo WHERE mo.FechaMovimiento = ?1")
     List<movimientos> movimientosExist(Date FechaMovimiento);
 }
