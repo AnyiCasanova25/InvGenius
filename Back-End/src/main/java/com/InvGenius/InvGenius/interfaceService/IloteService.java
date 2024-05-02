@@ -1,7 +1,7 @@
 package com.InvGenius.InvGenius.interfaceService;
 
 import java.util.Optional;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import com.InvGenius.InvGenius.models.lote;

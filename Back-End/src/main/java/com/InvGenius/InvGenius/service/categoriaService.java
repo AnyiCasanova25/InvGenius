@@ -36,10 +36,10 @@ public class categoriaService implements IcategoriaService {
 
     //Filtros de categoria
     @Override
-    public List<categoria> categoriaExist(String nombreCategoria, String estado) {
-            List<categoria> listaCategoria = data.categoriaExist( nombreCategoria, estado);
-            return listaCategoria;
-    }
+	public List<categoria> categoriaExist(String nombreCategoria, String estado, String bloques) {
+		List <categoria> listaCategoria=data.categoriaExist( nombreCategoria, estado, bloques);
+		return listaCategoria;
+	}
     
     @Override
     public int delete(String id) {
