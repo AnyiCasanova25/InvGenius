@@ -115,14 +115,7 @@ tbody tr:hover {
 }
 
 
-#search {
-    margin-left: 2.5em;
-    width: 42em;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 13px;
-    }
+
     
     input[type="submit"] {
     background-color: rgb(129, 129, 129);
@@ -143,6 +136,16 @@ tbody tr:hover {
         max-width: 61%; /* Asegura que la imagen dentro del botón se ajuste correctamente */
     }
 
+
+/* Media query para dispositivos móviles con un ancho máximo de 993px */
+#search {
+    margin-left: 2.5em;
+    width: 64%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 13px;
+}
 
 /* Media query para dispositivos móviles con un ancho máximo de 993px */
 @media screen and (max-width: 993px) {
@@ -168,4 +171,11 @@ tbody tr:hover {
         height: auto;
         margin-left: 0; /* Eliminar el margen izquierdo en dispositivos móviles */
     }
+
+    #search {
+        width: 90%; /* Ajustar el ancho de la barra de búsqueda para dispositivos móviles */
+        margin-left: auto; /* Centrar la barra de búsqueda en dispositivos móviles */
+        margin-right: auto;
+    }
 }
+
