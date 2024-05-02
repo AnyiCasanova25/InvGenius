@@ -12,7 +12,7 @@ import com.InvGenius.InvGenius.models.solicitudSegurida;
 @Repository
 public interface IsolicitudSegurida extends CrudRepository<solicitudSegurida, String> {
 
-    @Query("SELECT s FROM solicitudSegurida s WHERE s.fechaHora LIKE %?1%")
+    @Query("SELECT s FROM solicitudSegurida s WHERE s.fechaHora = ?1")
     List<solicitudSegurida> solicitudSegExist(Date fechaHora);
     
 }
