@@ -134,6 +134,15 @@ tbody tr:hover {
 
     }
 
+    .back-button {
+        padding: 5px 10px; /* Ajusta el padding según tu preferencia para hacer el botón más pequeño */
+        max-width: 100px; /* Establece un ancho máximo para que el botón no se expanda demasiado en dispositivos grandes */
+    }
+    
+    .back-button img {
+        max-width: 61%; /* Asegura que la imagen dentro del botón se ajuste correctamente */
+    }
+
 
 /* Media query para dispositivos móviles con un ancho máximo de 993px */
 @media screen and (max-width: 993px) {
