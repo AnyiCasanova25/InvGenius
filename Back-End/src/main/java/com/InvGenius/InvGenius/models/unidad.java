@@ -17,7 +17,7 @@ public class unidad {
      @Id
      @GeneratedValue(strategy = GenerationType.UUID)
      @Column(name = "idUnidad", nullable = false, length = 36)
-     private String idUser;
+     private String idUnidad;
 
      @Column(name = "nombreUnidad", nullable = false, length = 36)
      private String nombreUnidad;
@@ -28,18 +28,18 @@ public class unidad {
     public unidad() {
     }
 
-    public unidad(String idUser, String nombreUnidad, String estadoUnidad) {
-        this.idUser = idUser;
+    public unidad(String idUnidad, String nombreUnidad, String estadoUnidad) {
+        this.idUnidad = idUnidad;
         this.nombreUnidad = nombreUnidad;
         this.estadoUnidad = estadoUnidad;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public String getIdUnidad() {
+        return idUnidad;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setIdUnidad(String idUnidad) {
+        this.idUnidad = idUnidad;
     }
 
     public String getNombreUnidad() {
@@ -57,6 +57,5 @@ public class unidad {
     public void setEstadoUnidad(String estadoUnidad) {
         this.estadoUnidad = estadoUnidad;
     }
-
      
 }
