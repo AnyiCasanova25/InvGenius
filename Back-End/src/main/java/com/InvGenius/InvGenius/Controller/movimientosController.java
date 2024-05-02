@@ -19,7 +19,7 @@ import com.InvGenius.InvGenius.models.movimientos;
 @RequestMapping("/api/v1/movimientos")
 public class movimientosController {
     
-    @Autowired
+    //@Autowired
     private ImovimientoService movimientosService;
 
    @PostMapping("/")

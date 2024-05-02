@@ -16,7 +16,7 @@ public class userService implements IuserService{
     @Autowired
     private Iuser data;
 
-    @SuppressWarnings("null")
+    
     @Override
     public String save(user user) {
         data.save(user);
@@ -31,7 +31,6 @@ public class userService implements IuserService{
 
     @Override
     public Optional<user> findOne(String id){
-        @SuppressWarnings("null")
         Optional<user> user = data.findById(id);
         return user;
     }

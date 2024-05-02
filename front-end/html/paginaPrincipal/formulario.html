@@ -54,30 +54,40 @@
 
 
         <!-- Novedades -->
-        <div>
-            <div class="negro">
-                <div class="row centradoInfo-sm justify-content-between">
-                    <div class="col-12">
-                        <h3 class="fw-normal alinearDato"><b>Novedades</b></h3>
-                    </div>
-                    <div class="col-lg-3 fondoDatoTarjeta">
-                        <h5 class="fw-normal alinearDato"><b>....</b></h5>
-                        <p class="centrarTexto ">....</p>
-                    </div>
-                    <div class="col-lg-3 fondoDatoTarjeta">
-                        <h5 class="fw-normal alinearDato"><b>....</b></h5>
-                        <p class="centrarTexto ">....</p>
-                    </div>
-                    <div class="col-lg-3 fondoDatoTarjeta ">
-                        <h5 class="fw-normal alinearDato"><b>....</b></h5>
-                        <p class="centrarTexto ">....</p>
-                    </div>
-                </div>
+        <div class="input-group mb-3">
+            <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="button-addon2">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-dark" type="submit" id="button-addon2" onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
+                    <i class="fas fa-search"></i> 
+                </button>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Categoria</th>
+                    <th>Producto</th>
+                    <th>cantidad</th>
+                    <th>fecha de entrada<input type="date" name="" id=""> </th>
+                    <th>fecha de salida<input type="date" name="" id=""> </th>
+                    <th>Proveedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11:00</td>
+                    <td>lacteos</td>
+                    <td>leche entera</td>
+                    <td>2 Lotes</td>
+                    <td>24/04/2024</td>
+                    <td>25/04/2024</td>
+                    <td>Lacteos S.A.s</td>
+                </tr>
+            </tbody>
+        </table>
+        
 
     </div>
 

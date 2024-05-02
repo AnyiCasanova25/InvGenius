@@ -115,25 +115,60 @@ tbody tr:hover {
 }
 
 
-#search {
-    margin-left: 2.5em;
-    width: 42em;
-    padding: 10px;
+
+    
+    
+
+    .back-button {
+        padding: 5px 10px; 
+        max-width: 100px; 
+    }
+    
+    .back-button img {
+        max-width: 61%; }
+
+
+.input-group {
+    
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 86%;
+}
+
+.input-group.mb-3 {
+    margin-left: 3em;
+}
+
+#texto {
+    width: 66%;
+    padding: 7px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 13px;
-    }
-    
-    input[type="submit"] {
-    background-color: rgb(129, 129, 129);
+}
+
+.input-group-prepend {
+    margin-right: -1px;
+}
+
+.btn.btn-outline-dark {
+    background-color: transparent;
+    color: #343a40;
+    border: 1px solid #343a40;
+    border-radius: 0 5px 5px 0;
+}
+
+.btn.btn-outline-dark:hover {
     color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    width: 107px;
+    background-color: #343a40;
+    border-color: #343a40;
+}
 
-    }
-
+#button-addon2 {
+    cursor: pointer;
+}
 
 /* Media query para dispositivos móviles con un ancho máximo de 993px */
 @media screen and (max-width: 993px) {
@@ -159,4 +194,11 @@ tbody tr:hover {
         height: auto;
         margin-left: 0; /* Eliminar el margen izquierdo en dispositivos móviles */
     }
+
+    #search {
+        width: 90%; /* Ajustar el ancho de la barra de búsqueda para dispositivos móviles */
+        margin-left: auto; /* Centrar la barra de búsqueda en dispositivos móviles */
+        margin-right: auto;
+    }
 }
+

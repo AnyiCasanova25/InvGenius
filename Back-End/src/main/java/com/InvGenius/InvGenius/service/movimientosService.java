@@ -40,8 +40,8 @@ public class movimientosService implements ImovimientoService{
     
 
     @Override
-    public List<movimientos> movimientosExist(Date Fechamovimiento) {
-            List<movimientos> listaMovimientos = data.movimientosExist( Fechamovimiento);
+    public List<movimientos> movimientosExist(Date FechaMovimiento) {
+            List<movimientos> listaMovimientos = data.movimientosExist( FechaMovimiento);
             return listaMovimientos;
     }
 

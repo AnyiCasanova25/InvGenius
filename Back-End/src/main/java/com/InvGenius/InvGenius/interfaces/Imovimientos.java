@@ -10,6 +10,6 @@ import com.InvGenius.InvGenius.models.movimientos;
 
 public interface Imovimientos extends CrudRepository<movimientos , String>{
 
-    @Query("SELECT Mo FROM movimientos Mo WHERE Mo.Fechamovimiento LIKE %?1%")
-    List<movimientos> movimientosExist(Date Fechamovimiento);
+    @Query("SELECT Mo FROM movimientos Mo WHERE Mo.FechaMovimiento LIKE %?1%")
+    List<movimientos> movimientosExist(Date FechaMovimiento);
 }

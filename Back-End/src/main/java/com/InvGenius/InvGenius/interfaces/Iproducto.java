@@ -20,7 +20,11 @@ public interface Iproducto extends CrudRepository<producto, String> {
      * id unidad
      */
 
-    @Query("SELECT p FROM producto p WHERE p.nombreProducto LIKE %?1% OR ma.nombreMarca LIKE %?1% OR c.nombreCategoria")
+     //JOIN
+    @Query("SELECT p FROM producto p "+
+    "JOIN p.marca ma "+
+    "JOIN p.categoria c "+
+    "WHERE p.nombreProducto LIKE %?1% OR ma.nombreMarca LIKE %?2% OR c.nombreCategoria LIKE %?3%")
     List<producto> productoExist(String nombreProducto, String nombreMarca, String nombreCategoria);
 
 }
