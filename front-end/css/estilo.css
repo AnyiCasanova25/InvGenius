@@ -342,6 +342,9 @@ td {
     padding: 15px;
     border-bottom: solid 1px rgba(255, 255, 255, 0.2);
 }
+.table-responsive {
+    overflow-x: auto; /* Hacer la tabla desplazable horizontalmente */
+}
 
 input{
     width: 22px;
@@ -369,4 +372,20 @@ tbody tr:hover {
       margin-left: auto; /* Centrar el cuadro a la derecha */
       margin-right: auto; /* Centrar el cuadro a la izquierda */
     }
+    
   }
+
+  @media (max-width: 1199px) {
+    th,
+    td {
+        padding: 20px; /* Reducir el padding */
+        font-size: 14px; /* Reducir el tamaño de la fuente */
+    }
+}
+
+@media (max-width: 779px) {
+    th,
+    td {
+        padding: 8px; /* Reducir el padding */
+    }
+}
