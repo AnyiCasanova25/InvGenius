@@ -313,13 +313,18 @@ hr{
 }
 
 .profile .dropdown-content {
-    margin-left: -58px;
+    margin-left: -131px;
     border-radius: 10px;
 }
 
 .col-6 {
     flex: 0 0 auto;
     width: 70%;
+}
+
+.input-group .btn {
+    position: relative;
+    z-index: 0;
 }
 
  
