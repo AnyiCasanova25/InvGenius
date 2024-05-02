@@ -8,7 +8,6 @@
 
 .button-container {
     text-align: center;
-    margin-top: 10px;
 }
 
 .button-style {
@@ -21,6 +20,7 @@
 .button-link {
     text-decoration: none;
     color: #000;
+    text-align: center;
 }
 
 @media screen and (max-width: 600px) {
