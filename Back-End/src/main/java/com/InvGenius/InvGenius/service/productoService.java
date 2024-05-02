@@ -4,17 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.InvGenius.InvGenius.interfaceService.IproductoService;
 import com.InvGenius.InvGenius.interfaces.Iproducto;
 import com.InvGenius.InvGenius.models.producto;
 
+@Service
 public class productoService implements IproductoService {
 
     @Autowired
     private Iproducto data;
 
-    @SuppressWarnings("null")
+
     @Override
     public String save(producto producto) {
         data.save(producto);
@@ -29,7 +31,6 @@ public class productoService implements IproductoService {
 
     @Override
     public Optional<producto> findOne(String id) {
-        @SuppressWarnings("null")
         Optional<producto> producto = data.findById(id);
         return producto;
     }

@@ -1,6 +1,7 @@
 package com.InvGenius.InvGenius.interfaces;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +10,6 @@ import com.InvGenius.InvGenius.models.movimientos;
 
 public interface Imovimientos extends CrudRepository<movimientos , String>{
 
-    @Query("SELECT Mo FROM movimientos Mo WHERE Mo.Fechamovimiento LIKE %?1%")
-    List<movimientos> movimientosExist(Date Fechamovimiento);
+    @Query("SELECT Mo FROM movimientos Mo WHERE Mo.FechaMovimiento LIKE %?1%")
+    List<movimientos> movimientosExist(Date FechaMovimiento);
 }
