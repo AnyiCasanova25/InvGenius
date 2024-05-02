@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.InvGenius.InvGenius.interfaceService.IunidadService;
 import com.InvGenius.InvGenius.interfaces.Iunidad;
 import com.InvGenius.InvGenius.models.unidad;
 
+@Service
 public class unidadService implements IunidadService {
 
     @Autowired
