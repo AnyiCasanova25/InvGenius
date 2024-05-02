@@ -20,6 +20,7 @@ public interface Iproducto extends CrudRepository<producto, String> {
      * id unidad
      */
 
+     //JOIN
     @Query("SELECT p FROM producto p "+
     "JOIN p.marca ma "+
     "JOIN p.categoria c "+
