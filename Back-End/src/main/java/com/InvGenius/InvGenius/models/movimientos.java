@@ -42,6 +42,9 @@ public class movimientos {
      @JoinColumn(name = "idUser")
      private user user;
 
+     @ManyToOne
+     @JoinColumn(name = "idUnidad")
+     private unidad unidad;
 
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
      private Date FechaMovimiento;
@@ -50,14 +53,14 @@ public class movimientos {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
-
-            String cantidadProducto, user user, Date fechaMovimiento) {
-
+            String cantidadProducto, com.InvGenius.InvGenius.models.user user,
+            com.InvGenius.InvGenius.models.unidad unidad, Date fechaMovimiento) {
         this.idMovimiento = idMovimiento;
         this.producto = producto;
         this.tipomovimiento = tipomovimiento;
         CantidadProducto = cantidadProducto;
         this.user = user;
+        this.unidad = unidad;
         FechaMovimiento = fechaMovimiento;
     }
 
@@ -93,13 +96,20 @@ public class movimientos {
         CantidadProducto = cantidadProducto;
     }
 
-    public user getidUser() {
+    public user getUser() {
         return user;
     }
 
-    public void setidUser(user user) {
+    public void setUser(user user) {
         this.user = user;
+    }
 
+    public unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(unidad unidad) {
+        this.unidad = unidad;
     }
 
     public Date getFechaMovimiento() {
@@ -109,8 +119,7 @@ public class movimientos {
     public void setFechaMovimiento(Date fechaMovimiento) {
         FechaMovimiento = fechaMovimiento;
     }
-
-     
+    
 
     
 

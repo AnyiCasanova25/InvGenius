@@ -8,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity(name = "solicitudSegurida")
@@ -26,10 +26,6 @@ public class solicitudSegurida {
     @Column(name = "idSoliSeguridad", nullable = false, length = 36)
     private String idSoliSeguridad;
 
-   @ManyToMany
-    @JoinColumn(name = "idUser")
-    private user user;
-
     @Column(name = "fechaHora", nullable = false, length = 36)
     private Date fechaHora;
 
@@ -39,16 +35,20 @@ public class solicitudSegurida {
     @Column(name = "codigoSeguridad", nullable = false, length = 36)
     private String codigoSeguridad;
 
+    @ManyToOne
+    @JoinColumn(name = "idUser")
+    private user user;
+
     public solicitudSegurida() {
     }
 
     public solicitudSegurida(String idSoliSeguridad, com.InvGenius.InvGenius.models.user user, Date fechaHora,
             String estadoSoliSeguridad, String codigoSeguridad) {
         this.idSoliSeguridad = idSoliSeguridad;
-        this.user = user;
         this.fechaHora = fechaHora;
         this.estadoSoliSeguridad = estadoSoliSeguridad;
         this.codigoSeguridad = codigoSeguridad;
+        this.user = user;
     }
 
     public String getIdSoliSeguridad() {
@@ -57,14 +57,6 @@ public class solicitudSegurida {
 
     public void setIdSoliSeguridad(String idSoliSeguridad) {
         this.idSoliSeguridad = idSoliSeguridad;
-    }
-
-    public user getUser() {
-        return user;
-    }
-
-    public void setUser(user user) {
-        this.user = user;
     }
 
     public Date getFechaHora() {
@@ -89,6 +81,13 @@ public class solicitudSegurida {
 
     public void setCodigoSeguridad(String codigoSeguridad) {
         this.codigoSeguridad = codigoSeguridad;
+    }
+    public user getUser() {
+        return user;
+    }
+
+    public void setUser(user user) {
+        this.user = user;
     }
 
     
