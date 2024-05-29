@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.IsolicitudSeguridaService;
 import com.InvGenius.InvGenius.models.solicitudSegurida;
+import lombok.var;
 
 @RestController
 @RequestMapping("/api/v1/solicitudSegurida")
@@ -77,7 +78,7 @@ public class solicitudSegController {
            
         solicitudSegurida.setEstadoSoliSeguridad(solicitudSeguridaUpdate.getEstadoSoliSeguridad());
         solicitudSegurida.setCodigoSeguridad(solicitudSeguridaUpdate.getCodigoSeguridad());
-           
+        solicitudSegurida.setFechaHora(solicitudSeguridaUpdate.getFechaHora());
 
            solicitudSeguridaService.save(solicitudSegurida);
 

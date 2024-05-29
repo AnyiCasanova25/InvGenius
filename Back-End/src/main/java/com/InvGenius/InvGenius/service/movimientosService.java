@@ -18,7 +18,7 @@ public class movimientosService implements ImovimientoService{
     @Autowired
     private Imovimientos data;
 
-    // @SuppressWarnings("null")
+    
     @Override
     public String save(movimientos movimientos) {
         data.save(movimientos);
@@ -33,7 +33,7 @@ public class movimientosService implements ImovimientoService{
 
     @Override
     public Optional<movimientos> findOne(String id){
-        // @SuppressWarnings("null")
+        
         Optional<movimientos> movimientos = data.findById(id);
         return movimientos;
     }
