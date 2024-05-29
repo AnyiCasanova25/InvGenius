@@ -17,19 +17,15 @@ public class ubicacion {
     @Column(name = "asignarUbicacion", nullable = false, length = 20)
     private String asignarUbicacion;
 
-    @Column(name = "listarProductoEnUbicacion", nullable = false, length = 30)
-    private String listarProductoEnUbicacion;
-
     @Column(name =  "bloques", nullable = false, length = 10)
     private String bloques;
 
     public ubicacion() {
     }
 
-    public ubicacion(String idUbicacion, String asignarUbicacion, String listarProductoEnUbicacion, String bloques) {
+    public ubicacion(String idUbicacion, String asignarUbicacion, String bloques) {
         this.idUbicacion = idUbicacion;
         this.asignarUbicacion = asignarUbicacion;
-        this.listarProductoEnUbicacion = listarProductoEnUbicacion;
         this.bloques = bloques;
     }
 
@@ -47,14 +43,6 @@ public class ubicacion {
 
     public void setAsignarUbicacion(String asignarUbicacion) {
         this.asignarUbicacion = asignarUbicacion;
-    }
-
-    public String getListarProductoEnUbicacion() {
-        return listarProductoEnUbicacion;
-    }
-
-    public void setListarProductoEnUbicacion(String listarProductoEnUbicacion) {
-        this.listarProductoEnUbicacion = listarProductoEnUbicacion;
     }
 
     public String getBloques() {
