@@ -35,8 +35,8 @@ public class proveedorService implements IproveedorService {
     }
 
     @Override
-    public List<proveedor> proveedorExist(String marcasProveedor){
-        List<proveedor> listaProveedor = data.proveedorExist(marcasProveedor);
+    public List<proveedor> proveedorExist(String estadoProveedor){
+        List<proveedor> listaProveedor = data.proveedorExist(estadoProveedor);
         return listaProveedor;
     }
 

@@ -14,15 +14,32 @@ public class proveedor {
     @Column(name = "idProveedor", nullable = false, length = 36)
     private String idProveedor;
 
-    @Column(name = "marcasProveedor", nullable = false, length = 20)
-    private String marcasProveedor;
+    @Column(name = "nombreProveedor", nullable = false, length = 20)
+    private String nombreProveedor;
+
+    @Column(name = "apellidoProveedor", nullable = false, length = 20)
+    private String apellidoProveedor;
+
+    @Column(name = "documentoProveedor", nullable = false, length = 20)
+    private String documentoProveedor;
+
+    @Column(name = "empresaProveedor", nullable = false, length = 20)
+    private String empresaProveedor;
+
+    @Column(name = "estadoProveedor", nullable = false, length = 20)
+    private String estadoProveedor;
 
     public proveedor() {
     }
 
-    public proveedor(String idProveedor, String marcasProveedor) {
+    public proveedor(String idProveedor, String nombreProveedor, String apellidoProveedor, String documentoProveedor,
+            String empresaProveedor, String estadoProveedor) {
         this.idProveedor = idProveedor;
-        this.marcasProveedor = marcasProveedor;
+        this.nombreProveedor = nombreProveedor;
+        this.apellidoProveedor = apellidoProveedor;
+        this.documentoProveedor = documentoProveedor;
+        this.empresaProveedor = empresaProveedor;
+        this.estadoProveedor = estadoProveedor;
     }
 
     public String getIdProveedor() {
@@ -33,12 +50,45 @@ public class proveedor {
         this.idProveedor = idProveedor;
     }
 
-    public String getMarcasProveedor() {
-        return marcasProveedor;
+    public String getNombreProveedor() {
+        return nombreProveedor;
     }
 
-    public void setMarcasProveedor(String marcasProveedor) {
-        this.marcasProveedor = marcasProveedor;
+    public void setNombreProveedor(String nombreProveedor) {
+        this.nombreProveedor = nombreProveedor;
     }
 
+    public String getApellidoProveedor() {
+        return apellidoProveedor;
+    }
+
+    public void setApellidoProveedor(String apellidoProveedor) {
+        this.apellidoProveedor = apellidoProveedor;
+    }
+
+    public String getDocumentoProveedor() {
+        return documentoProveedor;
+    }
+
+    public void setDocumentoProveedor(String documentoProveedor) {
+        this.documentoProveedor = documentoProveedor;
+    }
+
+    public String getEmpresaProveedor() {
+        return empresaProveedor;
+    }
+
+    public void setEmpresaProveedor(String empresaProveedor) {
+        this.empresaProveedor = empresaProveedor;
+    }
+
+    public String getEstadoProveedor() {
+        return estadoProveedor;
+    }
+
+    public void setEstadoProveedor(String estadoProveedor) {
+        this.estadoProveedor = estadoProveedor;
+    }
+
+   
 }

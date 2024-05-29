@@ -18,7 +18,7 @@ public class loteService implements IloteService {
     private Ilote data;
 
     @Override
-    public String save(com.InvGenius.InvGenius.models.lote lote){
+    public String save(lote lote){
         data.save(lote);
         return lote.getIdLote();
     }

@@ -11,7 +11,7 @@ import com.InvGenius.InvGenius.models.proveedor;
 @Repository
 public interface Iproveedor extends CrudRepository<proveedor, String> {
 
-    @Query ("SELECT prov FROM proveedor prov WHERE prov.marcasProveedor = ?1")
-    List<proveedor> proveedorExist(String marcasProveedor);
+    @Query ("SELECT prov FROM proveedor prov WHERE prov.estadoProveedor = ?1")
+    List<proveedor> proveedorExist(String estadoProveedor);
     
 }
