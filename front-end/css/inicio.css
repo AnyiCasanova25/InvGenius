@@ -5,6 +5,11 @@
     font-family: 'poppins', sans-serif;
 }
 
+.fa-solid, .fas {
+    font-weight: 900;
+    color: white;
+}
+
 body::before {
     content: "";
     position: fixed;
