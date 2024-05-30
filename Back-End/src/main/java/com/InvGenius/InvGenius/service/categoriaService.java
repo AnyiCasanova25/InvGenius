@@ -36,8 +36,8 @@ public class categoriaService implements IcategoriaService {
 
     //Filtros de categoria
     @Override
-	public List<categoria> categoriaExist(String nombreCategoria, String estado, String bloques) {
-		List <categoria> listaCategoria=data.categoriaExist( nombreCategoria, estado, bloques);
+	public List<categoria> categoriaExist(String nombreCategoria, String estado, String ubicacion) {
+		List <categoria> listaCategoria=data.categoriaExist( nombreCategoria, estado, ubicacion);
 		return listaCategoria;
 	}
     
