@@ -7,11 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.InvGenius.InvGenius.interfaceService.IubicacionService;
-
 import com.InvGenius.InvGenius.models.ubicacion;
-
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +30,7 @@ public class ubicacionController {
     @PostMapping("/")
     public ResponseEntity<Object> save(@ModelAttribute("ubicacion")ubicacion ubicacion) {
         
+        //Verificar que no se repita el Bloque
         var listaUbicacion = ubicacionService.ubicacionExist(ubicacion.getBloques());
 
         if (listaUbicacion.size() != 0){

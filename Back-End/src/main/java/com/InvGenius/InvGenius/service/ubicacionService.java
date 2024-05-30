@@ -35,10 +35,17 @@ public class ubicacionService implements IubicacionService {
     }
 
     @Override
+    public List<ubicacion> ubicacionExist(String bloques) {
+        List<ubicacion> listaUbicacion =data.ubicacionExist(bloques);
+        return listaUbicacion;
+    }
+
+    @Override
     public int delete(String id){
         data.deleteById(id);
         return 1;
     }
 
+    
 
 }
