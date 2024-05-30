@@ -30,8 +30,8 @@
         <header class="border-bottom lh-1 py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-8 pt-1">
-                    <a href="/front-end/html/paginaPrincipal/vistaPrevia.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="50px" height="50px"><img src="/front-end/img/Pagina/Nombre.png" width="200px"height="50px">
+                    <a href="/front-end/html/paginaPrincipal/novedades.html"><img src="/front-end/img/Pagina/Logo.png"
+                        width="50px" height="50px"><img src="/front-end/img/Pagina/Nombre.png" width="200px"height="60px">
                     </a>
                 </div>
 
@@ -59,21 +59,34 @@
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/novedades.html">Novedades <i class="fa-solid fa-bullhorn"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/producto.html">Producto <i class="fas fa-shopping-cart"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
-                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i class="fas fa-border-all"></i></a>
+                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/categoriaProductos.html">Producto <i class="fas fa-border-all"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/informe.html">Informe <i class="fas fa-list-ul"></i></a>
             </nav>
         </div>
-
         <div class="input-group mb-3">
-            <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="button-addon2">
             <div class="input-group-prepend">
-                <button class="btn btn-outline-dark" type="submit" id="button-addon2" onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
-                    <i class="fas fa-search"></i> 
+                <form action="/front-end/html/paginaPrincipal/categoria.html">
+                    <button class="btn btn-outline-dark" type="submit" id="button-addon1">
+                        <i class="fas fa-arrow-left fa-lg"></i>
+                    </button>
+                </form>
+                
+            </div>
+            <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-dark" type="submit" id="button-addon2"
+                        onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-outline-dark mr-2" type="submit" id="button-addon3"
+                        onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
+                    <i class="fas fa-broom"></i>
                 </button>
             </div>
         </div>
         
-
+        
+        
 
 
         <br>
