@@ -22,20 +22,22 @@
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-8 pt-1">
                     <a href="/front-end/html/paginaPrincipal/vistaPrevia.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="50px" height="50px"><img src="/front-end/img/Pagina/Nombre.png" width="200px"
-                            height="50px"></a>
+                            width="50px" height="50px"><img src="/front-end/img/Pagina/Nombre.png" width="200px"height="50px">
+                    </a>
                 </div>
 
                 <div class="col-2 d-flex justify-content-end align-items-center ">
                     <div class="profile">
-                        <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
-                        <div class="dropdown-content">
-                            <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
-                            <a href="/front-end/html/Perfil/adminPerfiles.html">Administrar Perfiles</a>
-                            <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
-                            <hr>
-                            <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
-                        </div>
+                        <div class="profile">
+                            <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
+                            <div class="dropdown-content">
+                                <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
+                                <a href="/front-end/html/Perfil/adminPerfiles.html">Administrar Perfiles</a>
+                                <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
+                                <hr>
+                                <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
+                            </div>
+                        </div>                    
                     </div>
                 </div>
             </div>
@@ -45,10 +47,11 @@
 
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/vistaPrevia.html">Novedades <i class="fa-solid fa-bullhorn"></i></a>
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/movimientos.html">Producto <i class="fas fa-shopping-cart"></i></a>
+                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/novedades.html">Novedades <i class="fa-solid fa-bullhorn"></i></a>
+                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/producto.html">Producto <i class="fas fa-shopping-cart"></i></a>
+                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i class="fas fa-border-all"></i></a>
-                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/formulario.html">Informe <i class="fas fa-list-ul"></i></a>
+                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/informe.html">Informe <i class="fas fa-list-ul"></i></a>
             </nav>
         </div>
 
@@ -63,30 +66,41 @@
             </div>
         </div>
         
-        <table>
-            <thead>
+        <table class=" table table-hover ">
+            <div class="colorTabla table-striped">
                 <tr>
-                    <th>Hora</th>
-                    <th>Categoria</th>
-                    <th>Producto</th>
-                    <th>cantidad</th>
-                    <th>fecha de entrada<input type="date" name="" id=""> </th>
-                    <th>fecha de salida<input type="date" name="" id=""> </th>
-                    <th>Proveedor</th>
+                    <th class="text-center align-middle">Hora</th>
+                    <th class="text-center align-middle">Tipo movimientos</th>
+                    <th class="text-center align-middle">Categoría</th>
+                    <th class="text-center align-middle">Producto</th>
+                    <th class="text-center align-middle">Cantidad</th>
+                    <th class="text-center align-middle">Fecha</th>
+                    <th class="text-center align-middle">Proveedor</th>
                 </tr>
-            </thead>
+            </div>
+            <!-- <tbody id="cuerpoTabla"></tbody> -->
             <tbody>
                 <tr>
                     <td>11:00</td>
-                    <td>lacteos</td>
-                    <td>leche entera</td>
-                    <td>2 Lotes</td>
+                    <td>Entrada</td>
+                    <td>Lácteos</td>
+                    <td>Leche entera</td>
+                    <td>2 lotes</td>
                     <td>24/04/2024</td>
-                    <td>25/04/2024</td>
-                    <td>Lacteos S.A.s</td>
+                    <td>Lácteos S.A.</td>
+                </tr>
+                <tr>
+                    <td>11:00</td>
+                    <td>Salida</td>
+                    <td>Lácteos</td>
+                    <td>Leche entera</td>
+                    <td>2 lotes</td>
+                    <td>24/04/2024</td>
+                    <td>Lácteos S.A.</td>
                 </tr>
             </tbody>
         </table>
+        
         
 
     </div>

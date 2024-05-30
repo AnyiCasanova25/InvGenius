@@ -58,8 +58,8 @@
             <nav class="nav nav-underline justify-content-between">
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/novedades.html">Novedades <i class="fa-solid fa-bullhorn"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/producto.html">Producto <i class="fas fa-shopping-cart"></i></a>
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
-                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i class="fas fa-border-all"></i></a>
+                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
+                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i class="fas fa-border-all"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/informe.html">Informe <i class="fas fa-list-ul"></i></a>
             </nav>
         </div>
@@ -73,95 +73,56 @@
                 <button class="btn btn-outline-dark" type="submit" id="button-addon2" onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
                     <i class="fas fa-broom"></i>
                 </button>
-                <button type="button" class="btn btn-outline-dark" id="button-addon2" data-bs-toggle="modal" onclick="registrarClienteBandera=true; limpiar();" data-bs-target="#agregarCategoria">
+                <button type="button" class="btn btn-outline-dark" id="button-addon2" data-bs-toggle="modal" onclick="registrarClienteBandera=true; limpiar();" data-bs-target="#exampleModal">
                     <i class="fas fa-plus"></i>
                 </button>
-                <button type="button" class="btn btn-outline-dark" id="button-addon2" data-bs-toggle="modal" onclick="registrarClienteBandera=true; limpiar();">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
+
             </div>
         </div>
         
-
-
-
-        <br>
-
-        <!-- categorias  -->
-        <div class="shop-grid">
-
-            <div class="shop-card">
-                <div class="title">
-                    lacteos
-                </div>
-                <div class="margimg">
-                    <figure>
-                        <img src="/front-end/img/Categorias/001/001.png">
-                    </figure>
-                </div>
-                <div class="margimg">
-                    <a href="/front-end/html/paginaPrincipal/categoria copy.html">
-                    <button type="button" class="btn btn-outline-dark">Todos</button></a>
-                </div>
+        <table class=" table table-hover ">
+            <div class="colorTabla table-striped">
+                <tr>
+                    <th class="text-center align-middle">N°</th>
+                    <th class="text-center align-middle">Nombre</th>
+                    <th class="text-center align-middle">Apellido</th>
+                    <th class="text-center align-middle">Documento</th>
+                    <th class="text-center align-middle">Empresa</th>
+                    <th class="text-center align-middle">Estado</th>
+                    <th class="text-center align-middle">Opciones</th>
+                </tr>
             </div>
-
-            <div class="shop-card">
-                <div class="title">
-                    Carnes
-                </div>
-                <div class="margimg">
-                    <figure>
-                        <img src="/front-end/img/Categorias/002/001.png">
-                    </figure>
-                </div>
-                <div class="margimg">
-                    <button type="button" class="btn btn-outline-dark">Todos</button>
-                </div>
-            </div>
-
-            <div class="shop-card">
-                <div class="title">
-                    Granos
-                </div>
-                <div class="margimg">
-                    <figure>
-                        <img src="/front-end/img/Categorias/003/001.png">
-                    </figure>
-                </div>
-                <div class="margimg">
-                    <button type="button" class="btn btn-outline-dark">Todos</button>
-                </div>
-            </div>
-
-            <div class="shop-card">
-                <div class="title">
-                    Verduras
-                </div>
-                <div class="margimg">
-                    <figure>
-                        <img src="/front-end/img/Categorias/004/001.png">
-                    </figure>
-                </div>
-                <div class="margimg">
-                    <button type="button" class="btn btn-outline-dark">Todos</button>
-                </div>
-            </div>
-
-            <div class="shop-card">
-                <div class="title">
-                    Frutas
-                </div>
-                <div class="margimg">
-                    <figure>
-                        <img src="/front-end/img/Categorias/005/001.png">
-                    </figure>
-                </div>
-                <div class="margimg">
-                    <button type="button" class="btn btn-outline-dark">Todos</button>
-                </div>
-            </div>
-
-        </div>
+            <!-- <tbody id="cuerpoTabla"></tbody> -->
+            
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Julian David</td>
+                    <td>Fierro Casanova</td>
+                    <td>1025487856</td>
+                    <td>S.A.S</td>
+                    <td>Activo</td>
+                    <td class="text-center align-middle">
+                        <i class="fas fa-edit editar"></i>
+                        <i class="fas fa-user-slash cambiarEstado"></i>
+                        <i class="fas fa-trash-alt eliminar"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Anyi Zujey</td>
+                    <td>Gomez Casanova</td>
+                    <td>1025487856</td>
+                    <td>S.A.S</td>
+                    <td>Inactivo</td>
+                    <td class="text-center align-middle">
+                        <i class="fas fa-edit editar"></i>
+                        <i class="fas fa-user-slash cambiarEstado"></i>
+                        <i class="fas fa-trash-alt eliminar"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <br>
         <br>
@@ -169,10 +130,8 @@
 
     </div>
 
-    
-
-
-    <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom" >
                 <div class="modal-header">
@@ -181,7 +140,7 @@
                         <img src="/front-end/img/Pagina/Logo.png" width="25%"><img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel" style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Agregar Categoria
+                        Registro Proveedor
                     </h1>
                 </div>
                 <div class="modal-body">
@@ -189,20 +148,37 @@
                         <div class="centradoo">
                             <div class="container col">
                                 <br>
-                                <form class="row table-hover needs-validation" enctype="multipart/form-data">
+                                <form class="row table-hover needs-validation">
 
-                                    <div class="col col-xl-12 col-12 table-hover">
-                                        <label for="nombre"><i class="fas fa-tag"></i> Nombre de Categoría:</label>
+                                    <div class="col col-xl-6 col-12 table-hover">
+                                        <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
                                         <input type="text" id="nombre" class="form-control" onfocusout="validarNombre(this)" required>
                                     </div>
-                                
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="imagen"><i class="fas fa-upload"></i> Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control" accept="image/*" required>
+                                    
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="apellido"><i class="fas fa-user"></i> Apellido:</label>
+                                        <input type="text" id="apellido" class="form-control" onfocusout="validarApellido(this)" required>
                                     </div>
-                                
+                                    
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="telefono"><i class="fas fa-id-card"></i> Documento:</label>
+                                        <input type="number" id="documento" class="form-control" onfocusout="validarDocumento(this)" required>
+                                    </div>
+                                    
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="direccion"><i class="fas fa-building"></i> Empresa:</label>
+                                        <input type="text" id="direccion" class="form-control" onfocusout="validarDireccion(this)" required>
+                                    </div>
+                                    
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="estado"><i class="fas fa-check-circle"></i> Estado:</label>
+                                        <select id="estado" class="form-control" onfocusout="validarEstado(this)" required>
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                        </select>
+                                    </div>
+                                    
                                 </form>
-                                
                                 <br>
                             </div>
                         </div>
@@ -210,7 +186,7 @@
                 </div>
                 <div class="modal-footer ">
                     <button type="button" class="btn btn-dark"
-                        onclick="registrarCliente(); limpiar();">Agregar</button>
+                        onclick="registrarCliente(); limpiar();">Registrar</button>
                 </div>
             </div>
         </div>

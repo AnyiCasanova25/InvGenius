@@ -6,6 +6,26 @@ body {
     background-color: #f3ece5;
 }
 
+/* alerta atencion */
+
+.expandable-div:hover .fa-exclamation-triangle {
+    transform: scale(1.2);
+    transition: transform 0s ease;
+}
+
+.expandable-div:hover h1 {
+    font-size: 3.2rem; 
+    transition: font-size 0s ease;
+}
+
+.expandable-div:hover .fa-exclamation-triangle,
+.expandable-div:hover h1 {
+    transform: scale(1.1); 
+    transition: transform 0s ease;
+}
+
+
+
 hr{
     margin: 0rem 0;
     color: black;
@@ -26,8 +46,29 @@ hr{
     /* Agrega una transición suave */
 }
 
+.centerLogoNombreModal {
+    text-align: center; /* Centra el contenido del contenedor */
+}
+
+.centerLogoNombreModal img {
+    max-width: 100%; /* Establece el ancho máximo de la imagen al 100% */
+}
+
+.modal-backdrop {
+    backdrop-filter: blur(100px); /* Ajusta el nivel de desenfoque según tus preferencias */
+    background-color: rgba(0, 0, 0, 0.5); /* Ajusta el nivel de transparencia según tus preferencias */
+}
+
+
+
 .negro {
     color: black;
+}
+
+
+.colorTabla{
+    background-color: #000000 !important;
+    margin-top: 1%;
 }
 
 .centradoNombre {
@@ -166,7 +207,7 @@ hr{
 
 /* Modals */
 .modal-content {
-    background-color: #DBD7D7;
+    background-color: #f5f5f5;
 }
 
 .modal-footer {

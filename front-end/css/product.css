@@ -18,6 +18,10 @@ body {
     align-items: center;
 }
 
+.negro {
+    color: black;
+}
+
 .container {
     display: flex;
     max-width: 90%;
