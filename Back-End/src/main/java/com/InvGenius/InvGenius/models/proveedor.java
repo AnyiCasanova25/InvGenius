@@ -29,17 +29,21 @@ public class proveedor {
     @Column(name = "estadoProveedor", nullable = false, length = 20)
     private String estadoProveedor;
 
+    @Column(name = "numeroProveedor", nullable = false, length = 20)
+    private String numeroProveedor;
+
     public proveedor() {
     }
 
     public proveedor(String idProveedor, String nombreProveedor, String apellidoProveedor, String documentoProveedor,
-            String empresaProveedor, String estadoProveedor) {
+            String empresaProveedor, String estadoProveedor, String numeroProveedor) {
         this.idProveedor = idProveedor;
         this.nombreProveedor = nombreProveedor;
         this.apellidoProveedor = apellidoProveedor;
         this.documentoProveedor = documentoProveedor;
         this.empresaProveedor = empresaProveedor;
         this.estadoProveedor = estadoProveedor;
+        this.numeroProveedor = numeroProveedor;
     }
 
     public String getIdProveedor() {
@@ -90,5 +94,12 @@ public class proveedor {
         this.estadoProveedor = estadoProveedor;
     }
 
+    public String getNumeroProveedor() {
+        return numeroProveedor;
+    }
+
+    public void setNumeroProveedor(String numeroProveedor) {
+        this.numeroProveedor = numeroProveedor;
+    }
    
 }

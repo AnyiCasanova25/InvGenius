@@ -28,21 +28,34 @@ public class lote {
     @Column(name = "cantidad", nullable = false, length = 36)
     private String cantidad;
 
+    @Column(name = "numeroLote", nullable = false, length = 30)
+    private String numeroLote;
+
+    @Column(name = "codigoLote", nullable = false, length = 20)
+    private float codigoLote;
+
     @ManyToOne
     @JoinColumn(name = "idProducto")
     private producto producto;
 
-    public lote() {
+    @ManyToOne
+    @JoinColumn(name = "idUbicacion")
+    private ubicacion ubicacion;
 
+    public lote() {
     }
 
-    public lote(String idLote, Date fechaIngreso, Date fechaVencimiento, String cantidad,
-            com.InvGenius.InvGenius.models.producto producto) {
+    public lote(String idLote, Date fechaIngreso, Date fechaVencimiento, String cantidad, String numeroLote,
+            float codigoLote, com.InvGenius.InvGenius.models.producto producto,
+            com.InvGenius.InvGenius.models.ubicacion ubicacion) {
         this.idLote = idLote;
         this.fechaIngreso = fechaIngreso;
         this.fechaVencimiento = fechaVencimiento;
         this.cantidad = cantidad;
+        this.numeroLote = numeroLote;
+        this.codigoLote = codigoLote;
         this.producto = producto;
+        this.ubicacion = ubicacion;
     }
 
     public String getIdLote() {
@@ -77,6 +90,22 @@ public class lote {
         this.cantidad = cantidad;
     }
 
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+    }
+
+    public float getCodigoLote() {
+        return codigoLote;
+    }
+
+    public void setCodigoLote(float codigoLote) {
+        this.codigoLote = codigoLote;
+    }
+
     public producto getProducto() {
         return producto;
     }
@@ -84,5 +113,15 @@ public class lote {
     public void setProducto(producto producto) {
         this.producto = producto;
     }
+
+    public ubicacion getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    
 
 }
