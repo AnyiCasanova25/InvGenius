@@ -14,16 +14,42 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
             integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/front-end/css/estilo.css">
+        <link rel="stylesheet" href="/front-end/css/perfilUser.css">
     </head>
 <body>
-    de fondo tiene que ser parecido al inicio de secion vincular el estilo de perfilcss <br>
-    aca tenemos que hacer una caja donde ponga : <br>
-    1. Contraseña actual <br>
-    2. Contraseña nueva <br>
-    3. Comfirmar contraseña <br>
-    boton de Actualizar <br>
-    bajo el boton poner <br>
-    1. Olvide mi contraseña
+    <section>
+        <form>
+            <div class="inputboxLogo">
+                <img src="/front-end/img/Pagina/Logo.png"  width="27%" height="27%"><img src="/front-end/img/Pagina/Nombre.png" width="80%" height="80%">
+            </div>
+            <br>
+            <h1>Cambia tu contraseña</h1>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" required>
+                <label for="#">Contraseña actual</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" required>
+                <label for="#">Contraseña nueva</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" required>
+                <label for="#">Confirmar contraseña</label>
+            </div>
+            <div>
+                <button class="btn_save"><a  class="butonDireccion" href="/front-end/html/paginaPrincipal/vistaPrevia.html">Guardar</a></button>
+            </div>
+            
+            <div class="forget">
+                <a href="/front-end/html/inicioSesión/olvidarContraseña.html">
+                    <p>¿Has olvidado tu contraseña?</p>
+                </a>
+            </div>
+    
+        </form>
+    </section>
 </body>
 </html>
