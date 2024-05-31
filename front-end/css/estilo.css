@@ -26,6 +26,10 @@ body {
     transition: transform 0s ease;
 }
 
+.custom-btn {
+    width: 40px; /* Ajusta el ancho según tus necesidades */
+    height: 40px; /* Ajusta el alto según tus necesidades */
+}
 
 
 hr{
