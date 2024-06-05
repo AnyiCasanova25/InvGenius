@@ -11,7 +11,7 @@ public interface IproveedorService {
     public List<proveedor> findAll ();
 
     //Filtro de proveedor
-    public List<proveedor> proveedorExist(String marcasProveedor);
+    public List<proveedor> proveedorExist(String empresaProveedor, String documentoProveedor);
     
     public Optional<proveedor> findOne (String id);
     public int delete(String id);
