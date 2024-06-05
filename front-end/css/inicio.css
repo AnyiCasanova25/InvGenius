@@ -8,8 +8,7 @@
 .fa-solid, .fas {
     font-weight: 900;
     color: white;
-    margin-top: 37px;
-    margin-left: -10px;
+    margin-left: -48px;
 }
 
 body::before {
@@ -38,13 +37,13 @@ section {
     position: relative;
     max-width: 100%;
     background-color: #00000029 !important;
-    border: 2px solid rgba(229, 233, 248, 0.637);
-    border-radius: 20px;
+    border: 3px solid rgba(229, 233, 248, 0.637);
+    border-radius: 46px;
     backdrop-filter: blur(55px);
     display: flex;
-    flex-direction: column; /* Cambiar a columna */
+    flex-direction: column;
     align-items: center;
-    padding: 2rem 3rem;
+    padding: 2rem 4rem;
 }
 
 .position_arrow {
