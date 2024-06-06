@@ -50,7 +50,7 @@ public class emailController {
     @GetMapping("/enviar-correo-recuperar")
     public String enviarCorreoRecuperar() {
         try {
-            String destinatario = "dc8987835@gmail.com";
+            String destinatario = "invgenius2024@gmail.com";
             String asunto="Recuperacion de contraseña";
             String cuerpo=""
             +"<h1>Estimado Usuario</h1>"
@@ -77,7 +77,7 @@ public class emailController {
     @GetMapping("/enviar-correo-cambio")
     public String enviarCorreoCambio() {
         try{
-            String destinatario="dc8987835@gmsil.com";
+            String destinatario="invgenius2024@gmail.com";
             String asunto ="Cambio de contraseña";
             String cuerpo=""
                     +"<p>Este correo electrónico es para informarle que la contraseña de su cuenta en \"InvGenius\" ha sido cambiada con éxito. Si usted realizó este cambio, puede ignorar este mensaje. En caso contrario, le recomendamos que se comunique con nuestro equipo de soporte de inmediato.</p>\r\n "
@@ -100,7 +100,7 @@ public class emailController {
     @GetMapping("/enviar-correo-caducar")
     public String enviarCorreoCaducar() {
         try {
-            String destinatario = "dc8987835@gmail.com";
+            String destinatario = "invgenius2024@gmail.com";
             String asunto = "Producto Próximo a Caducar";
             String cuerpo = ""
                     + "<h1>Estimado Usuario</h1>"
