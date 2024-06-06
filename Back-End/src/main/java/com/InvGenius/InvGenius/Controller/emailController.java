@@ -28,7 +28,7 @@ public class emailController {
             +"          <li><strong>Nombre de Usuario: </strong> [Nombre de Usuario Elegido]</li>\r\n"
             +"          <li><strong>Contraseña: </strong> [Contraseña Temporal]</li>\r\n"
             +"      </ul>\r\n"
-            +"<img src='' width='100px' heght='100px'>"
+            +"<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
             +"      <p>Por favor, inicie sesión en nuestro portal utilizando esta informacion. Le recomendamos cambiar su contraseña despues del primer inicio de sesión por motivos de seguridad.</p>\r\n"
             +"      <p>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nuestro equipo de soporte. Estamos aquí para ayudarle. </p>\r\n"
             +"      <p>Gracias por unirse a nosotros.</p>\r\n"
@@ -58,7 +58,7 @@ public class emailController {
             +"      <ol>\r\n"
             +"          <li>Haga clic en el siguiente enlace para restablecer su contraseña: [invgenius2024@gmail.com]</li>\r\n"
             +"      </ol>\r\n"
-            +"<img src'' width'100px' heght='100'>"
+            +"<img src'https://i.postimg.cc/rpJK95VY/Logo.png' width'100px' heght='100'>"
             +"      <p>Por motivos de seguridad, este enlace expirará en [Número de Horas] horas. Si no ha solicitado esta acción, le recomendamos que ignore este correo electronico.</p>\r\n"
             +"      <p>Si experimenta algún problema o tiene alguna pregunta, no dude en comunicarse con nuestro equipo de soporte. Estamos aqui para ayudarle.</p>\r\n"
             +"      <p>Atentamente,<br>[Yordy Erik Núñez Pineda]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
@@ -81,7 +81,7 @@ public class emailController {
             String asunto ="Cambio de contraseña";
             String cuerpo=""
                     +"<p>Este correo electrónico es para informarle que la contraseña de su cuenta en \"InvGenius\" ha sido cambiada con éxito. Si usted realizó este cambio, puede ignorar este mensaje. En caso contrario, le recomendamos que se comunique con nuestro equipo de soporte de inmediato.</p>\r\n "
-                    +"<img src='' width='100px' heght='100px'>"
+                    +"<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
                     +"      <p>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nosotros. Estamos aquí para ayudarle. </p>\r\n"
                     +"      <p>Atentamente,<br>[Julian David Fierro Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
 

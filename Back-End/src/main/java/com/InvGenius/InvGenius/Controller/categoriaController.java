@@ -6,10 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
-
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,37 +19,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.var;
 
-
 @RestController
-@RequestMapping ("api/v1/categoria")
+@RequestMapping("api/v1/categoria")
 public class categoriaController {
 
     @Autowired
     private IcategoriaService categoriaService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("categoria")categoria categoria) {
-         
-        //Verifica que no se repita el nombre de la categoria 
-        var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),  null, null);
+    public ResponseEntity<Object> save(@ModelAttribute("categoria") categoria categoria) {
 
-        if (listaCategoria.size() != 0){
+        // Verifica que no se repita el nombre de la categoria
+        var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null, null);
+
+        if (listaCategoria.size() != 0) {
             return new ResponseEntity<>("La categoria ya existe", HttpStatus.BAD_REQUEST);
         }
-        
+
         // Verificar que el campo de de nombreCategoria y estado sean obligatorios
         // Añadir campos obligatorios
 
-        if (categoria.getNombreCategoria().equals("")){
+        if (categoria.getNombreCategoria().equals("")) {
             return new ResponseEntity<>("El campo Nombre Categoria es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        if (categoria.getEstado().equals("")){
+        if (categoria.getEstado().equals("")) {
             return new ResponseEntity<>("El campo estado es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         categoriaService.save(categoria);
-        return new ResponseEntity<>(categoria,HttpStatus.OK);
+        return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -62,16 +59,17 @@ public class categoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable String id){
+    public ResponseEntity<Object> delete(@PathVariable String id) {
         categoriaService.delete(id);
         return new ResponseEntity<>("Resgistro Eliminado", HttpStatus.OK);
     }
-    
+
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute ("categoria") categoria categoriaUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id,
+            @ModelAttribute("categoria") categoria categoriaUpdate) {
         var categoria = categoriaService.findOne(id).get();
 
-        if (categoria != null){
+        if (categoria != null) {
 
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
             categoria.setEstado(categoriaUpdate.getEstado());
@@ -80,10 +78,9 @@ public class categoriaController {
 
             return new ResponseEntity<>(categoria, HttpStatus.OK);
 
-        }else {
+        } else {
             return new ResponseEntity<>("Error categoria no encontrada", HttpStatus.BAD_REQUEST);
         }
-    
-    
+
     }
 }
