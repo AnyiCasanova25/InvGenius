@@ -90,7 +90,7 @@
     
     <div class="modal fade" id="modalEntrada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
-            <div class="modal-content col modal-custom" >
+            <div class="modal-content col modal-custom">
                 <div class="modal-header">
                     <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
                     <div class="col centerLogoNombreModal">
@@ -106,7 +106,6 @@
                             <div class="container col">
                                 <br>
                                 <form class="row table-hover needs-validation">
-
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
                                         <input type="text" id="categoria" class="form-control" onfocusout="validarCategoria(this)" required>
@@ -139,12 +138,12 @@
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Ingreso:</label>
-                                        <input type="date" id="fechaIngreso" class="form-control" onfocusout="validarFechaIngreso(this)" required>
+                                        <input type="date" id="fechaIngreso" class="form-control" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de Caducidad:</label>
-                                        <input type="date" id="fechaCaducidad" class="form-control" onfocusout="validarFechaCaducidad(this)" required>
+                                        <input type="date" id="fechaCaducidad" class="form-control" required>
                                     </div>      
                                     
                                     <div class="col col-xl-12 col-12">
@@ -159,13 +158,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-dark"
-                        onclick="registrarCliente(); limpiar();">Agregar</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="registrarCliente(); limpiar();">Agregar</button>
                 </div>
             </div>
         </div>
     </div>
+    
     
 
 
@@ -226,15 +225,32 @@
 
     <script>
         // Obtener la fecha actual
-        const fechaIngresoHoy = new Date();
-
-        // Formatear la fecha actual como YYYY-MM-DD (formato requerido para el input type="date")
-        const dia = fechaIngresoHoy.getDate().toString().padStart(2, '0');
-        const mes = (fechaIngresoHoy.getMonth() + 1).toString().padStart(2, '0'); // El mes se cuenta desde 0, por eso se suma 1
-        const anio = fechaIngresoHoy.getFullYear();
-
-        // Establecer el valor predeterminado del campo de fecha
-        document.getElementById('fechaIngreso').value = `${anio}-${mes}-${dia}`;
+        document.addEventListener('DOMContentLoaded', function() {
+            const fechaIngreso = document.getElementById('fechaIngreso');
+            const fechaCaducidad = document.getElementById('fechaCaducidad');
+    
+            const fechaIngresoHoy = new Date();
+            const dia = fechaIngresoHoy.getDate().toString().padStart(2, '0');
+            const mes = (fechaIngresoHoy.getMonth() + 1).toString().padStart(2, '0');
+            const anio = fechaIngresoHoy.getFullYear();
+    
+            fechaIngreso.value = `${anio}-${mes}-${dia}`;
+    
+            fechaIngreso.addEventListener('change', function() {
+                const fechaSeleccionada = new Date(fechaIngreso.value);
+                const nuevaFechaCaducidad = new Date(fechaSeleccionada);
+                nuevaFechaCaducidad.setMonth(nuevaFechaCaducidad.getMonth() + 1);
+    
+                const diaCaducidad = nuevaFechaCaducidad.getDate().toString().padStart(2, '0');
+                const mesCaducidad = (nuevaFechaCaducidad.getMonth() + 1).toString().padStart(2, '0');
+                const anioCaducidad = nuevaFechaCaducidad.getFullYear();
+    
+                fechaCaducidad.min = `${anioCaducidad}-${mesCaducidad}-${diaCaducidad}`;
+                fechaCaducidad.value = `${anioCaducidad}-${mesCaducidad}-${diaCaducidad}`;
+            });
+    
+            fechaIngreso.dispatchEvent(new Event('change'));
+        });
 
 
         // Obtener la fecha actual
