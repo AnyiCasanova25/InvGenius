@@ -42,16 +42,12 @@ public class lote {
     @JoinColumn(name = "idUbicacion")
     private ubicacion ubicacion;
 
-    @ManyToOne
-    @JoinColumn(name = "idUnidad")
-    private unidad unidad;
-
     public lote() {
     }
 
     public lote(String idLote, Date fechaIngreso, Date fechaVencimiento, String cantidad, String numeroLote,
             String codigoLote, com.InvGenius.InvGenius.models.producto producto,
-            com.InvGenius.InvGenius.models.ubicacion ubicacion, com.InvGenius.InvGenius.models.unidad unidad) {
+            com.InvGenius.InvGenius.models.ubicacion ubicacion) {
         this.idLote = idLote;
         this.fechaIngreso = fechaIngreso;
         this.fechaVencimiento = fechaVencimiento;
@@ -60,7 +56,6 @@ public class lote {
         this.codigoLote = codigoLote;
         this.producto = producto;
         this.ubicacion = ubicacion;
-        this.unidad = unidad;
     }
 
     public String getIdLote() {
@@ -125,14 +120,6 @@ public class lote {
 
     public void setUbicacion(ubicacion ubicacion) {
         this.ubicacion = ubicacion;
-    }
-
-    public unidad getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(unidad unidad) {
-        this.unidad = unidad;
     }
 
 }
