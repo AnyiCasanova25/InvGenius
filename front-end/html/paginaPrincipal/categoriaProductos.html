@@ -64,23 +64,12 @@
             </nav>
         </div>
         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <form action="/front-end/html/paginaPrincipal/categoria.html">
-                    <button class="btn btn-outline-dark custom-btn" type="submit" id="button-addon1">
-                        <i class="fas fa-arrow-left fa-lg"></i>
-                    </button>
-                </form>
-                
-            </div>
             <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="button-addon2">
+            <span id="clear" class="clear-btn" style="left: 95%">&times;</span>
             <div class="input-group-append">
                 <button class="btn btn-outline-dark" type="submit" id="button-addon2"
                         onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
                     <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-outline-dark mr-2" type="submit" id="button-addon3"
-                        onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
-                    <i class="fas fa-broom"></i>
                 </button>
             </div>
         </div>
@@ -104,6 +93,8 @@
                     </figure>
                     <br>
                     <a href="/front-end/html/paginaPrincipal/lote.html" class="negro"><i class="fas fa-eye"></i></a>
+                    <i class="fas fa-edit editar" data-bs-toggle="modal" data-bs-target="#modalProducto" style="margin-left: 10px;"></i>
+
                 </div>
             </div>
 
@@ -117,6 +108,7 @@
                     </figure>
                     <br>
                     <a href="/front-end/html/paginaPrincipal/lote.html" class="negro"><i class="fas fa-eye"></i></a>
+                    <i class="fas fa-edit editar" data-bs-toggle="modal" data-bs-target="#modalProducto" style="margin-left: 10px;"></i>
                 </div>
             </div>
 
@@ -130,6 +122,7 @@
                     </figure>
                     <br>
                     <a href="/front-end/html/paginaPrincipal/lote.html" class="negro"><i class="fas fa-eye"></i></a>
+                    <i class="fas fa-edit editar" data-bs-toggle="modal" data-bs-target="#modalProducto" style="margin-left: 10px;"></i>
                 </div>
             </div>
 
@@ -143,6 +136,7 @@
                     </figure>
                     <br>
                     <a href="/front-end/html/paginaPrincipal/lote.html" class="negro"><i class="fas fa-eye"></i></a>
+                    <i class="fas fa-edit editar" data-bs-toggle="modal" data-bs-target="#modalProducto" style="margin-left: 10px;"></i>
                 </div>
             </div>
 
@@ -156,6 +150,7 @@
                     </figure>
                     <br>
                     <a href="/front-end/html/paginaPrincipal/lote.html" class="negro"><i class="fas fa-eye"></i></a>
+                    <i class="fas fa-edit editar" data-bs-toggle="modal" data-bs-target="#modalProducto" style="margin-left: 10px;"></i>
                 </div>
             </div>
 
@@ -169,6 +164,7 @@
                     </figure>
                     <br>
                     <a href="/front-end/html/paginaPrincipal/lote.html" class="negro"><i class="fas fa-eye"></i></a>
+                    <i class="fas fa-edit editar" data-bs-toggle="modal" data-bs-target="#modalProducto" style="margin-left: 10px;"></i>
                 </div>
             </div>
 
@@ -179,7 +175,106 @@
         <br>
         <br>
     </div>
+<!-- Modal para entrada de datos -->
+    
+<div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog fondomodaldialog ">
+        <div class="modal-content col modal-custom" >
+            <div class="modal-header">
+                <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
+                <div class="col centerLogoNombreModal">
+                    <img src="/front-end/img/Pagina/Logo.png" width="25%"><img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                </div>
+                <h1 class="modal-title fs-5 col-11" id="exampleModalLabel" style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                    Editar Producto
+                </h1>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="centradoo">
+                        <div class="container col">
+                            <br>
+                            <form class="row table-hover needs-validation">
 
+                                <div class="col col-xl-6 col-12 table-hover">
+                                    <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
+                                    <input type="text" id="categoria" class="form-control" onfocusout="validarCategoria(this)" required>
+                                </div>                                    
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del producto:</label>
+                                    <input type="text" id="nombreProducto" class="form-control" onfocusout="validarNombreProducto(this)" required>
+                                </div>
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
+                                    <input type="text" id="proveedor" class="form-control" onfocusout="validarProveedor(this)" required>
+                                </div>
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="cantidadProducto"><i class="fas fa-sort-numeric-up"></i> Cantidad Producto:</label>
+                                    <input type="number" id="cantidadProducto" class="form-control" onfocusout="validarCantidadProducto(this)" required>
+                                </div>
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="precioEntrada"><i class="fas fa-money-bill-wave"></i> Precio Entrada:</label>
+                                    <input type="number" id="precioEntrada" class="form-control" onfocusout="validarprecioEntrada(this)" required>
+                                </div>
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="precioUnitario"><i class="fas fa-dollar-sign"></i> Precio Unitario:</label>
+                                    <input type="text" id="precioUnitario" class="form-control" onfocusout="validarPrecioUnitario(this)" required>
+                                </div>
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Ingreso:</label>
+                                    <input type="date" id="fechaIngreso" class="form-control" onfocusout="validarFechaIngreso(this)" required>
+                                </div>
+                                
+                                <div class="col col-xl-6 col-12">
+                                    <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de Caducidad:</label>
+                                    <input type="date" id="fechaCaducidad" class="form-control" onfocusout="validarFechaCaducidad(this)" required>
+                                </div>      
+                                
+                                <div class="col col-xl-12 col-12">
+                                    <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del producto:</label>
+                                    <textarea id="descripcion" class="form-control" rows="5" onfocusout="validarDescripcion(this)" required minlength="50"></textarea>
+                                    <small id="descripcionHelp" class="form-text text-muted">La descripción debe tener al menos 50 caracteres.</small>
+                                </div>                               
+                                
+                            </form>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-dark"
+                    onclick="registrarCliente(); limpiar();">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const inputText = document.getElementById('texto');
+    const clearBtn = document.getElementById('clear');
+
+    // Event listener para detectar cambios en el input
+    inputText.addEventListener('input', function () {
+        if (inputText.value.length > 0) {
+            clearBtn.style.display = 'inline-block';
+        } else {
+            clearBtn.style.display = 'none';
+        }
+    });
+
+    // Event listener para borrar el texto y ocultar el botón 'x' al hacer clic en él
+    clearBtn.addEventListener('click', function () {
+        inputText.value = '';
+        clearBtn.style.display = 'none';
+    });
+</script>
 
 </body>
 

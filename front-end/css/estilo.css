@@ -31,6 +31,19 @@ body {
     height: 40px; /* Ajusta el alto según tus necesidades */
 }
 
+.input-container {
+    position: relative;
+}
+  
+.clear-btn {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none;
+}
+  
 
 hr{
     margin: 0rem 0;
@@ -436,3 +449,4 @@ tbody tr:hover {
         padding: 8px; /* Reducir el padding */
     }
 }
+

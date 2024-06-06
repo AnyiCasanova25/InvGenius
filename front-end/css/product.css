@@ -122,18 +122,26 @@ tbody tr:hover {
     background: rgba(113, 180, 255, 0.4);
 }
 
-
+#clear {
+    position: absolute;
+    top: 40%;
+    right: 8px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none;
+}
 
     
     
 
-    .back-button {
-        padding: 5px 10px; 
-        max-width: 100px; 
-    }
+.back-button {
+    padding: 5px 10px; 
+    max-width: 100px; 
+}
     
-    .back-button img {
-        max-width: 61%; }
+.back-button img {
+    max-width: 61%; 
+}
 
 
 .input-group {

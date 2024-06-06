@@ -145,7 +145,13 @@
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de Caducidad:</label>
                                         <input type="date" id="fechaCaducidad" class="form-control" onfocusout="validarFechaCaducidad(this)" required>
-                                    </div>                                    
+                                    </div>      
+                                    
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del producto:</label>
+                                        <textarea id="descripcion" class="form-control" rows="5" onfocusout="validarDescripcion(this)" required minlength="50"></textarea>
+                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe tener al menos 50 caracteres.</small>
+                                    </div>                               
                                     
                                 </form>
                                 <br>
@@ -241,8 +247,6 @@
 
         // Establecer el valor predeterminado del campo de fecha
         document.getElementById('fechaSalida').value = `${anioo}-${mess}-${diaa}`;
-
-
 
 
     </script>
