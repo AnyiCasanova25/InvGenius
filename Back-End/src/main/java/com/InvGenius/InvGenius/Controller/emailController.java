@@ -29,12 +29,12 @@ public class emailController {
             String destinatario = user.getCorreo();
             String asunto = "Registro Plataforma";
             String cuerpo=""
-            +"<p>Estimado Usuario,</p>\r\n"
+            +"<p>Estimado Usuario "+user.getPrimerNombre()+ " " +user.getPrimerApellido()+",</p>\r\n"
             +"      <p>Es un placer darle la bienvenida a nuestra plataforma. Nos complace informarle que la empresa \"Genius Inventory Company\",le ha registrado con exito en nuestro sistema.Estamos ansiosos de que use nuestro aplicativo</p>\r\n"
             +"      <p>A continuacion, encontrará sus credenciales de inicio de sesión: </p>\r\n"
             +"      <ul>\r\n"
             +"          <li><strong>Nombre de Usuario: </strong> "+user.getCorreo()+"</li>\r\n"
-            +"          <li><strong>Contraseña: </strong> </li>\r\n"
+            +"          <li><strong>Contraseña: "+user.getPassword()+"</strong> </li>\r\n"
             +"      </ul>\r\n"
             +"<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
             +"      <p>Por favor, inicie sesión en nuestro portal utilizando esta informacion. Le recomendamos cambiar su contraseña despues del primer inicio de sesión por motivos de seguridad.</p>\r\n"
