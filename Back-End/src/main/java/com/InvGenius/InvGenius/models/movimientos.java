@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 @Entity(name = "movimientos")
 public class movimientos {
     /*
+    oo
      * id
      * tipo de movimiento
      * id producto "llave foranea"
