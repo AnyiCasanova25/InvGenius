@@ -6,27 +6,35 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.InvGenius.InvGenius.models.user;
+
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 public class emailController {
     
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @GetMapping("/enviar-correo-registro")
-    public String enviarCorreoRegistro(){
+    emailController(JavaMailSender javaMailSender){
+        this.javaMailSender=javaMailSender;
+    }
+
+    //@GetMapping("/enviar-correo-registro")
+    public String enviarCorreoRegistro(user user){
         try {
-            String destinatario = "invgenius2024@gmail.com";
+            String destinatario = user.getCorreo();
             String asunto = "Registro Plataforma";
             String cuerpo=""
             +"<p>Estimado Usuario,</p>\r\n"
-            +"      <p>Es un placer darle la bienvenida a nuestra plataforma. Nos complace informarle que la empresa \"Genius Inventory Company\", l@ ha registrado con exito en nuestro sistema. Estamos emocionados de tenerl@ a bordo.</p>\r\n"
+            +"      <p>Es un placer darle la bienvenida a nuestra plataforma. Nos complace informarle que la empresa \"Genius Inventory Company\",le ha registrado con exito en nuestro sistema.Estamos ansiosos de que use nuestro aplicativo</p>\r\n"
             +"      <p>A continuacion, encontrará sus credenciales de inicio de sesión: </p>\r\n"
             +"      <ul>\r\n"
-            +"          <li><strong>Nombre de Usuario: </strong> [Nombre de Usuario Elegido]</li>\r\n"
-            +"          <li><strong>Contraseña: </strong> [Contraseña Temporal]</li>\r\n"
+            +"          <li><strong>Nombre de Usuario: </strong> "+user.getCorreo()+"</li>\r\n"
+            +"          <li><strong>Contraseña: </strong> </li>\r\n"
             +"      </ul>\r\n"
             +"<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
             +"      <p>Por favor, inicie sesión en nuestro portal utilizando esta informacion. Le recomendamos cambiar su contraseña despues del primer inicio de sesión por motivos de seguridad.</p>\r\n"

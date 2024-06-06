@@ -3,6 +3,7 @@ package com.InvGenius.InvGenius.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +26,9 @@ public class userController {
 
     @Autowired
     private IuserService userService;
+
+      @Autowired
+    private JavaMailSender javaMailSender;
 
     @PostMapping("/")
     public ResponseEntity<Object> save(@ModelAttribute("user") user user) {
@@ -76,9 +80,12 @@ public class userController {
 
         // todo bien
         userService.save(user);
+        emailController email =new emailController(javaMailSender);
+        email.enviarCorreoRegistro(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
