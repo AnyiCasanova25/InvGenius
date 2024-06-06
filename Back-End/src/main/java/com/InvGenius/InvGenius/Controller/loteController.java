@@ -32,7 +32,7 @@ public class loteController {
     @PostMapping("/")
     public ResponseEntity<Object> save(@ModelAttribute("lote") lote lote) {
 
-        var listaLote = loteService.loteExist(lote.getFechaIngreso(), lote.getFechaVencimiento());
+        var listaLote = loteService.loteExist(lote.getFechaIngreso());
 
         if (listaLote.size() != 0) {
             return new ResponseEntity<>("Este lote ya existe", HttpStatus.BAD_REQUEST);

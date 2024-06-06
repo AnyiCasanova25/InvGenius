@@ -37,8 +37,8 @@ public class loteService implements IloteService {
 
     //Filtro de lote
     @Override
-    public List<lote> loteExist(Date fechaIngreso, Date fechaVencimiento){
-        List<lote> listaLote = data.loteExist(fechaIngreso, fechaVencimiento);
+    public List<lote> loteExist(Date fechaIngreso){
+        List<lote> listaLote = data.loteExist(fechaIngreso);
         return listaLote;
     }
 

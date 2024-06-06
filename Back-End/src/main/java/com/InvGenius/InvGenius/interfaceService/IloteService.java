@@ -12,7 +12,7 @@ public interface IloteService {
     public List<lote> findAll();
 
     //Para los filtros de lote
-    public List<lote> loteExist(Date fechaIngreso, Date fechaVencimiento);
+    public List<lote> loteExist(Date fechaIngreso);
 
     public Optional<lote> findOne (String id);
     public int delete(String id);

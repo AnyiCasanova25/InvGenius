@@ -10,8 +10,9 @@ import com.InvGenius.InvGenius.models.lote;
 
 @Repository
 public interface Ilote extends CrudRepository<lote, String> {
-    @Query ("SELECT l FROM lote l WHERE l.fechaIngreso = ?1 OR l.fechaVencimiento = ?2")
-    List<lote> loteExist(Date fechaIngreso, Date fechaVencimiento);
+
+    @Query ("SELECT l FROM lote l WHERE l.fechaIngreso = ?1")
+    List<lote> loteExist(Date fechaIngreso);
     
     
 }
