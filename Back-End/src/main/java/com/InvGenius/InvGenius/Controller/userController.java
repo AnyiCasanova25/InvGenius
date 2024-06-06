@@ -1,5 +1,7 @@
 package com.InvGenius.InvGenius.Controller;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +29,28 @@ public class userController {
     @Autowired
     private IuserService userService;
 
-      @Autowired
+    @Autowired
     private JavaMailSender javaMailSender;
+
+    private static int numeroAleatorioEnRango(int minimo, int maximo) {
+        // nextInt regresa en rango pero con límite superior exclusivo, por eso sumamos
+        // 1
+        return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
+    }
+
+    private String codigoAleatorio() {
+        int longitud = 6;
+        // El banco de caracteres
+        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        // La cadena en donde iremos agregando un carácter aleatorio
+        String cadena = "";
+        for (int x = 0; x < longitud; x++) {
+            int indiceAleatorio = numeroAleatorioEnRango(0, banco.length() - 1);
+            char caracterAleatorio = banco.charAt(indiceAleatorio);
+            cadena += caracterAleatorio;
+        }
+        return cadena;
+    }
 
     @PostMapping("/")
     public ResponseEntity<Object> save(@ModelAttribute("user") user user) {
@@ -68,24 +90,26 @@ public class userController {
             return new ResponseEntity<>("El correo es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        if (user.getPassword().equals("")) {
+        user.setPassword(codigoAleatorio());
 
-            return new ResponseEntity<>("La contraseña es un campo obligatorio", HttpStatus.BAD_REQUEST);
-        }
+        // if (user.getPassword().equals("")) {
 
-        if (user.getConfirmarPassword().equals("")) {
+        // return new ResponseEntity<>("La contraseña es un campo obligatorio",
+        // HttpStatus.BAD_REQUEST);
+        // }
 
-            return new ResponseEntity<>("Confirme su contraseña correctamente", HttpStatus.BAD_REQUEST);
-        }
+        // if (user.getConfirmarPassword().equals("")) {
+
+        //     return new ResponseEntity<>("Confirme su contraseña correctamente", HttpStatus.BAD_REQUEST);
+        // }
 
         // todo bien
         userService.save(user);
-        emailController email =new emailController(javaMailSender);
+        emailController email = new emailController(javaMailSender);
         email.enviarCorreoRegistro(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
-    
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
