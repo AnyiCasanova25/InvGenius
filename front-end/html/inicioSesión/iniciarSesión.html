@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
     <title>InvGenius</title>
-    <link rel="stylesheet" href="/front-end/css/inicio.css">
+    <link rel="stylesheet" href="/front-end/css/iniciarSesion.css">
 </head>
-
 <body>
     <section>
-        <form>
-            <div class="inputboxLogo">
-                <img src="/front-end/img/Pagina/Logo.png"  width="27%" height="27%"><img src="/front-end/img/Pagina/Nombre.png" width="80%" height="80%">
-            </div>
-            <br>
-            <h1>Inicio de Sesión</h1>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" required>
-                <label for="#">Correo Electrónico</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" required>
-                <label for="#">Contraseña</label>
-            </div>
-            <div>
-                <button><a  class="butonDireccion" href="/front-end/html/paginaPrincipal/novedades.html">Iniciar</a></button>
-            </div>
-            
-            <div class="forget">
-                <a href="/front-end/html/inicioSesión/olvidarContraseña.html">
-                    <p>¿Has olvidado tu contraseña?</p>
-                </a>
-            </div>
-            <div class="forget justify-content-center">
-                <a href="/front-end/html/inicioSesión/registrarUsuario.html">
-                    <p>Registrarse</p>
-                </a>
-            </div>
-        </form>
+        <div class="logo-container">
+            <img src="/front-end/img/Pagina/Logo.png" class="logo">
+            <h2 class="logo-text">InvGenius</h2>
+        </div>
+        <div class="divider"></div>
+        <div class="form-container">
+            <form>
+                <h1>Inicio de Sesión</h1>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" required>
+                    <label for="#">Correo Electrónico</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" required>
+                    <label for="#">Contraseña</label>
+                </div>
+                <div class="user-admin-toggle">
+                    <input type="radio" id="usuario" name="role" value="usuario" checked>
+                    <label for="usuario">Usuario</label>
+                    <input type="radio" id="administrador" name="role" value="administrador">
+                    <label for="administrador">Administrador</label>
+                </div>
+                <div>
+                    <button type="submit">Iniciar</button>
+                </div>
+                <div class="forget">
+                    <a href="/front-end/html/inicioSesión/olvidarContraseña.html">
+                        <p>¿Has olvidado tu contraseña?</p>
+                    </a>
+                </div>
+                <div class="forget justify-content-center">
+                    <a href="/front-end/html/inicioSesión/registrarUsuario.html">
+                        <p>Registrarse</p>
+                    </a>
+                </div>
+            </form>
+        </div>
     </section>
 </body>
-
 </html>
