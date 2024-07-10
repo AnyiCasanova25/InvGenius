@@ -66,6 +66,13 @@ public class proveedorController {
          return new ResponseEntity<>(proveedor,HttpStatus.OK);
 
         }
+        
+         //Se creo el metodo get para poder listar los datos de proveedor
+         @GetMapping("/")
+         public ResponseEntity<Object> findAll(){
+            var listaProveedor = proveedorService.findAll();
+            return new ResponseEntity<>(listaProveedor,HttpStatus.OK);
+         }
 
         @GetMapping("/{id}")
         public ResponseEntity<Object> findOne(@PathVariable String id) {

@@ -50,6 +50,13 @@ public class categoriaController {
         categoriaService.save(categoria);
         return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
+    
+    //Se creo el metodo get para poder listar los datos de categoria
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+        var listaCategoria = categoriaService.findAll();
+        return new ResponseEntity<>(listaCategoria,HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {

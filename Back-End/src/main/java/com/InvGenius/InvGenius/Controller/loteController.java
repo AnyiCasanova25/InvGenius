@@ -64,6 +64,13 @@ public class loteController {
         
     }
 
+     //Se creo el metodo get para poder listar los datos de lote
+     @GetMapping("/")
+     public ResponseEntity<Object> findAll(){
+        var listaLote = loteService.findAll();
+        return new ResponseEntity<>(listaLote,HttpStatus.OK);
+     }
+     
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var lote = loteService.findOne(id);

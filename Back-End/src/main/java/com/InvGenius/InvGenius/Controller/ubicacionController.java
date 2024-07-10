@@ -51,6 +51,13 @@ public class ubicacionController {
         return new ResponseEntity<>(ubicacion,HttpStatus.OK); 
     }
     
+    //Se creo el metodo get para poder listar los datos de ubicación
+    @GetMapping("")
+    public ResponseEntity<Object> findAll(){
+        var listaUbicacion = ubicacionService.findAll();
+        return new ResponseEntity<>(listaUbicacion,HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var ubicacion = ubicacionService.findOne(id);
