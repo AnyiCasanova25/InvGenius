@@ -46,6 +46,12 @@ public class marcaController {
         return new ResponseEntity<>(marca, HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+        var listaMarca = marcaService.findAll();
+        return new ResponseEntity<>(listaMarca,HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity <Object> findOne(@PathVariable String id) {
         var marca = marcaService.findOne(id);

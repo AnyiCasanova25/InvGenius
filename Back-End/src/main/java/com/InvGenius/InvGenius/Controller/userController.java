@@ -111,6 +111,12 @@ public class userController {
 
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+        var listaUser = userService.findAll();
+        return new ResponseEntity<>(listaUser,HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var user = userService.findOne(id);

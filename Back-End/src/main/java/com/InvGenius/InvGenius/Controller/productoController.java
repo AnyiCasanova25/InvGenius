@@ -58,6 +58,12 @@ public class productoController {
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+        var listaProductos=productoService.findAll();
+        return new ResponseEntity<>(listaProductos,HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var producto = productoService.findOne(id);

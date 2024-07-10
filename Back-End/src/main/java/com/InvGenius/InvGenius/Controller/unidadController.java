@@ -47,6 +47,12 @@ public class unidadController {
         return new ResponseEntity<>(unidad, HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+        var listaUnidad = unidadService.findAll();
+        return new ResponseEntity<>(listaUnidad,HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var unidad = unidadService.findOne(id);
