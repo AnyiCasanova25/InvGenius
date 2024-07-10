@@ -23,7 +23,7 @@ public class emailController {
         this.javaMailSender=javaMailSender;
     }
 
-    //@GetMapping("/enviar-correo-registro")
+    @GetMapping("/enviar-correo-registro")
     public String enviarCorreoRegistro(user user){
         try {
             String destinatario = user.getCorreo();
