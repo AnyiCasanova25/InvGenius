@@ -136,6 +136,38 @@ public class emailController {
         }
     }
 
+    @GetMapping("/enviar-correo-retiro")
+    public String enviarCorreoRetiro() {
+        try {
+            String destinatario = "invgenius2024@gmail.com";
+            String asunto = "Producto Ha Retirar";
+            String cuerpo = ""
+                    + "<h1>Estimado Usuario</h1>"
+                    + "<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> será retirado del stock. A continuación, se detalla la información del producto:</p>\r\n"
+                    + "<ul>\r\n"
+                    + "    <li><strong>Razon:</strong> Error de empaquetaje</li>\r\n"
+                    + "    <li><strong>Producto:</strong> Leche Entera</li>\r\n"
+                    + "    <li><strong>Marca:</strong> Alpina</li>\r\n"
+                    + "    <li><strong>Cantidad:</strong> 5 unidades</li>\r\n"
+                    + "    <li><strong>Fecha de Caducidad:</strong> 15 de junio de 2024</li>\r\n"
+                    + "</ul>\r\n"
+                    + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>\r\n"
+                    + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
+                    + "<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>\r\n"
+                    + "<p>Atentamente,<br>[Cristian Jeanpool Bahamon Granados]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+    
+            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
+            if (retorno) {
+                return "Se envió correctamente";
+            } else {
+                return "No se pudo enviar";
+            }
+    
+        } catch (Exception e) {
+            return "Error al enviar: " + e.getMessage();
+        }
+    }
+
     public boolean enviarCorreo(String destinatario, String asunto, String cuerpo) throws MessagingException {
         try{
             MimeMessage message = javaMailSender.createMimeMessage();
