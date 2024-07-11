@@ -20,7 +20,6 @@ import com.InvGenius.InvGenius.models.user;
 import lombok.var;
 
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1/user")
