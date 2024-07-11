@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import lombok.var;
 
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("api/v1/ubicacion")
@@ -27,7 +27,7 @@ public class ubicacionController {
     private IubicacionService ubicacionService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestBody ubicacion ubicacion) {
+    public ResponseEntity<Object> save(@ModelAttribute("ubicacion") ubicacion ubicacion) {
         
         //Verificar que no se repita el Bloque
         var listaUbicacion = ubicacionService.ubicacionExist(ubicacion.getBloques());
@@ -71,7 +71,7 @@ public class ubicacionController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody ubicacion ubicacionUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("ubicacion") ubicacion ubicacionUpdate) {
         var ubicacion = ubicacionService.findOne(id).get();
 
         if (ubicacion != null){
