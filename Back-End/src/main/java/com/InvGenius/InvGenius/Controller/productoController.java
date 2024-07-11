@@ -26,7 +26,7 @@ public class productoController {
     private IproductoService productoService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestBody producto producto) {
+    public ResponseEntity<Object> save(@ModelAttribute("producto") producto producto) {
 
         if (producto.getNombreProducto().equals("")) {
 
@@ -78,7 +78,7 @@ public class productoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody producto productoUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("producto") producto productoUpdate){
         var producto= productoService.findOne(id).get();
 
         if (producto != null) {

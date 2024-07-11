@@ -27,7 +27,7 @@ public class marcaController {
     private ImarcaService marcaService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save (@RequestBody marca marca){
+    public ResponseEntity<Object> save (@ModelAttribute("marca") marca marca){
 
         //Verificar si la marca existe
         var listaMarca = marcaService.marcaExist(marca.getNombreMarca());
@@ -66,7 +66,7 @@ public class marcaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody marca marcaUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("marca") marca marcaUpdate){
         var marca = marcaService.findOne(id).get();
 
         if (marca != null) {

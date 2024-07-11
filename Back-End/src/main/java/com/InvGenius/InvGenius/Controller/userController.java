@@ -54,7 +54,7 @@ public class userController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestBody user user) {
+    public ResponseEntity<Object> save(@ModelAttribute("user") user user) {
 
         // Verificar que no exista numero de telefono
         var listaUser = userService.userExist(user.getCelular(), user.getCorreo());
@@ -131,7 +131,7 @@ public class userController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody user userUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("user") user userUpdate) {
         var user = userService.findOne(id).get();
 
         if (user != null) {

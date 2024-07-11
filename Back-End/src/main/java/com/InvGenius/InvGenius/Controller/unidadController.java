@@ -27,7 +27,7 @@ public class unidadController {
     private IunidadService unidadService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestBody unidad unidad) {
+    public ResponseEntity<Object> save(@ModelAttribute("unidad") unidad unidad) {
 
         var listaUnidad = unidadService.unidadExist(unidad.getNombreUnidad());
 
@@ -67,7 +67,7 @@ public class unidadController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody unidad unidadUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("unidad") unidad unidadUpdate) {
         var unidad = unidadService.findOne(id).get();
 
         if (unidad != null) {
