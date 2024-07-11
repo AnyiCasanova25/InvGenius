@@ -14,10 +14,10 @@ public class proveedor {
     @Column(name = "idProveedor", nullable = false, length = 36)
     private String idProveedor;
 
-    @Column(name = "nombreProveedor", nullable = false, length = 20)
+    @Column(name = "nombreProveedor", nullable = false, length = 36)
     private String nombreProveedor;
 
-    @Column(name = "apellidoProveedor", nullable = false, length = 20)
+    @Column(name = "apellidoProveedor", nullable = false, length = 36)
     private String apellidoProveedor;
 
     @Column(name = "documentoProveedor", nullable = false, length = 20)
