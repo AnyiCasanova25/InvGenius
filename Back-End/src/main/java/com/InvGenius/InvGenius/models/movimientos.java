@@ -39,6 +39,9 @@ public class movimientos {
      @Column(name = "CantidadProducto", nullable = false, length = 36)
      private String CantidadProducto;
 
+     @Column(name = "DescripcionMovimiento", nullable = false, length = 60)
+     private String DescripcionMovimiento;
+
      @ManyToOne
      @JoinColumn(name = "idUser")
      private user user;
@@ -54,12 +57,13 @@ public class movimientos {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
-            String cantidadProducto, com.InvGenius.InvGenius.models.user user,
+            String cantidadProducto, String descripcionMovimiento, com.InvGenius.InvGenius.models.user user,
             com.InvGenius.InvGenius.models.unidad unidad, Date fechaMovimiento) {
         this.idMovimiento = idMovimiento;
         this.producto = producto;
         this.tipomovimiento = tipomovimiento;
         CantidadProducto = cantidadProducto;
+        DescripcionMovimiento = descripcionMovimiento;
         this.user = user;
         this.unidad = unidad;
         FechaMovimiento = fechaMovimiento;
@@ -97,6 +101,14 @@ public class movimientos {
         CantidadProducto = cantidadProducto;
     }
 
+    public String getDescripcionMovimiento() {
+        return DescripcionMovimiento;
+    }
+
+    public void setDescripcionMovimiento(String descripcionMovimiento) {
+        DescripcionMovimiento = descripcionMovimiento;
+    }
+
     public user getUser() {
         return user;
     }
@@ -120,8 +132,6 @@ public class movimientos {
     public void setFechaMovimiento(Date fechaMovimiento) {
         FechaMovimiento = fechaMovimiento;
     }
-    
 
     
-
 }

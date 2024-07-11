@@ -52,23 +52,27 @@ public class movimientosController {
            return new ResponseEntity<>("La fecha del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
        }
 
+       if (movimientos.getDescripcionMovimiento().equals("")) {
+           
+        return new ResponseEntity<>("La descripcion del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
+    }
+
 
        //todo bien
        movimientosService.save(movimientos);
        return new ResponseEntity<>(movimientos, HttpStatus.OK);
 
    }
+   @GetMapping("/")
+   public ResponseEntity<Object> findAll(){
+       var listaMovimientos =movimientosService.findAll();
+       return new ResponseEntity<>(listaMovimientos, HttpStatus.OK);
+   }
 
    @GetMapping("/{id}")
    public ResponseEntity <Object> findOne(@PathVariable String id) {
        var movimientos = movimientosService.findOne(id);
        return new ResponseEntity<>(movimientos, HttpStatus.OK);
-   }
-   
-   @GetMapping("/")
-   public String home() {
-
-       return "Este es un end point de movimiento(privado)";
    }
 
    @DeleteMapping("/{id}")
@@ -86,7 +90,7 @@ public class movimientosController {
         movimientos.setTipomovimiento(movimientosUpdate.getTipomovimiento());
         movimientos.setCantidadProducto(movimientosUpdate.getCantidadProducto());
         movimientos.setFechaMovimiento(movimientosUpdate.getFechaMovimiento());
-           
+        movimientos.setDescripcionMovimiento(movimientosUpdate.getDescripcionMovimiento());  
 
            movimientosService.save(movimientos);
 
