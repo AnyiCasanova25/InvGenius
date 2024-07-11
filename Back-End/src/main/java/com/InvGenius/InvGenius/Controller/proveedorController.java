@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -25,7 +25,7 @@ public class proveedorController {
     private IproveedorService proveedorService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestBody proveedor proveedor) {
+    public ResponseEntity<Object> save(@ModelAttribute("proveedor") proveedor proveedor) {
         
         //verifica que no se repita el documento del proveedor
          var listaProveedor = proveedorService.proveedorExist(proveedor.getEmpresaProveedor(), proveedor.getDocumentoProveedor());
@@ -87,7 +87,7 @@ public class proveedorController {
         }
 
         @PutMapping("/{id}")
-        public ResponseEntity<Object> update(@PathVariable String id, @RequestBody  proveedor proveedorUpdate) {
+        public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("proveedor")  proveedor proveedorUpdate) {
             var proveedor = proveedorService.findOne(id).get();
             
             if (proveedor != null) {
