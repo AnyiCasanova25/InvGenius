@@ -20,6 +20,7 @@ import com.InvGenius.InvGenius.models.user;
 import lombok.var;
 
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -53,7 +54,7 @@ public class userController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("user") user user) {
+    public ResponseEntity<Object> save(@RequestBody user user) {
 
         // Verificar que no exista numero de telefono
         var listaUser = userService.userExist(user.getCelular(), user.getCorreo());

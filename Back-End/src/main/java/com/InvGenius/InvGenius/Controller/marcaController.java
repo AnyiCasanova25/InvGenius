@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class marcaController {
     private ImarcaService marcaService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save (@ModelAttribute("marca") marca marca){
+    public ResponseEntity<Object> save (@RequestBody marca marca){
 
         //Verificar si la marca existe
         var listaMarca = marcaService.marcaExist(marca.getNombreMarca());
