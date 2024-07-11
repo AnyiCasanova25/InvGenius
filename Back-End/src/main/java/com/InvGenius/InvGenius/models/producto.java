@@ -53,6 +53,9 @@ public class producto {
     @Column(name = "precioVenta" , nullable = false, length = 36)
     private String precioVenta;
 
+    @Column(name = "descripcionProducto", nullable = false, length = 199)
+    private String descripcionProducto;
+
     @ManyToOne
     @JoinColumn(name = "idUnidad")
     private unidad unidad;
@@ -63,7 +66,7 @@ public class producto {
     public producto(String idProducto, String nombreProducto, String estadoProducto,
             com.InvGenius.InvGenius.models.marca marca, String precioProducto,
             com.InvGenius.InvGenius.models.categoria categoria, String stock, String precioCompra, String precioVenta,
-            com.InvGenius.InvGenius.models.unidad unidad) {
+            String descripcionProducto, com.InvGenius.InvGenius.models.unidad unidad) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.estadoProducto = estadoProducto;
@@ -73,8 +76,11 @@ public class producto {
         this.stock = stock;
         this.precioCompra = precioCompra;
         this.precioVenta = precioVenta;
+        this.descripcionProducto = descripcionProducto;
         this.unidad = unidad;
     }
+
+
 
     public String getIdProducto() {
         return idProducto;

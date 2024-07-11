@@ -67,7 +67,7 @@ public class unidadController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("unidad") unidad unidadUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody unidad unidadUpdate) {
         var unidad = unidadService.findOne(id).get();
 
         if (unidad != null) {

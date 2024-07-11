@@ -78,7 +78,7 @@ public class productoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("producto") producto productoUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody producto productoUpdate){
         var producto= productoService.findOne(id).get();
 
         if (producto != null) {

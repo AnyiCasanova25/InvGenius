@@ -131,7 +131,7 @@ public class userController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("user") user userUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody user userUpdate) {
         var user = userService.findOne(id).get();
 
         if (user != null) {

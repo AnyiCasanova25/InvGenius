@@ -66,7 +66,7 @@ public class marcaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("marca") marca marcaUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody marca marcaUpdate){
         var marca = marcaService.findOne(id).get();
 
         if (marca != null) {
