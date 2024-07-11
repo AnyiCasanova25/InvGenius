@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -27,7 +26,7 @@ public class categoriaController {
     private IcategoriaService categoriaService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("categoria") categoria categoria) {
+    public ResponseEntity<Object> save(@RequestBody categoria categoria) {
 
         // Verifica que no se repita el nombre de la categoria
         var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null, null);
@@ -73,7 +72,7 @@ public class categoriaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id,
-            @ModelAttribute("categoria") categoria categoriaUpdate) {
+            @RequestBody categoria categoriaUpdate) {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {

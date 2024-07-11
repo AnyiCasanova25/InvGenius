@@ -1,6 +1,5 @@
 package com.InvGenius.InvGenius.Controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.IubicacionService;
 import com.InvGenius.InvGenius.models.ubicacion;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import lombok.var;
 
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("api/v1/ubicacion")
@@ -28,7 +27,7 @@ public class ubicacionController {
     private IubicacionService ubicacionService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("ubicacion")ubicacion ubicacion) {
+    public ResponseEntity<Object> save(@RequestBody ubicacion ubicacion) {
         
         //Verificar que no se repita el Bloque
         var listaUbicacion = ubicacionService.ubicacionExist(ubicacion.getBloques());
@@ -72,7 +71,7 @@ public class ubicacionController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute ("ubicacion") ubicacion ubicacionUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody ubicacion ubicacionUpdate) {
         var ubicacion = ubicacionService.findOne(id).get();
 
         if (ubicacion != null){
