@@ -1,5 +1,7 @@
 package com.InvGenius.InvGenius.Controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,92 +21,92 @@ import lombok.var;
 @RestController
 @RequestMapping("/api/v1/movimientos")
 public class movimientosController {
-    
+
     @Autowired
     private ImovimientoService movimientosService;
 
-   @PostMapping("/")
-   public ResponseEntity<Object> save (@ModelAttribute("movimientos") movimientos movimientos){
+    @PostMapping("/")
+    public ResponseEntity<Object> save(@ModelAttribute("movimientos") movimientos movimientos) {
 
-       //Verificar que no exista una fecha igual 
-    var listaMovimientos = movimientosService.movimientosExist(movimientos.getFechaMovimiento());
+        // Verificar que no exista una fecha igual
+        movimientos.setFechaMovimiento(new Date());
 
-   if (listaMovimientos.size() !=0) {
-           return new ResponseEntity<>("La fecha ya existe", HttpStatus.BAD_REQUEST);
-       }
+        var listaMovimientos = movimientosService.movimientosExist(movimientos.getFechaMovimiento());
 
+        if (listaMovimientos.size() != 0) {
+            return new ResponseEntity<>("La fecha ya existe", HttpStatus.BAD_REQUEST);
+        }
 
-       
-       //Añadir campos obligatorios
+        // Añadir campos obligatorios
 
-       if (movimientos.getTipomovimiento().equals("")) {
-           
-           return new ResponseEntity<>("El tipo de movimiento es obligatorio", HttpStatus.BAD_REQUEST);
-       }
+        if (movimientos.getTipomovimiento().equals("")) {
 
-       if (movimientos.getCantidadProducto().equals("")) {
-           
-           return new ResponseEntity<>("La cantidad de producto es obligatorio", HttpStatus.BAD_REQUEST);
-       }
+            return new ResponseEntity<>("El tipo de movimiento es obligatorio", HttpStatus.BAD_REQUEST);
+        }
 
-       if (movimientos.getFechaMovimiento().equals("")) {
-           
-           return new ResponseEntity<>("La fecha del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
-       }
+        if (movimientos.getCantidadProducto().equals("")) {
 
-       if (movimientos.getDescripcionMovimiento().equals("")) {
-           
-        return new ResponseEntity<>("La descripcion del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("La cantidad de producto es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+
+        if (movimientos.getFechaMovimiento().equals("")) {
+
+            return new ResponseEntity<>("La fecha del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
+        }
+
+        if (movimientos.getDescripcionMovimiento().equals("")) {
+
+            return new ResponseEntity<>("La descripcion del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
+        }
+
+        // todo bien
+        movimientosService.save(movimientos);
+        return new ResponseEntity<>(movimientos, HttpStatus.OK);
+
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll() {
+        var listaMovimientos = movimientosService.findAll();
+        return new ResponseEntity<>(listaMovimientos, HttpStatus.OK);
+    }
 
-       //todo bien
-       movimientosService.save(movimientos);
-       return new ResponseEntity<>(movimientos, HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> findOne(@PathVariable String id) {
+        var movimientos = movimientosService.findOne(id);
+        return new ResponseEntity<>(movimientos, HttpStatus.OK);
+    }
 
-   }
-   @GetMapping("/")
-   public ResponseEntity<Object> findAll(){
-       var listaMovimientos =movimientosService.findAll();
-       return new ResponseEntity<>(listaMovimientos, HttpStatus.OK);
-   }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable String id) {
+        movimientosService.delete(id);
+        return new ResponseEntity<>("Movimiento eliminado", HttpStatus.OK);
+    }
 
-   @GetMapping("/{id}")
-   public ResponseEntity <Object> findOne(@PathVariable String id) {
-       var movimientos = movimientosService.findOne(id);
-       return new ResponseEntity<>(movimientos, HttpStatus.OK);
-   }
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@PathVariable String id,
+            @ModelAttribute("movimientos") movimientos movimientosUpdate) {
+        var movimientos = movimientosService.findOne(id).get();
 
-   @DeleteMapping("/{id}")
-   public ResponseEntity<Object> delete(@PathVariable String id) {
-       movimientosService.delete(id);
-       return new ResponseEntity<>("Movimiento eliminado", HttpStatus.OK);
-   }
+        if (movimientos != null) {
 
-   @PutMapping("/{id}")
-   public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("movimientos") movimientos movimientosUpdate) {
-       var movimientos = movimientosService.findOne(id).get();
+            movimientos.setTipomovimiento(movimientosUpdate.getTipomovimiento());
+            movimientos.setCantidadProducto(movimientosUpdate.getCantidadProducto());
+            movimientos.setFechaMovimiento(movimientosUpdate.getFechaMovimiento());
+            movimientos.setDescripcionMovimiento(movimientosUpdate.getDescripcionMovimiento());
 
-       if (movimientos != null) {
-           
-        movimientos.setTipomovimiento(movimientosUpdate.getTipomovimiento());
-        movimientos.setCantidadProducto(movimientosUpdate.getCantidadProducto());
-        movimientos.setFechaMovimiento(movimientosUpdate.getFechaMovimiento());
-        movimientos.setDescripcionMovimiento(movimientosUpdate.getDescripcionMovimiento());  
+            movimientosService.save(movimientos);
 
-           movimientosService.save(movimientos);
+            return new ResponseEntity<>(movimientos, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Error movimiento no encontrado", HttpStatus.BAD_REQUEST);
+        }
+    }
 
-           return new ResponseEntity<>(movimientos, HttpStatus.OK);
-       }else{
-           return new ResponseEntity<>("Error movimiento no encontrado", HttpStatus.BAD_REQUEST);
-       }
-   }
-
-     
     // @GetMapping("/")
     // public String home() {
 
-    //     return ".......";
+    // return ".......";
     // }
-    
+
 }
