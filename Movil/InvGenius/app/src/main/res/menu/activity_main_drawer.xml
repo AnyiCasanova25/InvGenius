@@ -3,18 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single"
+        android:menuCategory="secondary"
+        android:visible="true">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/novedades"
+        android:title="Novedades" />
+
+    <item
+        android:id="@+id/nav_gallery"
+        android:icon="@drawable/producto"
+        android:title="Producto" />
+
+    <item
+        android:id="@+id/nav_slideshow"
+        android:icon="@drawable/proveedor"
+        android:title="Proveedor" />
+
+    <item
+        android:id="@+id/nav_slideshow"
+        android:icon="@drawable/categoria"
+        android:title="Categoria" />
+
+        <!-- Línea divisoria -->
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Novedades" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="_______________________"
+            android:iconTint="@color/black"
+            android:enabled="false"/>
+
+
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/userblack"
+            android:title="Mi Perfil" />
+
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/candadoabierto"
+            android:title="Cambiar Contraseña" />
+
+
+        <!-- Línea divisoria -->
+        <item
+            android:title="_______________________"
+            android:iconTint="@color/black"
+            android:enabled="false"/>
+
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/cerrarsesion"
+            android:title="Cerrar Sesión" />
+
     </group>
 </menu>

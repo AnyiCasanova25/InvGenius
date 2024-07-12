@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.setBackgroundColor(resources.getColor(R.color.HomeClaro))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

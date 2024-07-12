@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="HomeOscuro">#37474F</color>
+    <color name="HomeClaro">#ECEFF1</color>
+    <color name="fondocolor">#CFD8DC</color>
 </resources>
