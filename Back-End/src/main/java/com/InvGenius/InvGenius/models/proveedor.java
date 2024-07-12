@@ -14,22 +14,22 @@ public class proveedor {
     @Column(name = "idProveedor", nullable = false, length = 36)
     private String idProveedor;
 
-    @Column(name = "nombreProveedor", nullable = false, length = 36)
+    @Column(name = "nombreProveedor", nullable = false, length = 40)
     private String nombreProveedor;
 
-    @Column(name = "apellidoProveedor", nullable = false, length = 36)
+    @Column(name = "apellidoProveedor", nullable = false, length = 40)
     private String apellidoProveedor;
 
-    @Column(name = "documentoProveedor", nullable = false, length = 20)
+    @Column(name = "documentoProveedor", nullable = false, length = 11)
     private String documentoProveedor;
 
-    @Column(name = "empresaProveedor", nullable = false, length = 20)
+    @Column(name = "empresaProveedor", nullable = false, length = 40)
     private String empresaProveedor;
 
     @Column(name = "estadoProveedor", nullable = false, length = 20)
     private String estadoProveedor;
 
-    @Column(name = "numeroProveedor", nullable = false, length = 20)
+    @Column(name = "numeroProveedor", nullable = false, length = 15)
     private String numeroProveedor;
 
     public proveedor() {
