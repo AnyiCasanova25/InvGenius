@@ -34,7 +34,7 @@ public class lote {
     @Column(name = "codigoLote", nullable = false, length = 20)
     private String codigoLote;
 
-    @Column(name = "detalleLote", nullable = false, length = 100)
+    @Column(name = "detalleLote", nullable = false, length = 199)
     private String detalleLote;
 
     @ManyToOne

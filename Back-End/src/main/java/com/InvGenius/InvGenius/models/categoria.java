@@ -16,7 +16,7 @@ public class categoria {
     @Column(name = "idCategoria", nullable = false, length = 36)
     private String idCategoria;
 
-    @Column(name = "nombreCategoria", nullable = false, length = 36)
+    @Column(name = "nombreCategoria", nullable = false, length = 40)
     private String nombreCategoria;
 
     @Column(name = "estado", nullable = false, length = 20)
