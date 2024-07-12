@@ -173,7 +173,7 @@ input:valid ~ label {
 }
 
 .user-admin-toggle input:checked + label {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255);
     color: #000;
     border: 2px solid white;
 }
