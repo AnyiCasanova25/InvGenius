@@ -5,7 +5,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.fa-solid, .fas {
+.fa-solid,
+.fas {
     font-weight: 900;
     color: white;
     margin-left: -48px;
@@ -136,8 +137,8 @@ section {
     transition: top 0.3s ease, transform 0.3s ease;
 }
 
-input:focus ~ label,
-input:valid ~ label {
+input:focus~label,
+input:valid~label {
     top: -10px;
     transform: translateY(0);
     font-size: 0.8rem;
@@ -172,7 +173,7 @@ input:valid ~ label {
     border: 2px solid white;
 }
 
-.user-admin-toggle input:checked + label {
+.user-admin-toggle input:checked+label {
     background-color: rgb(255, 255, 255);
     color: #000;
     border: 2px solid white;
@@ -215,7 +216,6 @@ h1 {
 button {
     width: 50%;
     height: 40px;
-    margin-left: 92px;
     border-radius: 7px;
     background-color: rgba(255, 255, 255, 1);
     border: none;
@@ -252,4 +252,147 @@ button:hover {
 .butonDireccion {
     text-decoration: none;
     color: black;
+}
+
+.door-position {
+    display: flex;
+    justify-content: end;
+
+}
+
+.button-position{
+    display: flex;
+    justify-content: center;
+}
+
+
+.arrow-position{
+    margin-left: 19px;
+}
+
+
+@media (max-width: 1920px) and (min-width: 723px) {
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 18px;
+        backdrop-filter: blur(55px);
+        padding: 78px;
+        height: 33em;
+        max-width: 1083px;
+        width: 100%;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        background-color: rgb(0 0 0 / 31%);
+    }
+
+
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin-right: -9px;
+        margin-left: -162px;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .divider {
+        width: 6px;
+        height: 435px;
+        background-color: rgb(255 255 255);
+        margin: 0 40px;
+        border-radius: 12px;
+        margin-left: 28px;
+        margin-right: 170px;
+        display: block;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 19px;
+        background-color: rgb(0 0 0 / 16%);
+        border-radius: 15px;
+        padding: 31px 84px;
+        border: 2px solid #fff;
+        max-width: 430px;
+        width: 100%;
+        margin-right: -10em;
+        margin-left: -4em;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .logo {
+        width: 198px;
+        height: auto;
+    }
+
+    .logo-text {
+        font-size: 5rem;
+        color: #fff;
+        margin-top: 10px;
+    }
+
+
+    .form-container.move-left {
+        transform: translateX(-133%);
+    }
+
+    .logo-container.move-right {
+        transform: translateX(124%);
+    }
+
+    .door-position {
+        display: flex;
+        justify-content: end;
+        margin-top: -43px;
+    }
+
+    .inputbox input {
+        width: 20em;
+        height: 29px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        padding: 0px 9px 0 6px;
+        color: #fff;
+    }
+
+    button {
+        width: 50%;
+        height: 40px;
+        border-radius: 7px;
+        background-color: rgba(255, 255, 255, 1);
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.4s ease;
+        margin-top: 10px;
+        margin-bottom: 13px;
+    }
+
+    .door-position {
+        display: flex;
+        justify-content: end;
+    
+    }
+
+    .button-position{
+        display: flex;
+        justify-content: center;
+    }
+
+    .arrow-position{
+        margin-left: 19px;
+    }
+
 }

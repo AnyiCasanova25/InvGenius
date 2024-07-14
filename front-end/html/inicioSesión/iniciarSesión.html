@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
     <title>InvGenius</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/front-end/css/iniciarSesion.css">
 </head>
+
 <body>
     <section>
         <div class="logo-container">
@@ -15,6 +19,7 @@
         </div>
         <div class="divider"></div>
         <div class="form-container">
+            <!-- Formulario de Inicio de sesion-->
             <form id="login-form">
                 <h1>Inicio de Sesión</h1>
                 <div class="inputbox">
@@ -33,7 +38,7 @@
                     <input type="radio" id="administrador" name="role" value="administrador">
                     <label for="administrador">Administrador</label>
                 </div>
-                <div>
+                <div class="button-position">
                     <button type="submit">Iniciar</button>
                 </div>
                 <div class="forget">
@@ -42,48 +47,100 @@
                     </a>
                 </div>
                 <div class="forget justify-content-center">
-                    <a href="/front-end/html/inicioSesión/registrarUsuario.html">
+                    <a href="#" id="register-link">
                         <p>Registrarse</p>
                     </a>
                 </div>
+                <div class="door-position">
+                    <a href="../paginaAterrizaje/index.html"><i class="fa-solid fa-door-open fa-2x"> </i></a> 
+                </div>
             </form>
+            <!--Formulario de haz olvidado tu contraseña-->
             <form id="forgot-password-form" style="display: none;">
+                <div class="arrow-position">
+                    <a href="#" class="back-to-login-link">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </a>
+                </div>
                 <h1>¿Has olvidado tu contraseña?</h1>
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
                     <input type="text" required>
                     <label for="#">Correo Electrónico</label>
                 </div>
-                <div>
+                <div class="button-position">
                     <button type="submit">Enviar</button>
                 </div>
-                <div class="forget justify-content-center">
-                    <a href="#" id="back-to-login-link">
-                        <p>Volver</p>
+                
+            </form>
+            <!--Formulario de registro-->
+            <form id="register-form" style="display: none;">
+                <div class="arrow-position">
+                    <a href="#" class="back-to-login-link">
+                        <i class="fas fa-arrow-left fa-2x"></i>
                     </a>
                 </div>
+                <h1>Registro</h1>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" required>
+                    <label for="#">Nombres</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" required>
+                    <label for="#">Apellidos</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="number" required>
+                    <label for="#">N° Documento</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" required>
+                    <label for="#">Correo Electrónico</label>
+                </div>
+                <div class="button-position">
+                    <button type="submit">Enviar</button>
+                </div>
+                
             </form>
+            
         </div>
     </section>
     <script>
-        document.getElementById('forgot-password-link').addEventListener('click', function(event) {
+        document.getElementById('forgot-password-link').addEventListener('click', function (event) {
             event.preventDefault();
             document.querySelector('.logo-container').classList.toggle('move-right');
             document.querySelector('.form-container').classList.toggle('move-left');
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('login-form').style.display = 'none';
                 document.getElementById('forgot-password-form').style.display = 'block';
-            }, 500); 
+            }, 500);
         });
 
-        document.getElementById('back-to-login-link').addEventListener('click', function(event) {
+        document.querySelectorAll('.back-to-login-link').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.querySelector('.logo-container').classList.toggle('move-right');
+                document.querySelector('.form-container').classList.toggle('move-left');
+                setTimeout(function () {
+                    document.getElementById('forgot-password-form').style.display = 'none';
+                    document.getElementById('register-form').style.display = 'none';
+                    document.getElementById('login-form').style.display = 'block';
+                }, 500);
+            });
+        });
+
+        document.getElementById('register-link').addEventListener('click', function (event) {
             event.preventDefault();
             document.querySelector('.logo-container').classList.toggle('move-right');
             document.querySelector('.form-container').classList.toggle('move-left');
-            setTimeout(function() {
-                document.getElementById('forgot-password-form').style.display = 'none';
-                document.getElementById('login-form').style.display = 'block';
-            }, 500); 
+            setTimeout(function () {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            }, 500);
         });
     </script>
 </body>
