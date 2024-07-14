@@ -43,6 +43,11 @@ body {
     cursor: pointer;
     display: none;
 }
+
+.Nombre-Tamaño{
+    width:190px;
+    height:45px;
+}
   
 
 hr{
