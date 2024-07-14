@@ -214,6 +214,28 @@ hr {
 }
 
 
+.fondoDatoTarjeta-producto {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fondoDatoTarjeta-producto {
+    background-color: #3E5059;
+    padding: 3%;
+    border-radius: 15px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    height: 117%;
+    width: 47%;
+    color: white;
+}
+
+
+
 .centradoInfo-sm .col-lg-3 {
     margin-left: -117px;
 }
