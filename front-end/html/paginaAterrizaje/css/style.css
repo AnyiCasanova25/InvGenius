@@ -10,6 +10,16 @@
 	z-index: 1;
 }
 
+.img-team {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
+	display: block;
+	margin: 0 auto
+}
+
+
 
 html.ie-10 .ie-panel,
 html.lt-ie-10 .ie-panel {
