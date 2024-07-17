@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
         binding.btnNovedadesEmpleados.setOnClickListener {mostrarFragment(binding.btnNovedadesEmpleados, binding.btnOculto1)}
         binding.btnProductosCaducados.setOnClickListener {mostrarFragment(binding.btnProductosCaducados, binding.btnOculto2)}
         binding.btnProductoaCaducar.setOnClickListener {mostrarFragment(binding.btnProductoaCaducar, binding.btnOculto3)}
+        binding.btnBajoStock.setOnClickListener {mostrarFragment(binding.btnBajoStock, binding.btnOculto4)}
         return root
     }
 
@@ -76,6 +77,8 @@ class HomeFragment : Fragment() {
         binding.btnOculto2.visibility=View.GONE
         if(binding.btnProductoaCaducar!=buttonMostrar)
             binding.btnOculto3.visibility=View.GONE
+        if(binding.btnBajoStock!=buttonMostrar)
+            binding.btnOculto4.visibility=View.GONE
         if (btnOculto.isVisible)
             btnOculto.visibility=View.GONE
         else
