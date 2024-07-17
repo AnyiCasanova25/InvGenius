@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity(name = "ubicacion")
 public class ubicacion {
@@ -20,13 +22,19 @@ public class ubicacion {
     @Column(name =  "bloques", nullable = false, length = 10)
     private String bloques;
 
+    @OneToMany
+    @JoinColumn(name = "idCategoria")
+    private categoria categoria;
+
     public ubicacion() {
     }
 
-    public ubicacion(String idUbicacion, String asignarUbicacion, String bloques) {
+    public ubicacion(String idUbicacion, String asignarUbicacion, String bloques,
+            com.InvGenius.InvGenius.models.categoria categoria) {
         this.idUbicacion = idUbicacion;
         this.asignarUbicacion = asignarUbicacion;
         this.bloques = bloques;
+        this.categoria = categoria;
     }
 
     public String getIdUbicacion() {
@@ -53,4 +61,13 @@ public class ubicacion {
         this.bloques = bloques;
     }
 
+    public categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 }
