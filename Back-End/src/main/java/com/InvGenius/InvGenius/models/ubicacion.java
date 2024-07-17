@@ -14,7 +14,7 @@ public class ubicacion {
     @Column(name = "idUbicacion", nullable = false, length = 36)
     private String idUbicacion;
 
-    @Column(name = "asignarUbicacion", nullable = false, length = 36)
+    @Column(name = "asignarUbicacion", nullable = false, length = 150)
     private String asignarUbicacion;
 
     @Column(name =  "bloques", nullable = false, length = 10)
