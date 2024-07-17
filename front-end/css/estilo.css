@@ -196,10 +196,11 @@ hr {
     margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    height: 117%;
-    width: 138%;
+    height: 109%;
+    width: 105%;
     color: white;
 }
+
 
 .Position-information > p{
     font-weight: bold;
@@ -218,7 +219,6 @@ hr {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -237,7 +237,7 @@ hr {
 
 
 .centradoInfo-sm .col-lg-3 {
-    margin-left: -117px;
+    margin-left: -33px;
 }
 
 .centrarTexto {
@@ -482,7 +482,6 @@ tbody tr:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
     align-items: center;
 }
 
