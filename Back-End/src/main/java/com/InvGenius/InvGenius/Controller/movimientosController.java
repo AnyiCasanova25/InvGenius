@@ -5,12 +5,12 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
+// import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+// import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -77,31 +77,31 @@ public class movimientosController {
         return new ResponseEntity<>(movimientos, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable String id) {
-        movimientosService.delete(id);
-        return new ResponseEntity<>("Movimiento eliminado", HttpStatus.OK);
-    }
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<Object> delete(@PathVariable String id) {
+    //     movimientosService.delete(id);
+    //     return new ResponseEntity<>("Movimiento eliminado", HttpStatus.OK);
+    // }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id,
-            @ModelAttribute("movimientos") movimientos movimientosUpdate) {
-        var movimientos = movimientosService.findOne(id).get();
+    // @PutMapping("/{id}")
+    // public ResponseEntity<Object> update(@PathVariable String id,
+    //         @ModelAttribute("movimientos") movimientos movimientosUpdate) {
+    //     var movimientos = movimientosService.findOne(id).get();
 
-        if (movimientos != null) {
+    //     if (movimientos != null) {
 
-            movimientos.setTipomovimiento(movimientosUpdate.getTipomovimiento());
-            movimientos.setCantidadProducto(movimientosUpdate.getCantidadProducto());
-            movimientos.setFechaMovimiento(movimientosUpdate.getFechaMovimiento());
-            movimientos.setDescripcionMovimiento(movimientosUpdate.getDescripcionMovimiento());
+    //         movimientos.setTipomovimiento(movimientosUpdate.getTipomovimiento());
+    //         movimientos.setCantidadProducto(movimientosUpdate.getCantidadProducto());
+    //         movimientos.setFechaMovimiento(movimientosUpdate.getFechaMovimiento());
+    //         movimientos.setDescripcionMovimiento(movimientosUpdate.getDescripcionMovimiento());
 
-            movimientosService.save(movimientos);
+    //         movimientosService.save(movimientos);
 
-            return new ResponseEntity<>(movimientos, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Error movimiento no encontrado", HttpStatus.BAD_REQUEST);
-        }
-    }
+    //         return new ResponseEntity<>(movimientos, HttpStatus.OK);
+    //     } else {
+    //         return new ResponseEntity<>("Error movimiento no encontrado", HttpStatus.BAD_REQUEST);
+    //     }
+    // }
 
     // @GetMapping("/")
     // public String home() {
