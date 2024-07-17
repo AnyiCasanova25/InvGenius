@@ -13,7 +13,7 @@ public interface IInformeService {
     public List<informe> findAll();
 
     //Para los filtros
-    public List<informe> informeExist(String tipoMovimiento, String nombreCategoria, LocalDate fechaInforme);
+    public List<informe> informeExist(String tipomovimiento, String nombreCategoria, LocalDate fechaInforme);
     
     public Optional<informe> findOne (String id);
 

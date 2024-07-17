@@ -36,8 +36,8 @@ public class informeService implements IInformeService{
     }
 
     //Filtros de informe
-    public List<informe> informeExist(String tipoMovimiento, String nombreCategoria, LocalDate fechaInforme){
-        List<informe> listaInforme=data.informeExist(tipoMovimiento, nombreCategoria, fechaInforme);
+    public List<informe> informeExist(String tipomovimiento, String nombreCategoria, LocalDate fechaInforme){
+        List<informe> listaInforme=data.informeExist(tipomovimiento, nombreCategoria, fechaInforme);
         return listaInforme;
     }
 
