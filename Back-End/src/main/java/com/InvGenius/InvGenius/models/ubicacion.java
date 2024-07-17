@@ -22,19 +22,13 @@ public class ubicacion {
     @Column(name =  "bloques", nullable = false, length = 10)
     private String bloques;
 
-    @OneToMany
-    @JoinColumn(name = "idCategoria")
-    private categoria categoria;
-
     public ubicacion() {
     }
 
-    public ubicacion(String idUbicacion, String asignarUbicacion, String bloques,
-            com.InvGenius.InvGenius.models.categoria categoria) {
+    public ubicacion(String idUbicacion, String asignarUbicacion, String bloques) {
         this.idUbicacion = idUbicacion;
         this.asignarUbicacion = asignarUbicacion;
         this.bloques = bloques;
-        this.categoria = categoria;
     }
 
     public String getIdUbicacion() {
@@ -60,14 +54,5 @@ public class ubicacion {
     public void setBloques(String bloques) {
         this.bloques = bloques;
     }
-
-    public categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(categoria categoria) {
-        this.categoria = categoria;
-    }
-    
     
 }
