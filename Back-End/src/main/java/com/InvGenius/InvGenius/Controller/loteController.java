@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@RequestMapping("api/v1/lote")
+@RequestMapping("/api/v1/lote")
 public class loteController {
 
     @Autowired

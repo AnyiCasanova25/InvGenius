@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import lombok.var;
 
 @RestController
-@RequestMapping("api/v1/categoria")
+@RequestMapping("/api/v1/categoria")
 public class categoriaController {
 
     @Autowired

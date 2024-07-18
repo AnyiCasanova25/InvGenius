@@ -17,7 +17,7 @@ import com.InvGenius.InvGenius.interfaceService.IInformeService;
 import com.InvGenius.InvGenius.models.informe;
 
 @RestController
-@RequestMapping("api/v1/informe")
+@RequestMapping("/api/v1/informe")
 public class informeController {
 
     @Autowired

@@ -20,7 +20,7 @@ import lombok.var;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
-@RequestMapping("api/v1/ubicacion")
+@RequestMapping("/api/v1/ubicacion")
 public class ubicacionController {
     
     @Autowired

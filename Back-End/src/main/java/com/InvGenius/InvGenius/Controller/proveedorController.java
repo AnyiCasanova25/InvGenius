@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping ("api/v1/proveedor")
+@RequestMapping ("/api/v1/proveedor")
 public class proveedorController {
 
     @Autowired
