@@ -50,6 +50,13 @@ public class ubicacionController {
         return new ResponseEntity<>(ubicacion,HttpStatus.OK); 
     }
 
+    //Filtro para ubicacion
+    @GetMapping("/busquedaFiltros/{filtro}")
+    public ResponseEntity<Object>findFiltro(@PathVariable String filtro){
+        var listaUbicacion = ubicacionService.ubicacionExist(filtro);
+        return new ResponseEntity<>(listaUbicacion, HttpStatus.OK);
+    }
+
     //Se creo el metodo get para poder listar los datos de ubicación
     @GetMapping("/")
     public ResponseEntity<Object> findAll(){

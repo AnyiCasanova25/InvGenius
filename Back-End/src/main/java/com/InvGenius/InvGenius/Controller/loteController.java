@@ -58,6 +58,14 @@ public class loteController {
         
     }
 
+    //Filtro de lote
+    @GetMapping("/busquedaFiltros/{filtro}")
+    public ResponseEntity<Object>findFiltro(@PathVariable String filtro){
+       var listaLote = loteService.loteExist(filtro);
+       return new ResponseEntity<>(listaLote, HttpStatus.OK);
+    }
+
+
      //Se creo el metodo get para poder listar los datos de lote
      @GetMapping("/")
      public ResponseEntity<Object> findAll(){

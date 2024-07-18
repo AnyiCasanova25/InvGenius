@@ -49,6 +49,14 @@ public class categoriaController {
         categoriaService.save(categoria);
         return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
+
+    //Filtros de categoria
+    @GetMapping("/busquedaFiltros/{filtro}")
+    public ResponseEntity<Object>findFiltro(@PathVariable String filtro){
+        var listaCategoria = categoriaService.categoriaExist(filtro, filtro, filtro);
+        return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
+    }
+
     
     //Se creo el metodo get para poder listar los datos de categoria
     @GetMapping("/")

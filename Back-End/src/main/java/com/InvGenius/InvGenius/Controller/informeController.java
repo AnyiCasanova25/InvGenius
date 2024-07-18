@@ -62,6 +62,14 @@ public class informeController {
         return new ResponseEntity<>(informe,HttpStatus.OK);
     }
 
+    //Filtro de informe
+    @GetMapping("/busquedaFiltros/{filtro}")
+    public ResponseEntity<Object>findFiltro(@PathVariable String filtro){
+        var listaInforme = informeService.informeExist(filtro, filtro, null);
+        return new ResponseEntity<>(listaInforme, HttpStatus.OK);
+    }
+
+
      @GetMapping("/")
     public ResponseEntity<Object> findAll(){
         var listaInforme = informeService.findAll();
