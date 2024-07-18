@@ -191,13 +191,23 @@
 
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="nombre"><i class="fas fa-tag"></i> Nombre de Categoría:</label>
-                                        <input type="text" id="nombre" class="form-control" onfocusout="validarNombre(this)" required>
+                                        <input type="text" id="nombre" class="form-control" style="border: 1px solid black;"" onfocusout="validarNombre(this)" required>
+                                    </div>
+
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="estadoProveedor"><i class="fas fa-check-circle"></i> Estado:</label>
+                                        <select id="estadoProveedor" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarestadoProveedor(this)"
+                                            onkeypress="soloLetras(event);" required>
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                        </select>
                                     </div>
                                 
-                                    <div class="col col-xl-12 col-12">
+                                    <!-- <div class="col col-xl-12 col-12">
                                         <label for="imagen"><i class="fas fa-upload"></i> Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control" accept="image/*" required>
-                                    </div>
+                                        <input type="file" id="imagen" class="form-control"  accept="image/*" required>
+                                    </div> -->
                                 
                                 </form>
                                 

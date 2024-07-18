@@ -43,35 +43,14 @@ function alfaNumericosSignos(event) {
     }
 }
 
-function buscarProveedorPorFiltro(filtro) {
+function buscarUserPorFiltro(filtro) {
     if (filtro.trim() !== "") {
         $.ajax({
             url: "http://localhost:8080/api/v1/proveedor/busquedaFiltros/" + filtro,
             type: "GET",
             success: function (result) {
-                var cuerpoTabla = document.getElementById("cuerpoTabla");
-                cuerpoTabla.innerHTML = "";
-
-                for (var i = 0; i < result.length; i++) {
-                    var trRegistro = document.createElement("tr");
-                    trRegistro.innerHTML = `
-                        <td class="align-middle">${result[i]["nombreProveedor"]}</td>
-                        <td class="text-center align-middle">${result[i]["apellidoProveedor"]}</td>
-                        <td class="text-center align-middle">${result[i]["documentoProveedor"]}</td>
-                        <td class="text-center align-middle">${result[i]["numeroProveedor"]}</td>
-                        <td class="text-center align-middle">${result[i]["empresaProveedor"]}</td>
-                        <td class="text-center align-middle">${result[i]["estadoProveedor"]}</td>
-                        <td class="text-center align-middle">
-                            <i class="fas fa-edit editar" onclick="registrarProveedorBandera=false;" data-id="${result[i]["idProveedor"]}"></i>
-                            <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idProveedor"]}"></i>
-                        </td>
-                    `;
-                    cuerpoTabla.appendChild(trRegistro);
-                }
+                mostrarTabla(result);
             },
-            error: function (error) {
-                alert("Error en la petición: " + error);
-            }
         });
     } else {
         listarProveedor();
@@ -83,30 +62,35 @@ function listarProveedor() {
         url: url,
         type: "GET",
         success: function (result) {
-            var cuerpoTabla = document.getElementById("cuerpoTabla");
-            cuerpoTabla.innerHTML = "";
-
-            for (var i = 0; i < result.length; i++) {
-                var trRegistro = document.createElement("tr");
-                trRegistro.innerHTML = `
-                    <td class="align-middle">${result[i]["nombreProveedor"]}</td>
-                    <td class="text-center align-middle">${result[i]["apellidoProveedor"]}</td>
-                    <td class="text-center align-middle">${result[i]["documentoProveedor"]}</td>
-                    <td class="text-center align-middle">${result[i]["numeroProveedor"]}</td>
-                    <td class="text-center align-middle">${result[i]["empresaProveedor"]}</td>
-                    <td class="text-center align-middle">${result[i]["estadoProveedor"]}</td>
-                    <td class="text-center align-middle">
-                        <i class="fas fa-edit editar" onclick="registrarProveedorBandera=false;" data-id="${result[i]["idProveedor"]}"></i>
-                        <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idProveedor"]}"></i>
-                    </td>
-                `;
-                cuerpoTabla.appendChild(trRegistro);
-            }
+            mostrarTabla(result);
         },
         error: function (error) {
             alert("Error en la petición: " + error);
         }
     });
+}
+
+
+function mostrarTabla(result){
+    var cuerpoTabla = document.getElementById("cuerpoTabla");
+    cuerpoTabla.innerHTML = "";
+
+    for (var i = 0; i < result.length; i++) {
+        var trRegistro = document.createElement("tr");
+        trRegistro.innerHTML = `
+            <td class="align-middle">${result[i]["nombreProveedor"]}</td>
+            <td class="text-center align-middle">${result[i]["apellidoProveedor"]}</td>
+            <td class="text-center align-middle">${result[i]["documentoProveedor"]}</td>
+            <td class="text-center align-middle">${result[i]["numeroProveedor"]}</td>
+            <td class="text-center align-middle">${result[i]["empresaProveedor"]}</td>
+            <td class="text-center align-middle">${result[i]["estadoProveedor"]}</td>
+            <td class="text-center align-middle">
+                <i class="fas fa-edit editar" onclick="registrarProveedorBandera=false;" data-id="${result[i]["idProveedor"]}"></i>
+                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idProveedor"]}"></i>
+            </td>
+        `;
+        cuerpoTabla.appendChild(trRegistro);
+    }
 }
 
 function blanquearCampos() {

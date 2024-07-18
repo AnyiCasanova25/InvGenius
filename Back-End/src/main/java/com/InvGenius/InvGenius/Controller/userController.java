@@ -117,16 +117,35 @@ public class userController {
         return new ResponseEntity<>(listaUser,HttpStatus.OK);
     }
 
+   @GetMapping("/busquedaFiltros/{filtro}")
+   public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
+       var listaUser = userService.userExist(filtro,filtro);
+       return new ResponseEntity<>(listaUser, HttpStatus.OK);
+   }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var user = userService.findOne(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable String id) {
-        userService.delete(id);
-        return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
+        var user = userService.findOne(id).get();
+        if (user != null) {
+            if (user.getRol().equals("Usuario")) {
+ 
+                user.setRol("Administrador");
+                userService.save(user);
+                return new ResponseEntity<>("El administrador es usuario ahora", HttpStatus.OK);
+            } else
+                user.setRol("Usuario");
+            userService.save(user);
+            return new ResponseEntity<>("El usuario es administrador ahora", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")
