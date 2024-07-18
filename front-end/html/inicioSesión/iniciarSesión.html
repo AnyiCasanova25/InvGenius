@@ -75,37 +75,57 @@
             </form>
             <!--Formulario de registro-->
             <form id="register-form" style="display: none;">
-                <div class="arrow-position">
-                    <a href="#" class="back-to-login-link">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </a>
-                </div>
-                <h1>Registro</h1>
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" id="primerNombre" required>
-                    <label for="primerNombre">Nombres</label>
-                </div>
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" id="primerApellido" required>
-                    <label for="primerApellido">Apellidos</label>
-                </div>
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="number" id="documentoIdentidad" required>
-                    <label for="documentoIdentidad">N° Documento</label>
-                </div>
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" id="Correo" required>
-                    <label for="Correo">Correo Electrónico</label>
-                </div>
-                <div class="button-position">
-                    <button type="submit" onClick="registrarUser()">Registrar</button>
-                </div>
-                
-            </form>
+            <div class="arrow-position">
+                <a href="#" class="back-to-login-link">
+                    <i class="fas fa-arrow-left fa-2x"></i>
+                </a>
+            </div>
+            <h1>Registro</h1>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" id="primerNombre" required>
+                <label for="primerNombre">Primer nombre</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" id="segundoNombre" required>
+                <label for="segundoNombre">Segundo nombre</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" id="primerApellido" required>
+                <label for="primerApellido">Primer apellido</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" id="segundoApellido" required>
+                <label for="segundoApellido">Segunod apellido</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="number" id="documentoIdentidad" required>
+                <label for="documentoIdentidad">N° Documento</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="email" id="Correo" required>
+                <label for="Correo">Correo Electrónico</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="number" id="Celular" required>
+                <label for="Celular">Celular</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" id="rol" required>
+                <label for="rol">rol</label>
+            </div>
+            <div class="button-position">
+                <button type="submit" onclick="registrarUser()">Registrar</button>
+            </div>
+            
+        </form>
             
         </div>
     </section>
@@ -143,6 +163,8 @@
             }, 500);
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/front-end/js/user.js"></script>
 </body>
 </html>

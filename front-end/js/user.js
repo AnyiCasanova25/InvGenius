@@ -1,25 +1,33 @@
-url: "http://localhost:8080/api/v1/user"
+var url = "http://localhost:8080/api/v1/user/";
 
 function registrarUser() {
-    let primer_nombre = document.getElementById("primerNombre").value;
-    let primer_apellido = document.getElementById("primerApellido").value;
-    let documento_identidad = document.getElementById("documentoIdentidad").value;
-    let correo = document.getElementById("Correo").value;
+    let primerNombre = document.getElementById("primerNombre").value;
+    let primerApellido = document.getElementById("primerApellido").value;
+    let documentoIdentidad = document.getElementById("documentoIdentidad").value;
+    let Correo = document.getElementById("Correo").value;
+    let Celular = document.getElementById("Celular").value;
+    let segundoNombre = document.getElementById("segundoNombre").value;
+    let segundoApellido = document.getElementById("segundoApellido").value;
+    let rol = document.getElementById("rol").value;
+    
 
 
     // Datos del formulario
     let formData = {
-        "primer_nombre": primer_nombre,
-        "primer_apellido": primer_apellido,
-        "documento_identidad": documento_identidad,
-        "correo": correo
+        "primerNombre": primerNombre,
+        "primerApellido": primerApellido,
+        "documentoIdentidad": documentoIdentidad,
+        "Correo": Correo,
+        "Celular": Celular,
+        "rol": rol,
+        "segundoNombre": segundoNombre,
+        "segundoApellido": segundoApellido
     };
 
     $.ajax({
         url: url,
         type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(formData),
+        data: formData,
         success: function (result) {
             Swal.fire({
                 title: "¡Excelente!",
@@ -31,7 +39,7 @@ function registrarUser() {
         error: function (error) {
             Swal.fire({
                 title: "Error",
-                text: "Error al guardar el libro",
+                text: "Error al guardar el usuario",
                 icon: "error"
             });
         }
