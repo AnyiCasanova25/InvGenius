@@ -43,7 +43,7 @@ function alfaNumericosSignos(event) {
     }
 }
 
-function buscarUsuarioPorFiltro(filtro) {
+function buscarProveedorPorFiltro(filtro) {
     if (filtro.trim() !== "") {
         $.ajax({
             url: "http://localhost:8080/api/v1/proveedor/busquedaFiltros/" + filtro,
@@ -151,13 +151,13 @@ function registrarProveedor() {
     var metodo = "";
     var urlLocal = "";
     var textoimprimir = "";
-    if (registrarUsuarioBandera == true) {
+    if (registrarProveedorBandera == true) {
         metodo = "POST";
         urlLocal = url;
 
     } else {
         metodo = "PUT";
-        urlLocal = url + idUsuario;
+        urlLocal = url + idProveedor;
     }
 
     if (validarCampos()) {
@@ -177,6 +177,13 @@ function registrarProveedor() {
                     listarProveedor(); // Aquí se vuelve a listar los productos
                 });
             },
+            error: function (xhr, status, error) {
+                Swal.fire({
+                    title: "Error",
+                    text: "¡El número de documento ya se encuentra registrado!",
+                    icon: "error"
+                });
+            }
         });
     } else {
         Swal.fire({

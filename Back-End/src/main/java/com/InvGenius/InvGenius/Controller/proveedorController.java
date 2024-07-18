@@ -27,7 +27,7 @@ public class proveedorController {
    public ResponseEntity<Object> save(@ModelAttribute("proveedor") proveedor proveedor) {
 
       // verifica que no se repita el documento del proveedor
-      var listaProveedor = proveedorService.proveedorExist(proveedor.getEmpresaProveedor(),
+      var listaProveedor = proveedorService.proveedorExist(proveedor.getDocumentoProveedor(),
             proveedor.getDocumentoProveedor());
 
       if (listaProveedor.size() != 0) {
