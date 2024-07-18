@@ -16,98 +16,116 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
-@RequestMapping ("/api/v1/proveedor")
+@RequestMapping("/api/v1/proveedor")
 public class proveedorController {
 
-    @Autowired
-    private IproveedorService proveedorService;
+   @Autowired
+   private IproveedorService proveedorService;
 
-    @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("proveedor") proveedor proveedor) {
-        
-        //verifica que no se repita el documento del proveedor
-         var listaProveedor = proveedorService.proveedorExist(proveedor.getEmpresaProveedor(), proveedor.getDocumentoProveedor());
+   @PostMapping("/")
+   public ResponseEntity<Object> save(@ModelAttribute("proveedor") proveedor proveedor) {
 
-         if (listaProveedor.size() != 0){
-            return new ResponseEntity<>("El proveedor ya existe", HttpStatus.BAD_REQUEST);
+      // verifica que no se repita el documento del proveedor
+      var listaProveedor = proveedorService.proveedorExist(proveedor.getEmpresaProveedor(),
+            proveedor.getDocumentoProveedor());
 
-         }
+      if (listaProveedor.size() != 0) {
+         return new ResponseEntity<>("El proveedor ya existe", HttpStatus.BAD_REQUEST);
 
-         // Verifique que lso campos sean obligatorios
+      }
 
-         if (proveedor.getEmpresaProveedor().equals("")){
-            return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
-         }
+      // Verifique que lso campos sean obligatorios
 
-         if (proveedor.getDocumentoProveedor().equals("")){
-            return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
-         }
+      if (proveedor.getEmpresaProveedor().equals("")) {
+         return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
+      }
 
-         if (proveedor.getNombreProveedor().equals("")){
-            return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
-         }
+      if (proveedor.getDocumentoProveedor().equals("")) {
+         return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
+      }
 
-         if (proveedor.getApellidoProveedor().equals("")){
-            return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
-            
-         }
+      if (proveedor.getNombreProveedor().equals("")) {
+         return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
+      }
 
-         if (proveedor.getEstadoProveedor().equals("")){
-            return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
-         }
+      if (proveedor.getApellidoProveedor().equals("")) {
+         return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
 
-         if (proveedor.getNumeroProveedor().equals("")){
-            return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
-         }
+      }
+
+      if (proveedor.getEstadoProveedor().equals("")) {
+         return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
+      }
+
+      if (proveedor.getNumeroProveedor().equals("")) {
+         return new ResponseEntity<>("Este campo es obligatorio", HttpStatus.BAD_REQUEST);
+      }
+
+      proveedorService.save(proveedor);
+      return new ResponseEntity<>(proveedor, HttpStatus.OK);
+
+   }
+
+   @GetMapping("/busquedaFiltros/{filtro}")
+   public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
+       var listaProveedor = proveedorService.proveedorExist(filtro,filtro);
+       return new ResponseEntity<>(listaProveedor, HttpStatus.OK);
+   }
+
+   // Se creo el metodo get para poder listar los datos de proveedor
+   @GetMapping("/")
+   public ResponseEntity<Object> findAll() {
+      var listaProveedor = proveedorService.findAll();
+      return new ResponseEntity<>(listaProveedor, HttpStatus.OK);
+   }
+
+   @GetMapping("/{id}")
+   public ResponseEntity<Object> findOne(@PathVariable String id) {
+      var proveedor = proveedorService.findOne(id);
+      return new ResponseEntity<>(proveedor, HttpStatus.OK);
+   }
+
+
+   @DeleteMapping("/{id}")
+   public ResponseEntity<Object> delete(@PathVariable String id) {
+       var proveedor = proveedorService.findOne(id).get();
+       if (proveedor != null) {
+           if (proveedor.getEstadoProveedor().equals("Activo")) {
+
+               proveedor.setEstadoProveedor("Inactivo");
+               proveedorService.save(proveedor);
+               return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+           } else
+               proveedor.setEstadoProveedor("Activo");
+           proveedorService.save(proveedor);
+           return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
+       } else {
+           return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+       }
+   }
+
+   @PutMapping("/{id}")
+   public ResponseEntity<Object> update(@PathVariable String id,
+         @ModelAttribute("proveedor") proveedor proveedorUpdate) {
+      var proveedor = proveedorService.findOne(id).get();
+
+      if (proveedor != null) {
+
+         proveedor.setNombreProveedor(proveedorUpdate.getNombreProveedor());
+         proveedor.setApellidoProveedor(proveedorUpdate.getApellidoProveedor());
+         proveedor.setDocumentoProveedor(proveedorUpdate.getDocumentoProveedor());
+         proveedor.setEmpresaProveedor(proveedorUpdate.getEmpresaProveedor());
+         proveedor.setEstadoProveedor(proveedorUpdate.getEstadoProveedor());
+         proveedor.setNumeroProveedor(proveedorUpdate.getNumeroProveedor());
 
          proveedorService.save(proveedor);
-         return new ResponseEntity<>(proveedor,HttpStatus.OK);
 
-        }
-        
-         //Se creo el metodo get para poder listar los datos de proveedor
-         @GetMapping("/")
-         public ResponseEntity<Object> findAll(){
-            var listaProveedor = proveedorService.findAll();
-            return new ResponseEntity<>(listaProveedor,HttpStatus.OK);
-         }
+         return new ResponseEntity<>(proveedor, HttpStatus.OK);
+      } else {
+         return new ResponseEntity<>("Error proveedor no encontrado", HttpStatus.BAD_REQUEST);
+      }
 
-        @GetMapping("/{id}")
-        public ResponseEntity<Object> findOne(@PathVariable String id) {
-            var proveedor = proveedorService.findOne(id);
-            return new ResponseEntity<>(proveedor, HttpStatus.OK);
-        }
+   }
 
-        @DeleteMapping("/{id}")
-        public ResponseEntity<Object> delete(@PathVariable String id){
-            proveedorService.delete(id);
-            return new ResponseEntity<>("Registro Eliminado", HttpStatus.OK);
-        }
-
-        @PutMapping("/{id}")
-        public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("proveedor")  proveedor proveedorUpdate) {
-            var proveedor = proveedorService.findOne(id).get();
-            
-            if (proveedor != null) {
-                
-                proveedor.setNombreProveedor(proveedorUpdate.getNombreProveedor());
-                proveedor.setApellidoProveedor(proveedorUpdate.getApellidoProveedor());
-                proveedor.setDocumentoProveedor(proveedorUpdate.getDocumentoProveedor());
-                proveedor.setEmpresaProveedor(proveedorUpdate.getEmpresaProveedor());
-                proveedor.setEstadoProveedor(proveedorUpdate.getEstadoProveedor());
-                proveedor.setNumeroProveedor(proveedorUpdate.getNumeroProveedor());
-
-                proveedorService.save(proveedor);
-
-                return new ResponseEntity<>(proveedor, HttpStatus.OK);
-            }else {
-                return new ResponseEntity<>("Error proveedor no encontrado", HttpStatus.BAD_REQUEST);
-            }
-            
-        }
-        
-    
-    
 }
