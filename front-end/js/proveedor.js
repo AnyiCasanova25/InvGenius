@@ -121,7 +121,7 @@ function registrarProveedor() {
     var documentoProveedor = document.getElementById("documentoProveedor");
     var numeroProveedor = document.getElementById("numeroProveedor");
     var empresaProveedor = document.getElementById("empresaProveedor");
-    var tipestadoProveedorUser = document.getElementById("tipestadoProveedorUser");
+    var estadoProveedor = document.getElementById("estadoProveedor");
 
     // Verificar si algún campo obligatorio está vacío
     if (!validarnombreProveedor(nombreProveedor) ||
@@ -129,7 +129,7 @@ function registrarProveedor() {
         !validardocumentoProveedor(documentoProveedor) ||
         !validarnumeroProveedor(numeroProveedor) ||
         !validarempresaProveedor(empresaProveedor) ||
-        !tipestadoProveedorUser(tipestadoProveedorUser)) {
+        !validarestadoProveedor(estadoProveedor)) {
         // Mostrar una alerta indicando que todos los campos son obligatorios
         Swal.fire({
             title: "¡Error!",
@@ -145,7 +145,7 @@ function registrarProveedor() {
         "documentoProveedor": documentoProveedor.value,
         "numeroProveedor": numeroProveedor.value,
         "empresaProveedor": empresaProveedor.value,
-        "tipestadoProveedorUser": tipestadoProveedorUser.value,
+        "estadoProveedor": estadoProveedor.value,
     };
 
     var metodo = "";
@@ -237,7 +237,7 @@ function validarempresaProveedor(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 41);
 }
 
-function tipestadoProveedorUser(cuadroNumero) {
+function validarestadoProveedor(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 21);
 }
 

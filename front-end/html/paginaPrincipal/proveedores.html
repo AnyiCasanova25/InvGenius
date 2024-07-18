@@ -22,9 +22,8 @@
     <!-- Agrega los enlaces a las librerías SweetAlert2 y Animate.css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -101,6 +100,7 @@
                   <th class="text-center align-middle">Telefono</th>
                   <th class="text-center align-middle">Empresa</th>
                   <th class="text-center align-middle">Estado</th>
+                  <th class="text-center align-middle">Opciones</th>
                </tr>
             </thead>
             <tbody id="cuerpoTabla"></tbody>
@@ -167,7 +167,7 @@
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="estadoProveedor"><i class="fas fa-check-circle"></i> Estado:</label>
-                                        <select id="estadoProveedor" class="form-control" style="border: 1px solid black;" onfocusout="tipestadoProveedorUser(this)" onkeypress="soloLetras(event);" 
+                                        <select id="estadoProveedor" class="form-control" style="border: 1px solid black;" onfocusout="validarestadoProveedor(this)" onkeypress="soloLetras(event);" 
                                             required>
                                             <option value="Activo">Activo</option>
                                             <option value="Inactivo">Inactivo</option>
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-dark" onclick="registrarProveedor(); ">Registrar</button>
+                    <button type="button" class="btn btn-dark" onclick="registrarProveedor() ">Registrar</button>
                 </div>
             </div>
         </div>
@@ -200,7 +200,6 @@
         });
     </script>
     <script src="/front-end/js/proveedor.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
