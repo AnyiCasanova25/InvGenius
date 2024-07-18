@@ -104,6 +104,7 @@ public class userController {
         // }
 
         // todo bien
+        user.setRol("Usuario");
         userService.save(user);
         emailController email = new emailController(javaMailSender);
         email.enviarCorreoRegistro(user);

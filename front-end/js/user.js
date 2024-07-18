@@ -8,7 +8,6 @@ function registrarUser() {
     let Celular = document.getElementById("Celular").value;
     let segundoNombre = document.getElementById("segundoNombre").value;
     let segundoApellido = document.getElementById("segundoApellido").value;
-    let rol = document.getElementById("rol").value;
     
 
 
@@ -19,7 +18,6 @@ function registrarUser() {
         "documentoIdentidad": documentoIdentidad,
         "Correo": Correo,
         "Celular": Celular,
-        "rol": rol,
         "segundoNombre": segundoNombre,
         "segundoApellido": segundoApellido
     };
