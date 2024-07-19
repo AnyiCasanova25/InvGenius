@@ -31,12 +31,13 @@ function registrarUser(event) {
         success: function (result) {
             Swal.fire({
                 title: "Registro Exitoso",
-                text: "Su registro fue exitoso. Por favor revise su correo para obtener su contraseña.",
+                text: "Su registro fue exitoso, por favor revise su correo.",
                 icon: "success",
                 confirmButtonText: "Aceptar"
             }).then((result) => {
                 if (result.isConfirmed) {
                     limpiarFormulario();
+                    refrescarPagina();
                 }
             });
         },
@@ -52,4 +53,7 @@ function registrarUser(event) {
 
 function limpiarFormulario() {
     document.getElementById("register-form").reset();
+}
+function refrescarPagina() {
+    location.reload();
 }
