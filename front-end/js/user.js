@@ -8,6 +8,7 @@ function registrarUser() {
     let Celular = document.getElementById("Celular").value;
     let segundoNombre = document.getElementById("segundoNombre").value;
     let segundoApellido = document.getElementById("segundoApellido").value;
+    let rol = document.getElementById("rol").value;
     
 
 
@@ -19,7 +20,8 @@ function registrarUser() {
         "Correo": Correo,
         "Celular": Celular,
         "segundoNombre": segundoNombre,
-        "segundoApellido": segundoApellido
+        "segundoApellido": segundoApellido,
+        "rol": rol
     };
 
     $.ajax({

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +40,8 @@
                     <label for="administrador">Administrador</label>
                 </div>
                 <div class="button-position">
-                    <button type="submit"><a href="/front-end/html/paginaPrincipal/novedades.html" style="color: black;">Iniciar</a></button>
+                    <button type="submit"><a href="/front-end/html/paginaPrincipal/novedades.html"
+                            style="color: black;">Iniciar</a></button>
                 </div>
                 <div class="forget">
                     <a href="#" id="forgot-password-link">
@@ -52,11 +54,11 @@
                     </a>
                 </div>
                 <div class="door-position">
-                    <a href="../paginaAterrizaje/index.html"><i class="fa-solid fa-door-open fa-2x"> </i></a> 
+                    <a href="../paginaAterrizaje/index.html"><i class="fa-solid fa-door-open fa-2x"> </i></a>
                 </div>
             </form>
             <!--Formulario de haz olvidado tu contraseña-->
-            <form id="forgot-password-form" style="display: none;">
+            <form id="forgot-password-form" style="display: none; padding: 13px 34px;">
                 <div class="arrow-position">
                     <a href="#" class="back-to-login-link">
                         <i class="fas fa-arrow-left fa-2x"></i>
@@ -71,95 +73,98 @@
                 <div class="button-position">
                     <button type="submit">Enviar</button>
                 </div>
-                
+
             </form>
             <!--Formulario de registro-->
-            <form id="register-form" style="display: none;">
-            <div class="arrow-position">
-                <a href="#" class="back-to-login-link">
-                    <i class="fas fa-arrow-left fa-2x"></i>
-                </a>
-            </div>
-            <h1>Registro</h1>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="text" id="primerNombre" required>
-                <label for="primerNombre">Primer nombre</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="text" id="segundoNombre" required>
-                <label for="segundoNombre">Segundo nombre</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="text" id="primerApellido" required>
-                <label for="primerApellido">Primer apellido</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="text" id="segundoApellido" required>
-                <label for="segundoApellido">Segundo apellido</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="number" id="documentoIdentidad" required>
-                <label for="documentoIdentidad">N° Documento</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" id="Correo" required>
-                <label for="Correo">Correo Electrónico</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="number" id="Celular" required>
-                <label for="Celular">Celular</label>
-            </div>
-            <!-- <div class="inputbox">
+            <form id="register-form" style="display: none; padding: 0px;">
+                <div class="arrow-position">
+                    <a href="#" class="back-to-login-link">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </a>
+                </div>
+                <h1>Registro</h1>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="primerNombre" required>
+                    <label for="primerNombre">Primer nombre</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="segundoNombre" required>
+                    <label for="segundoNombre">Segundo nombre</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="primerApellido" required>
+                    <label for="primerApellido">Primer apellido</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="segundoApellido" required>
+                    <label for="segundoApellido">Segundo apellido</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="number" id="documentoIdentidad" required>
+                    <label for="documentoIdentidad">N° Documento</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" id="Correo" required>
+                    <label for="Correo">Correo Electrónico</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="number" id="Celular" required>
+                    <label for="Celular">Celular</label>
+                </div>
+                 <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
                 <input type="text" id="rol" required>
                 <label for="rol">rol</label>
-            </div> -->
-            <div class="button-position">
-                <button type="submit" onclick="registrarUser()">Registrar</button>
-            </div>
-            
-        </form>
-            
+            </div> 
+                <div class="button-position">
+                    <button type="submit" onclick="registrarUser()">Registrar</button>
+                </div>
+
+            </form>
+
         </div>
     </section>
     <script>
         document.getElementById('forgot-password-link').addEventListener('click', function (event) {
             event.preventDefault();
-            document.querySelector('.logo-container').classList.toggle('move-right');
-            document.querySelector('.form-container').classList.toggle('move-left');
+            document.querySelector('.logo-container').classList.add('move-right');
+            document.querySelector('.form-container').classList.add('move-left');
             setTimeout(function () {
                 document.getElementById('login-form').style.display = 'none';
                 document.getElementById('forgot-password-form').style.display = 'block';
+                document.querySelector('.form-container').style.height = 'auto';
             }, 500);
         });
 
         document.querySelectorAll('.back-to-login-link').forEach(function (element) {
             element.addEventListener('click', function (event) {
                 event.preventDefault();
-                document.querySelector('.logo-container').classList.toggle('move-right');
-                document.querySelector('.form-container').classList.toggle('move-left');
+                document.querySelector('.logo-container').classList.remove('move-right');
+                document.querySelector('.form-container').classList.remove('move-left');
                 setTimeout(function () {
                     document.getElementById('forgot-password-form').style.display = 'none';
                     document.getElementById('register-form').style.display = 'none';
                     document.getElementById('login-form').style.display = 'block';
+                    document.querySelector('.form-container').style.height = 'auto';
                 }, 500);
             });
         });
 
         document.getElementById('register-link').addEventListener('click', function (event) {
             event.preventDefault();
-            document.querySelector('.logo-container').classList.toggle('move-right');
-            document.querySelector('.form-container').classList.toggle('move-left');
+            document.querySelector('.logo-container').classList.add('move-right');
+            document.querySelector('.form-container').classList.add('move-left');
             setTimeout(function () {
                 document.getElementById('login-form').style.display = 'none';
                 document.getElementById('register-form').style.display = 'block';
+                document.querySelector('.form-container').style.height = 'auto';
             }, 500);
         });
     </script>
@@ -167,4 +172,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/front-end/js/user.js"></script>
 </body>
+
 </html>
