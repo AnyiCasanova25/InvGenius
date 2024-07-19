@@ -161,5 +161,13 @@ public class producto {
     public void setUnidad(unidad unidad) {
         this.unidad = unidad;
     }
-     
+    
+    //Se creo el get y set de descripcion producto, hacia falta eso y por eso no dejaba enviar este atributo, ya que estaba null
+    public String getDescripcionProducto() {
+        return this.descripcionProducto;
+    }
+
+    public void setDescripcionProducto(String descripcionProducto) {
+        this.descripcionProducto = descripcionProducto;
+    }
 }
