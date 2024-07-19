@@ -1,6 +1,8 @@
 var url = "http://localhost:8080/api/v1/user/";
 
-function registrarUser() {
+function registrarUser(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+
     let primerNombre = document.getElementById("primerNombre").value;
     let primerApellido = document.getElementById("primerApellido").value;
     let documentoIdentidad = document.getElementById("documentoIdentidad").value;
@@ -9,8 +11,6 @@ function registrarUser() {
     let segundoNombre = document.getElementById("segundoNombre").value;
     let segundoApellido = document.getElementById("segundoApellido").value;
     let rol = document.getElementById("rol").value;
-    
-
 
     // Datos del formulario
     let formData = {
@@ -30,11 +30,15 @@ function registrarUser() {
         data: formData,
         success: function (result) {
             Swal.fire({
-                title: "¡Excelente!",
-                text: "Se guardó correctamente",
-                icon: "success"
+                title: "Registro Exitoso",
+                text: "Su registro fue exitoso. Por favor revise su correo para obtener su contraseña.",
+                icon: "success",
+                confirmButtonText: "Aceptar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    limpiarFormulario();
+                }
             });
-            limpiarFormulario();
         },
         error: function (error) {
             Swal.fire({
@@ -44,4 +48,8 @@ function registrarUser() {
             });
         }
     });
+}
+
+function limpiarFormulario() {
+    document.getElementById("register-form").reset();
 }
