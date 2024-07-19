@@ -124,7 +124,7 @@
                                 </button>
                             
                             <button type="button" class="btn btn-outline-dark custom-btn" id="button-addon3"
-                                data-bs-toggle="modal" onclick="registrarProveedorBandera=true; limpiar();"
+                                data-bs-toggle="modal" onclick="registrarProveedorBandera()"
                                 data-bs-target="#exampleModal">
                                 <i class="fas fa-plus"></i>
                             </button>
@@ -198,11 +198,12 @@
                                     </div>
 
                                     <div class="col col-xl-12 col-12">
-                                        <label for="evidencia"><i class="fas fa-upload"></i> Cargar imagen:</label>
-                                        <input type="file" id="evidencia" class="form-control" accept="image/*"
+                                        <label for="evidencia"><i class="fas fa-upload"></i> Cargar evidencia:</label>
+                                        <input type="file" id="evidencia" class="form-control" accept="application/pdf"
                                             style="border: 1px solid black;"
                                             onkeypress="alfaNumericosSignos(event);" required>
                                     </div>
+                                    
 
                                     <!-- Campo de fecha oculto -->
                                     <div class="col col-xl-12 col-12" style="display: none;">

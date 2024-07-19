@@ -76,15 +76,17 @@ function blanquearCampos() {
     document.getElementById('texto').value = "";
 }
 
-var registrarNovedadUsuario = true;
 
 function registrarNovedadUsuario() {
     var asunto = document.getElementById("asunto");
+    var para = document.getElementById("para");
+    var cuerpo = document.getElementById("cuerpo");
     var fechaNovedad = document.getElementById("fechaNovedad");
 
     // Verificar si algún campo obligatorio está vacío
     if (!validarasunto(asunto) ||
-        !validarfechaNovedad(fechaNovedad)) {
+        !validarpara(para) ||
+        !validarcuerpo(cuerpo)) {
         // Mostrar una alerta indicando que todos los campos son obligatorios
         Swal.fire({
             title: "¡Error!",
@@ -96,17 +98,16 @@ function registrarNovedadUsuario() {
 
     var forData = {
         "asunto": asunto.value,
+        "para": para.value,
+        "cuerpo": cuerpo.value,
         "fechaNovedad": fechaNovedad.value,
     };
 
     var metodo = "";
     var urlLocal = "";
     var textoimprimir = "";
-    if (registrarNovedadUsuario == true) {
         metodo = "POST";
         urlLocal = url;
-
-    }
 
     if (validarCampos()) {
         $.ajax({
