@@ -62,9 +62,17 @@
             <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
                 onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
                 aria-describedby="button-addon2">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-dark custom-btn"
+                    onclick="listarProveedor(); blanquearCampos()">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-eraser"></i>
+                    </div>
+                </button>
+            </div>
         </div>
         
-        <table class=" table table-hover ">
+        <table class=" table table-hover table-striped">
             <div class="colorTabla table-striped">
                 <tr class="celda_color">
                     <th class="text-center align-middle">Hora</th>
