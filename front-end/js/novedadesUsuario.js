@@ -15,6 +15,17 @@ const signosPermitidos = [
     '.', ',', '@', '_', '-', '#', ''
 ];
 
+
+function soloLetras(event) {
+    console.log("Llave presionada: " + event.key);
+    console.log("Codigo tecla: " + event.keyCode);
+
+    if (!(letrasPermitidas.includes(event.key))) {
+        event.preventDefault();
+        return;
+    }
+}
+
 function alfaNumericosSignos(event) {
     console.log("Llave presionada: " + event.key);
     console.log("Codigo tecla: " + event.keyCode);
@@ -32,10 +43,11 @@ function mostrarTabla(result) {
     for (var i = 0; i < result.length; i++) {
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
-            <td class="align-middle">${result[i]["asunto"]}</td>
+            <td class="text-center align-middle">${result[i]["para"]}</td>
+            <td class="text-center align-middle">${result[i]["asunto"]}</td>
             <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
             <td class="text-center align-middle">
-                <span class="editar" data-id="${result[i]["idNovedad"]}">Ver Detalle</span>
+                <i class="fas fa-eye editar" onclick="registrarNovedadUsuario=false;" data-id="${result[i]["idNovedad"]}"></i>
             </td>
 
         `;
@@ -72,21 +84,24 @@ function listarNovedadUsuario() {
     });
 }
 
+
 function blanquearCampos() {
     document.getElementById('texto').value = "";
 }
 
+var registrarNovedadUsuario = true;
 
-function registrarNovedadUsuario() {
-    var asunto = document.getElementById("asunto");
+function registrarNovedad() {
     var para = document.getElementById("para");
+    var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
-    var fechaNovedad = document.getElementById("fechaNovedad");
+    var evidencia = document.getElementById("evidencia");
 
     // Verificar si algún campo obligatorio está vacío
-    if (!validarasunto(asunto) ||
-        !validarpara(para) ||
-        !validarcuerpo(cuerpo)) {
+    if (!validarpara(para) ||
+        !validarasunto(asunto) ||
+        !validarcuerpo(cuerpo) ||
+        !validarevidencia(evidencia)) {
         // Mostrar una alerta indicando que todos los campos son obligatorios
         Swal.fire({
             title: "¡Error!",
@@ -97,17 +112,23 @@ function registrarNovedadUsuario() {
     }
 
     var forData = {
-        "asunto": asunto.value,
         "para": para.value,
+        "asunto": asunto.value,
         "cuerpo": cuerpo.value,
-        "fechaNovedad": fechaNovedad.value,
+        "evidencia": evidencia.value,
     };
 
     var metodo = "";
     var urlLocal = "";
     var textoimprimir = "";
+    if (registrarNovedadUsuario == true) {
         metodo = "POST";
         urlLocal = url;
+
+    } else {
+        metodo = "PUT";
+        urlLocal = url + idNovedad;
+    }
 
     if (validarCampos()) {
         $.ajax({
@@ -129,7 +150,7 @@ function registrarNovedadUsuario() {
             error: function (xhr, status, error) {
                 Swal.fire({
                     title: "Error",
-                    // text: "¡El número de documento ya se encuentra registrado!",
+                    text: "¡El número de documento ya se encuentra registrado!",
                     icon: "error"
                 });
             }
@@ -149,8 +170,9 @@ function validarCampos() {
     var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
+    var evidencia = document.getElementById("evidencia");
 
-    return validarpara(para) && validarasunto(asunto) && validarcuerpo(cuerpo);
+    return validarpara(para) && validarasunto(asunto) && validarcuerpo(cuerpo) && validarevidencia(evidencia);
 }
 
 function validarCampo(cuadroNumero, minLength, maxLength) {
@@ -171,23 +193,28 @@ function validarCampo(cuadroNumero, minLength, maxLength) {
 function validarpara(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 101);
 }
+
 function validarasunto(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 81);
 }
+
 function validarcuerpo(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 501);
 }
 
+function validarevidencia(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 101);
+}
 
 function limpiar() {
-    document.getElementById("validarpara").value = "";
-    document.getElementById("validarpara").className = "form-control";
-    document.getElementById("validarasunto").value = "";
-    document.getElementById("validarasunto").className = "form-control";
-    document.getElementById("validarcuerpo").value = "";
-    document.getElementById("validarcuerpo").className = "form-control";
-    document.getElementById("fechaNovedad").value = "";
-    document.getElementById("fechaNovedad").className = "form-control";
+    document.getElementById("para").value = "";
+    document.getElementById("para").className = "form-control";
+    document.getElementById("asunto").value = "";
+    document.getElementById("asunto").className = "form-control";
+    document.getElementById("cuerpo").value = "";
+    document.getElementById("cuerpo").className = "form-control";
+    document.getElementById("evidencia").value = "";
+    document.getElementById("evidencia").className = "form-control";
 }
 
 var idNovedad = "";
@@ -202,7 +229,8 @@ $(document).on("click", ".editar", function () {
             document.getElementById("para").value = novedad.para;
             document.getElementById("asunto").value = novedad.asunto;
             document.getElementById("cuerpo").value = novedad.cuerpo;
-            $('#exampleModalDetalle').modal('show');
+            document.getElementById("evidencia").value = novedad.evidencia;
+            $('#exampleModal').modal('show');
         },
         error: function (error) {
             alert("Error al obtener los datos de la novedad: " + error.statusText);
@@ -210,6 +238,26 @@ $(document).on("click", ".editar", function () {
     });
 });
 
+
+$(document).on("click", ".cambiarEstado", function () {
+    var idNovedad = $(this).data("id");
+    $.ajax({
+        url: url + idNovedad,
+        type: "DELETE",
+        success: function () {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Cambio de estado exitoso",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            listarNovedadUsuario ();
+        }
+    });
+});
+
+// Llamar a la función para listar cliente al cargar la página
 $(document).ready(function () {
     listarNovedadUsuario();
 });
@@ -218,7 +266,7 @@ function actualizarlistarNovedadUsuario() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var comentario = document.getElementById('comentario');
+    var comentario = document.getElementById('cuerpo');
     var charCount = document.getElementById('charCount');
 
     comentario.addEventListener('input', function () {
@@ -226,16 +274,8 @@ document.addEventListener('DOMContentLoaded', function () {
         charCount.textContent = count;
 
         if (count > 500) {
-            this.value = this.value.slice(0, 500); // Limitar el valor a 100 caracteres
+            this.value = this.value.slice(0, 500); // Limitar el valor a 500 caracteres
             charCount.textContent = 500;
         }
     });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    var fechaIngreso = document.getElementById('fechaIngreso');
-    var hoy = new Date();
-    var fechaActual = hoy.getFullYear() + '-' + ('0' + (hoy.getMonth() + 1)).slice(-2) + '-' + ('0' + hoy.getDate()).slice(-2);
-
-    fechaIngreso.value = fechaActual;
 });

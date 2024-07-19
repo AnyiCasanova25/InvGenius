@@ -112,7 +112,7 @@
                     <div class="input-group mb-3">
 
                         <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                            onkeyup="buscarNovedadUsuarioFiltro(document.getElementById('texto').value)"
                             aria-describedby="button-addon2">
 
                         <div class="input-group-prepend">
@@ -124,7 +124,7 @@
                                 </button>
                             
                             <button type="button" class="btn btn-outline-dark custom-btn" id="button-addon3"
-                                data-bs-toggle="modal" onclick="registrarProveedorBandera()"
+                                data-bs-toggle="modal" onclick="registrarNovedadUsuario=true"
                                 data-bs-target="#exampleModal">
                                 <i class="fas fa-plus"></i>
                             </button>
@@ -133,6 +133,7 @@
                     <table class=" table table-hover table-striped">
                         <thead>
                             <tr>
+                                <th class="text-center align-middle">Destinatario</th>
                                 <th class="text-center align-middle">Solicitudes</th>
                                 <th class="text-center align-middle">Fecha Envio</th>
                                 <th class="text-center align-middle">Opciones</th>
@@ -177,41 +178,38 @@
                                         <label for="para"><i class="fas fa-user"></i> Para:</label>
                                         <input type="text" id="para" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarpara(this)"
-                                            onkeypress="soloLetras(event);" required>
+                                            onkeypress="alfaNumericosSignos(event);" required>
                                     </div>
 
                                     <div class="col col-xl-12 col-12">
                                         <label for="asunto"><i class="fas fa-font"></i> Asunto:</label>
                                         <input type="text" id="asunto" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarasunto(this)"
-                                            onkeypress="alfaNumericosSignos(event);" required>
+                                            onkeypress="soloLetras(event);" required>
                                     </div>
 
                                     <div class="col col-xl-12 col-12">
                                         <label for="cuerpo"><i class="fas fa-comment"></i> Cuerpo:</label>
                                         <textarea id="cuerpo" class="form-control" style="border: 1px solid black;"
-                                            onfocusout="validarcuerpo(this)"
-                                            onkeypress="alfaNumericosSignos(event);" maxlength="500" rows="5"
-                                            placeholder="Escribe tu comentario..." required></textarea>
-                                        <div class="count-characters"><span id="charCount">0</span> / 500 caracteres
-                                        </div>
+                                                  onfocusout="validarcuerpo(this)"
+                                                  onkeypress="alfaNumericosSignos(event);" maxlength="500" rows="5"
+                                                  placeholder="Escribe tu comentario..." required></textarea>
+                                        <div class="count-characters"><span id="charCount">0</span> / 500 caracteres</div>
                                     </div>
 
                                     <div class="col col-xl-12 col-12">
+                                        <label for="evidencia"><i class="fas fa-font"></i> Cargar evidencia:</label>
+                                        <input type="text" id="evidencia" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarevidencia(this)"
+                                            onkeypress="alfaNumericosSignos(event);" required>
+                                    </div>
+
+                                    <!-- <div class="col col-xl-12 col-12">
                                         <label for="evidencia"><i class="fas fa-upload"></i> Cargar evidencia:</label>
                                         <input type="file" id="evidencia" class="form-control" accept="application/pdf"
                                             style="border: 1px solid black;"
                                             onkeypress="alfaNumericosSignos(event);" required>
-                                    </div>
-                                    
-
-                                    <!-- Campo de fecha oculto -->
-                                    <div class="col col-xl-12 col-12" style="display: none;">
-                                        <label for="fechaNovedad"><i class="fas fa-calendar-day"></i> Fecha de
-                                            Ingreso:</label>
-                                        <input type="date" id="fechaNovedad" class="form-control"
-                                            style="border: 1px solid black;">
-                                    </div>
+                                    </div> -->
 
                                 </form>
                                 <br>
@@ -220,83 +218,14 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-end">
-                    <button type="button" class="btn btn-dark" onclick="registrarNovedadUsuario()">Enviar</button>
+                    <button type="button" class="btn btn-dark" onclick="registrarNovedad()">Enviar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Ver Info -->
-    <div class="modal fade" id="exampleModalDetalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog fondomodaldialog">
-            <div class="modal-content col modal-custom">
-                <div class="modal-header">
-                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="X"></button>
-                    <div class="col centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
-                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                    </div>
-                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Registro Novedades
-                    </h1>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <div class="centradoo">
-                            <div class="container col">
-                                <br>
-                                <form class="row table-hover needs-validation">
-
-                                    <div class="col col-xl-12 col-12 table-hover">
-                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Para:</label>
-                                        <input type="text" id="nombreProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarnombreProveedor(this)"
-                                            onkeypress="soloLetras(event);" required disabled>
-                                    </div>
-
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="empresaProveedor"><i class="fas fa-font"></i> Asunto:</label>
-                                        <input type="text" id="empresaProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarnumeroProveedor(this)"
-                                            onkeypress="alfaNumericosSignos(event);" required disabled>
-                                    </div>
-
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="comentario"><i class="fas fa-comment"></i> Cuerpo:</label>
-                                        <textarea id="comentario" class="form-control" style="border: 1px solid black;"
-                                            onfocusout="validarnumeroProveedor(this)"
-                                            onkeypress="alfaNumericosSignos(event);" maxlength="500" rows="5"
-                                            placeholder="Escribe tu comentario..." required disabled></textarea>
-                                        <div class="count-characters"><span id="charCount">0</span> / 500 caracteres
-                                        </div>
-                                    </div>
-
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="imagen"><i class="fas fa-upload"></i> Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control" accept="image/*"
-                                            style="border: 1px solid black;" onfocusout="validarnumeroProveedor(this)"
-                                            onkeypress="alfaNumericosSignos(event);" required disabled>
-                                    </div>
-
-                                    <!-- Campo de fecha oculto -->
-                                    <div class="col col-xl-12 col-12" style="display: none;">
-                                        <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
-                                            Ingreso:</label>
-                                        <input type="date" id="fechaIngreso" class="form-control"
-                                            style="border: 1px solid black;">
-                                    </div>
-
-                                </form>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    
 
     <script src="/Front-end/js/novedadesUsuario.js"></script>
 
