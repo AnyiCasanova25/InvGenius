@@ -58,31 +58,57 @@
             </nav>
         </div>
 
+        <div class="negro">
+            <div class="row centradoInfo-sm justify-content-around">
+                <div class="col-lg-3 mb-3">
+                    <a href="#" class="fondoDatoTarjeta" data-bs-toggle="modal" data-bs-target="#modalEntrada">
+                      <i style="margin-left: 15%;" class="fa-solid fa-truck-fast fa-3x"></i>
+                      <div class="Position-information">
+                        <h1 class="fw-normal alinearDato"><b>Entrada</b></h1>
+                      </div>
+                    </a>
+                  </div>
+                  
 
-        <!-- Novedades -->
-        <div>
-            <div class="negro">
-                <div class="row centradoInfo-sm justify-content-between">
-                    
-                    <div class="col-lg-5 fondoDatoTarjeta-producto" data-bs-toggle="modal" data-bs-target="#modalEntrada">
-                        <h5 class="fw-normal alinearDato"><b>ENTRADA</b></h5>
-                        <div id="gifContainer">
-                            <img src="/front-end/img/Pagina/entrada.gif" alt="GIF">
-                        </div>
-                    </div>
-                    <div class="col-lg-5 fondoDatoTarjeta-producto" data-bs-toggle="modal" data-bs-target="#modalSalida">
-                        <h5 class="fw-normal alinearDato"><b>SALIDA</b></h5>
-                        <div id="gifContainer">
-                            <img src="/front-end/img/Pagina/salida.gif" alt="GIF">
-                        </div>
+                
+            </div>
+            <br>
+            <br>
+            <div class="colorFondoTabla">
+                <div class="input-group mb-3">
+
+                    <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+                        onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                        aria-describedby="button-addon2">
+
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-outline-dark custom-btn"
+                            onclick="listarProveedor(); blanquearCampos()">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <i class="fa-solid fa-eraser"></i>
+                            </div>
+                        </button>
 
                     </div>
                 </div>
+                <table class=" table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center align-middle">Lote</th>
+                            <th class="text-center align-middle">Categoria</th>
+                            <th class="text-center align-middle">Producto</th>
+                            <th class="text-center align-middle">Marca</th>
+                            <th class="text-center align-middle">Fecha Vencimiento</th>
+                            <th class="text-center align-middle">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTabla"></tbody>
+                    <!-- Las filas de la tabla se agregarán dinámicamente con JavaScript -->
+                </table>
             </div>
+
         </div>
-        <br>
-        <br>
-        <br>
+        
 
     </div>
     
@@ -109,47 +135,47 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control" onfocusout="validarCategoria(this)" required>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;"  onfocusout="validarCategoria(this)" required>
                                     </div>                                    
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del producto:</label>
-                                        <input type="text" id="nombreProducto" class="form-control" onfocusout="validarNombreProducto(this)" required>
+                                        <input type="text" id="nombreProducto" class="form-control" style="border: 1px solid black;"  onfocusout="validarNombreProducto(this)" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
-                                        <input type="text" id="proveedor" class="form-control" onfocusout="validarProveedor(this)" required>
+                                        <input type="text" id="proveedor" class="form-control" style="border: 1px solid black;"  onfocusout="validarProveedor(this)" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="cantidadProducto"><i class="fas fa-sort-numeric-up"></i> Cantidad Producto:</label>
-                                        <input type="number" id="cantidadProducto" class="form-control" onfocusout="validarCantidadProducto(this)" required>
+                                        <input type="number" id="cantidadProducto" class="form-control" style="border: 1px solid black;"  onfocusout="validarCantidadProducto(this)" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="precioEntrada"><i class="fas fa-money-bill-wave"></i> Precio Entrada:</label>
-                                        <input type="number" id="precioEntrada" class="form-control" onfocusout="validarprecioEntrada(this)" required>
+                                        <input type="number" id="precioEntrada" class="form-control" style="border: 1px solid black;"  onfocusout="validarprecioEntrada(this)" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="precioUnitario"><i class="fas fa-dollar-sign"></i> Precio Unitario:</label>
-                                        <input type="text" id="precioUnitario" class="form-control" onfocusout="validarPrecioUnitario(this)" required>
+                                        <input type="text" id="precioUnitario" class="form-control" style="border: 1px solid black;"  onfocusout="validarPrecioUnitario(this)" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Ingreso:</label>
-                                        <input type="date" id="fechaIngreso" class="form-control" required>
+                                        <input type="date" id="fechaIngreso" class="form-control" style="border: 1px solid black;"  required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de Caducidad:</label>
-                                        <input type="date" id="fechaCaducidad" class="form-control" required>
+                                        <input type="date" id="fechaCaducidad" class="form-control" style="border: 1px solid black;"  required>
                                     </div>      
                                     
                                     <div class="col col-xl-12 col-12">
                                         <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del producto:</label>
-                                        <textarea id="descripcion" class="form-control" rows="5" onfocusout="validarDescripcion(this)" required minlength="50"></textarea>
+                                        <textarea id="descripcion" class="form-control" rows="5" style="border: 1px solid black;"  onfocusout="validarDescripcion(this)" required minlength="50"></textarea>
                                         <small id="descripcionHelp" class="form-text text-muted">La descripción debe tener al menos 50 caracteres.</small>
                                     </div>                               
                                     
@@ -192,22 +218,22 @@
 
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control" onfocusout="validarCategoria(this)" required>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;"  onfocusout="validarCategoria(this)" required>
                                     </div>                                       
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="cantidad"><i class="fas fa-box"></i> Cantidad:</label>
-                                        <input type="text" id="cantidad" class="form-control" onfocusout="validarCantidad(this)" required>
+                                        <input type="text" id="cantidad" class="form-control" style="border: 1px solid black;"  onfocusout="validarCantidad(this)" required>
                                     </div>                                 
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del Producto:</label>
-                                        <input type="text" id="nombreProducto" class="form-control" onfocusout="validarNombreProducto(this)" required>
+                                        <input type="text" id="nombreProducto" class="form-control" style="border: 1px solid black;"  onfocusout="validarNombreProducto(this)" required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Salida:</label>
-                                        <input type="date" id="fechaSalida" class="form-control" onfocusout="validarFechaIngreso(this)" required>
+                                        <input type="date" id="fechaSalida" class="form-control" style="border: 1px solid black;"  onfocusout="validarFechaIngreso(this)" required>
                                     </div>
                                                                         
                                 </form>

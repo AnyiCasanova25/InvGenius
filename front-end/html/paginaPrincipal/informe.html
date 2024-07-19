@@ -59,15 +59,10 @@
 
         <!-- Novedades -->
         <div class="input-group mb-3">
-            <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="button-addon2">
-            <span id="clear" class="clear-btn" style="left: 95%">&times;</span>
-            <div class="input-group-append">
-                <button class="btn btn-outline-dark" type="submit" id="button-addon2"
-                        onclick="return buscarIngresoPorFiltro(document.getElementById('texto').value)">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>  
+            <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+                onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                aria-describedby="button-addon2">
+        </div>
         
         <table class=" table table-hover ">
             <div class="colorTabla table-striped">
