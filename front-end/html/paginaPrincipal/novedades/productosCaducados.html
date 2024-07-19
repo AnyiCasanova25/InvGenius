@@ -25,8 +25,8 @@
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-8 pt-1">
                     <a href="/front-end/html/paginaPrincipal/novedades.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="40px" height="50px" style="margin-right: 1%;"><img class="Nombre-Tamaño" src="/front-end/img/Pagina/Nombre.png"
-                            width="200px" height="60px">
+                            width="40px" height="50px" style="margin-right: 1%;"><img class="Nombre-Tamaño"
+                            src="/front-end/img/Pagina/Nombre.png" width="200px" height="60px">
                     </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end align-items-center ">
@@ -67,7 +67,7 @@
                 <div class="row centradoInfo-sm justify-content-around">
                     <div class="col-lg-3 mb-3">
                         <a href="/Front-end/html/paginaPrincipal/novedades/novedadesUsuario.html"
-                            class="fondoDatoTarjeta">
+                            class="fondoDatoTarjeta ">
                             <i class="fas fa-user fa-3x"></i>
                             <div class="Position-information">
                                 <h5 class="fw-normal alinearDato"><b>Novedades</b></h5>
@@ -78,7 +78,7 @@
 
                     <div class="col-lg-3 mb-3">
                         <a href="/Front-end/html/paginaPrincipal/novedades/productosCaducados.html"
-                            class="fondoDatoTarjeta">
+                            class="fondoDatoTarjeta fondoDatoTarjetaa">
                             <i style="margin-left: 15%;" class="fas fa-hourglass-end fa-3x"></i>
                             <div class="Position-information">
                                 <h5 class="fw-normal alinearDato"><b>Productos caducados</b></h5>
@@ -106,12 +106,51 @@
                         </a>
                     </div>
                 </div>
+                <br>
+                <br>
+                <div class="colorFondoTabla">
+                    <div class="input-group mb-3">
+
+                        <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
+                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                            aria-describedby="button-addon2">
+
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-dark custom-btn"
+                                onclick="listarProveedor(); blanquearCampos()">
+                                <i class="fa-solid fa-eraser"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-dark custom-btn" id="button-addon3"
+                                data-bs-toggle="modal" onclick="registrarProveedorBandera=true; limpiar();"
+                                data-bs-target="#exampleModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <table class=" table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center align-middle">Solicitudes</th>
+                                <th class="text-center align-middle">Fecha Envio</th>
+                                <th class="text-center align-middle">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla"></tbody>
+                        <!-- Las filas de la tabla se agregarán dinámicamente con JavaScript -->
+                    </table>
+                </div>
+
             </div>
         </div>
         <br>
         <br>
         <br>
     </div>
+
+
+
+    <script src="/Front-end/js/novedadesUsuario.js"></script>
+
 </body>
 
 </html>

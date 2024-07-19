@@ -36,8 +36,8 @@ public class novedadService implements InovedadService {
     }
 
     @Override
-    public List<novedad> novedadExist(String numNovedad, String asunto) {
-        List<novedad> listaNovedad = data.novedadExist(numNovedad, asunto);
+    public List<novedad> novedadExist(String asunto) {
+        List<novedad> listaNovedad = data.novedadExist(asunto);
         return listaNovedad;
     }
 

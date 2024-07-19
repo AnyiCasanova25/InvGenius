@@ -12,7 +12,7 @@ public interface InovedadService {
 
     public List<novedad> findAll();
 
-    public List<novedad> novedadExist(String numNovedad, String asunto);
+    public List<novedad> novedadExist(String asunto);
 
     public List<novedad> fechaDeNovedad(Date fechaNovedad);
 

@@ -26,17 +26,14 @@ public class novedad {
     @Column(name = "para", nullable = false, length = 100)
     private String para;
 
-    @Column(name = "asunto", nullable = false, length = 100)
+    @Column(name = "asunto", nullable = false, length = 80)
     private String asunto;
 
-    @Column(name = "cuerpo", nullable = false, length = 100)
+    @Column(name = "cuerpo", nullable = false, length = 500)
     private String cuerpo;
 
     @Column(name = "evidencia", nullable = false, length = 100)
     private String evidencia;
-
-    @Column(name = "numNovedad", nullable = false, length = 100)
-    private String numNovedad;
 
     @Column(name = "fechaNovedad", nullable = false)
     private Date fechaNovedad;
@@ -44,14 +41,13 @@ public class novedad {
     public novedad() {
     }
 
-    public novedad(String idNovedad, String para, String asunto, String cuerpo, String evidencia, String numNovedad,
+    public novedad(String idNovedad, String para, String asunto, String cuerpo, String evidencia,
             Date fechaNovedad) {
         this.idNovedad = idNovedad;
         this.para = para;
         this.asunto = asunto;
         this.cuerpo = cuerpo;
         this.evidencia = evidencia;
-        this.numNovedad = numNovedad;
         this.fechaNovedad = fechaNovedad;
     }
 
@@ -93,14 +89,6 @@ public class novedad {
 
     public void setEvidencia(String evidencia) {
         this.evidencia = evidencia;
-    }
-
-    public String getNumNovedad() {
-        return numNovedad;
-    }
-
-    public void setNumNovedad(String numNovedad) {
-        this.numNovedad = numNovedad;
     }
 
     public Date getFechaNovedad() {

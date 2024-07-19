@@ -1,12 +1,16 @@
 body {
-    background-color: #CFD8DC;
+    background-color: #dde6ea;
 }
 
 .body {
     background-color: #f3ece5;
 }
 
-
+.modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
 /* alerta atencion */
 
 .expandable-div:hover .fa-exclamation-triangle {
@@ -19,7 +23,7 @@ body {
     transition: font-size 0s ease;
 }
 
-
+fondoDatoTarjeta
 
 .expandable-div:hover .fa-exclamation-triangle,
 .expandable-div:hover h1 {
@@ -200,6 +204,9 @@ hr {
     height: 109%;
     width: 105%;
     color: white;
+}
+.fondoDatoTarjetaa{
+    background-color:   #58727E;
 }
 
 

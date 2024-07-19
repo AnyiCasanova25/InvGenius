@@ -1,5 +1,7 @@
 package com.InvGenius.InvGenius.Controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,6 +46,18 @@ public class novedadController {
         return new ResponseEntity<>(novedad, HttpStatus.OK);
     }
 
+    @GetMapping("/busquedaFiltros/{filtro}")
+    public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
+        var listaNovedad = novedadService.novedadExist(filtro);
+        return new ResponseEntity<>(listaNovedad, HttpStatus.OK);
+    }
+
+    @GetMapping("/busquedaFiltrosFecha/{filtro}")
+    public ResponseEntity<Object> findFiltro(@PathVariable Date filtro) {
+        var listaNovedad = novedadService.fechaDeNovedad(filtro);
+        return new ResponseEntity<>(listaNovedad, HttpStatus.OK);
+    }
+
     @GetMapping("/")
     public ResponseEntity<Object> findAll() {
         var listaNovedad = novedadService.findAll();
@@ -71,8 +85,6 @@ public class novedadController {
             novedad.setPara(novedadUpdate.getPara());
             novedad.setAsunto(novedadUpdate.getAsunto());
             novedad.setCuerpo(novedadUpdate.getCuerpo());
-            novedad.setNumNovedad(novedadUpdate.getNumNovedad());
-            novedad.setFechaNovedad(novedadUpdate.getFechaNovedad());
 
             novedadService.save(novedad);
 
