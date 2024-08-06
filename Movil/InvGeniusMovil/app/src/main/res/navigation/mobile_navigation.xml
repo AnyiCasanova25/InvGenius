@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_novedades">
+
+    <fragment
+        android:id="@+id/nav_novedades"
+        android:name="com.example.invgeniusmovil.ui.novedades.NovedadesFragment"
+        android:label="@string/Novedades"
+        tools:layout="@layout/fragment_novedades" />
+
+    <fragment
+        android:id="@+id/nav_producto"
+        android:name="com.example.invgeniusmovil.ui.producto.ProductoFragment"
+        android:label="@string/Producto"
+        tools:layout="@layout/fragment_producto" />
+
+    <fragment
+        android:id="@+id/nav_categoria"
+        android:name="com.example.invgeniusmovil.ui.categoria.CategoriaFragment"
+        android:label="@string/Categoria"
+        tools:layout="@layout/fragment_categoria" />
+
+    <fragment
+        android:id="@+id/nav_miPerfil"
+        android:name="com.example.invgeniusmovil.ui.miPerfil.MiPerfilFragment"
+        android:label="@string/MiPerfil"
+        tools:layout="@layout/fragment_mi_perfil" />
+
+    <fragment
+        android:id="@+id/nav_cambiarContrasena"
+        android:name="com.example.invgeniusmovil.ui.cambiarContrasena.CambiarContrasenaFragment"
+        android:label="@string/CambiarContrasena"
+        tools:layout="@layout/fragment_cambiar_contrasena" />
+</navigation>
