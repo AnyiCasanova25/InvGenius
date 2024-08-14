@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CFD8DC"
+    tools:context=".ui.novedades.NovedadesFragment">
+
+    <ScrollView
+        android:layout_width="415dp"
+        android:layout_height="684dp"
+        android:background="#CFD8DC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/btnNovedadesEmpleados"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:backgroundTint="@color/novedadicon"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="Novedades 000"
+                    android:textSize="18dp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/user_white"
+                    app:iconGravity="textTop"
+                    app:iconSize="80dp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/Linear1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="13dp" />
+
+                    <LinearLayout
+                        android:id="@+id/barrabusqueda1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        tools:layout_editor_absoluteY="13dp">
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="11dp"
+                            android:layout_weight="1" />
+
+                        <EditText
+                            android:id="@+id/editText1"
+                            android:layout_width="197dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:text="Buscar..." />
+
+                        <Button
+                            android:id="@+id/button1"
+                            android:layout_width="15dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/novedadicon"
+                            android:gravity="center"
+                            app:icon="@drawable/magnifying_glass"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="15dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/novedadicon"
+                            app:icon="@drawable/plus"
+                            app:iconSize="20dp" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/Tablas"
+                        android:backgroundTint="@color/Tablas"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.00999999">
+
+                        <TextView
+                            android:id="@+id/idNovedad"
+                            android:layout_width="31dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:gravity="center"
+                            android:text="Novedad"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/idFechaEnvio"
+                            android:layout_width="13dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:gravity="center"
+                            android:text="Fecha Envio"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/idopci"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:gravity="center"
+                            android:text="Opciones"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/RVNovedadesUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btnProductosCaducados"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:backgroundTint="@color/novedadicon"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="Productos Caducados 000"
+                    android:textSize="18dp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/caducados"
+                    app:iconGravity="textTop"
+                    app:iconSize="80dp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:id="@+id/Linear2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/barrabusqueda2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    tools:layout_editor_absoluteY="13dp">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="11dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/editText2"
+                        android:layout_width="197dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Buscar..." />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="15dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/novedadicon"
+                        android:gravity="center"
+                        app:icon="@drawable/magnifying_glass"
+                        app:iconSize="20dp" />
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="15dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/logo1icono_background"
+                        app:icon="@drawable/plus"
+                        app:iconSize="20dp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@color/Tablas"
+                    android:backgroundTint="@color/Tablas"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.00999999">
+
+                    <TextView
+                        android:id="@+id/idProducto"
+                        android:layout_width="31dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Novedad"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/idFechaVencimiento"
+                        android:layout_width="13dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Vencimiento"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/idOpcio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Opciones"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVProductosCaducados"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btnProductoaCaducar"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:backgroundTint="@color/novedadicon"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="Productos a Cadudar 000"
+                    android:textSize="18dp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/acaducar"
+                    app:iconGravity="textTop"
+                    app:iconSize="80dp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:id="@+id/Linear3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/barrabusqueda3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    tools:layout_editor_absoluteY="13dp">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="11dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/editText3"
+                        android:layout_width="197dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Buscar..." />
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="15dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/logo1icono_background"
+                        android:gravity="center"
+                        app:icon="@drawable/magnifying_glass"
+                        app:iconSize="20dp" />
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="15dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#000000"
+                        app:icon="@drawable/plus"
+                        app:iconSize="20dp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVProductosACaducar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/btnBajoStock"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
+                    android:backgroundTint="@color/novedadicon"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="Bajo Stock"
+                    android:textSize="18dp"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/bajostock"
+                    app:iconGravity="textTop"
+                    app:iconSize="80dp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/Linear4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/barrabusqueda4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    tools:layout_editor_absoluteY="13dp">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="11dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:id="@+id/editText4"
+                        android:layout_width="197dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Buscar..." />
+
+                    <Button
+                        android:id="@+id/button7"
+                        android:layout_width="15dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/novedadicon"
+                        android:gravity="center"
+                        app:icon="@drawable/magnifying_glass"
+                        app:iconSize="20dp" />
+
+                    <Button
+                        android:id="@+id/button8"
+                        android:layout_width="15dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/novedadicon"
+                        app:icon="@drawable/plus"
+                        app:iconSize="20dp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVBajoStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/text_novedades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

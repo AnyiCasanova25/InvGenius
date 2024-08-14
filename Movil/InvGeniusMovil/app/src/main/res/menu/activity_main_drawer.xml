@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_novedades"
+            android:icon="@drawable/novedades"
+            android:title="@string/Novedades" />
+        <item
+            android:id="@+id/nav_producto"
+            android:icon="@drawable/producto"
+            android:title="@string/Producto" />
+        <item
+            android:id="@+id/nav_categoria"
+            android:icon="@drawable/categoria"
+            android:title="@string/Categoria" />
+        <item
+            android:title="_______________________"
+            android:iconTint="@color/black"
+            android:enabled="false"/>
+        <item
+            android:id="@+id/nav_miPerfil"
+            android:icon="@drawable/user"
+            android:title="@string/MiPerfil" />
+        <item
+            android:id="@+id/nav_cambiarContrasena"
+            android:icon="@drawable/contrasena"
+            android:title="@string/CambiarContrasena" />
+        <item
+            android:title="_______________________"
+            android:iconTint="@color/black"
+            android:enabled="false"/>
+        <item
+            android:id="@+id/nav_cambiarContrasena"
+            android:icon="@drawable/salir"
+            android:title="@string/CerrarSesion" />
+    </group>
+</menu>
