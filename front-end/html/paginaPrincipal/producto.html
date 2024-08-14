@@ -36,6 +36,7 @@
                             <div class="dropdown-content">
                                 <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
                                 <a href="/front-end/html/Perfil/adminPerfiles.html">Administrar Perfiles</a>
+                                <a href="#">Novedades</a>
                                 <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
                                 <hr>
                                 <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
@@ -50,7 +51,7 @@
 
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/novedades.html">Novedades <i class="fa-solid fa-bullhorn"></i></a>
+                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/novedades.html">Vista previa<i class="fa-solid fa-bullhorn"></i></a>
                 <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/producto.html">Producto <i class="fas fa-shopping-cart"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
                 <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i class="fas fa-border-all"></i></a>
@@ -138,32 +139,32 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;"  onfocusout="validarCategoria(this)" required>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required>
                                     </div>                                    
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del producto:</label>
-                                        <input type="text" id="nombreProducto" class="form-control" style="border: 1px solid black;"  onfocusout="validarNombreProducto(this)" required>
+                                        <input type="text" id="nombreProducto" class="form-control" style="border: 1px solid black;"   required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
-                                        <input type="text" id="proveedor" class="form-control" style="border: 1px solid black;"  onfocusout="validarProveedor(this)" required>
+                                        <input type="text" id="proveedor" class="form-control" style="border: 1px solid black;"  required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="cantidadProducto"><i class="fas fa-sort-numeric-up"></i> Cantidad Producto:</label>
-                                        <input type="number" id="cantidadProducto" class="form-control" style="border: 1px solid black;"  onfocusout="validarCantidadProducto(this)" required>
+                                        <input type="number" id="cantidadProducto" class="form-control" style="border: 1px solid black;"  required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="precioEntrada"><i class="fas fa-money-bill-wave"></i> Precio Entrada:</label>
-                                        <input type="number" id="precioEntrada" class="form-control" style="border: 1px solid black;"  onfocusout="validarprecioEntrada(this)" required>
+                                        <input type="number" id="precioEntrada" class="form-control" style="border: 1px solid black;"  required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
                                         <label for="precioUnitario"><i class="fas fa-dollar-sign"></i> Precio Unitario:</label>
-                                        <input type="text" id="precioUnitario" class="form-control" style="border: 1px solid black;"  onfocusout="validarPrecioUnitario(this)" required>
+                                        <input type="text" id="precioUnitario" class="form-control" style="border: 1px solid black;"   required>
                                     </div>
                                     
                                     <div class="col col-xl-6 col-12">
@@ -178,8 +179,8 @@
                                     
                                     <div class="col col-xl-12 col-12">
                                         <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del producto:</label>
-                                        <textarea id="descripcion" class="form-control" rows="5" style="border: 1px solid black;"  onfocusout="validarDescripcion(this)" required minlength="50"></textarea>
-                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe tener al menos 50 caracteres.</small>
+                                        <textarea id="descripcion" class="form-control" rows="5" style="border: 1px solid black;"   required minlength="50"></textarea>
+                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe tener al menos 10 caracteres.</small>
                                     </div>                               
                                     
                                 </form>
