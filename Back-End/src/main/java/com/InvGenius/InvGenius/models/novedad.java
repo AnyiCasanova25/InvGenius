@@ -32,9 +32,6 @@ public class novedad {
     @Column(name = "cuerpo", nullable = false, length = 500)
     private String cuerpo;
 
-    @Column(name = "evidencia", nullable = false, length = 100)
-    private String evidencia;
-
     @Column(name = "fechaNovedad", nullable = false)
     private Date fechaNovedad;
 
@@ -47,7 +44,6 @@ public class novedad {
         this.para = para;
         this.asunto = asunto;
         this.cuerpo = cuerpo;
-        this.evidencia = evidencia;
         this.fechaNovedad = fechaNovedad;
     }
 
@@ -81,14 +77,6 @@ public class novedad {
 
     public void setCuerpo(String cuerpo) {
         this.cuerpo = cuerpo;
-    }
-
-    public String getEvidencia() {
-        return evidencia;
-    }
-
-    public void setEvidencia(String evidencia) {
-        this.evidencia = evidencia;
     }
 
     public Date getFechaNovedad() {
