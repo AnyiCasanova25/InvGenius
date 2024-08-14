@@ -70,12 +70,12 @@ public class userController {
             return new ResponseEntity<>("El documento de identidad es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        if (user.getPrimerNombre().equals("")) {
+        if (user.getNombres().equals("")) {
 
             return new ResponseEntity<>("El primer nombre es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        if (user.getPrimerApellido().equals("")) {
+        if (user.getApellidos().equals("")) {
 
             return new ResponseEntity<>("El primer apellido es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
@@ -156,10 +156,8 @@ public class userController {
         if (user != null) {
 
             user.setDocumentoIdentidad(userUpdate.getDocumentoIdentidad());
-            user.setPrimerNombre(userUpdate.getPrimerNombre());
-            user.setSegundoNombre(userUpdate.getSegundoNombre());
-            user.setPrimerApellido(userUpdate.getPrimerApellido());
-            user.setSegundoApellido(userUpdate.getSegundoApellido());
+            user.setNombres(userUpdate.getNombres());
+            user.setApellidos(userUpdate.getApellidos());
             user.setCelular(userUpdate.getCelular());
             user.setCorreo(userUpdate.getCorreo());
             user.setPassword(userUpdate.getPassword());

@@ -28,17 +28,11 @@ public class user {
      @Column(name = "documentoIdentidad", nullable = false, length = 36)
      private String documentoIdentidad;
 
-     @Column(name = "primerNombre", nullable = false, length = 36)
-     private String primerNombre;
+     @Column(name = "nombres", nullable = false, length = 36)
+     private String nombres;
 
-     @Column(name = "segundoNombre", nullable = false, length = 36)
-     private String segundoNombre;
-
-     @Column(name = "primerApellido", nullable = false, length = 36)
-     private String primerApellido;
-
-     @Column(name = "segundoApellido", nullable = false, length = 36)
-     private String segundoApellido;
+     @Column(name = "apellidos", nullable = false, length = 36)
+     private String apellidos;
 
      @Column(name = "Celular", nullable = false, length = 13)
      private String Celular;
@@ -59,15 +53,13 @@ public class user {
 
    
 
-    public user(String idUser, String documentoIdentidad, String primerNombre, String segundoNombre,
-            String primerApellido, String segundoApellido, String celular, String correo, String password,
+    public user(String idUser, String documentoIdentidad, String nombres,
+            String apellidos, String celular, String correo, String password,
             String confirmarPassword, String rol) {
         this.idUser = idUser;
         this.documentoIdentidad = documentoIdentidad;
-        this.primerNombre = primerNombre;
-        this.segundoNombre = segundoNombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
         Celular = celular;
         Correo = correo;
         this.password = password;
@@ -117,36 +109,20 @@ public class user {
         this.documentoIdentidad = documentoIdentidad;
     }
 
-    public String getPrimerNombre() {
-        return primerNombre;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setPrimerNombre(String primerNombre) {
-        this.primerNombre = primerNombre;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getSegundoNombre() {
-        return segundoNombre;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
-    }
-
-    public String getPrimerApellido() {
-        return primerApellido;
-    }
-
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
-    }
-
-    public String getSegundoApellido() {
-        return segundoApellido;
-    }
-
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getCelular() {
