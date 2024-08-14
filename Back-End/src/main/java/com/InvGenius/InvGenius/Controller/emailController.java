@@ -179,7 +179,7 @@ public class emailController {
                     + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>\r\n"
                     + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
                     + "<p>Gracias por considerar mi solicitud. Espero su respuesta.</p>\r\n"
-                    + "<p>Atentamente,<br>[William Stevan Gonzalez Cortes]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+                    + "<p>Atentamente,<br>[William Steban Gonzalez Cortes]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo);
             if (retorno) {
