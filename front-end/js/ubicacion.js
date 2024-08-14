@@ -1,4 +1,4 @@
-url: "http://localhost:8080/api/v1/ubicacion"
+url: "http://10.192.66.26:8080/api/v1/ubicacion"
 
 function registrarUbicacion(){
     let asignar_ubicacion = document.getElementById("asignarUbicacion").value;

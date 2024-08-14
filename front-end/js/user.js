@@ -1,4 +1,4 @@
-var url = "http://localhost:8080/api/v1/user/";
+var url = "http://10.192.66.26:8080/api/v1/user/";
 
 function registrarUser(event) {
     event.preventDefault(); // Evitar el comportamiento predeterminado del formulario

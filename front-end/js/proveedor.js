@@ -1,5 +1,5 @@
 // URL de la API se declara una url por si se modifica solo cambiar donde la declaro y no entodas las demas partes
-var url = "http://localhost:8080/api/v1/proveedor/";
+var url = "http://10.192.66.26:8080/api/v1/proveedor/";
 
 // este metodo solo permite letras
 const letrasPermitidas = [
