@@ -10,58 +10,59 @@
         android:layout_height="48dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.00999999">
+        tools:layout_editor_absoluteX="8dp">
 
         <Space
-            android:layout_width="12dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/lblNovedad"
-            android:layout_width="wrap_content"
+            android:id="@+id/lblNombreProducto"
+            android:layout_width="73dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center|left"
             android:text="1"
             android:textColor="#000000" />
 
         <Space
-            android:layout_width="33dp"
+            android:layout_width="47dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/lblFechaEnvio"
-            android:layout_width="wrap_content"
+            android:id="@+id/lblMarcaProducto"
+            android:layout_width="101dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center|left"
             android:text="10/07/2024"
             android:textColor="#000000" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <Button
-            android:id="@+id/button"
-            android:layout_width="110dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/novedadicon"
-            android:text="Ver detalle"
-            android:textSize="12sp" />
+            android:background="#00FFFFFF"
+            app:icon="@drawable/productocarro"
+            app:iconSize="20dp"
+            app:iconTint="#000000" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:icon="@drawable/salir"
+            app:iconSize="20dp"
+            app:iconTint="#000000" />
 
         <Space
-            android:layout_width="wrap_content"
+            android:layout_width="36dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

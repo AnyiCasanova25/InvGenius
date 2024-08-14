@@ -9,7 +9,7 @@
 
     <string name="Novedades" fontFamily="@font/titillium_web_bold">Novedades</string>
     <string name="Producto" fontFamily="@font/titillium_web_bold">Producto</string>
-    <string name="Categoria" fontFamily="@font/titillium_web_bold">Categoria</string>
+    <string name="Categoria" fontFamily="@font/titillium_web_bold">Categoría</string>
     <string name="MiPerfil" fontFamily="@font/titillium_web_bold">Mi Perfil</string>
     <string name="CambiarContrasena" fontFamily="@font/titillium_web_bold">Cambiar Contraseña</string>
     <string name="CerrarSesion" fontFamily="@font/titillium_web_bold">Cerrar Sesión</string>

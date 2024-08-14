@@ -6,16 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.invgeniusmovil.R
-import com.example.invgeniusmovil.adapters.adapterNovedadesDeUsuario
+import com.example.invgeniusmovil.adapters.Novedades.adapterBajoStock
+import com.example.invgeniusmovil.adapters.Novedades.adapterProductosACaducar
+import com.example.invgeniusmovil.adapters.Novedades.adapterProductosCaducados
+import com.example.invgeniusmovil.adapters.Novedades.adapterUsuario
 import com.example.invgeniusmovil.databinding.FragmentNovedadesBinding
-import com.example.invgeniusmovil.models.novedades_de_usuario
+import com.example.invgeniusmovil.models.Novedades.bajo_stock
+import com.example.invgeniusmovil.models.Novedades.usuario
+import com.example.invgeniusmovil.models.Novedades.productos_a_caducar
+import com.example.invgeniusmovil.models.Novedades.productos_caducados
 
 class NovedadesFragment : Fragment() {
 
@@ -61,13 +65,80 @@ class NovedadesFragment : Fragment() {
 
         // Configuración del RecyclerView
         val listNovedadesDeUsuario = mutableListOf(
-            novedades_de_usuario("1", "10/08/2024"),
-            novedades_de_usuario("2", "30/01/204")
+            usuario("1", "10/08/2024"),
+            usuario("2", "10/08/2024"),
+            usuario("3", "10/08/2024"),
+            usuario("4", "10/08/2024"),
+            usuario("5", "10/08/2024"),
+            usuario("6", "10/08/2024"),
+            usuario("7", "10/08/2024"),
+            usuario("8", "10/08/2024"),
+            usuario("9", "10/08/2024"),
+            usuario("10", "10/08/2024")
         )
 
         val recycler: RecyclerView = binding.RVNovedadesUsuario
         recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = adapterNovedadesDeUsuario(listNovedadesDeUsuario)
+        recycler.adapter = adapterUsuario(listNovedadesDeUsuario)
+
+
+
+        val listNovedadesDeProductosCaducados = mutableListOf(
+            productos_caducados("1", "10/08/2024"),
+            productos_caducados("2", "10/08/2024"),
+            productos_caducados("3", "10/08/2024"),
+            productos_caducados("4", "10/08/2024"),
+            productos_caducados("5", "10/08/2024"),
+            productos_caducados("6", "10/08/2024"),
+            productos_caducados("7", "10/08/2024"),
+            productos_caducados("8", "10/08/2024"),
+            productos_caducados("9", "10/08/2024"),
+            productos_caducados("10", "10/08/2024")
+        )
+
+        val recycler2: RecyclerView = binding.RVProductosCaducados
+        recycler2.layoutManager = LinearLayoutManager(context)
+        recycler2.adapter = adapterProductosCaducados(listNovedadesDeProductosCaducados)
+
+
+
+        val listNovedadesDeProductosACaducar = mutableListOf(
+            productos_a_caducar("1", "10/08/2024"),
+            productos_a_caducar("2", "10/08/2024"),
+            productos_a_caducar("3", "10/08/2024"),
+            productos_a_caducar("4", "10/08/2024"),
+            productos_a_caducar("5", "10/08/2024"),
+            productos_a_caducar("6", "10/08/2024"),
+            productos_a_caducar("7", "10/08/2024"),
+            productos_a_caducar("8", "10/08/2024"),
+            productos_a_caducar("9", "10/08/2024"),
+            productos_a_caducar("10", "10/08/2024")
+        )
+
+        val recycler3: RecyclerView = binding.RVProductosACaducar
+        recycler3.layoutManager = LinearLayoutManager(context)
+        recycler3.adapter = adapterProductosACaducar(listNovedadesDeProductosACaducar)
+
+
+
+        val listNovedadesBajoStock = mutableListOf(
+            bajo_stock("1", "Leche"),
+            bajo_stock("2", "Granos"),
+            bajo_stock("3", "Carnes"),
+            bajo_stock("4", "Carnes"),
+            bajo_stock("5", "Leche"),
+            bajo_stock("6", "Leche"),
+            bajo_stock("7", "Carnes"),
+            bajo_stock("8", "Leche"),
+            bajo_stock("9", "Carnes"),
+            bajo_stock("10", "Leche")
+        )
+
+        val recycler4: RecyclerView = binding.RVBajoStock
+        recycler4.layoutManager = LinearLayoutManager(context)
+        recycler4.adapter = adapterBajoStock(listNovedadesBajoStock)
+
+
     }
 
     fun mostrarFragment(buttonMostrar: Button, Linear: LinearLayout) {

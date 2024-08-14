@@ -33,7 +33,7 @@
             android:iconTint="@color/black"
             android:enabled="false"/>
         <item
-            android:id="@+id/nav_cambiarContrasena"
+            android:id="@+id/nav_salir"
             android:icon="@drawable/salir"
             android:title="@string/CerrarSesion" />
     </group>

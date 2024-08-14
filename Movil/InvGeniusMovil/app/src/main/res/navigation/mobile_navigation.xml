@@ -34,4 +34,11 @@
         android:name="com.example.invgeniusmovil.ui.cambiarContrasena.CambiarContrasenaFragment"
         android:label="@string/CambiarContrasena"
         tools:layout="@layout/fragment_cambiar_contrasena" />
+
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.example.invgeniusmovil.ui.salir.SalirFragment"
+        android:label="@string/CerrarSesion"
+        tools:layout="@layout/fragment_salir"
+        />
 </navigation>

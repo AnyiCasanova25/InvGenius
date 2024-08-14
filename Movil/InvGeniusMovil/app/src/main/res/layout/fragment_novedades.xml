@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CFD8DC"
+    android:background="#E4CFD8DC"
     tools:context=".ui.novedades.NovedadesFragment">
 
     <ScrollView
@@ -24,7 +24,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/btnNovedadesEmpleados"
@@ -138,8 +138,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:background="@color/Tablas"
-                        android:backgroundTint="@color/Tablas"
+                        android:background="#D8FFFFFF"
                         android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,20 +147,30 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.00999999">
 
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
                         <TextView
                             android:id="@+id/idNovedad"
-                            android:layout_width="31dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/titillium_web_bold"
                             android:gravity="center"
-                            android:text="Novedad"
+                            android:text="N°"
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
                         <TextView
                             android:id="@+id/idFechaEnvio"
-                            android:layout_width="13dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/titillium_web_bold"
@@ -169,6 +178,11 @@
                             android:text="Fecha Envio"
                             android:textColor="#000000"
                             android:textSize="18sp" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
 
                         <TextView
                             android:id="@+id/idopci"
@@ -181,13 +195,19 @@
                             android:textColor="#000000"
                             android:textSize="18sp" />
 
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/RVNovedadesUsuario"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="195dp"
                         android:layout_weight="1"
+                        android:background="#8DFFFFFF"
                         android:visibility="visible" />
 
                 </LinearLayout>
@@ -298,8 +318,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@color/Tablas"
-                    android:backgroundTint="@color/Tablas"
+                    android:background="#D8FFFFFF"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -308,20 +327,30 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.00999999">
 
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                     <TextView
                         android:id="@+id/idProducto"
-                        android:layout_width="31dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/titillium_web_bold"
                         android:gravity="center"
-                        android:text="Novedad"
+                        android:text="N°"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                     <TextView
                         android:id="@+id/idFechaVencimiento"
-                        android:layout_width="13dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/titillium_web_bold"
@@ -329,6 +358,11 @@
                         android:text="Vencimiento"
                         android:textColor="#000000"
                         android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/idOpcio"
@@ -341,13 +375,19 @@
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RVProductosCaducados"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="195dp"
                     android:layout_weight="1"
+                    android:background="#8DFFFFFF"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -434,7 +474,7 @@
                         android:layout_width="15dp"
                         android:layout_height="45dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#000000"
+                        android:backgroundTint="@color/logo1icono_background"
                         app:icon="@drawable/plus"
                         app:iconSize="20dp" />
 
@@ -450,11 +490,80 @@
                     android:layout_weight="1"
                     android:visibility="visible" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/RVProductosACaducar"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="#D8FFFFFF"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.00999999">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/idProductoACaducar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="N°"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/idFechaVencimientoACaducar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Vencimiento"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/idOpcionACaducar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Opciones"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVProductosACaducar"
+                    android:layout_width="match_parent"
+                    android:layout_height="195dp"
+                    android:layout_weight="1"
+                    android:background="#8DFFFFFF"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -470,7 +579,7 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/btnBajoStock"
@@ -557,13 +666,86 @@
                     android:layout_weight="1"
                     android:visibility="visible" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/RVBajoStock"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="#D8FFFFFF"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.00999999">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/idProductoNumStokc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="N°"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/idProductoStokc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Producto"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/idOpcionStokc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Opciones"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVBajoStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="195dp"
+                    android:layout_weight="1"
+                    android:background="#8DFFFFFF"
                     android:visibility="visible" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="27dp" />
 
         </LinearLayout>
     </ScrollView>

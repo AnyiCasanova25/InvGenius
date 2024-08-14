@@ -4,7 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal_700"
     tools:context=".ui.miPerfil.MiPerfilFragment">
+
+    <!-- Título -->
+
+    <!-- Imagen de perfil -->
+
+    <!-- Nombre de usuario -->
+
+    <!-- Detalles de perfil -->
+
+    <!-- Botones de acción -->
+
+    <LinearLayout
+        android:layout_width="326dp"
+        android:layout_height="590dp"
+        android:background="@color/teal_700"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="297dp"
+            android:layout_height="543dp"
+            android:background="#70CCCCCC"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_admin_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abhaya_libre_medium"
+                android:text="Admin"
+                android:textColor="#FFFFFF"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="121dp"
+                android:layout_height="139dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/fotoperfil"
+                android:scaleType="centerCrop" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abyssinica_sil"
+                android:text="Laura Ariza"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
+
+            <LinearLayout
+                android:id="@+id/profile_details"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:background="#BAECEFF1"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintWidth_percent="0.8">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Laura Valentina Ariza Alejo"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="1084922588"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Laurentivaizalejo@gmail.com"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="29dp" />
+
+            <LinearLayout
+                android:id="@+id/action_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Botón Editar -->
+                <Button
+                    android:id="@+id/button_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Editar" />
+
+                <!-- Botón Salir -->
+                <Button
+                    android:id="@+id/button_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salir" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/text_mi_perfil"
@@ -15,6 +147,7 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

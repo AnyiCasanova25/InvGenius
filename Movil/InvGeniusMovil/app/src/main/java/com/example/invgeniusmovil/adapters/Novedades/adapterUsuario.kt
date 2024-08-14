@@ -1,17 +1,16 @@
-package com.example.invgeniusmovil.adapters
+package com.example.invgeniusmovil.adapters.Novedades
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.invgeniusmovil.R
-import com.example.invgeniusmovil.models.novedades_de_usuario
+import com.example.invgeniusmovil.models.Novedades.usuario
 
-class adapterNovedadesDeUsuario(
-    private val listNovedadesDeUsuario: List<novedades_de_usuario>
-) : RecyclerView.Adapter<adapterNovedadesDeUsuario.MyHolder>() {
+class adapterUsuario(
+    private val listNovedadesDeUsuario: List<usuario>
+) : RecyclerView.Adapter<adapterUsuario.MyHolder>() {
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val lblNovedad: TextView = itemView.findViewById(R.id.lblNovedad)
