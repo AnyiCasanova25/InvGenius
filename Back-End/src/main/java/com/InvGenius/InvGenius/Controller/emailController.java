@@ -88,6 +88,7 @@ public class emailController {
             String destinatario = "invgenius2024@gmail.com";
             String asunto = "Cambio de contraseña";
             String cuerpo = ""
+                    + "<h1>Estimado Usuario</h1>"
                     + "<p>Este correo electrónico es para informarle que la contraseña de su cuenta en \"InvGenius\" ha sido cambiada con éxito. Si usted realizó este cambio, puede ignorar este mensaje. En caso contrario, le recomendamos que se comunique con nuestro equipo de soporte de inmediato.</p>\r\n "
                     + "<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
                     + "      <p>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nosotros. Estamos aquí para ayudarle. </p>\r\n"
@@ -178,13 +179,43 @@ public class emailController {
                     + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>\r\n"
                     + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
                     + "<p>Gracias por considerar mi solicitud. Espero su respuesta.</p>\r\n"
-                    + "<p>Atentamente,<br>[Tu Nombre]<br>[Tu Información de Contacto]</p>\r\n";
+                    + "<p>Atentamente,<br>[William Stevan Gonzalez Cortes]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo);
             if (retorno) {
                 return "Se envió correctamente";
             } else {
                 return "No se pudo enviar";
+            }
+
+        } catch (Exception e) {
+            return "Error al enviar: " + e.getMessage();
+        }
+    }
+
+    @GetMapping("/enviar-correo-novedad")
+    public String enviarCorreoNovedad() {
+        try {
+            String destinatario = "invgenius2024@gmail.com";
+            String asunto = "Novedades en el Inventario - Productos con Bajo Stock";
+            String cuerpo = ""
+                    + "<h1>Estimado Usuario</h1>"
+                    + "<p>Le informamos que los siguientes productos están con bajo stock:</p>"
+                    + "<ul>"
+                    + "<li><strong>Categoría:</strong> Lácteos - <strong>Marca:</strong> Leche Vida</li>"
+                    + "<li><strong>Categoría:</strong> Cereales - <strong>Marca:</strong> Granola Plus</li>"
+                    + "<li><strong>Categoría:</strong> Bebidas - <strong>Marca:</strong> Jugo Natural</li>"
+                    + "</ul>"
+                    + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>"
+                    + "<img src='https://example.com/images/stock-bajo.png' width='100px' height='100px'>"
+                    + "<p>Gracias por su atención.</p>"
+                    + "<p>Atentamente,<br>[Julian David Fierro Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>";
+
+            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
+            if (retorno) {
+                return "Correo enviado correctamente";
+            } else {
+                return "No se pudo enviar el correo";
             }
 
         } catch (Exception e) {
