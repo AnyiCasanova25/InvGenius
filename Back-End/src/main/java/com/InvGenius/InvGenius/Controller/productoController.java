@@ -48,12 +48,6 @@ public class productoController {
                     HttpStatus.BAD_REQUEST);
         }
 
-        if (producto.getPrecioVenta().equals("")) {
-
-            return new ResponseEntity<>("El precio de la venta del producto es un campo obligatorio",
-                    HttpStatus.BAD_REQUEST);
-        }
-
         productoService.save(producto);
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
@@ -88,7 +82,6 @@ public class productoController {
             producto.setPrecioProducto(productoUpdate.getPrecioProducto());
             producto.setStock(productoUpdate.getStock());
             producto.setPrecioCompra(productoUpdate.getPrecioCompra());
-            producto.setPrecioVenta(productoUpdate.getPrecioVenta());
 
             productoService.save(producto);
 

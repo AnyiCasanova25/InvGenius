@@ -50,9 +50,6 @@ public class producto {
     @Column(name = "precioCompra" , nullable = false, length = 36)
     private String precioCompra;
 
-    @Column(name = "precioVenta" , nullable = false, length = 36)
-    private String precioVenta;
-
     @Column(name = "descripcionProducto", nullable = false, length = 199)
     private String descripcionProducto;
 
@@ -75,7 +72,6 @@ public class producto {
         this.categoria = categoria;
         this.stock = stock;
         this.precioCompra = precioCompra;
-        this.precioVenta = precioVenta;
         this.descripcionProducto = descripcionProducto;
         this.unidad = unidad;
     }
@@ -144,14 +140,6 @@ public class producto {
 
     public void setPrecioCompra(String precioCompra) {
         this.precioCompra = precioCompra;
-    }
-
-    public String getPrecioVenta() {
-        return precioVenta;
-    }
-
-    public void setPrecioVenta(String precioVenta) {
-        this.precioVenta = precioVenta;
     }
 
     public unidad getUnidad() {
