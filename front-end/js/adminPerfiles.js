@@ -1,5 +1,7 @@
 // URL de la API se declara una url por si se modifica solo cambiar donde la declaro y no entodas las demas partes
-var url = "http://10.192.66.26:8080/api/v1/user/";
+// var url = "http://10.192.66.26:8080/api/v1/user/";
+
+var url = "http://localhost:8080/api/v1/user/";
 
 function listarUser() {
     $.ajax({
@@ -35,8 +37,8 @@ function mostrarTabla(result){
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
             <td class="align-middle">${result[i]["documentoIdentidad"]}</td>
-            <td class="text-center align-middle">${result[i]["primerNombre"]+" "+result[i]["segundoNombre"]}</td>
-            <td class="text-center align-middle">${result[i]["primerApellido"]+" "+result [i]["segundoApellido"]}</td>
+            <td class="text-center align-middle">${result[i]["nombres"]}</td>
+            <td class="text-center align-middle">${result[i]["apellidos"]}</td>
             <td class="text-center align-middle">${result[i]["correo"]}</td>
             <td class="text-center align-middle">${result[i]["celular"]}</td>
             <td class="text-center align-middle">${result[i]["rol"]}</td>
