@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="Novedades" fontFamily="@font/titillium_web_bold">Novedades</string>
+    <string name="Novedades" fontFamily="@font/titillium_web_bold">Vista Previa</string>
     <string name="Producto" fontFamily="@font/titillium_web_bold">Producto</string>
     <string name="Categoria" fontFamily="@font/titillium_web_bold">Categoría</string>
     <string name="MiPerfil" fontFamily="@font/titillium_web_bold">Mi Perfil</string>
