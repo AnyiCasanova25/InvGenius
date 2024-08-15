@@ -39,7 +39,7 @@ function mostrarTabla(result){
         trRegistro.innerHTML = `
             <td class="align-middle">${result[i]["documentoIdentidad"]}</td>
             <td class="text-center align-middle">${result[i]["nombres"]}</td>
-            <td class="text-center align-middle">${result[i]["primerApellido"]}</td>
+            <td class="text-center align-middle">${result[i]["apellidos"]}</td>
             <td class="text-center align-middle">${result[i]["correo"]}</td>
             <td class="text-center align-middle">${result[i]["celular"]}</td>
             <td class="text-center align-middle">${result[i]["rol"]}</td>
