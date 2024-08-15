@@ -34,7 +34,9 @@
                         <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
                         <div class="dropdown-content">
                             <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
+                            <a href="/front-end/html/inicioSesión/registrarUsuario.html">Registrar Usuario</a>
                             <a href="/front-end/html/Perfil/adminPerfiles.html">Administrar Perfiles</a>
+                            <a href="/front-end/html/paginaPrincipal/novedadesUsuario.html">Novedades Usuario</a>
                             <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
                             <hr>
                             <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
@@ -117,11 +119,11 @@
 
                         </div>
                     </div>
-                    <table class=" table table-hover table-striped">
+                    <table class="table table-hover table-striped">
                         <thead>
                             <tr>
                                 <th class="text-center align-middle">Lote</th>
-                                <th class="text-center align-middle">Categoria</th>
+                                <th class="text-center align-middle">Categoría</th>
                                 <th class="text-center align-middle">Producto</th>
                                 <th class="text-center align-middle">Marca</th>
                                 <th class="text-center align-middle">Cantidad</th>
@@ -129,8 +131,36 @@
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla"></tbody>
-                        <!-- Las filas de la tabla se agregarán dinámicamente con JavaScript -->
                     </table>
+                
+                    <script>
+                        // Datos quemados
+                        const productos = [
+                            { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', cantidad: 50 },
+                            { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', cantidad: 30 },
+                            { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', cantidad: 20 },
+                            { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', cantidad: 100 }
+                        ];
+                
+                        // Selecciona el cuerpo de la tabla
+                        const cuerpoTabla = document.getElementById('cuerpoTabla');
+                
+                        // Recorre los datos y añade filas a la tabla
+                        productos.forEach(producto => {
+                            const fila = document.createElement('tr');
+                            fila.innerHTML = `
+                                <td class="text-center align-middle">${producto.lote}</td>
+                                <td class="text-center align-middle">${producto.categoria}</td>
+                                <td class="text-center align-middle">${producto.producto}</td>
+                                <td class="text-center align-middle">${producto.marca}</td>
+                                <td class="text-center align-middle">${producto.cantidad}</td>
+                                <td class="text-center align-middle">
+                                    <button class="btn btn-secondary">Ver Lote</button>
+                                </td>
+                            `;
+                            cuerpoTabla.appendChild(fila);
+                        });
+                    </script>
                 </div>
 
             </div>

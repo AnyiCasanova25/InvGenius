@@ -5,77 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
     <title>InvGenius</title>
-    <link rel="stylesheet" href="/front-end/css/inicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/front-end/css/iniciarSesion.css">
 </head>
 
 <body>
     <section>
-        <form>
-    
-            <div class="inputboxLogo">
-                <a href="/front-end/html/inicioSesión/iniciarSesión.html" class="flecha"><i class="fas fa-arrow-left fa-2x"></i></a>
-                <img src="/front-end/img/Pagina/Logo.png"  width="24%" height="27%"><img src="/front-end/img/Pagina/Nombre.png" width="61%" height="80%">
-            </div>
-            <br>
-            <h1>Registro</h1>
-            
-            <div class="inputbox">
-                <ion-icon name="person-outline"></ion-icon>
-                <input type="text" required>
-                <label for="#">Primer Nombre</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="person-outline"></ion-icon>
-                <input type="text" required>
-                <label for="#">Segundo Nombre</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="person-outline"></ion-icon>
-                <input type="text" required>
-                <label for="#">Primer Apellido</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="person-outline"></ion-icon>
-                <input type="text" required>
-                <label for="#">Segundo Apellido</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" required>
-                <label for="#">Teléfono</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="telefono" required>
-                <label for="#">Email</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" required>
-                <label for="#">N° documento</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" required>
-                <label for="#">Contraseña</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" required>
-                <label for="#">Confirmar Contraseña</label>
-            </div>
-            <div>
-                <button><a  class="butonDireccion" href="/front-end/html/inicioSesión/iniciarSesión.html">Registrar</a></button>
-            </div>
-            
-        </form>
-    </section>
-</body>
+        <div class="logo-container">
+            <img src="/front-end/img/Pagina/Logo.png" class="logo">
+            <h2 class="logo-text">InvGenius</h2>
+        </div>
+        <div class="divider"></div>
+        <div class="form-container">
+            <!-- Formulario de Inicio de sesion-->
+            <form id="login-form">
+                <div class="arrow-position">
+                    <a href="/front-end/html/paginaPrincipal/novedades.html" class="back-to-login-link">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </a>
+                </div>
+                <h1>Registro</h1>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="Nombres" required>
+                    <label for="Nombres">Nombres</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" id="Apellidos" required>
+                    <label for="Apellidos">Apellidos</label>
+                </div>
+                <div class="inputbox">
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="number" id="documentoIdentidad" required>
+                        <label for="documentoIdentidad">N° Documento</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" id="Correo" required>
+                        <label for="Correo">Correo Electrónico</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="number" id="Celular" required>
+                        <label for="Celular">Celular</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="text" id="rol" value="Usuario" readonly>
+                    </div>
 
+            </form>
+            <div class="button-position">
+                <button type="submit" onclick="registrarUser(event)">Registrar</button>
+            </div>
+
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/front-end/js/user.js"></script>
+</body>
 
 </html>

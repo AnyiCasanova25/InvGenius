@@ -24,8 +24,8 @@
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-8 pt-1">
                     <a href="/front-end/html/paginaPrincipal/novedades.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="40px" height="50px" style="margin-right: 1%;"><img class="Nombre-Tamaño" src="/front-end/img/Pagina/Nombre.png"
-                            width="200px" height="60px">
+                            width="40px" height="50px" style="margin-right: 1%;"><img class="Nombre-Tamaño"
+                            src="/front-end/img/Pagina/Nombre.png" width="200px" height="60px">
                     </a>
                 </div>
 
@@ -35,13 +35,14 @@
                             <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
                             <div class="dropdown-content">
                                 <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
+                                <a href="/front-end/html/inicioSesión/registrarUsuario.html">Registrar Usuario</a>
                                 <a href="/front-end/html/Perfil/adminPerfiles.html">Administrar Perfiles</a>
-                                <a href="#">Novedades</a>
+                                <a href="/front-end/html/paginaPrincipal/novedadesUsuario.html">Novedades Usuario</a>
                                 <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
                                 <hr>
                                 <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,11 +52,19 @@
 
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/novedades.html">Vista previa <i class="fa-solid fa-bullhorn"></i></a>
-                <a class="nav-item nav-link link-body-emphasis active" href="/front-end/html/paginaPrincipal/producto.html">Producto <i class="fas fa-shopping-cart"></i></a>
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i class="fas fa-border-all"></i></a>
-                <a class="nav-item nav-link link-body-emphasis" href="/front-end/html/paginaPrincipal/informe.html">Informe <i class="fas fa-list-ul"></i></a>
+                <a class="nav-item nav-link link-body-emphasis"
+                    href="/front-end/html/paginaPrincipal/novedades.html">Vista previa <i
+                        class="fa-solid fa-bullhorn"></i></a>
+                <a class="nav-item nav-link link-body-emphasis active"
+                    href="/front-end/html/paginaPrincipal/producto.html">Producto <i
+                        class="fas fa-shopping-cart"></i></a>
+                <a class="nav-item nav-link link-body-emphasis"
+                    href="/front-end/html/paginaPrincipal/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
+                <a class="nav-item nav-link link-body-emphasis"
+                    href="/front-end/html/paginaPrincipal/categoria.html">Categoria <i
+                        class="fas fa-border-all"></i></a>
+                <a class="nav-item nav-link link-body-emphasis"
+                    href="/front-end/html/paginaPrincipal/informe.html">Informe <i class="fas fa-list-ul"></i></a>
             </nav>
         </div>
 
@@ -63,15 +72,15 @@
             <div class="row centradoInfo-sm justify-content-around">
                 <div class="col-lg-3 mb-3">
                     <a href="#" class="fondoDatoTarjeta" data-bs-toggle="modal" data-bs-target="#modalEntrada">
-                      <i style="margin-left: 15%;" class="fa-solid fa-truck-fast fa-3x"></i>
-                      <div class="Position-information">
-                        <h1 class="fw-normal alinearDato"><b>Entrada</b></h1>
-                      </div>
+                        <i style="margin-left: 15%;" class="fa-solid fa-truck-fast fa-3x"></i>
+                        <div class="Position-information">
+                            <h1 class="fw-normal alinearDato"><b>Entrada</b></h1>
+                        </div>
                     </a>
-                  </div>
-                  
+                </div>
 
-                
+
+
             </div>
             <br>
             <br>
@@ -92,11 +101,11 @@
 
                     </div>
                 </div>
-                <table class=" table table-hover table-striped">
+                <table class="table table-hover table-striped">
                     <thead>
                         <tr>
                             <th class="text-center align-middle">Lote</th>
-                            <th class="text-center align-middle">Categoria</th>
+                            <th class="text-center align-middle">Categoría</th>
                             <th class="text-center align-middle">Producto</th>
                             <th class="text-center align-middle">Marca</th>
                             <th class="text-center align-middle">Fecha Vencimiento</th>
@@ -104,31 +113,63 @@
                         </tr>
                     </thead>
                     <tbody id="cuerpoTabla"></tbody>
-                    <!-- Las filas de la tabla se agregarán dinámicamente con JavaScript -->
                 </table>
+
+                <script>
+                    // Datos quemados
+                    const datos = [
+                        { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', fechaVencimiento: '2024-09-01' },
+                        { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', fechaVencimiento: '2024-08-20' },
+                        { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
+                        { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
+                    ];
+
+                    // Selecciona el cuerpo de la tabla
+                    const cuerpoTabla = document.getElementById('cuerpoTabla');
+
+                    // Recorre los datos y añade filas a la tabla
+                    datos.forEach(dato => {
+                        const fila = document.createElement('tr');
+                        fila.innerHTML = `
+                            <td class="text-center align-middle">${dato.lote}</td>
+                            <td class="text-center align-middle">${dato.categoria}</td>
+                            <td class="text-center align-middle">${dato.producto}</td>
+                            <td class="text-center align-middle">${dato.marca}</td>
+                            <td class="text-center align-middle">${dato.fechaVencimiento}</td>
+                            <td class="text-center align-middle">
+                                <i class="fa-solid fa-cart-flatbed" data-bs-toggle="modal" data-bs-target="#modalEntrada" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-door-open" data-bs-toggle="modal" data-bs-target="#modalSalida" style="cursor: pointer; margin-left: 10px;"></i>
+                            </td>
+
+                        `;
+                        cuerpoTabla.appendChild(fila);
+                    });
+                </script>
+
             </div>
 
         </div>
-        
+
 
     </div>
-    
+
 
     <!-- Modal para entrada de datos -->
-    
+
     <div class="modal fade" id="modalEntrada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
                 <div class="modal-header">
-                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
-                    
+                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="X"></button>
+
                     <div class="col centerLogoNombreModal">
                         <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
                         <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
                         style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Entrada 
+                        Entrada
                     </h1>
                 </div>
                 <div class="modal-body">
@@ -139,50 +180,67 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required>
-                                    </div>                                    
-                                    
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del producto:</label>
-                                        <input type="text" id="nombreProducto" class="form-control" style="border: 1px solid black;"   required>
+                                        <input type="text" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
-                                    
+
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del
+                                            producto:</label>
+                                        <input type="text" id="nombreProducto" class="form-control"
+                                            style="border: 1px solid black;" required>
+                                    </div>
+
                                     <div class="col col-xl-6 col-12">
                                         <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
-                                        <input type="text" id="proveedor" class="form-control" style="border: 1px solid black;"  required>
+                                        <input type="text" id="proveedor" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12">
-                                        <label for="cantidadProducto"><i class="fas fa-sort-numeric-up"></i> Cantidad Producto:</label>
-                                        <input type="number" id="cantidadProducto" class="form-control" style="border: 1px solid black;"  required>
+                                        <label for="cantidadProducto"><i class="fas fa-sort-numeric-up"></i> Cantidad
+                                            Producto:</label>
+                                        <input type="number" id="cantidadProducto" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12">
-                                        <label for="precioEntrada"><i class="fas fa-money-bill-wave"></i> Precio Entrada:</label>
-                                        <input type="number" id="precioEntrada" class="form-control" style="border: 1px solid black;"  required>
+                                        <label for="precioEntrada"><i class="fas fa-money-bill-wave"></i> Precio
+                                            Entrada:</label>
+                                        <input type="number" id="precioEntrada" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12">
-                                        <label for="precioUnitario"><i class="fas fa-dollar-sign"></i> Precio Unitario:</label>
-                                        <input type="text" id="precioUnitario" class="form-control" style="border: 1px solid black;"   required>
+                                        <label for="precioUnitario"><i class="fas fa-dollar-sign"></i> Precio
+                                            Unitario:</label>
+                                        <input type="text" id="precioUnitario" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12">
-                                        <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Ingreso:</label>
-                                        <input type="date" id="fechaIngreso" class="form-control" style="border: 1px solid black;"  required>
+                                        <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
+                                            Ingreso:</label>
+                                        <input type="date" id="fechaIngreso" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12">
-                                        <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de Caducidad:</label>
-                                        <input type="date" id="fechaCaducidad" class="form-control" style="border: 1px solid black;"  required>
-                                    </div>      
-                                    
+                                        <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de
+                                            Caducidad:</label>
+                                        <input type="date" id="fechaCaducidad" class="form-control"
+                                            style="border: 1px solid black;" required>
+                                    </div>
+
                                     <div class="col col-xl-12 col-12">
-                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del producto:</label>
-                                        <textarea id="descripcion" class="form-control" rows="5" style="border: 1px solid black;"   required minlength="50"></textarea>
-                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe tener al menos 10 caracteres.</small>
-                                    </div>                               
-                                    
+                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
+                                            producto:</label>
+                                        <textarea id="descripcion" class="form-control" rows="5"
+                                            style="border: 1px solid black;" required minlength="50"></textarea>
+                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe
+                                            tener al menos 10 caracteres.</small>
+                                    </div>
+
                                 </form>
                                 <br>
                             </div>
@@ -195,21 +253,24 @@
             </div>
         </div>
     </div>
-    
-    
+
+
 
 
     <!-- Modal para salida de productos -->
-    
-    <!-- <div class="modal fade" id="modalSalida" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="modalSalida" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
-            <div class="modal-content col modal-custom" >
+            <div class="modal-content col modal-custom">
                 <div class="modal-header">
-                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
+                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="X"></button>
                     <div class="col centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/Logo.png" width="25%"><img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                        <img src="/front-end/img/Pagina/Logo.png" width="25%"><img
+                            src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
-                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel" style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
                         Salida
                     </h1>
                 </div>
@@ -222,24 +283,34 @@
 
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;"  onfocusout="validarCategoria(this)" required>
-                                    </div>                                       
-                                    
+                                        <input type="text" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarCategoria(this)"
+                                            required>
+                                    </div>
+
                                     <div class="col col-xl-6 col-12">
                                         <label for="cantidad"><i class="fas fa-box"></i> Cantidad:</label>
-                                        <input type="text" id="cantidad" class="form-control" style="border: 1px solid black;"  onfocusout="validarCantidad(this)" required>
-                                    </div>                                 
-                                    
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del Producto:</label>
-                                        <input type="text" id="nombreProducto" class="form-control" style="border: 1px solid black;"  onfocusout="validarNombreProducto(this)" required>
+                                        <input type="text" id="cantidad" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarCantidad(this)"
+                                            required>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12">
-                                        <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Salida:</label>
-                                        <input type="date" id="fechaSalida" class="form-control" style="border: 1px solid black;"  onfocusout="validarFechaIngreso(this)" required>
+                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del
+                                            Producto:</label>
+                                        <input type="text" id="nombreProducto" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarNombreProducto(this)"
+                                            required>
                                     </div>
-                                                                        
+
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
+                                            Salida:</label>
+                                        <input type="date" id="fechaSalida" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarFechaIngreso(this)"
+                                            required>
+                                    </div>
+
                                 </form>
                                 <br>
                             </div>
@@ -247,12 +318,11 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-dark"
-                        onclick="registrarProducto(); limpiar();">Sacar</button>
+                    <button type="button" class="btn btn-dark" onclick="registrarProducto(); limpiar();">Sacar</button>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- <script>
         // Obtener la fecha actual
