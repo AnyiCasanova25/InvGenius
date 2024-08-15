@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/barrabusqueda4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:orientation="horizontal"
@@ -58,353 +58,382 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/category_lacteos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
-        android:background="#78909C"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_weight="1"
-            android:background="#3E5059"
-            app:srcCompat="@drawable/lacteos" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Tablas"
-            android:fontFamily="@font/titillium_web_bold"
-            android:text="Lacteos"
-            android:textAlignment="center"
-            android:textColor="#000000" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/eye"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/pen_to_square_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/ban_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-        </LinearLayout>
-    </LinearLayout>
-
     <!-- Carnes -->
-    <LinearLayout
-        android:id="@+id/category_carnes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="60dp"
-        android:background="#78909C"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3"
-        tools:layout_editor_absoluteX="141dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_weight="1"
-            android:background="#3E5059"
-            app:srcCompat="@drawable/carnes" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Tablas"
-            android:fontFamily="@font/titillium_web_bold"
-            android:text="Carnes"
-            android:textAlignment="center"
-            android:textColor="#000000" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/eye"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button17"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/pen_to_square_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/ban_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-        </LinearLayout>
-    </LinearLayout>
 
     <!-- Granos -->
-    <LinearLayout
-        android:id="@+id/category_granos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:background="#78909C"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_lacteos"
-        app:layout_constraintWidth_percent="0.3">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_weight="1"
-            android:background="#3E5059"
-            app:srcCompat="@drawable/granos" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Tablas"
-            android:fontFamily="@font/titillium_web_bold"
-            android:text="Granos"
-            android:textAlignment="center"
-            android:textColor="#000000" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/eye"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button20"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/pen_to_square_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/ban_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-        </LinearLayout>
-    </LinearLayout>
 
     <!-- Verduras -->
-    <LinearLayout
-        android:id="@+id/category_verduras"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#78909C"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintStart_toEndOf="@+id/category_granos"
-        app:layout_constraintTop_toBottomOf="@+id/category_carnes"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent="0.3">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_weight="1"
-            android:background="#3E5059"
-            app:srcCompat="@drawable/verduras" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Tablas"
-            android:fontFamily="@font/titillium_web_bold"
-            android:text="Verduras"
-            android:textAlignment="center"
-            android:textColor="#000000" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/eye"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button23"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/pen_to_square_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-
-            <Button
-                android:id="@+id/button24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/ban_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
-        </LinearLayout>
-    </LinearLayout>
 
     <!-- Frutas -->
-    <LinearLayout
-        android:id="@+id/category_frutas"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:background="#78909C"
-        android:orientation="vertical"
-        android:padding="8dp"
+
+
+    <ScrollView
+        android:layout_width="415dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_granos"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent="0.3">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_weight="1"
-            android:background="#3E5059"
-            app:srcCompat="@drawable/frutas" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Tablas"
-            android:fontFamily="@font/titillium_web_bold"
-            android:text="Frutas"
-            android:textAlignment="center"
-            android:textColor="#000000" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button25"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/eye"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button26"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/pen_to_square_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
+                <LinearLayout
+                    android:id="@+id/category_carnes"
+                    android:layout_width="160dp"
+                    android:layout_height="224dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="#78909C"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintHeight_percent="0.25"
+                    app:layout_constraintWidth_percent="0.3">
 
-            <Button
-                android:id="@+id/button27"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                app:icon="@drawable/ban_solid"
-                app:iconGravity="textTop"
-                app:iconSize="20dp" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:background="#3E5059"
+                        app:srcCompat="@drawable/carnes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Tablas"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:text="Carnes"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/eye"
+                            app:iconGravity="textTop"
+                            app:iconSize="35dp" />
+
+                        <Button
+                            android:id="@+id/button17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/pen_to_square_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="35dp" />
+
+                        <Button
+                            android:id="@+id/button18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/ban_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="35dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/category_lacteos"
+                    android:layout_width="160dp"
+                    android:layout_height="224dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="60dp"
+                    android:background="#78909C"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintHeight_percent="0.25"
+                    app:layout_constraintWidth_percent="0.3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="142dp"
+                        android:layout_weight="1"
+                        android:background="#3E5059"
+                        app:srcCompat="@drawable/lacteos" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Tablas"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:text="Lacteos"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/eye"
+                            app:iconGravity="textTop"
+                            app:iconSize="35dp" />
+
+                        <Button
+                            android:id="@+id/button14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/pen_to_square_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="35dp" />
+
+                        <Button
+                            android:id="@+id/button15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/ban_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="35dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="223dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/category_verduras"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#78909C"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintHeight_percent="0.25"
+                    app:layout_constraintWidth_percent="0.3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:background="#3E5059"
+                        app:srcCompat="@drawable/verduras" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Tablas"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:text="Verduras"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button22"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/eye"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/pen_to_square_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/ban_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/category_granos"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#78909C"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintHeight_percent="0.25"
+                    app:layout_constraintWidth_percent="0.3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:background="#3E5059"
+                        app:srcCompat="@drawable/granos" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Tablas"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:text="Granos"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/eye"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/pen_to_square_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/ban_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="261dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/category_frutas"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#78909C"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintHeight_percent="0.25"
+                    app:layout_constraintWidth_percent="0.3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_weight="1"
+                        android:background="#3E5059"
+                        app:srcCompat="@drawable/frutas" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/Tablas"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:text="Frutas"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/eye"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button26"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/pen_to_square_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+
+                        <Button
+                            android:id="@+id/button27"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#00FFFFFF"
+                            app:icon="@drawable/ban_solid"
+                            app:iconGravity="textTop"
+                            app:iconSize="20dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
+    </ScrollView>
 
     <TextView
         android:id="@+id/text_categoria"
