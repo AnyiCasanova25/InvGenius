@@ -76,8 +76,7 @@ public class producto {
         this.unidad = unidad;
     }
 
-
-
+    
     public String getIdProducto() {
         return idProducto;
     }
