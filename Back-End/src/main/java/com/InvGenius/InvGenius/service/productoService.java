@@ -42,23 +42,23 @@ public class productoService implements IproductoService {
         return listaProducto;
     }
 
-    @Override
-    public List<producto> productoACaducar(String nombreProducto,Date fechaVencimiento){
-        List<producto> listaProducto = data.productoACaducar(nombreProducto, fechaVencimiento);
-        return listaProducto;
-    }
+    // @Override
+    // public List<producto> productoACaducar(String nombreProducto,Date fechaVencimiento){
+    //     List<producto> listaProducto = data.productoACaducar(nombreProducto, fechaVencimiento);
+    //     return listaProducto;
+    // }
 
-    @Override
-    public List<producto> productoBajoStock(String nombreProducto,  String stock){
-        List<producto> listaProducto = data.productoBajoStock(nombreProducto, stock);
-        return listaProducto;
-    }
+    // @Override
+    // public List<producto> productoBajoStock(String nombreProducto,  String stock){
+    //     List<producto> listaProducto = data.productoBajoStock(nombreProducto, stock);
+    //     return listaProducto;
+    // }
 
-    @Override
-    public List<producto> productoVencido(String nombreProducto,Date fechaVencimiento){
-        List<producto> listaProducto = data.productoVencido(nombreProducto, fechaVencimiento);
-        return listaProducto;
-    }
+    // @Override
+    // public List<producto> productoVencido(String nombreProducto,Date fechaVencimiento){
+    //     List<producto> listaProducto = data.productoVencido(nombreProducto, fechaVencimiento);
+    //     return listaProducto;
+    // }
 
     // Corregir tipo de dato int
     @Override

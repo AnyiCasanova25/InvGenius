@@ -30,23 +30,23 @@ public interface Iproducto extends CrudRepository<producto, String> {
             "WHERE p.nombreProducto LIKE %?1% OR ma.nombreMarca LIKE %?2% OR c.nombreCategoria LIKE %?3%")
     List<producto> productoExist(String nombreProducto, String nombreMarca, String nombreCategoria);
 
-    // QUERY DE NOTIFICACION DE PRODUCTO A VENCER
-    @Query("SELECT p FROM producto p " +
-            "JOIN p.lote l " +
-            "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento LIKE ?2 BETWEEN CURDATE() AND CURDATE() + INTERVAL 30 DAY")
-    List<producto> productoACaducar(String nombreProducto, Date fechaVencimiento);
+//     // QUERY DE NOTIFICACION DE PRODUCTO A VENCER
+//     @Query("SELECT p FROM producto p " +
+//             "JOIN p.lote l " +
+//             "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento LIKE ?2 BETWEEN CURDATE() AND CURDATE() + INTERVAL 30 DAY")
+//     List<producto> productoACaducar(String nombreProducto, Date fechaVencimiento);
 
-    // QUERY DE NOTIFICACION PARA AVISAR QUE HAY PRODUCTOS EN BAJO STOCK
+//     // QUERY DE NOTIFICACION PARA AVISAR QUE HAY PRODUCTOS EN BAJO STOCK
 
-    @Query("SELECT p FROM producto p " +
-            "JOIN p.lote l " +
-            "WHERE p.nombreProducto LIKE %?1% OR p.stock < 60")
-    List<producto> productoBajoStock(String nombreProducto, String stock);
+//     @Query("SELECT p FROM producto p " +
+//             "JOIN p.lote l " +
+//             "WHERE p.nombreProducto LIKE %?1% OR p.stock < 60")
+//     List<producto> productoBajoStock(String nombreProducto, String stock);
 
-    // QUERY DE PRODUCTOS YA CADUCADOS
-    @Query("SELECT p FROM producto p " +
-            "JOIN p.lote l " +
-            "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento LIKE ?2 < CURDATE()")
-    List<producto> productoVencido(String nombreProducto, Date fechaVencimiento);
+//     // QUERY DE PRODUCTOS YA CADUCADOS
+//     @Query("SELECT p FROM producto p " +
+//             "JOIN p.lote l " +
+//             "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento LIKE ?2 < CURDATE()")
+//     List<producto> productoVencido(String nombreProducto, Date fechaVencimiento);
 
 }
