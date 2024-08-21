@@ -13,4 +13,5 @@ public interface Iuser extends CrudRepository<user, String> {
 
     @Query("SELECT u FROM user u WHERE u.celular LIKE %?1% OR u.correo LIKE %?2%")
     List<user> userExist(String celular, String correo);
+    
 }
