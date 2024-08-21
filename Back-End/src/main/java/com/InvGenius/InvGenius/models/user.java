@@ -48,14 +48,14 @@ public class user {
      @Column(name = "rol", nullable = false, length = 36)
      private String rol;
 
+     @Column(name = "imagenUser", nullable = false)
+     private String imagenUser;
+
     public user() {
     }
 
-   
-
-    public user(String idUser, String documentoIdentidad, String nombres,
-            String apellidos, String celular, String correo, String password,
-            String confirmarPassword, String rol) {
+    public user(String idUser, String documentoIdentidad, String nombres, String apellidos, String celular,
+            String correo, String password, String confirmarPassword, String rol, String imagenUser) {
         this.idUser = idUser;
         this.documentoIdentidad = documentoIdentidad;
         this.nombres = nombres;
@@ -65,8 +65,8 @@ public class user {
         this.password = password;
         this.confirmarPassword = confirmarPassword;
         this.rol = rol;
+        this.imagenUser = imagenUser;
     }
-
 
 
     public String getPassword() {
@@ -149,6 +149,14 @@ public class user {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getImagenUser() {
+        return imagenUser;
+    }
+
+    public void setImagenUser(String imagenUser) {
+        this.imagenUser = imagenUser;
     }
 
 }

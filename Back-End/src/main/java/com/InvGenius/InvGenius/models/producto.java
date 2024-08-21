@@ -57,13 +57,18 @@ public class producto {
     @JoinColumn(name = "idUnidad")
     private unidad unidad;
 
+    @Column(name = "imagenProducto", nullable = false)
+    private String imagenProducto;
+
     public producto() {
     }
 
+
+    
     public producto(String idProducto, String nombreProducto, String estadoProducto,
             com.InvGenius.InvGenius.models.marca marca, String precioProducto,
-            com.InvGenius.InvGenius.models.categoria categoria, String stock, String precioCompra, String precioVenta,
-            String descripcionProducto, com.InvGenius.InvGenius.models.unidad unidad) {
+            com.InvGenius.InvGenius.models.categoria categoria, String stock, String precioCompra,
+            String descripcionProducto, com.InvGenius.InvGenius.models.unidad unidad, String imagenProducto) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.estadoProducto = estadoProducto;
@@ -74,9 +79,11 @@ public class producto {
         this.precioCompra = precioCompra;
         this.descripcionProducto = descripcionProducto;
         this.unidad = unidad;
+        this.imagenProducto = imagenProducto;
     }
 
-    
+
+
     public String getIdProducto() {
         return idProducto;
     }
@@ -149,6 +156,14 @@ public class producto {
         this.unidad = unidad;
     }
     
+    public String getImagenProducto() {
+        return imagenProducto;
+    }
+
+    public void setImagenProducto(String imagenProducto) {
+        this.imagenProducto = imagenProducto;
+    }
+
     //Se creo el get y set de descripcion producto, hacia falta eso y por eso no dejaba enviar este atributo, ya que estaba null
     public String getDescripcionProducto() {
         return this.descripcionProducto;

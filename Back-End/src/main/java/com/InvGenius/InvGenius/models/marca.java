@@ -22,41 +22,74 @@ public class marca {
      @Column(name = "nombreMarca" , nullable = false, length = 36)
      private String nombreMarca;
 
+     @Column(name = "imagenMarca" , nullable = false)
+     private String imagenMarca;
+
      @Column(name = "estado" , nullable = false, length = 36)
      private String estado;
 
     public marca() {
     }
 
-    public marca(String idMarca, String nombreMarca, String estado) {
+   
+
+    public marca(String idMarca, String nombreMarca, String imagenMarca, String estado) {
         this.idMarca = idMarca;
         this.nombreMarca = nombreMarca;
+        this.imagenMarca = imagenMarca;
         this.estado = estado;
     }
+
+
 
     public String getIdMarca() {
         return idMarca;
     }
 
+
+
     public void setIdMarca(String idMarca) {
         this.idMarca = idMarca;
     }
+
+
 
     public String getNombreMarca() {
         return nombreMarca;
     }
 
+
+
     public void setNombreMarca(String nombreMarca) {
         this.nombreMarca = nombreMarca;
     }
+
+
+
+    public String getImagenMarca() {
+        return imagenMarca;
+    }
+
+
+
+    public void setImagenMarca(String imagenMarca) {
+        this.imagenMarca = imagenMarca;
+    }
+
+
 
     public String getEstado() {
         return estado;
     }
 
+
+
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+
+
 
      
 }

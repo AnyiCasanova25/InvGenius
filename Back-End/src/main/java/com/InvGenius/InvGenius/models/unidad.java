@@ -25,14 +25,18 @@ public class unidad {
      @Column(name = "estadoUnidad", nullable = false, length = 20)
      private String estadoUnidad;
 
+     @Column(name = "imagenUnidad", nullable = false)
+     private String imagenUnidad;
+
     public unidad() {
     }
 
-    
-    public unidad(String idUnidad, String nombreUnidad, String tipoUnidad, String estadoUnidad) {
+
+    public unidad(String idUnidad, String nombreUnidad, String estadoUnidad, String imagenUnidad) {
         this.idUnidad = idUnidad;
         this.nombreUnidad = nombreUnidad;
         this.estadoUnidad = estadoUnidad;
+        this.imagenUnidad = imagenUnidad;
     }
 
 
@@ -59,6 +63,14 @@ public class unidad {
 
     public void setEstadoUnidad(String estadoUnidad) {
         this.estadoUnidad = estadoUnidad;
+    }
+
+    public String getImagenUnidad() {
+        return imagenUnidad;
+    }
+
+    public void setImagenUnidad(String imagenUnidad) {
+        this.imagenUnidad = imagenUnidad;
     }
      
 }

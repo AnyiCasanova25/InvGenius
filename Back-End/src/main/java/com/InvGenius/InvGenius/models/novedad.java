@@ -35,17 +35,25 @@ public class novedad {
     @Column(name = "fechaNovedad", nullable = false)
     private Date fechaNovedad;
 
+    @Column(name = "imagenNovedad", nullable = false)
+    private String imagenNovedad;
+
     public novedad() {
     }
 
-    public novedad(String idNovedad, String para, String asunto, String cuerpo, String evidencia,
-            Date fechaNovedad) {
+    
+
+    public novedad(String idNovedad, String para, String asunto, String cuerpo, Date fechaNovedad,
+            String imagenNovedad) {
         this.idNovedad = idNovedad;
         this.para = para;
         this.asunto = asunto;
         this.cuerpo = cuerpo;
         this.fechaNovedad = fechaNovedad;
+        this.imagenNovedad = imagenNovedad;
     }
+
+
 
     public String getIdNovedad() {
         return idNovedad;
@@ -85,6 +93,18 @@ public class novedad {
 
     public void setFechaNovedad(Date fechaNovedad) {
         this.fechaNovedad = fechaNovedad;
+    }
+
+
+
+    public String getImagenNovedad() {
+        return imagenNovedad;
+    }
+
+
+
+    public void setImagenNovedad(String imagenNovedad) {
+        this.imagenNovedad = imagenNovedad;
     }
 
     
