@@ -49,7 +49,7 @@
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
                 <a class="nav-item nav-link link-body-emphasis active"
-                href="/front-end/html/paginaPrincipal/vistaPrevia.html">Vista previa <i
+                    href="/front-end/html/paginaPrincipal/vistaPrevia.html">Vista previa <i
                         class="fa-solid fa-bullhorn"></i></a>
                 <a class="nav-item nav-link link-body-emphasis"
                     href="/front-end/html/paginaPrincipal/producto.html">Producto <i
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-lg-3 mb-3">
                         <a href="/Front-end/html/paginaPrincipal/novedades/proximosCaducar.html"
-                            class="fondoDatoTarjeta fondoDatoTarjetaa">
+                            class="fondoDatoTarjeta">
                             <i style="margin-left: 15%;" class="fas fa-box-open fa-3x"></i>
                             <div class="Position-information">
                                 <h5 class="fw-normal alinearDato"><b>Productos a caducar</b></h5>
@@ -90,10 +90,20 @@
                         </a>
                     </div>
                     <div class="col-lg-3 mb-3">
-                        <a href="/Front-end/html/paginaPrincipal/novedades/bajoStock.html" class="fondoDatoTarjeta">
+                        <a href="/Front-end/html/paginaPrincipal/novedades/bajoStock.html"
+                            class="fondoDatoTarjeta fondoDatoTarjetaa">
                             <i style="margin-left: -1%;" class="fas fa-exclamation-triangle fa-3x"></i>
                             <div class="Position-information">
                                 <h5 class="fw-normal alinearDato"><b>Bajo Stock</b></h5>
+                                <p class="alinearDato">000</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <a href="/Front-end/html/paginaPrincipal/novedades/imagenesProductos.html" class="fondoDatoTarjeta">
+                            <i style="margin-left: -1%;" class="fas fa-exclamation-triangle fa-3x"></i>
+                            <div class="Position-information">
+                                <h5 class="fw-normal alinearDato"><b>Imagenes productos</b></h5>
                                 <p class="alinearDato">000</p>
                             </div>
                         </a>
@@ -121,25 +131,14 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center align-middle">Lote</th>
+                                <th class="text-center align-middle">Imagen</th>
                                 <th class="text-center align-middle">Categoría</th>
-                                <th class="text-center align-middle">Producto</th>
-                                <th class="text-center align-middle">Marca</th>
-                                <th class="text-center align-middle">Fecha Vencimiento</th>
-                                <th class="text-center align-middle">Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla"></tbody>
                     </table>
                 
                     <script>
-                        // Datos quemados
-                        const productos = [
-                            { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', fechaVencimiento: '2024-09-01' },
-                            { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', fechaVencimiento: '2024-08-20' },
-                            { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
-                            { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
-                        ];
                 
                         // Selecciona el cuerpo de la tabla
                         const cuerpoTabla = document.getElementById('cuerpoTabla');
@@ -152,7 +151,7 @@
                                 <td class="text-center align-middle">${producto.categoria}</td>
                                 <td class="text-center align-middle">${producto.producto}</td>
                                 <td class="text-center align-middle">${producto.marca}</td>
-                                <td class="text-center align-middle">${producto.fechaVencimiento}</td>
+                                <td class="text-center align-middle">${producto.cantidad}</td>
                                 <td class="text-center align-middle">
                                     <button class="btn btn-secondary">Ver Lote</button>
                                 </td>
@@ -168,6 +167,7 @@
         <br>
         <br>
     </div>
+
 
 
 

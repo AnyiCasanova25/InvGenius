@@ -23,24 +23,69 @@ public class emailController {
         this.javaMailSender = javaMailSender;
     }
 
+    // @GetMapping("/enviar-correo-registro")
+    // public String enviarCorreoRegistro(user user) {
+    //     try {
+    //         String destinatario = user.getCorreo();
+    //         String asunto = "Registro Plataforma";
+    //         String cuerpo = ""
+    //                 + "<p>Estimado Usuario " + user.getNombres() + " " + user.getApellidos() + ",</p>\r\n"
+    //                 + "      <p>Es un placer darle la bienvenida a nuestra plataforma. Nos complace informarle que la empresa \"Genius Inventory Company\",le ha registrado con exito en nuestro sistema.Estamos ansiosos de que use nuestro aplicativo</p>\r\n"
+    //                 + "      <p>A continuacion, encontrará sus credenciales de inicio de sesión: </p>\r\n"
+    //                 + "      <ul>\r\n"
+    //                 + "          <li><strong>Nombre de Usuario: </strong> " + user.getCorreo() + "</li>\r\n"
+    //                 + "          <li><strong>Contraseña: " + user.getPassword() + "</strong> </li>\r\n"
+    //                 + "      </ul>\r\n"
+    //                 + "<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
+    //                 + "      <p>Por favor, inicie sesión en nuestro portal utilizando esta informacion. Le recomendamos cambiar su contraseña despues del primer inicio de sesión por motivos de seguridad.</p>\r\n"
+    //                 + "      <p>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nuestro equipo de soporte. Estamos aquí para ayudarle. </p>\r\n"
+    //                 + "      <p>Gracias por unirse a nosotros.</p>\r\n"
+    //                 + "      <p>Atentamente, <br>[Laura Valentina Ariza Alejo]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+
+    //         var retorno = enviarCorreo(destinatario, asunto, cuerpo);
+    //         if (retorno) {
+    //             return "Se envió orrectamente";
+    //         } else {
+    //             return "No se pudo envíar";
+
+    //         }
+    //     } catch (Exception e) {
+    //         return "Error al Enviar" + e.getMessage();
+    //     }
+    // }
+
+
+
     @GetMapping("/enviar-correo-registro")
     public String enviarCorreoRegistro(user user) {
         try {
             String destinatario = user.getCorreo();
             String asunto = "Registro Plataforma";
-            String cuerpo = ""
-                    + "<p>Estimado Usuario " + user.getNombres() + " " + user.getApellidos() + ",</p>\r\n"
-                    + "      <p>Es un placer darle la bienvenida a nuestra plataforma. Nos complace informarle que la empresa \"Genius Inventory Company\",le ha registrado con exito en nuestro sistema.Estamos ansiosos de que use nuestro aplicativo</p>\r\n"
-                    + "      <p>A continuacion, encontrará sus credenciales de inicio de sesión: </p>\r\n"
-                    + "      <ul>\r\n"
-                    + "          <li><strong>Nombre de Usuario: </strong> " + user.getCorreo() + "</li>\r\n"
-                    + "          <li><strong>Contraseña: " + user.getPassword() + "</strong> </li>\r\n"
-                    + "      </ul>\r\n"
-                    + "<img src='https://i.postimg.cc/rpJK95VY/Logo.png' width='100px' heght='100px'>"
-                    + "      <p>Por favor, inicie sesión en nuestro portal utilizando esta informacion. Le recomendamos cambiar su contraseña despues del primer inicio de sesión por motivos de seguridad.</p>\r\n"
-                    + "      <p>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nuestro equipo de soporte. Estamos aquí para ayudarle. </p>\r\n"
-                    + "      <p>Gracias por unirse a nosotros.</p>\r\n"
-                    + "      <p>Atentamente, <br>[Laura Valentina Ariza Alejo]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+            String cuerpo = 
+            "<div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden;'>"
+            + "  <div style='background-color: #e0e0e0; padding: 20px; text-align: center;'>"
+            + "      <img src='https://i.postimg.cc/rpJK95VY/Logo.png' alt='InvGenius Logo' style='max-width: 150px;'>"
+            + "      <h1 style='margin: 20px 0 10px; font-size: 24px; color: #333333;'>Hey, bienvenidos</h1>"
+            + "      <p style='font-size: 16px; color: #555555;'>Nos alegra que te unas a nuestra plataforma. Con InvGenius, gestionar el inventario de tu minimercado será más fácil y eficiente. Estamos aquí para ayudarte a optimizar tu negocio.</p>"
+            + "  </div>"
+            + "  <div style='padding: 20px; text-align: center;'>"
+            + "      <h2 style='font-size: 22px; color: #333333; margin-bottom: 20px;'>" + user.getNombres() + " " + user.getApellidos() + "</h2>"
+            + "      <p style='font-size: 16px; color: #666666; margin-bottom: 20px;'>Es un placer darle la bienvenida a nuestra plataforma. Nos complace informarle que la empresa \"Genius Inventory Company\" le ha registrado con éxito en nuestro sistema. Estamos ansiosos de que use nuestro aplicativo.</p>"
+            + "      <div style='background-color: #f9f9f9; padding: 20px; border-radius: 8px; text-align: left;'>"
+            + "          <p style='margin: 10px 0; font-size: 16px; color: #333333;'><strong>Nombre de Usuario:</strong> " + user.getCorreo() + "</p>"
+            + "          <p style='margin: 10px 0; font-size: 16px; color: #333333;'><strong>Contraseña:</strong> " + user.getPassword() + "</p>"
+            + "      </div>"
+            + "      <p style='font-size: 16px; color: #666666;'>Por favor, inicie sesión en nuestro portal utilizando esta información. Le recomendamos cambiar su contraseña después del primer inicio de sesión por motivos de seguridad.</p>"
+            + "      <p style='font-size: 16px; color: #666666;'>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nuestro equipo de soporte. Estamos aquí para ayudarle.</p>"
+            + "      <p style='font-size: 16px; color: #666666;'>Gracias por unirse a nosotros.</p>"
+            + "      <p style='font-size: 16px; color: #666666;'>Atentamente,<br>Laura Valentina Ariza Alejo<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>"
+            + "  </div>"
+            + "  <div style='background-color: #e0e0e0; padding: 10px; text-align: center; font-size: 14px; color: #666666;'>"
+            + "      <p>Centro de la industria, la empresa y los servicios</p>"
+            + "      <p>invgenius2024@gmail.com - www.Invgenius.com</p>"
+            + "  </div>"
+            + "</div>";
+        
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo);
             if (retorno) {

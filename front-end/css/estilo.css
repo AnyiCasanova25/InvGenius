@@ -23,7 +23,7 @@ body {
     transition: font-size 0s ease;
 }
 
-fondoDatoTarjeta
+
 
 .expandable-div:hover .fa-exclamation-triangle,
 .expandable-div:hover h1 {
@@ -498,6 +498,12 @@ tbody tr:hover {
     margin-right: 28px;
 }
 
+.volver-categoria{
+    border: none;
+    height: 39px;
+    border-radius: 5px;
+}
+
 
 
 @media (max-width: 1024px) {
@@ -508,6 +514,15 @@ tbody tr:hover {
         /* Centrar el cuadro a la izquierda */
     }
 
+}
+
+
+@media (min-width: 1200px) {
+    .col-xl-12 {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-top: 21px;
+    }
 }
 
 

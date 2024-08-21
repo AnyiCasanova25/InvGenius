@@ -60,7 +60,7 @@
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
                 <a class="nav-item nav-link link-body-emphasis"
-                href="/front-end/html/paginaPrincipal/novedades.html">Vista previa <i
+                href="/front-end/html/paginaPrincipal/vistaPrevia.html">Vista previa <i
                         class="fa-solid fa-bullhorn"></i></a>
                 <a class="nav-item nav-link link-body-emphasis"
                     href="/front-end/html/paginaPrincipal/producto.html">Producto <i
@@ -214,26 +214,24 @@
                                 <form class="row table-hover needs-validation" enctype="multipart/form-data">
 
                                     <div class="col col-xl-12 col-12 table-hover">
-                                        <label for="nombre"><i class="fas fa-tag"></i> Nombre de Categoría:</label>
+                                        <label for="nombre">Nombre de Categoría:</label>
                                         <input type="text" id="nombre" class="form-control"
-                                            style="border: 1px solid black;"" onfocusout=" validarNombre(this)"
+                                            style="border: 1px solid black;" onfocusout=" validarNombre(this)"
                                             required>
                                     </div>
 
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="estadoProveedor"><i class="fas fa-check-circle"></i> Estado:</label>
-                                        <select id="estadoProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarestadoProveedor(this)"
-                                            onkeypress="soloLetras(event);" required>
-                                            <option value="Activo">Activo</option>
-                                            <option value="Inactivo">Inactivo</option>
-                                        </select>
+                                    <div class="col col-xl-12 col-12 table-hover">
+                                        <label for="Ubicacion">Ubicacion:</label>
+                                        <input type="text" id="Ubicacion" class="form-control"
+                                            style="border: 1px solid black;" onfocusout=" validarUbicacion(this)"
+                                            required>
                                     </div>
 
-                                    <!-- <div class="col col-xl-12 col-12">
-                                        <label for="imagen"><i class="fas fa-upload"></i> Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control"  accept="image/*" required>
-                                    </div> -->
+
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="imagen">Cargar imagen:</label>
+                                        <input type="file" id="imagen" class="form-control" accept="image/*" required>
+                                    </div>
 
                                 </form>
 
