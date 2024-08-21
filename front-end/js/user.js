@@ -1,4 +1,6 @@
-var url = "http://10.192.80.134:8080/api/v1/user/";
+// var url = "http://10.192.80.134:8080/api/v1/user/";
+
+var url = "http://localhost:8080/api/v1/user/";
 
 function registrarUser(event) {
     event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
@@ -6,8 +8,8 @@ function registrarUser(event) {
     let nombres = document.getElementById("Nombres").value;
     let apellidos = document.getElementById("Apellidos").value;
     let documentoIdentidad = document.getElementById("documentoIdentidad").value;
-    let Correo = document.getElementById("Correo").value;
-    let Celular = document.getElementById("Celular").value;
+    let correo = document.getElementById("Correo").value;
+    let celular = document.getElementById("Celular").value;
     let rol = document.getElementById("rol").value;
 
     // Datos del formulario
@@ -15,8 +17,8 @@ function registrarUser(event) {
         "nombres": nombres,
         "apellidos": apellidos,
         "documentoIdentidad": documentoIdentidad,
-        "Correo": Correo,
-        "Celular": Celular,
+        "correo": correo,
+        "celular": celular,
         "rol": rol
     };
 
