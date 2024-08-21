@@ -11,7 +11,7 @@ public interface IuserService {
 
     public List<user> findAll();
 
-    public List<user> userExist(String Celular, String Correo);
+    public List<user> userExist(String celular, String correo);
 
     public Optional<user> findOne(String id);
 

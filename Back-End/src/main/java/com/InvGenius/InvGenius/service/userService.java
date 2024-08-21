@@ -36,8 +36,8 @@ public class userService implements IuserService{
     }
 
     @Override
-    public List<user> userExist(String Celular, String Correo) {
-            List<user> listaUser =data.userExist( Celular,  Correo);
+    public List<user> userExist(String celular, String correo) {
+            List<user> listaUser =data.userExist( celular,  correo);
             return listaUser;
     }
 
