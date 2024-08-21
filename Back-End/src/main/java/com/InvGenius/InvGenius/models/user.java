@@ -34,11 +34,11 @@ public class user {
      @Column(name = "apellidos", nullable = false, length = 36)
      private String apellidos;
 
-     @Column(name = "Celular", nullable = false, length = 13)
-     private String Celular;
+     @Column(name = "celular", nullable = false, length = 13)
+     private String celular;
 
-     @Column(name = "Correo", nullable = false, length = 100)
-     private String Correo;
+     @Column(name = "correo", nullable = false, length = 100)
+     private String correo;
 
      @Column(name = "password", nullable = false, length = 8)
      private String password;
@@ -54,14 +54,17 @@ public class user {
     public user() {
     }
 
+    
+
+
     public user(String idUser, String documentoIdentidad, String nombres, String apellidos, String celular,
             String correo, String password, String confirmarPassword, String rol, String imagenUser) {
         this.idUser = idUser;
         this.documentoIdentidad = documentoIdentidad;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        Celular = celular;
-        Correo = correo;
+        this.celular = celular;
+        this.correo = correo;
         this.password = password;
         this.confirmarPassword = confirmarPassword;
         this.rol = rol;
@@ -69,9 +72,96 @@ public class user {
     }
 
 
+
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+
+
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+
+
+
+    public String getDocumentoIdentidad() {
+        return documentoIdentidad;
+    }
+
+
+
+
+    public void setDocumentoIdentidad(String documentoIdentidad) {
+        this.documentoIdentidad = documentoIdentidad;
+    }
+
+
+
+
+    public String getNombres() {
+        return nombres;
+    }
+
+
+
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+
+
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+
+
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+
+
+
+    public String getCelular() {
+        return celular;
+    }
+
+
+
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+
+
+
+    public String getCorreo() {
+        return correo;
+    }
+
+
+
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+
+
+
     public String getPassword() {
         return password;
     }
+
 
 
 
@@ -81,9 +171,11 @@ public class user {
 
 
 
+
     public String getConfirmarPassword() {
         return confirmarPassword;
     }
+
 
 
 
@@ -93,70 +185,31 @@ public class user {
 
 
 
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getDocumentoIdentidad() {
-        return documentoIdentidad;
-    }
-
-    public void setDocumentoIdentidad(String documentoIdentidad) {
-        this.documentoIdentidad = documentoIdentidad;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getCelular() {
-        return Celular;
-    }
-
-    public void setCelular(String celular) {
-        Celular = celular;
-    }
-
-    public String getCorreo() {
-        return Correo;
-    }
-
-    public void setCorreo(String correo) {
-        Correo = correo;
-    }
-
-   
 
     public String getRol() {
         return rol;
     }
 
+
+
+
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+
+
 
     public String getImagenUser() {
         return imagenUser;
     }
 
+
+
+
     public void setImagenUser(String imagenUser) {
         this.imagenUser = imagenUser;
     }
+
 
 }
