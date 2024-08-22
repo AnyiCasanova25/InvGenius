@@ -53,12 +53,15 @@ public class movimientos {
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
      private Date FechaMovimiento;
 
+     @Column(name = "imagenMovimiento", nullable = false, length = 60)
+     private String imagenMovimiento;
+
     public movimientos() {
     }
 
     public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
             String cantidadProducto, String descripcionMovimiento, com.InvGenius.InvGenius.models.user user,
-            com.InvGenius.InvGenius.models.unidad unidad, Date fechaMovimiento) {
+            com.InvGenius.InvGenius.models.unidad unidad, Date fechaMovimiento, String imagenMovimiento) {
         this.idMovimiento = idMovimiento;
         this.producto = producto;
         this.tipomovimiento = tipomovimiento;
@@ -67,6 +70,7 @@ public class movimientos {
         this.user = user;
         this.unidad = unidad;
         FechaMovimiento = fechaMovimiento;
+        this.imagenMovimiento = imagenMovimiento;
     }
 
     public String getIdMovimiento() {
@@ -131,6 +135,14 @@ public class movimientos {
 
     public void setFechaMovimiento(Date fechaMovimiento) {
         FechaMovimiento = fechaMovimiento;
+    }
+
+    public String getImagenMovimiento() {
+        return imagenMovimiento;
+    }
+
+    public void setImagenMovimiento(String imagenMovimiento) {
+        this.imagenMovimiento = imagenMovimiento;
     }
 
     
