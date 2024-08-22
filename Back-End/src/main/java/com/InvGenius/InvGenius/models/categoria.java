@@ -22,6 +22,9 @@ public class categoria {
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 
+    @Column(name = "imagenCategoria", nullable = false)
+    private String imagenCategoria;
+
     @OneToOne
     @JoinColumn(name = "idUbicacion")
     private ubicacion ubicacion;
@@ -29,11 +32,12 @@ public class categoria {
     public categoria() {
     }
 
-    public categoria(String idCategoria, String nombreCategoria, String estado,
+    public categoria(String idCategoria, String nombreCategoria, String estado, String imagenCategoria,
             com.InvGenius.InvGenius.models.ubicacion ubicacion) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.estado = estado;
+        this.imagenCategoria = imagenCategoria;
         this.ubicacion = ubicacion;
     }
 
@@ -61,6 +65,14 @@ public class categoria {
         this.estado = estado;
     }
 
+    public String getImagenCategoria() {
+        return imagenCategoria;
+    }
+
+    public void setImagenCategoria(String imagenCategoria) {
+        this.imagenCategoria = imagenCategoria;
+    }
+
     public ubicacion getUbicacion() {
         return ubicacion;
     }
@@ -68,5 +80,7 @@ public class categoria {
     public void setUbicacion(ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    
 
 }
