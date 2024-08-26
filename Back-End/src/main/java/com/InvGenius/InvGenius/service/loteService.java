@@ -2,6 +2,7 @@ package com.InvGenius.InvGenius.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,28 @@ public class loteService implements IloteService {
         List<lote> listaLote = data.loteExist(codigoLote);
         return listaLote;
     }
+
+    //Filtro para llamar al lote proximo a caducar
+    @Override
+    public List<lote> loteACaducar(String nombreProducto,Date fechaVencimiento){
+        List<lote> listaLote = data.loteACaducar(nombreProducto, fechaVencimiento);
+        return listaLote;
+    }
+
+    //Filtro para llamar al lote bajo en stock
+    @Override
+    public List<lote> loteBajoStock(String nombreProducto,  String stock){
+        List<lote> listaLote = data.loteBajoStock(nombreProducto, stock);
+        return listaLote;
+    }
+
+    //Filtro para llamar al lote vencido
+    @Override
+    public List<lote> loteVencido(String nombreProducto,Date fechaVencimiento){
+        List<lote> listaLote = data.loteVencido(nombreProducto, fechaVencimiento);
+        return listaLote;
+    }
+
 
     @Override
     public int delete(String id) {
