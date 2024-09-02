@@ -65,6 +65,24 @@ public class loteController {
        return new ResponseEntity<>(listaLote, HttpStatus.OK);
     }
 
+    @GetMapping("/loteACaducar/")
+    public ResponseEntity<Object>findLoteACaducar(@PathVariable String filtro){
+       var listaLote = loteService.loteExist(filtro);
+       return new ResponseEntity<>(listaLote, HttpStatus.OK);
+    }
+
+    @GetMapping("/loteBajoStock/")
+    public ResponseEntity<Object>findLoteBajoStock(@PathVariable String filtro){
+       var listaLote = loteService.loteExist(filtro);
+       return new ResponseEntity<>(listaLote, HttpStatus.OK);
+    }
+
+    @GetMapping("/loteVencido")
+    public ResponseEntity<Object>findLoteVencido(@PathVariable String filtro){
+       var listaLote = loteService.loteExist(filtro);
+       return new ResponseEntity<>(listaLote, HttpStatus.OK);
+    }
+
 
      //Se creo el metodo get para poder listar los datos de lote
      @GetMapping("/")

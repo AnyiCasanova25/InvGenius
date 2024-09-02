@@ -58,7 +58,7 @@ public class loteService implements IloteService {
 
     //Filtro para llamar al lote vencido
     @Override
-    public List<lote> loteVencido(String nombreProducto,Date fechaVencimiento){
+    public List<lote> loteVencido(String nombreProducto, Date fechaVencimiento){
         List<lote> listaLote = data.loteVencido(nombreProducto, fechaVencimiento);
         return listaLote;
     }
