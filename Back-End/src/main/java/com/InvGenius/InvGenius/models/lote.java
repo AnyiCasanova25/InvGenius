@@ -9,8 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "lote")
 public class lote {
 
@@ -44,96 +51,5 @@ public class lote {
     @ManyToOne
     @JoinColumn(name = "idUbicacion")
     private ubicacion ubicacion;
-
-    public lote() {
-    }
-
-    public lote(String idLote, Date fechaIngreso, Date fechaVencimiento, String cantidad, String numeroLote,
-            String codigoLote, String detalleLote, com.InvGenius.InvGenius.models.producto producto,
-            com.InvGenius.InvGenius.models.ubicacion ubicacion) {
-        this.idLote = idLote;
-        this.fechaIngreso = fechaIngreso;
-        this.fechaVencimiento = fechaVencimiento;
-        this.cantidad = cantidad;
-        this.numeroLote = numeroLote;
-        this.codigoLote = codigoLote;
-        this.detalleLote = detalleLote;
-        this.producto = producto;
-        this.ubicacion = ubicacion;
-    }
-
-    public String getIdLote() {
-        return idLote;
-    }
-
-    public void setIdLote(String idLote) {
-        this.idLote = idLote;
-    }
-
-    public Date getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public String getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public String getNumeroLote() {
-        return numeroLote;
-    }
-
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-    }
-
-    public String getCodigoLote() {
-        return codigoLote;
-    }
-
-    public void setCodigoLote(String codigoLote) {
-        this.codigoLote = codigoLote;
-    }
-
-    public String getDetalleLote() {
-        return detalleLote;
-    }
-
-    public void setDetalleLote(String detalleLote) {
-        this.detalleLote = detalleLote;
-    }
-
-    public producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(producto producto) {
-        this.producto = producto;
-    }
-
-    public ubicacion getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    
 
 }

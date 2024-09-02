@@ -5,7 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "user")
 public class user {
     
@@ -50,166 +58,5 @@ public class user {
 
      @Column(name = "imagenUser", nullable = false)
      private String imagenUser;
-
-    public user() {
-    }
-
-    
-
-
-    public user(String idUser, String documentoIdentidad, String nombres, String apellidos, String celular,
-            String correo, String password, String confirmarPassword, String rol, String imagenUser) {
-        this.idUser = idUser;
-        this.documentoIdentidad = documentoIdentidad;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.celular = celular;
-        this.correo = correo;
-        this.password = password;
-        this.confirmarPassword = confirmarPassword;
-        this.rol = rol;
-        this.imagenUser = imagenUser;
-    }
-
-
-
-
-    public String getIdUser() {
-        return idUser;
-    }
-
-
-
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
-
-
-
-
-    public String getDocumentoIdentidad() {
-        return documentoIdentidad;
-    }
-
-
-
-
-    public void setDocumentoIdentidad(String documentoIdentidad) {
-        this.documentoIdentidad = documentoIdentidad;
-    }
-
-
-
-
-    public String getNombres() {
-        return nombres;
-    }
-
-
-
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-
-
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-
-
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-
-
-
-    public String getCelular() {
-        return celular;
-    }
-
-
-
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-
-
-
-    public String getCorreo() {
-        return correo;
-    }
-
-
-
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-
-
-
-    public String getPassword() {
-        return password;
-    }
-
-
-
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-
-
-    public String getConfirmarPassword() {
-        return confirmarPassword;
-    }
-
-
-
-
-    public void setConfirmarPassword(String confirmarPassword) {
-        this.confirmarPassword = confirmarPassword;
-    }
-
-
-
-
-    public String getRol() {
-        return rol;
-    }
-
-
-
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-
-
-
-    public String getImagenUser() {
-        return imagenUser;
-    }
-
-
-
-
-    public void setImagenUser(String imagenUser) {
-        this.imagenUser = imagenUser;
-    }
-
 
 }

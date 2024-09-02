@@ -10,8 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "movimientos")
 public class movimientos {
     /*
@@ -56,94 +63,4 @@ public class movimientos {
      @Column(name = "imagenMovimiento", nullable = false, length = 60)
      private String imagenMovimiento;
 
-    public movimientos() {
-    }
-
-    public movimientos(String idMovimiento, com.InvGenius.InvGenius.models.producto producto, String tipomovimiento,
-            String cantidadProducto, String descripcionMovimiento, com.InvGenius.InvGenius.models.user user,
-            com.InvGenius.InvGenius.models.unidad unidad, Date fechaMovimiento, String imagenMovimiento) {
-        this.idMovimiento = idMovimiento;
-        this.producto = producto;
-        this.tipomovimiento = tipomovimiento;
-        CantidadProducto = cantidadProducto;
-        DescripcionMovimiento = descripcionMovimiento;
-        this.user = user;
-        this.unidad = unidad;
-        FechaMovimiento = fechaMovimiento;
-        this.imagenMovimiento = imagenMovimiento;
-    }
-
-    public String getIdMovimiento() {
-        return idMovimiento;
-    }
-
-    public void setIdMovimiento(String idMovimiento) {
-        this.idMovimiento = idMovimiento;
-    }
-
-    public producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(producto producto) {
-        this.producto = producto;
-    }
-
-    public String getTipomovimiento() {
-        return tipomovimiento;
-    }
-
-    public void setTipomovimiento(String tipomovimiento) {
-        this.tipomovimiento = tipomovimiento;
-    }
-
-    public String getCantidadProducto() {
-        return CantidadProducto;
-    }
-
-    public void setCantidadProducto(String cantidadProducto) {
-        CantidadProducto = cantidadProducto;
-    }
-
-    public String getDescripcionMovimiento() {
-        return DescripcionMovimiento;
-    }
-
-    public void setDescripcionMovimiento(String descripcionMovimiento) {
-        DescripcionMovimiento = descripcionMovimiento;
-    }
-
-    public user getUser() {
-        return user;
-    }
-
-    public void setUser(user user) {
-        this.user = user;
-    }
-
-    public unidad getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(unidad unidad) {
-        this.unidad = unidad;
-    }
-
-    public Date getFechaMovimiento() {
-        return FechaMovimiento;
-    }
-
-    public void setFechaMovimiento(Date fechaMovimiento) {
-        FechaMovimiento = fechaMovimiento;
-    }
-
-    public String getImagenMovimiento() {
-        return imagenMovimiento;
-    }
-
-    public void setImagenMovimiento(String imagenMovimiento) {
-        this.imagenMovimiento = imagenMovimiento;
-    }
-
-    
 }

@@ -5,7 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "marca")
 public class marca {
     
@@ -28,68 +36,4 @@ public class marca {
      @Column(name = "estado" , nullable = false, length = 36)
      private String estado;
 
-    public marca() {
-    }
-
-   
-
-    public marca(String idMarca, String nombreMarca, String imagenMarca, String estado) {
-        this.idMarca = idMarca;
-        this.nombreMarca = nombreMarca;
-        this.imagenMarca = imagenMarca;
-        this.estado = estado;
-    }
-
-
-
-    public String getIdMarca() {
-        return idMarca;
-    }
-
-
-
-    public void setIdMarca(String idMarca) {
-        this.idMarca = idMarca;
-    }
-
-
-
-    public String getNombreMarca() {
-        return nombreMarca;
-    }
-
-
-
-    public void setNombreMarca(String nombreMarca) {
-        this.nombreMarca = nombreMarca;
-    }
-
-
-
-    public String getImagenMarca() {
-        return imagenMarca;
-    }
-
-
-
-    public void setImagenMarca(String imagenMarca) {
-        this.imagenMarca = imagenMarca;
-    }
-
-
-
-    public String getEstado() {
-        return estado;
-    }
-
-
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-
-
-
-     
 }

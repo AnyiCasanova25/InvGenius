@@ -5,7 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "ubicacion")
 public class ubicacion {
 
@@ -20,37 +28,5 @@ public class ubicacion {
     @Column(name =  "bloques", nullable = false, length = 10)
     private String bloques;
 
-    public ubicacion() {
-    }
-
-    public ubicacion(String idUbicacion, String asignarUbicacion, String bloques) {
-        this.idUbicacion = idUbicacion;
-        this.asignarUbicacion = asignarUbicacion;
-        this.bloques = bloques;
-    }
-
-    public String getIdUbicacion() {
-        return idUbicacion;
-    }
-
-    public void setIdUbicacion(String idUbicacion) {
-        this.idUbicacion = idUbicacion;
-    }
-
-    public String getAsignarUbicacion() {
-        return asignarUbicacion;
-    }
-
-    public void setAsignarUbicacion(String asignarUbicacion) {
-        this.asignarUbicacion = asignarUbicacion;
-    }
-
-    public String getBloques() {
-        return bloques;
-    }
-
-    public void setBloques(String bloques) {
-        this.bloques = bloques;
-    }
     
 }

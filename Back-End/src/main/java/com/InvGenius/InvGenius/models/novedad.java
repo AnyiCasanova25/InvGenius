@@ -7,7 +7,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "novedad")
 public class novedad {
     
@@ -38,74 +46,4 @@ public class novedad {
     @Column(name = "imagenNovedad", nullable = false)
     private String imagenNovedad;
 
-    public novedad() {
-    }
-
-    
-
-    public novedad(String idNovedad, String para, String asunto, String cuerpo, Date fechaNovedad,
-            String imagenNovedad) {
-        this.idNovedad = idNovedad;
-        this.para = para;
-        this.asunto = asunto;
-        this.cuerpo = cuerpo;
-        this.fechaNovedad = fechaNovedad;
-        this.imagenNovedad = imagenNovedad;
-    }
-
-
-
-    public String getIdNovedad() {
-        return idNovedad;
-    }
-
-    public void setIdNovedad(String idNovedad) {
-        this.idNovedad = idNovedad;
-    }
-
-    public String getPara() {
-        return para;
-    }
-
-    public void setPara(String para) {
-        this.para = para;
-    }
-
-    public String getAsunto() {
-        return asunto;
-    }
-
-    public void setAsunto(String asunto) {
-        this.asunto = asunto;
-    }
-
-    public String getCuerpo() {
-        return cuerpo;
-    }
-
-    public void setCuerpo(String cuerpo) {
-        this.cuerpo = cuerpo;
-    }
-
-    public Date getFechaNovedad() {
-        return fechaNovedad;
-    }
-
-    public void setFechaNovedad(Date fechaNovedad) {
-        this.fechaNovedad = fechaNovedad;
-    }
-
-
-
-    public String getImagenNovedad() {
-        return imagenNovedad;
-    }
-
-
-
-    public void setImagenNovedad(String imagenNovedad) {
-        this.imagenNovedad = imagenNovedad;
-    }
-
-    
 }

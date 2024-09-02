@@ -7,7 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity (name = "categoria")
 public class categoria {
 
@@ -28,59 +36,5 @@ public class categoria {
     @OneToOne
     @JoinColumn(name = "idUbicacion")
     private ubicacion ubicacion;
-
-    public categoria() {
-    }
-
-    public categoria(String idCategoria, String nombreCategoria, String estado, String imagenCategoria,
-            com.InvGenius.InvGenius.models.ubicacion ubicacion) {
-        this.idCategoria = idCategoria;
-        this.nombreCategoria = nombreCategoria;
-        this.estado = estado;
-        this.imagenCategoria = imagenCategoria;
-        this.ubicacion = ubicacion;
-    }
-
-    public String getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(String idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public String getNombreCategoria() {
-        return nombreCategoria;
-    }
-
-    public void setNombreCategoria(String nombreCategoria) {
-        this.nombreCategoria = nombreCategoria;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getImagenCategoria() {
-        return imagenCategoria;
-    }
-
-    public void setImagenCategoria(String imagenCategoria) {
-        this.imagenCategoria = imagenCategoria;
-    }
-
-    public ubicacion getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    
 
 }
