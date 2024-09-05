@@ -45,9 +45,6 @@ public class producto {
     @JoinColumn(name = "idMarca")
     private marca marca;
 
-    @Column(name = "precioProducto" , nullable = false, length = 36)
-    private String precioProducto;
-
     @ManyToOne
     @JoinColumn(name = "idCategoria")
     private categoria categoria;
@@ -55,15 +52,11 @@ public class producto {
     @Column(name = "stock" , nullable = false, length = 36)
     private int stock;
 
-    @Column(name = "precioCompra" , nullable = false, length = 36)
-    private String precioCompra;
-
     @Column(name = "descripcionProducto", nullable = false, length = 199)
     private String descripcionProducto;
 
-    @ManyToOne
-    @JoinColumn(name = "idUnidad")
-    private unidad unidad;
+    @Column(name = "unidadMedida", nullable = false,length = 199)
+    private String unidadMedida;
 
     @Column(name = "imagenProducto", nullable = false)
     private String imagenProducto;
