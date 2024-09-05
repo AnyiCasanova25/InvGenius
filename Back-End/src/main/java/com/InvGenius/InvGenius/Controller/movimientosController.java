@@ -7,9 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 // import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 // import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +26,7 @@ public class movimientosController {
     private ImovimientoService movimientosService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("movimientos") movimientos movimientos) {
+    public ResponseEntity<Object> save(@RequestBody movimientos movimientos) {
 
         // Verificar que no exista una fecha igual
         movimientos.setFechaMovimiento(new Date());

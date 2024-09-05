@@ -53,10 +53,6 @@ public class movimientos {
      @JoinColumn(name = "idUser")
      private user user;
 
-     @ManyToOne
-     @JoinColumn(name = "idUnidad")
-     private unidad unidad;
-
      @Column(name = "FechaMovimiento", nullable = false, length = 36)
      private Date FechaMovimiento;
 
