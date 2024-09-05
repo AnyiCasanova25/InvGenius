@@ -7,10 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +25,7 @@ public class novedadController {
     private InovedadService novedadService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("novedad") novedad novedad) {
+    public ResponseEntity<Object> save(@RequestBody novedad novedad) {
 
         if (novedad.getPara().equals("")) {
             
@@ -78,7 +78,7 @@ public class novedadController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("novedad") novedad novedadUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody novedad novedadUpdate) {
         var novedad = novedadService.findOne(id).get();
 
         if (novedad != null) {

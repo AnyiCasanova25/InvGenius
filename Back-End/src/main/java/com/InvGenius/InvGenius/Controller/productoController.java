@@ -5,10 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +25,7 @@ public class productoController {
     private IproductoService productoService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("producto") producto producto) {
+    public ResponseEntity<Object> save(@RequestBody producto producto) {
 
         if (producto.getNombreProducto().equals("")) {
 
@@ -71,7 +71,7 @@ public class productoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("producto") producto productoUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody producto productoUpdate){
         var producto= productoService.findOne(id).get();
 
         if (producto != null) {
