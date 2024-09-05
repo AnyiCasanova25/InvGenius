@@ -44,8 +44,8 @@ public class loteService implements IloteService {
 
     //Filtro para llamar al lote proximo a caducar
     @Override
-    public List<lote> loteACaducar(String nombreProducto,Date fechaVencimiento){
-        List<lote> listaLote = data.loteACaducar(nombreProducto, fechaVencimiento);
+    public List<lote> loteACaducar(String nombreProducto){
+        List<lote> listaLote = data.loteACaducar(nombreProducto);
         return listaLote;
     }
 
@@ -58,8 +58,8 @@ public class loteService implements IloteService {
 
     //Filtro para llamar al lote vencido
     @Override
-    public List<lote> loteVencido(String nombreProducto, Date fechaVencimiento){
-        List<lote> listaLote = data.loteVencido(nombreProducto, fechaVencimiento);
+    public List<lote> loteVencido(String nombreProducto){
+        List<lote> listaLote = data.loteVencido(nombreProducto);
         return listaLote;
     }
 

@@ -15,13 +15,13 @@ public interface IloteService {
     public List<lote> loteExist(String codigoLote);
 
     //Filtro para llamar al lote proximo a caducar
-    public List<lote> loteACaducar(String nombreProducto, Date fechaVencimiento);
+    public List<lote> loteACaducar(String nombreProducto);
 
     //Filtro para llamar al lote bajo en stock
     public List<lote> loteBajoStock(String nombreProducto, String stock);
 
     //Filtro para llamar al lote vencido
-    public List<lote> loteVencido(String nombreProdcuto, Date fechaVencimiento);
+    public List<lote> loteVencido(String nombreProdcuto);
 
     public Optional<lote> findOne (String id);
 

@@ -19,8 +19,8 @@ public interface Ilote extends CrudRepository<lote, String> {
         // Query para notificar el producto proximo a vencer
         @Query("SELECT l FROM lote l " +
                         "JOIN l.producto p " +
-                        "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento BETWEEN CURDATE() AND CURDATE() + INTERVAL 30 DAY")
-        List<lote> loteACaducar(String nombreProdcuto, Date fechaVencimiento);
+                        "WHERE p.nombreProducto LIKE %?1% OR DATEDIFF(NOW(), l.fechaVencimiento) <= 30") //BETWEEN CURDATE() AND CURDATE() + INTERVAL 30 DAY
+        List<lote> loteACaducar(String nombreProdcuto);
 
         // Query para avisar que hay productos en bajo stock
         @Query("SELECT l FROM lote l " +
@@ -31,7 +31,7 @@ public interface Ilote extends CrudRepository<lote, String> {
         // Query para lotes ya caducados
         @Query("SELECT l FROM lote l " +
                         "JOIN l.producto p " +
-                        "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento LIKE ?2 < CURDATE()")
-        List<lote> loteVencido(String nombreProducto, Date fechaVencimiento);
+                        "WHERE p.nombreProducto LIKE %?1% OR l.fechaVencimiento < CURRENT_DATE")
+        List<lote> loteVencido(String nombreProducto);
 
 }
