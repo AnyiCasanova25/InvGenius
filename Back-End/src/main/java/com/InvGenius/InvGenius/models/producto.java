@@ -53,7 +53,7 @@ public class producto {
     private categoria categoria;
 
     @Column(name = "stock" , nullable = false, length = 36)
-    private String stock;
+    private int stock;
 
     @Column(name = "precioCompra" , nullable = false, length = 36)
     private String precioCompra;
