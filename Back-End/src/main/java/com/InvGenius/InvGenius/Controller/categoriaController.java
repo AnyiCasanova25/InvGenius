@@ -63,7 +63,7 @@ public class categoriaController {
                 String rutaImagen = guardarImagen(imagen);
                 categoria.setImagenUrl(rutaImagen);
             } catch (IOException e) {
-                return new ResponseEntity<>("Error al subir la imagen", HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>("Error al subir la imagen", HttpStatus.BAD_REQUEST);
             }
         } else {
             // Asigna una imagen predeterminada si no se proporciona ninguna
