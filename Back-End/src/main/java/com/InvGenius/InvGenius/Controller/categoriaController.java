@@ -1,10 +1,19 @@
 package com.InvGenius.InvGenius.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.UUID;
+import java.nio.file.Path;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
@@ -12,9 +21,9 @@ import com.InvGenius.InvGenius.models.categoria;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import lombok.var;
 
@@ -22,34 +31,68 @@ import lombok.var;
 @RequestMapping("/api/v1/categoria")
 public class categoriaController {
 
-    @Autowired
+     @Autowired
     private IcategoriaService categoriaService;
 
-    @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute ("categoria") categoria categoria) {
+    // Define la ruta donde se guardarán las imágenes
+    private static final String DIRECTORIO_IMAGENES = "ruta/a/carpeta_imagenes/";
 
-        // Verifica que no se repita el nombre de la categoria
+    @PostMapping("/")
+    public ResponseEntity<Object> save(
+            @RequestBody categoria categoria,
+            @RequestParam("imagen") MultipartFile imagen) {
+
+        // Verifica que no se repita el nombre de la categoría
         var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null, null);
 
         if (listaCategoria.size() != 0) {
-            return new ResponseEntity<>("La categoria ya existe", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("La categoría ya existe", HttpStatus.BAD_REQUEST);
         }
 
-        // Verificar que el campo de de nombreCategoria y estado sean obligatorios
-        // Añadir campos obligatorios
-
-        if (categoria.getNombreCategoria().equals("")) {
+        // Verifica que los campos requeridos no estén vacíos
+        if (categoria.getNombreCategoria().isEmpty()) {
             return new ResponseEntity<>("El campo Nombre Categoria es obligatorio", HttpStatus.BAD_REQUEST);
         }
+        if (categoria.getEstado().isEmpty()) {
+            return new ResponseEntity<>("El campo Estado es obligatorio", HttpStatus.BAD_REQUEST);
+        }
 
-        if (categoria.getEstado().equals("")) {
-            return new ResponseEntity<>("El campo estado es obligatorio", HttpStatus.BAD_REQUEST);
+        // Si se envía una imagen, guárdala
+        if (imagen != null && !imagen.isEmpty()) {
+            try {
+                String rutaImagen = guardarImagen(imagen);
+                categoria.setImagenUrl(rutaImagen);
+            } catch (IOException e) {
+                return new ResponseEntity<>("Error al subir la imagen", HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            // Asigna una imagen predeterminada si no se proporciona ninguna
+            categoria.setImagenUrl("ruta/a/imagen_predeterminada.jpg");
         }
 
         categoriaService.save(categoria);
         return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
 
+    // Método para guardar la imagen en el sistema de archivos
+    private String guardarImagen(MultipartFile imagen) throws IOException {
+        // Generar un nombre único para la imagen
+        String nombreImagen = UUID.randomUUID().toString() + "_" + imagen.getOriginalFilename();
+
+        // Crear la ruta donde se guardará la imagen
+        Path rutaImagen = Paths.get(DIRECTORIO_IMAGENES + nombreImagen);
+
+        // Asegúrate de que el directorio de imágenes exista
+        if (!Files.exists(Paths.get(DIRECTORIO_IMAGENES))) {
+            Files.createDirectories(Paths.get(DIRECTORIO_IMAGENES));
+        }
+
+        // Guardar el archivo de imagen en el servidor
+        Files.copy(imagen.getInputStream(), rutaImagen);
+
+        // Retornar el nombre o la ruta de la imagen guardada
+        return nombreImagen;
+    }
     //Filtros de categoria
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object>findFiltro(@PathVariable String filtro){
@@ -80,7 +123,7 @@ public class categoriaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id,
-            @ModelAttribute("categoria") categoria categoriaUpdate) {
+            @RequestBody categoria categoriaUpdate) {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {

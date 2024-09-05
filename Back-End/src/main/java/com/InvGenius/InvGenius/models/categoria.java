@@ -30,8 +30,8 @@ public class categoria {
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 
-    @Column(name = "imagenCategoria", nullable = false)
-    private String imagenCategoria;
+    @Column(name = "imagenUrl")
+    private String imagenUrl; // Aquí se almacena la ruta o nombre del archivo de imagen
 
     @OneToOne
     @JoinColumn(name = "idUbicacion")
