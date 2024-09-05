@@ -153,9 +153,7 @@
 
     </div>
 
-
     <!-- Modal para entrada de datos -->
-
     <div class="modal fade" id="modalEntrada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
@@ -185,38 +183,23 @@
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del
-                                            producto:</label>
+                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre:</label>
                                         <input type="text" id="nombreProducto" class="form-control"
                                             style="border: 1px solid black;" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
-                                        <input type="text" id="proveedor" class="form-control"
+                                        <label for="Medida"><i class="fas fa-sort-numeric-up"></i> Unidad de Medida:</label>
+                                        <input type="number" id="Medida" class="form-control"
                                             style="border: 1px solid black;" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="cantidadProducto"><i class="fas fa-sort-numeric-up"></i> Cantidad
-                                            Producto:</label>
-                                        <input type="number" id="cantidadProducto" class="form-control"
+                                        <label for="Cantidad"><i class="fas fa-hashtag"></i> Cantidad</label>
+                                        <input type="number" id="Cantidad" class="form-control"
                                             style="border: 1px solid black;" required>
                                     </div>
 
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="precioEntrada"><i class="fas fa-money-bill-wave"></i> Precio
-                                            Entrada:</label>
-                                        <input type="number" id="precioEntrada" class="form-control"
-                                            style="border: 1px solid black;" required>
-                                    </div>
-
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="precioUnitario"><i class="fas fa-dollar-sign"></i> Precio
-                                            Unitario:</label>
-                                        <input type="text" id="precioUnitario" class="form-control"
-                                            style="border: 1px solid black;" required>
-                                    </div>
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
@@ -229,6 +212,12 @@
                                         <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de
                                             Caducidad:</label>
                                         <input type="date" id="fechaCaducidad" class="form-control"
+                                            style="border: 1px solid black;" required>
+                                    </div>
+
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
+                                        <input type="text" id="proveedor" class="form-control"
                                             style="border: 1px solid black;" required>
                                     </div>
 
@@ -254,11 +243,7 @@
         </div>
     </div>
 
-
-
-
     <!-- Modal para salida de productos -->
-
     <div class="modal fade" id="modalSalida" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
@@ -281,31 +266,22 @@
                                 <br>
                                 <form class="row table-hover needs-validation">
 
-                                    <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarCategoria(this)"
-                                            required>
-                                    </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="cantidad"><i class="fas fa-box"></i> Cantidad:</label>
-                                        <input type="text" id="cantidad" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarCantidad(this)"
-                                            required>
+                                        <label for="Cantidad"><i class="fas fa-hashtag"></i> Cantidad</label>
+                                        <input type="number" id="Cantidad" class="form-control"
+                                            style="border: 1px solid black;" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="Lote"><i class="fas fa-box"></i> Lote:</label>
                                         <input type="text" id="Lote" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarLote(this)"
-                                            required>
+                                            style="border: 1px solid black;" onfocusout="validarLote(this)" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre del
-                                            Producto:</label>
-                                        <input type="text" id="nombreProducto" class="form-control"
+                                        <label for="Marca"><i class="fas fa-box"></i> Marca:</label>
+                                        <input type="text" id="Marca" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarNombreProducto(this)"
                                             required>
                                     </div>

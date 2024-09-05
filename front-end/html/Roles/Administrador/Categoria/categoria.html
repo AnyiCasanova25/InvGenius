@@ -94,10 +94,6 @@
                     onclick="registrarClienteBandera=true; limpiar();">
                     <i class="fas fa-trash-alt"></i>
                 </button>
-                <button type="button" class="btn btn-outline-dark custom-btn" id="button-addon4" data-bs-toggle="modal"
-                    onclick="registrarClienteBandera=true; limpiar();">
-                    <i class="fa-solid fa-location-dot"></i>
-                </button>
             </div>
         </div>
 
@@ -188,19 +184,16 @@
 
     </div>
 
-
-
-
     <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
                 <div class="modal-header">
                     <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="X"></button>
-                        <div class="col centerLogoNombreModal">
-                            <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
-                            <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                        </div>
+                    <div class="col centerLogoNombreModal">
+                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                    </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
                         style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
                         Agregar Categoria
@@ -216,8 +209,7 @@
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="nombre">Nombre de Categoría:</label>
                                         <input type="text" id="nombre" class="form-control"
-                                            style="border: 1px solid black;" onfocusout=" validarNombre(this)"
-                                            required>
+                                            style="border: 1px solid black;" onfocusout=" validarNombre(this)" required>
                                     </div>
 
                                     <div class="col col-xl-12 col-12 table-hover">
@@ -227,10 +219,10 @@
                                             required>
                                     </div>
 
-
                                     <div class="col col-xl-12 col-12">
                                         <label for="imagen">Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control" accept="image/*" required>
+                                        <input type="file" id="imagen" class="form-control" accept="image/*"
+                                            style="border: 1px solid black;" required>
                                     </div>
 
                                 </form>
