@@ -1,0 +1,315 @@
+{
+  "id": "25f65a18-e3f1-4b35-9068-aab08be91a5c",
+  "version": "2.0",
+  "name": "Entrada datos Correctos",
+  "url": "http://127.0.0.1:5502",
+  "tests": [{
+    "id": "4d300010-8e40-4949-bb1d-a19543d351ea",
+    "name": "Entrada",
+    "commands": [{
+      "id": "fa3148e2-6739-49fa-a58c-09e43d597d17",
+      "comment": "",
+      "command": "open",
+      "target": "/front-end/html/Roles/Usuario/producto.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dfcbeb95-4915-4dc1-8180-2629bf017c35",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "923x983",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "81fd9bb5-cd46-4958-8484-62740a982d95",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Entrada",
+      "targets": [
+        ["linkText=Entrada", "linkText"],
+        ["css=.fondoDatoTarjeta", "css:finder"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//body/div/div[2]/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Entrada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d0c9f8a-79f3-4fd5-9266-9e3efc8766f8",
+      "comment": "",
+      "command": "click",
+      "target": "id=categoria",
+      "targets": [
+        ["id=categoria", "id"],
+        ["css=#categoria", "css:finder"],
+        ["xpath=//input[@id='categoria']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "843dd92d-ac69-45cb-8b83-71f71a07a667",
+      "comment": "",
+      "command": "type",
+      "target": "id=categoria",
+      "targets": [
+        ["id=categoria", "id"],
+        ["css=#categoria", "css:finder"],
+        ["xpath=//input[@id='categoria']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/input", "xpath:position"]
+      ],
+      "value": "leche"
+    }, {
+      "id": "7618bc72-bedc-4f9c-b788-192302961bef",
+      "comment": "",
+      "command": "click",
+      "target": "id=nombreProducto",
+      "targets": [
+        ["id=nombreProducto", "id"],
+        ["css=#nombreProducto", "css:finder"],
+        ["xpath=//input[@id='nombreProducto']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e09bd0fc-5385-4968-9511-ff3b3fda2920",
+      "comment": "",
+      "command": "type",
+      "target": "id=nombreProducto",
+      "targets": [
+        ["id=nombreProducto", "id"],
+        ["css=#nombreProducto", "css:finder"],
+        ["xpath=//input[@id='nombreProducto']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "leche alqueria"
+    }, {
+      "id": "96a47d1e-0594-4a31-be7f-a2ab1b8bc3bf",
+      "comment": "",
+      "command": "click",
+      "target": "id=Medida",
+      "targets": [
+        ["id=Medida", "id"],
+        ["css=#Medida", "css:finder"],
+        ["xpath=//select[@id='Medida']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[3]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "458e9ad6-cfb6-4228-95c8-eb2cd4024667",
+      "comment": "",
+      "command": "select",
+      "target": "id=Medida",
+      "targets": [],
+      "value": "label=Onzas (oz)"
+    }, {
+      "id": "81c81f2d-3a53-4f28-b1f8-5b6aa2a973b6",
+      "comment": "",
+      "command": "click",
+      "target": "id=Cantidad",
+      "targets": [
+        ["id=Cantidad", "id"],
+        ["css=.col:nth-child(4) > #Cantidad", "css:finder"],
+        ["xpath=//input[@id='Cantidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf5b1088-273f-47c0-a3c0-c368da371e96",
+      "comment": "",
+      "command": "type",
+      "target": "id=Cantidad",
+      "targets": [
+        ["id=Cantidad", "id"],
+        ["css=.col:nth-child(4) > #Cantidad", "css:finder"],
+        ["xpath=//input[@id='Cantidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "6d74d5e6-1729-4e2a-8f15-5513aab0987e",
+      "comment": "",
+      "command": "click",
+      "target": "id=fechaIngreso",
+      "targets": [
+        ["id=fechaIngreso", "id"],
+        ["css=#fechaIngreso", "css:finder"],
+        ["xpath=//input[@id='fechaIngreso']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "96dabb5a-d436-4724-b1a9-1dcbb3c85062",
+      "comment": "",
+      "command": "type",
+      "target": "id=fechaIngreso",
+      "targets": [
+        ["id=fechaIngreso", "id"],
+        ["css=#fechaIngreso", "css:finder"],
+        ["xpath=//input[@id='fechaIngreso']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "2024-09-09"
+    }, {
+      "id": "24d62a12-3918-4681-bef5-0c7569022a9f",
+      "comment": "",
+      "command": "click",
+      "target": "id=fechaCaducidad",
+      "targets": [
+        ["id=fechaCaducidad", "id"],
+        ["css=#fechaCaducidad", "css:finder"],
+        ["xpath=//input[@id='fechaCaducidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f92682e-59b9-4244-901b-fc7f502443d5",
+      "comment": "",
+      "command": "type",
+      "target": "id=fechaCaducidad",
+      "targets": [
+        ["id=fechaCaducidad", "id"],
+        ["css=#fechaCaducidad", "css:finder"],
+        ["xpath=//input[@id='fechaCaducidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "2024-09-09"
+    }, {
+      "id": "0225fa1f-3d83-4f65-a4cb-c04f9e77b67a",
+      "comment": "",
+      "command": "click",
+      "target": "id=fechaCaducidad",
+      "targets": [
+        ["id=fechaCaducidad", "id"],
+        ["css=#fechaCaducidad", "css:finder"],
+        ["xpath=//input[@id='fechaCaducidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a4ccfda-58ca-4ff4-bc5b-16d80a61bbbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=fechaCaducidad",
+      "targets": [
+        ["id=fechaCaducidad", "id"],
+        ["css=#fechaCaducidad", "css:finder"],
+        ["xpath=//input[@id='fechaCaducidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c3db0bc-b6c8-43c6-ae2b-0f34c882305e",
+      "comment": "",
+      "command": "click",
+      "target": "id=fechaCaducidad",
+      "targets": [
+        ["id=fechaCaducidad", "id"],
+        ["css=#fechaCaducidad", "css:finder"],
+        ["xpath=//input[@id='fechaCaducidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c343456f-6f6e-485e-b99c-ae448e501568",
+      "comment": "",
+      "command": "type",
+      "target": "id=fechaCaducidad",
+      "targets": [
+        ["id=fechaCaducidad", "id"],
+        ["css=#fechaCaducidad", "css:finder"],
+        ["xpath=//input[@id='fechaCaducidad']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "2024-10-09"
+    }, {
+      "id": "b732adb4-a1e4-4510-b9a0-a543cf14d44f",
+      "comment": "",
+      "command": "click",
+      "target": "id=proveedor",
+      "targets": [
+        ["id=proveedor", "id"],
+        ["css=#proveedor", "css:finder"],
+        ["xpath=//input[@id='proveedor']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8ad4355-c17d-470b-9de5-0181055713c6",
+      "comment": "",
+      "command": "type",
+      "target": "id=proveedor",
+      "targets": [
+        ["id=proveedor", "id"],
+        ["css=#proveedor", "css:finder"],
+        ["xpath=//input[@id='proveedor']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": "Mi leche"
+    }, {
+      "id": "b6fbd589-0fd0-4030-bfd3-7fe06a04780a",
+      "comment": "",
+      "command": "click",
+      "target": "id=descripcion",
+      "targets": [
+        ["id=descripcion", "id"],
+        ["css=#descripcion", "css:finder"],
+        ["xpath=//textarea[@id='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[8]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a116e92b-e95c-40c5-8646-338afccd6288",
+      "comment": "",
+      "command": "type",
+      "target": "id=descripcion",
+      "targets": [
+        ["id=descripcion", "id"],
+        ["css=#descripcion", "css:finder"],
+        ["xpath=//textarea[@id='descripcion']", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[2]/div/div/div/form/div[8]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Mi leche"
+    }, {
+      "id": "b85d538d-7654-4774-bfd2-6e56660b5438",
+      "comment": "",
+      "command": "click",
+      "target": "css=#modalEntrada .btn",
+      "targets": [
+        ["css=#modalEntrada .btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='modalEntrada']/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Agregar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "52852c53-8700-44c5-a481-0cda614216cb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4d300010-8e40-4949-bb1d-a19543d351ea"]
+  }],
+  "urls": ["http://127.0.0.1:5502/"],
+  "plugins": []
+}
