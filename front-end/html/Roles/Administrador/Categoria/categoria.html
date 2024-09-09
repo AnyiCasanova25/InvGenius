@@ -60,7 +60,7 @@
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
                 <a class="nav-item nav-link link-body-emphasis"
-                href="../vistaPrevia/vistaPrevia.html">Vista previa <i
+                href="../vistaPrevia/productosCaducados.html">Vista previa <i
                         class="fa-solid fa-bullhorn"></i></a>
                 <a class="nav-item nav-link link-body-emphasis"
                     href="../producto.html">Producto <i
@@ -91,17 +91,12 @@
                     <i class="fas fa-plus"></i>
                 </button>
                 <button type="button" class="btn btn-outline-dark custom-btn" id="button-addon4" data-bs-toggle="modal"
-                    onclick="registrarClienteBandera=true; limpiar();">
+                    onclick="registrarClienteBandera=true; limpiar();" data-bs-target="#eliminarCategoria">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </div>
         </div>
-
-
-
-
         <br>
-
         <!-- categorias  -->
         <div class="shop-grid">
 
@@ -119,7 +114,6 @@
                         <button type="button" class="btn btn-outline-dark">Todos</button></a>
                 </div>
             </div>
-
             <div class="shop-card">
                 <div class="title">
                     Carnes
@@ -175,13 +169,10 @@
                     <button type="button" class="btn btn-outline-dark">Todos</button>
                 </div>
             </div>
-
         </div>
-
         <br>
         <br>
         <br>
-
     </div>
 
     <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -227,6 +218,45 @@
 
                                 </form>
 
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-dark" onclick="registrarCliente(); limpiar();">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="eliminarCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fondomodaldialog ">
+            <div class="modal-content col modal-custom">
+                <div class="modal-header">
+                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="X"></button>
+                    <div class="col centerLogoNombreModal">
+                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                    </div>
+                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                        Eliminar Categoria
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="centradoo">
+                            <div class="container col">
+                                <br>
+                                <form class="row table-hover needs-validation" enctype="multipart/form-data">
+                                    <div class="col col-xl-12 col-12 table-hover">
+                                        <label for="nombre">Nombre de Categoría:</label>
+                                        <input type="text" id="nombre" class="form-control"
+                                            style="border: 1px solid black;" onfocusout=" validarNombre(this)" required>
+                                    </div>
+                                </form>
                                 <br>
                             </div>
                         </div>
