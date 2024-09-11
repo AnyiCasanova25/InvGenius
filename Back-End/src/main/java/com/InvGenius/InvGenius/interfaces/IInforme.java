@@ -16,9 +16,9 @@ public interface IInforme extends CrudRepository<informe, String> {
     @Query("SELECT info FROM informe info "
             +"JOIN info.movimientos mo "
             +"JOIN info.categoria c "
-            +"WHERE mo.tipomovimiento LIKE %?1% "
+            +"WHERE mo.tipoMovimiento LIKE %?1% "
             +"OR c.nombreCategoria LIKE %?2% "
             +"OR info.fechaInforme BETWEEN ?3 AND ?4")
-    List<informe> informeExist(String tipomovimiento, String nombreCategoria, LocalDate fechaInforme);
+    List<informe> informeExist(String tipoMovimiento, String nombreCategoria, LocalDate fechaInforme);
     
 }
