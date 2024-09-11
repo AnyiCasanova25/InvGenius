@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.IproductoService;
 import com.InvGenius.InvGenius.models.producto;
 
-import lombok.var;
 
 @RestController
 @RequestMapping("/api/v1/producto")

@@ -106,7 +106,10 @@ public class userController {
         emailController email = new emailController(javaMailSender);
         email.enviarCorreoRegistro(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
-
+    }
+    @PostMapping("/register/")
+    public ResponseEntity<String> register(@RequestBody String entity) {
+        return new ResponseEntity<>("end-point Publico register",HttpStatus.OK);
     }
 
     @GetMapping("/")

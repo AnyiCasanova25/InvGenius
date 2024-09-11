@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.ImarcaService;
 import com.InvGenius.InvGenius.models.marca;
 
-import lombok.var;
-
 @RestController
 @RequestMapping("/api/v1/marca")
 
