@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,124 +14,102 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/front-end/css/estilo.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/front-end/css/menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+    <script src="/front-end/js/menu.js"></script>
+    <link rel="stylesheet" href="/front-end/css/style.css">
+
 </head>
 
 <body>
-    <div class="container">
-        <header class="border-bottom lh-1 py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-8 pt-1">
-                    <a href="/front-end/html/paginaPrincipal/novedades.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="40px" height="50px" style="margin-right: 1%;"><img class="Nombre-Tamaño"
-                            src="/front-end/img/Pagina/Nombre.png" width="200px" height="60px">
-                    </a>
-                </div>
-                <div class="col-2 d-flex justify-content-end align-items-center ">
-                    <div class="profile">
-                        <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
-                        <div class="dropdown-content">
-                            <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
-                            <a href="/front-end/html/paginaPrincipal/novedadesUsuario.html">Novedades Usuario</a>
-                            <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
-                            <hr>
-                            <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Navegacion -->
-        <div class="nav-scroller py-1 mb-3 border-bottom">
-            <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis"
-                    href="/front-end/html/Roles/Usuario/vistaPrevia/vistaPrevia.html">Vista previa <i
-                        class="fa-solid fa-bullhorn"></i></a>
-                <a class="nav-item nav-link link-body-emphasis active"
-                    href="/front-end/html/Roles/Usuario/producto.html">Producto <i class="fas fa-shopping-cart"></i></a>
-                <a class="nav-item nav-link link-body-emphasis"
-                    href="/front-end/html/Roles/Usuario/Categoria/categoria.html">Categoria <i
-                        class="fas fa-border-all"></i></a>
-            </nav>
+    <!-- <div id="menuEstudiante"></div> -->
+    <nav class="menun">
+        <div class="logo-container">
+            <img src="/front-end/img/Pagina/Logo.png" class="logo">
+            <span class="brand-name">InvGenius</span>
         </div>
-        <div class="negro">
-            <div class="row centradoInfo-sm justify-content-around">
-                <div class="col-lg-3 mb-3">
-                    <a href="#" class="fondoDatoTarjeta" data-bs-toggle="modal" data-bs-target="#modalEntrada">
-                        <i style="margin-left: 15%;" class="fa-solid fa-truck-fast fa-3x"></i>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="menu">
+            <li><a href="../Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
+                    <i class="fa-solid fa-bullhorn"></i></li></a>
+            <li><a class="active" href="../producto.html">Producto
+                    <i class="fas fa-shopping-cart"></i></li></a>
+            <li><a href="../Categoria/categoria.html">Categoria
+                    <i class="fas fa-border-all"></i></li></a>
+        </ul>
+        <div style="display: flex; align-items: center;">
+            <div class="profile" style="display: flex; align-items: center; position: relative;">
+                <img src="/front-end/img/ImgPerfilPredeterminados/mujer3.png" width="50px">
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Laura Ariza</p>
+                <div class="dropdown-content">
+                    <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
+                    <a href="/front-end/html/paginaPrincipal/novedadesUsuario.html">Novedades Usuario</a>
+                    <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
+                    <hr>
+                    <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="info-card">
+                    <a href="../vistaPrevia/productosCaducados.html" class="text-white text-decoration-none"
+                        data-bs-toggle="modal" data-bs-target="#modalEntrada">
+                        <i class="fa-solid fa-truck-fast fa-3x"></i>
                         <div class="Position-information">
-                            <h1 class="fw-normal alinearDato"><b>Entrada</b></h1>
+                            <h5><b>Entrada</b></h5>
                         </div>
                     </a>
                 </div>
             </div>
-            <br>
-            <br>
-            <div class="colorFondoTabla">
+        </div>
+        <div class="card">
+            <div class="card-body">
                 <div class="input-group mb-3">
-
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
                         onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
                         aria-describedby="button-addon2">
-
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-outline-dark custom-btn"
-                            onclick="listarProveedor(); blanquearCampos()">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-custom" onclick="listarProveedor(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
                             </div>
                         </button>
-
                     </div>
                 </div>
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th class="text-center align-middle">Lote</th>
-                            <th class="text-center align-middle">Categoría</th>
-                            <th class="text-center align-middle">Producto</th>
-                            <th class="text-center align-middle">Marca</th>
-                            <th class="text-center align-middle">Fecha Vencimiento</th>
-                            <th class="text-center align-middle">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpoTabla"></tbody>
-                </table>
-                <script>
-                    // Datos quemados
-                    const datos = [
-                        { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', fechaVencimiento: '2024-09-01' },
-                        { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', fechaVencimiento: '2024-08-20' },
-                        { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
-                        { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
-                    ];
-
-                    // Selecciona el cuerpo de la tabla
-                    const cuerpoTabla = document.getElementById('cuerpoTabla');
-
-                    // Recorre los datos y añade filas a la tabla
-                    datos.forEach(dato => {
-                        const fila = document.createElement('tr');
-                        fila.innerHTML = `
-                            <td class="text-center align-middle">${dato.lote}</td>
-                            <td class="text-center align-middle">${dato.categoria}</td>
-                            <td class="text-center align-middle">${dato.producto}</td>
-                            <td class="text-center align-middle">${dato.marca}</td>
-                            <td class="text-center align-middle">${dato.fechaVencimiento}</td>
-                            <td class="text-center align-middle">
-                                <i class="fa-solid fa-cart-flatbed" data-bs-toggle="modal" data-bs-target="#modalEntrada" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-door-open" data-bs-toggle="modal" data-bs-target="#modalSalida" style="cursor: pointer; margin-left: 10px;"></i>
-                            </td>
-
-                        `;
-                        cuerpoTabla.appendChild(fila);
-                    });
-                </script>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center align-middle">Lote</th>
+                                <th class="text-center align-middle">Categoría</th>
+                                <th class="text-center align-middle">Producto</th>
+                                <th class="text-center align-middle">Marca</th>
+                                <th class="text-center align-middle">Fecha Vencimiento</th>
+                                <th class="text-center align-middle">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
     </div>
+
+
+    <!-- Modals -->
     <!-- Modal para entrada de datos -->
     <div class="modal fade" id="modalEntrada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
@@ -283,6 +261,38 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        // Datos quemados
+        const datos = [
+            { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', fechaVencimiento: '2024-09-01' },
+            { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', fechaVencimiento: '2024-08-20' },
+            { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
+            { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
+        ];
+
+        // Selecciona el cuerpo de la tabla
+        const cuerpoTabla = document.getElementById('cuerpoTabla');
+
+        // Recorre los datos y añade filas a la tabla
+        datos.forEach(dato => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+            <td class="text-center align-middle">${dato.lote}</td>
+            <td class="text-center align-middle">${dato.categoria}</td>
+            <td class="text-center align-middle">${dato.producto}</td>
+            <td class="text-center align-middle">${dato.marca}</td>
+            <td class="text-center align-middle">${dato.fechaVencimiento}</td>
+            <td class="text-center align-middle">
+                <i class="fa-solid fa-cart-flatbed" data-bs-toggle="modal" data-bs-target="#modalEntrada" style="cursor: pointer;"></i>
+                <i class="fa-solid fa-door-open" data-bs-toggle="modal" data-bs-target="#modalSalida" style="cursor: pointer; margin-left: 10px;"></i>
+            </td>
+        `;
+            cuerpoTabla.appendChild(fila);
+        });
+    </script>
 
     <script src="/front-end/js/producto.js"></script>
 </body>
