@@ -80,7 +80,7 @@ function mostrarTabla(result){
     for (var i = 0; i < result.length; i++) {
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
-            <td class="align-middle">${result[i]["nombreProveedor"]}</td>
+            <td class="text-center align-middle">${result[i]["nombreProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["apellidoProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["documentoProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["numeroProveedor"]}</td>

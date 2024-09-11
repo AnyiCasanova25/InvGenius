@@ -44,7 +44,7 @@
                     <i class="fas fa-truck"></i></li></a>
             <li><a href="../Categoria/categoria.html">Categoria
                     <i class="fas fa-border-all"></i></li></a>
-            <li><a class="active" href="../informe.html">Informe
+            <li><a href="../informe.html">Informe
                     <i class="fas fa-list-ul"></i></li></a>
         </ul>
         <div style="display: flex; align-items: center;">
@@ -68,20 +68,17 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
+                <div class="Position-information">
+                    <h1><b>Administrar Perfiles</b></h1>
+                </div>
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                        onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                        onkeyup="buscarUserPorFiltro(document.getElementById('texto').value)"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-custom" onclick="listarProveedor(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
-                            </div>
-                        </button>
-                        <button type="button" class="btn btn-custom"  data-bs-toggle="modal"
-                        onclick="registrarProveedorBandera=true; limpiar();" data-bs-target="#exampleModal">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="fas fa-plus"></i>
                             </div>
                         </button>
                     </div>
@@ -90,35 +87,16 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center align-middle">Hora</th>
-                                <th class="text-center align-middle">Tipo movimientos</th>
-                                <th class="text-center align-middle">Categoría</th>
-                                <th class="text-center align-middle">Producto</th>
-                                <th class="text-center align-middle">Cantidad</th>
-                                <th class="text-center align-middle">Fecha</th>
-                                <th class="text-center align-middle">Proveedor</th>
+                                <th class="text-center align-middle">Nombre</th>
+                                <th class="text-center align-middle">Apellido</th>
+                                <th class="text-center align-middle">N° Documento</th>
+                                <th class="text-center align-middle">Teléfono</th>
+                                <th class="text-center align-middle">Empresa</th>
+                                <th class="text-center align-middle">Estado</th>
+                                <th class="text-center align-middle">Opciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>11:00</td>
-                                <td>Entrada</td>
-                                <td>Lácteos</td>
-                                <td>Leche entera</td>
-                                <td>2 lotes</td>
-                                <td>24/04/2024</td>
-                                <td>Lácteos S.A.</td>
-                            </tr>
-                            <tr>
-                                <td>11:00</td>
-                                <td>Salida</td>
-                                <td>Lácteos</td>
-                                <td>Leche entera</td>
-                                <td>2 lotes</td>
-                                <td>24/04/2024</td>
-                                <td>Lácteos S.A.</td>
-                            </tr>
-                        </tbody>
+                        <tbody id="cuerpoTabla"></tbody>
                     </table>
                 </div>
             </div>
@@ -135,10 +113,10 @@
                 <div class="modal-header">
                     <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="X"></button>
-                        <div class="col centerLogoNombreModal">
-                            <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
-                            <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                        </div>
+                    <div class="col centerLogoNombreModal">
+                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                    </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
                         style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
                         Registro Proveedor
@@ -197,7 +175,7 @@
                                             <option value="Inactivo">Inactivo</option>
                                         </select>
                                     </div>
-                                    
+
                                 </form>
                                 <br>
                             </div>
@@ -212,6 +190,19 @@
     </div>
 
     <script>
+        function toggleUserRole(iconId) {
+            var icon = document.getElementById(iconId).querySelector("i");
+
+            if (icon.classList.contains("fa-user")) {
+                icon.classList.remove("fa-user");
+                icon.classList.add("fa-user-tie"); // Cambiar a ícono de administrador
+            } else {
+                icon.classList.remove("fa-user-tie");
+                icon.classList.add("fa-user"); // Cambiar a ícono de usuario
+            }
+        }
+
+
         const inputText = document.getElementById('texto');
         const clearBtn = document.getElementById('clear');
 
@@ -224,7 +215,7 @@
             }
         });
     </script>
-    <script src="/front-end/js/proveedor.js"></script>
+    <script src="/front-end/js/adminPerfiles.js"></script>
 </body>
 
 </html>
