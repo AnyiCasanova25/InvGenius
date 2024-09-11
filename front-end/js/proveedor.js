@@ -149,8 +149,9 @@ function registrarProveedor() {
     if (validarCampos()) {
         $.ajax({
             url: urlLocal,
-            type: metodo,
-            data: forData,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(forData),
             success: function (response) {
                 limpiar();
                 Swal.fire({
