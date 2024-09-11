@@ -1,19 +1,10 @@
 package com.InvGenius.InvGenius.Controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.UUID;
-import java.nio.file.Path;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
@@ -25,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import lombok.var;
 
 @RestController
 @RequestMapping("/api/v1/categoria")
@@ -33,16 +23,9 @@ public class categoriaController {
 
      @Autowired
     private IcategoriaService categoriaService;
-
-    // Define la ruta donde se guardarán las imágenes
-    private static final String DIRECTORIO_IMAGENES = "ruta/a/carpeta_imagenes/";
-
     @PostMapping("/")
-    public ResponseEntity<Object> save(
-            @RequestBody categoria categoria,
-            @RequestParam("imagen") MultipartFile imagen) {
+    public ResponseEntity<Object> save(@RequestBody categoria categoria) {
 
-        // Verifica que no se repita el nombre de la categoría
         var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null, null);
 
         if (listaCategoria.size() != 0) {
@@ -50,48 +33,24 @@ public class categoriaController {
         }
 
         // Verifica que los campos requeridos no estén vacíos
-        if (categoria.getNombreCategoria().isEmpty()) {
-            return new ResponseEntity<>("El campo Nombre Categoria es obligatorio", HttpStatus.BAD_REQUEST);
-        }
-        if (categoria.getEstado().isEmpty()) {
-            return new ResponseEntity<>("El campo Estado es obligatorio", HttpStatus.BAD_REQUEST);
+        if (categoria.getNombreCategoria().equals("")) {
+
+            return new ResponseEntity<>("El nombre es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        // Si se envía una imagen, guárdala
-        if (imagen != null && !imagen.isEmpty()) {
-            try {
-                String rutaImagen = guardarImagen(imagen);
-                categoria.setImagenUrl(rutaImagen);
-            } catch (IOException e) {
-                return new ResponseEntity<>("Error al subir la imagen", HttpStatus.BAD_REQUEST);
-            }
-        } else {
-            // Asigna una imagen predeterminada si no se proporciona ninguna
-            categoria.setImagenUrl("ruta/a/imagen_predeterminada.jpg");
-        }
+        if (categoria.getEstado().equals("")) {
 
+            return new ResponseEntity<>("El estado es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+        if (categoria.getUbicacion().equals("")) {
+
+            return new ResponseEntity<>("La ubicacion es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+        
+        // todo bien
         categoriaService.save(categoria);
         return new ResponseEntity<>(categoria, HttpStatus.OK);
-    }
 
-    // Método para guardar la imagen en el sistema de archivos
-    private String guardarImagen(MultipartFile imagen) throws IOException {
-        // Generar un nombre único para la imagen
-        String nombreImagen = UUID.randomUUID().toString() + "_" + imagen.getOriginalFilename();
-
-        // Crear la ruta donde se guardará la imagen
-        Path rutaImagen = Paths.get(DIRECTORIO_IMAGENES + nombreImagen);
-
-        // Asegúrate de que el directorio de imágenes exista
-        if (!Files.exists(Paths.get(DIRECTORIO_IMAGENES))) {
-            Files.createDirectories(Paths.get(DIRECTORIO_IMAGENES));
-        }
-
-        // Guardar el archivo de imagen en el servidor
-        Files.copy(imagen.getInputStream(), rutaImagen);
-
-        // Retornar el nombre o la ruta de la imagen guardada
-        return nombreImagen;
     }
     //Filtros de categoria
     @GetMapping("/busquedaFiltros/{filtro}")
@@ -130,6 +89,7 @@ public class categoriaController {
 
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
             categoria.setEstado(categoriaUpdate.getEstado());
+            categoria.setUbicacion(categoriaUpdate.getUbicacion());
 
             categoriaService.save(categoria);
 

@@ -41,22 +41,22 @@ public class movimientos {
      private  producto producto;
 
      @Column(name = "tipoMovimiento", nullable = false, length = 36)
-     private String tipomovimiento;
+     private String tipoMovimiento;
 
-     @Column(name = "CantidadProducto", nullable = false, length = 36)
-     private String CantidadProducto;
+     @Column(name = "cantidadProducto", nullable = false, length = 15)
+     private String cantidadProducto;
 
-     @Column(name = "DescripcionMovimiento", nullable = false, length = 60)
-     private String DescripcionMovimiento;
+     @Column(name = "descripcionMovimiento", nullable = false, length = 60)
+     private String descripcionMovimiento;
 
      @ManyToOne
      @JoinColumn(name = "idUser")
      private user user;
 
-     @Column(name = "FechaMovimiento", nullable = false, length = 36)
-     private Date FechaMovimiento;
+     @Column(name = "fechaMovimiento", nullable = false, length = 36)
+     private Date fechaMovimiento;
 
-     @Column(name = "imagenMovimiento", nullable = false, length = 60)
+     @Column(name = "imagenMovimiento")
      private String imagenMovimiento;
 
 }

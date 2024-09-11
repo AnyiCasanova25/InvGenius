@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1/lote")
@@ -24,7 +24,7 @@ public class loteController {
     private IloteService loteService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute("lote") lote lote) {
+    public ResponseEntity<Object> save(@RequestBody lote lote) {
 
         var listaLote = loteService.loteExist(lote.getCodigoLote());
 
@@ -104,7 +104,7 @@ public class loteController {
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("lote") lote loteUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody lote loteUpdate) {
         var lote = loteService.findOne(id).get();
 
         if (lote != null){

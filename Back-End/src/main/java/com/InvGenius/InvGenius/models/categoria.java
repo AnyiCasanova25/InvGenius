@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,11 +28,10 @@ public class categoria {
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 
+    @Column(name = "ubicacion", nullable = false, length = 20)
+    private String ubicacion;
+
     @Column(name = "imagenUrl")
     private String imagenUrl; // Aquí se almacena la ruta o nombre del archivo de imagen
-
-    @OneToOne
-    @JoinColumn(name = "idUbicacion")
-    private ubicacion ubicacion;
 
 }

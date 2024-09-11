@@ -6,10 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +24,7 @@ public class informeController {
     private IInformeService informeService;
     
     @PostMapping("/")
-    public ResponseEntity<Object> save(@ModelAttribute ("informe") informe informe){
+    public ResponseEntity<Object> save(@RequestBody informe informe){
 
         if (informe.getHoraInforme().equals("")) {
             return new ResponseEntity<>("El campo de hora es obligatorio",HttpStatus.BAD_REQUEST);
@@ -90,7 +90,7 @@ public class informeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("informe") informe informeUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody informe informeUpdate){
         var informe = informeService.findOne(id).get();
 
         if (informe != null){
