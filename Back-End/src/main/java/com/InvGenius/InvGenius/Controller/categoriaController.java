@@ -56,6 +56,9 @@ public class categoriaController {
         if (categoria.getEstado().isEmpty()) {
             return new ResponseEntity<>("El campo Estado es obligatorio", HttpStatus.BAD_REQUEST);
         }
+        if (categoria.getUbicacion().isEmpty()) {
+            return new ResponseEntity<>("El campo Ubicacion es obligatorio", HttpStatus.BAD_REQUEST);
+        }
 
         // Si se envía una imagen, guárdala
         if (imagen != null && !imagen.isEmpty()) {
@@ -130,6 +133,7 @@ public class categoriaController {
 
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
             categoria.setEstado(categoriaUpdate.getEstado());
+            categoria.setUbicacion(categoriaUpdate.getUbicacion());
 
             categoriaService.save(categoria);
 

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.ImovimientoService;
 import com.InvGenius.InvGenius.models.movimientos;
-import lombok.var;
 
 @RestController
 @RequestMapping("/api/v1/movimientos")
