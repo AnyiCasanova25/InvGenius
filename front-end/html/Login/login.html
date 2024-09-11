@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvGenius</title>
+    <link rel="icon" type="image/png" href="/IdentidadVisual/Empresa-Logo/Logo.png">
+    <link rel="stylesheet" href="/front-end/html/Login/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+        
+    <div class="container">
+        <div class="container-form">
+            <form class="sign-in">
+                <h2 class="fuente1">Iniciar Sesión</h2>
+                <span>Use su correo y contraseña</span>
+                <div class="container-input">
+                    <ion-icon name="mail"></ion-icon>
+                    <input type="email" placeholder="Correo electrónico">
+                </div>                
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" placeholder="Contraseña">
+                </div>
+                <a id="btn-sign-up"><u>¿Olvidaste tu contraseña?</u></a>
+                <button class="button"><a href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">INICIAR</a></button>
+            </form>
+        </div>
+
+        <div class="container-form">
+            <form class="sign-up">
+                    <h2 class="fuente1">¿Olvidaste tu contraseña?</h2>
+                    <span style="text-align: center;">Utilice su correo electrónico para restablecer <br> su contraseña.</span><br>
+                    <div class="container-input">
+                        <ion-icon name="mail"></ion-icon>
+                        <input type="email" placeholder="Correo electrónico">
+                    </div>
+                    
+                <br>
+                <a id="btn-sign-in"><u>Volver a iniciar sesión</u></a>
+                <button class="button" >RECUPERAR</button>
+            </form>
+        </div>
+
+        <div class="container-welcome">
+            <div class="welcome-sign-up welcome padding1">
+                <img src="/front-end/img/Pagina/Logo.png" width="170px" style="margin-bottom: -30px;">
+                <h3 class="fuente11">InvGenius</h3>
+                <p class="fuente2">Ingrese sus datos para acceder a todas las funcionalidades del sistema de inventario.</p>
+                <button class="button"><a href="/front-end/html/paginaAterrizaje/index.html">Salir</a></button>
+
+            </div>
+            <div class="welcome-sign-in welcome padding2">
+                <img src="/front-end/img/Pagina/Logo.png" width="170px" style="margin-bottom: -30px;">
+                <h3 class="fuente11">InvGenius</h3>
+                <p class="fuente2">Restablecer su contraseña y recuperar el acceso a todas las funcionalidades del sistema de inventario.</p>
+                <button class="button"><a href="/front-end/html/paginaAterrizaje/index.html">Salir</a></button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="/front-end/html/Login/login.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
