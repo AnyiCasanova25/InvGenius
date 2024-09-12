@@ -225,10 +225,6 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.container {
-    padding: 20px;
-}
-
 .page-header {
     display: flex;
     justify-content: space-between;
