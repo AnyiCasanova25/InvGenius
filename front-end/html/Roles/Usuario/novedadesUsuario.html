@@ -36,21 +36,22 @@
             <span></span>
         </div>
         <ul class="menu">
-            <li><a href="../Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
+            <li><a href="/front-end/html/Roles/Usuario/vistaPrevia.html/productosCaducados.html">Vista previa
                     <i class="fa-solid fa-bullhorn"></i></li></a>
-            <li><a class="active" href="../producto.html">Producto
+            <li><a href="/front-end/html/Roles/Usuario/producto.html">Producto
                     <i class="fas fa-shopping-cart"></i></li></a>
-            <li><a href="../Categoria/categoria.html">Categoria
+            <li><a href="/front-end/html/Roles/Usuario/Categoria/categoria.html">Categoria
                     <i class="fas fa-border-all"></i></li></a>
+            <li><a class="active" href="/front-end/html/Roles/Usuario/novedadesUsuario.html">Novedades
+                    <i class="fas fa-bell"></i></a></li>
         </ul>
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/mujer3.png" width="50px">
                 <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Laura Ariza</p>
                 <div class="dropdown-content">
-                    <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
-                    <a href="/front-end/html/paginaPrincipal/novedadesUsuario.html">Novedades Usuario</a>
-                    <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
+                    <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
+                    <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
                     <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
                 </div>
@@ -60,12 +61,21 @@
     <br>
     <br>
     <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="info-card">
+                    <a class="text-white text-decoration-none"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fas fa-bell fa-3x"></i>
+                        <div class="Position-information">
+                            <h5><b>Hacer Novedades</b></h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>   
         <div class="card">
             <div class="card-body">
-                <div class="Position-information">
-                    <h1><b>Productos caducados</b></h1>
-                </div>
-                <br>
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
                         onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
@@ -74,12 +84,6 @@
                         <button type="button" class="btn btn-custom" onclick="listarProveedor(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
-                            </div>
-                        </button>
-                        <button type="button" class="btn btn-custom"  data-bs-toggle="modal"
-                        onclick="registrarProveedorBandera=true; limpiar();" data-bs-target="#exampleModal">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="fas fa-plus"></i>
                             </div>
                         </button>
                     </div>

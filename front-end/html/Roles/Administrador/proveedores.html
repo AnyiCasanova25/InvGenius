@@ -36,15 +36,15 @@
             <span></span>
         </div>
         <ul class="menu">
-            <li><a href="../Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
+            <li><a href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
                     <i class="fa-solid fa-bullhorn"></i></li></a>
-            <li><a href="./producto.html">Producto
+            <li><a href="/front-end/html/Roles/Administrador/producto.html">Producto
                     <i class="fas fa-shopping-cart"></i></li></a>
-            <li><a class="active" href="./proveedores.html">Proveedores
-                    <i class="fas fa-truck"></i></li></a>
-            <li><a href="./Categoria/categoria.html">Categoria
-                    <i class="fas fa-border-all"></i></li></a>
-            <li><a href="./informe.html">Informe
+            <li><a class="active" href="/front-end/html/Roles/Administrador/proveedores.html">Proveedores
+                    <i class="fa-solid fa-people-carry-box"></i></li></a>
+            <li><a href="/front-end/html/Roles/Administrador/Categoria/categoria.html">Categoria
+                <i class="fa-solid fa-tags"></i></li></a>
+            <li><a href="/front-end/html/Roles/Administrador/informe.html">Informe
                     <i class="fas fa-list-ul"></i></li></a>
         </ul>
         <div style="display: flex; align-items: center;">
@@ -52,11 +52,10 @@
                 <img src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="50px">
                 <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Julian Fierro</p>
                 <div class="dropdown-content">
-                    <a href="/front-end/html/Login/perfilUser.html">Perfil Usuario</a>
+                    <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
+                    <a href="/front-end/html/Roles/Administrador/administrar.html">Administrar</a>
                     <a href="/front-end/html/Login/registrarUsuario.html">Registrar Usuario</a>
-                    <a href="/front-end/html/Roles/Administrador/adminPerfiles.html">Administrar Perfiles</a>
-                    <a href="/front-end/html/Roles/Administrador/novedadesUsuario.html">Novedades Usuario</a>
-                    <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
+                    <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
                     <a href="/front-end/html/Login/login.html">Cerrar Sesión</a>
                 </div>
@@ -66,6 +65,19 @@
     <br>
     <br>
     <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="info-card">
+                    <a class="text-white text-decoration-none"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-people-carry-box fa-3x"></i>
+                        <div class="Position-information">
+                            <h5><b>Registrar Proveedor</b></h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="input-group mb-3">
@@ -76,12 +88,6 @@
                         <button type="button" class="btn btn-custom" onclick="listarProveedor(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
-                            </div>
-                        </button>
-                        <button type="button" class="btn btn-custom"  data-bs-toggle="modal"
-                        onclick="registrarProveedorBandera=true; limpiar();" data-bs-target="#exampleModal">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="fas fa-plus"></i>
                             </div>
                         </button>
                     </div>
