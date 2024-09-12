@@ -144,10 +144,11 @@ body {
 
 .shop-grid {
     display: flex;
-    flex-wrap: wrap;
     gap: 30px;
     padding: 20px;
     width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .shop-card {
