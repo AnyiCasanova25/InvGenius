@@ -258,11 +258,22 @@ select {
     height: 33px;
     border: none;
     background-color: transparent;
-    color: black;
+    color: #808280;
+}
 
+select option {
+    background-color: #eeeeee; /* Fondo gris para las opciones */
+    color: black;
+    font-weight: bold;
+}
+
+select option:hover, select option:focus {
+    background-color: #3e5059; /* Azul oscuro al pasar el cursor */
+    color: white; /* Texto blanco cuando está resaltado */
 }
 
 select:focus {
-    outline: none; 
+    outline: none; /* Elimina el contorno cuando está enfocado */
 }
+
 
