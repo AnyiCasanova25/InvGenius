@@ -101,7 +101,7 @@ body {
     height: 40px;
     margin-bottom: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 8px;
     padding: 0 15px;
@@ -252,3 +252,17 @@ body {
 #profileImage {
     cursor: pointer;
 }
+
+select {
+    width: 19em;
+    height: 33px;
+    border: none;
+    background-color: transparent;
+    color: black;
+
+}
+
+select:focus {
+    outline: none; 
+}
+
