@@ -225,3 +225,30 @@ body {
 .container.toggle .welcome-sign-up {
     transform: translateX(-100%);
 }
+
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.change-label {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    display: none; /* Oculto por defecto */
+    cursor: pointer;
+}
+
+.profile-image-container:hover .change-label {
+    display: block; /* Mostrar cuando el cursor está sobre la imagen */
+}
+
+#profileImage {
+    cursor: pointer;
+}
