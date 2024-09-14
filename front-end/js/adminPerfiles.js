@@ -45,6 +45,7 @@ function mostrarTabla(result){
             <td class="text-center align-middle">${result[i]["rol"]}</td>
             <td class="text-center align-middle">
                 <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idUser"]}"></i>
+                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idUser"]}"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);

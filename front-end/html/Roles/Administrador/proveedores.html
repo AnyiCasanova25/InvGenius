@@ -170,7 +170,7 @@
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="numeroProveedor"><i class="fa-solid fa-phone"></i> Telefono:</label>
-                                        <input type="text" id="numeroProveedor" class="form-control"
+                                        <input type="number" id="numeroProveedor" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarempresaProveedor(this)"
                                             onkeypress="soloNumeros(event);" required>
                                     </div>
@@ -212,6 +212,7 @@
         });
     </script>
     <script src="/front-end/js/proveedor.js"></script>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
 </body>
 
 </html>

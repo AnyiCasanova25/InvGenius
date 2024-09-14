@@ -64,8 +64,8 @@
         <div class="row justify-content-around">
             <div class="col-lg-4 col-md-6 mb-3">
                 <div class="info-card">
-                    <a class="text-white text-decoration-none"
-                        data-bs-toggle="modal" data-bs-target="#agregarCategoria">
+                    <a class="text-white text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#agregarCategoria">
                         <i class="fa-solid fa-tags fa-3x"></i>
                         <div class="Position-information">
                             <h5><b>Registrar Categoría</b></h5>
@@ -73,7 +73,7 @@
                     </a>
                 </div>
             </div>
-        </div>   
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="input-group mb-3">
@@ -165,15 +165,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
-
-
-
-    <!-- Modal -->
     <!-- Modal para agregar categoría -->
     <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="agregarCategoriaLabel"
         aria-hidden="true">
@@ -194,15 +188,15 @@
                     <div>
                         <form class="row needs-validation" enctype="multipart/form-data">
                             <div class="col-12">
-                                <label for="nombre"><i class="fa-solid fa-tag"></i>  Nombre de Categoría:</label>
+                                <label for="nombre"><i class="fa-solid fa-tag"></i> Nombre de Categoría:</label>
                                 <input type="text" id="nombre" class="form-control" style="border: 1px solid black;"
-                                    required>
+                                    onkeypress="soloLetras(event);" required>
                             </div>
                             <div class="col-12">
                                 <label for="Ubicacion"><i class="fa-solid fa-location-pin"></i>
                                     Ubicación:</label>
                                 <input type="text" id="Ubicacion" class="form-control" style="border: 1px solid black;"
-                                    required>
+                                    onkeypress="alfaNumericosSignos(event);" required>
                             </div>
                             <div class="col-12">
                                 <label for="imagen"><i class="fa-solid fa-image"></i>
@@ -219,53 +213,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal para eliminar categoría -->
-    <div class="modal fade" id="eliminarCategoria" tabindex="-1" aria-labelledby="eliminarCategoriaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
-                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                    </div>
-                    <h1 class="modal-title fs-5" id="eliminarCategoriaLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Eliminar Categoría
-                    </h1>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <form class="row needs-validation">
-                            <div class="col-12">
-                                <label for="nombre">Nombre de Categoría:</label>
-                                <input type="text" id="nombre" class="form-control" style="border: 1px solid black;"
-                                    required>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const inputText = document.getElementById('texto');
-        const clearBtn = document.getElementById('clear');
-
-        // Event listener para detectar cambios en el input
-        inputText.addEventListener('input', function () {
-            if (inputText.value.length > 0) {
-                clearBtn.style.display = 'inline-block';
-            } else {
-                clearBtn.style.display = 'none';
-            }
-        });
-    </script>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
 </body>
 
 </html>

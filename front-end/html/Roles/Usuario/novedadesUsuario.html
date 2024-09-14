@@ -151,11 +151,10 @@
                                         <div class="count-characters"><span id="charCount">0</span> / 500 caracteres</div>
                                     </div>
                                     <div class="col col-xl-12 col-12">
-                                        <label for="evidencia"><i class="fas fa-font"></i> Cargar evidencia:</label>
-                                        <input type="text" id="evidencia" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarevidencia(this)"
-                                            onkeypress="alfaNumericosSignos(event);" required>
-                                    </div>
+                                        <label for="evidencia"><i class="fas fa-upload"></i> Cargar evidencia:</label>
+                                        <input type="file" id="evidencia" class="form-control" style="border: 1px solid black;" 
+                                               accept=".pdf,.doc,.docx,image/*" onfocusout="validarevidencia(this)" required>
+                                    </div>                                    
                                 </form>
                                 <br>
                             </div>

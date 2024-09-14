@@ -90,9 +90,7 @@
                             <h3 class="title">Leche Entera</h3>
                             <div class="card-actions">
                                 <a href="./lote.html" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a class="action-icon" data-bs-toggle="modal" data-bs-target="#agregarCategoria">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                                <a href="#" class="action-icon" data-bs-toggle="modal" data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
                             </div>
                         </div>
                     </div>
@@ -105,7 +103,7 @@
                             <h3 class="title">Yogurt Alpina</h3>
                             <div class="card-actions">
                                 <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="action-icon" data-bs-toggle="modal" data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +116,7 @@
                             <h3 class="title">Leche Colun</h3>
                             <div class="card-actions">
                                 <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="action-icon" data-bs-toggle="modal" data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
                             </div>
                         </div>
                     </div>
@@ -131,16 +129,103 @@
                             <h3 class="title">Mantequilla</h3>
                             <div class="card-actions">
                                 <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="action-icon" data-bs-toggle="modal" data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
+    <!-- Modal para agregar productos de datos -->
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fondomodaldialog ">
+            <div class="modal-content col modal-custom">
+                <div class="modal-header">
+                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="X"></button>
+
+                    <div class="col centerLogoNombreModal">
+                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                    </div>
+                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                        Registrar Producto
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="centradoo">
+                            <div>
+                                <br>
+                                <form class="row table-hover needs-validation">
+
+                                    <div class="col col-xl-6 col-12 table-hover">
+                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Nombre:</label>
+                                        <input type="text" id="nombreProveedor" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarnombreProducto(this)"
+                                            onkeypress="soloLetras(event);" required>
+                                    </div>
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="Marca"><i class="fa-solid fa-tag"></i> Marca:</label>
+                                        <select id="Marca" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="">Seleccione una unidad</option>
+                                            <option value="Diana">Diana</option>
+                                            <option value="Alpina">Alpina</option>
+                                        </select>
+                                    </div>
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="Medida"><i class="fas fa-sort-numeric-up"></i> Unidad de
+                                            Medida:</label>
+                                        <select id="Medida" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="">Seleccione una unidad</option>
+                                            <option value="gramos">Gramos (g)</option>
+                                            <option value="kilogramos">Kilogramos (kg)</option>
+                                            <option value="toneladas">Toneladas (t)</option>
+                                            <option value="libras">Libras (lb)</option>
+                                            <option value="onzas">Onzas (oz)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="Marca"><i class="fa-solid fa-tags"></i> Categoria:</label>
+                                        <select id="Marca" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="">Seleccione una unidad</option>
+                                            <option value="Lacteos">Lacteos</option>
+                                            <option value="Carnes">Carnes</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="imagen"><i class="fa-solid fa-image"></i> Cargar imagen:</label>
+                                        <input type="file" id="imagen" class="form-control" accept="image/*"
+                                            style="border: 1px solid black;" required>
+                                    </div>
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
+                                            producto:</label>
+                                        <textarea id="descripcion" class="form-control" rows="5"
+                                            style="border: 1px solid black;" onkeypress="alfaNumericosSignos(event);"
+                                            required minlength="50"></textarea>
+                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe
+                                            tener al menos 10 caracteres.</small>
+                                    </div>
+
+                                </form>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="registrarProducto()">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
 </body>
 
 </html>

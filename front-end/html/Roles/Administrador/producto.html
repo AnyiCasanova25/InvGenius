@@ -64,7 +64,6 @@
     </nav>
     <br>
     <br>
-
     <div class="container">
         <div class="row justify-content-around">
             <div class="col-lg-4 col-md-6 mb-3">
@@ -178,8 +177,6 @@
         </div>
 
     </div>
-
-
     <!-- Modals -->
     <!-- Modal para agregar productos de datos -->
     <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -204,10 +201,12 @@
                             <div>
                                 <br>
                                 <form class="row table-hover needs-validation">
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre:</label>
-                                        <input type="text" id="nombreProducto" class="form-control"
-                                            style="border: 1px solid black;" required>
+
+                                    <div class="col col-xl-6 col-12 table-hover">
+                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Nombre:</label>
+                                        <input type="text" id="nombreProveedor" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarnombreProducto(this)"
+                                            onkeypress="soloLetras(event);" required>
                                     </div>
                                     <div class="col col-xl-6 col-12">
                                         <label for="Marca"><i class="fa-solid fa-tag"></i> Marca:</label>
@@ -249,10 +248,12 @@
                                         <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
                                             producto:</label>
                                         <textarea id="descripcion" class="form-control" rows="5"
-                                            style="border: 1px solid black;" required minlength="50"></textarea>
+                                            style="border: 1px solid black;" onkeypress="alfaNumericosSignos(event);"
+                                            required minlength="50"></textarea>
                                         <small id="descripcionHelp" class="form-text text-muted">La descripción debe
                                             tener al menos 10 caracteres.</small>
                                     </div>
+
                                 </form>
                                 <br>
                             </div>
@@ -290,14 +291,14 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-shopping-basket"></i> Producto:</label>
-                                        <input type="text" id="categoria" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required readonly>
                                     </div>
+                                    
                                     <div class="col col-xl-3 col-12 table-hover">
                                         <label for="categoria"><i class="fa-solid fa-hashtag"></i>
                                             Cantidad:</label>
-                                        <input type="text" id="categoria" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                        <input type="number" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" onkeypress="soloNumeros(event);" required>
                                     </div>
                                     <div class="col col-xl-4 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
@@ -313,9 +314,14 @@
                                     </div>
                                     <div class="col col-xl-12 col-12">
                                         <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
-                                        <input type="text" id="proveedor" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                        <select id="proveedor" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="" disabled selected>Seleccione un proveedor</option>
+                                            <option value="1112132434">Julian Fierro - 1112132434</option>
+                                            <option value="83283828382">William Gonzalez - 83283828382</option>
+                                        </select>
                                     </div>
+
                                 </form>
                                 <br>
                             </div>
@@ -352,14 +358,14 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-shopping-basket"></i> Producto:</label>
-                                        <input type="text" id="categoria" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required readonly>
                                     </div>
+                                    
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fa-solid fa-hashtag"></i>
                                             Cantidad:</label>
-                                        <input type="text" id="categoria" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                        <input type="number" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" onkeypress="soloNumeros(event);" required>
                                     </div>
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
@@ -446,7 +452,7 @@
             });
         });
     </script>
-
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
     <script src="/front-end/js/producto.js"></script>
 </body>
 
