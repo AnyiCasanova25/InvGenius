@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="/front-end/css/style.css">
 
 </head>
+
 <body>
     <!-- <div id="menuEstudiante"></div> -->
     <nav class="menun">
@@ -34,14 +36,15 @@
             <span></span>
         </div>
         <ul class="menu">
-            <li><a class="active" href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
+            <li><a class="active"
+                    href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
                     <i class="fa-solid fa-bullhorn"></i></li></a>
             <li><a href="/front-end/html/Roles/Administrador/producto.html">Producto
                     <i class="fas fa-shopping-cart"></i></li></a>
             <li><a href="/front-end/html/Roles/Administrador/proveedores.html">Proveedores
-                <i class="fa-solid fa-people-carry-box"></i></li></a>
-            <li><a href="/front-end/html/Roles/Administrador/Categoria/categoria.html">Categoria
-                <i class="fa-solid fa-tags"></i></li></a>
+                    <i class="fa-solid fa-people-carry-box"></i></li></a>
+            <li><a href="/front-end/html/Roles/Administrador/Categoria/categoria.html">Categoría
+                    <i class="fa-solid fa-tags"></i></li></a>
             <li><a href="/front-end/html/Roles/Administrador/informe.html">Informe
                     <i class="fas fa-list-ul"></i></li></a>
 
@@ -97,16 +100,15 @@
             </div>
         </div>
         <!-- Sección de Búsqueda y Tabla -->
-        <div class="section-header">Gestión de Productos Proximos a Caducar</div>
+        <div class="section-header">Gestión de Productos Próximos a Caducar</div>
         <div class="card">
             <div class="card-body">
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                           onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                           aria-describedby="button-addon2">
+                        onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                        aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-custom"
-                                onclick="listarProveedor(); blanquearCampos()">
+                        <button type="button" class="btn btn-custom" onclick="listarProveedor(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
                             </div>
@@ -130,9 +132,9 @@
                 </div>
             </div>
         </div>
-    
+
     </div>
-    
+
 
     <script>
         // Datos de ejemplo
@@ -142,10 +144,10 @@
             { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
             { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
         ];
-    
+
         // Selecciona el cuerpo de la tabla
         const cuerpoTabla = document.getElementById('cuerpoTabla');
-    
+
         // Recorre los datos y añade filas a la tabla
         productos.forEach(producto => {
             const fila = document.createElement('tr');
@@ -163,4 +165,5 @@
         });
     </script>
 </body>
+
 </html>
