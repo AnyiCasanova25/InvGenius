@@ -12,8 +12,6 @@ const signosPermitidos = [
 ];
 
 function soloLetras(event) {
-    console.log("Llave presionada: " + event.key);
-    console.log("Codigo tecla: " + event.keyCode);
 
     if (!(letrasPermitidas.includes(event.key))) {
         event.preventDefault();
@@ -21,8 +19,6 @@ function soloLetras(event) {
     }
 }
 function soloNumeros(event) {
-    console.log("Llave presionada: " + event.key);
-    console.log("Codigo tecla: " + event.keyCode);
 
     if (!(numerosPermitidos.includes(event.key))) {
         event.preventDefault();
@@ -30,8 +26,6 @@ function soloNumeros(event) {
     }
 }
 function alfaNumericosSignos(event) {
-    console.log("Llave presionada: " + event.key);
-    console.log("Codigo tecla: " + event.keyCode);
 
     if (!((numerosPermitidos.includes(event.key)) || (letrasPermitidas.includes(event.key)) || (signosPermitidos.includes(event.key)))) {
         event.preventDefault();

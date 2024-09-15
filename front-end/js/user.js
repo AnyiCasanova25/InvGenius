@@ -1,10 +1,10 @@
 // var url = "http://10.192.80.134:8080/api/v1/user/";
-
 var url = "http://localhost:8080/api/v1/user/";
 
 function registrarUser(event) {
     event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
+    // Obtener los valores de los campos del formulario
     let nombres = document.getElementById("Nombres").value;
     let apellidos = document.getElementById("Apellidos").value;
     let documentoIdentidad = document.getElementById("documentoIdentidad").value;
@@ -22,10 +22,12 @@ function registrarUser(event) {
         "rol": rol
     };
 
+    // Enviar los datos mediante AJAX
     $.ajax({
         url: url,
         type: "POST",
-        data: formData,
+        data: JSON.stringify(formData), // Convertir los datos a JSON
+        contentType: "application/json", // Establecer el tipo de contenido
         success: function (result) {
             Swal.fire({
                 title: "Registro Exitoso",
@@ -50,8 +52,9 @@ function registrarUser(event) {
 }
 
 function limpiarFormulario() {
-    document.getElementById("register-form").reset();
+    document.getElementById("register-form").reset(); // Limpiar todos los campos del formulario
 }
+
 function refrescarPagina() {
-    location.reload();
+    location.reload(); // Recargar la página
 }

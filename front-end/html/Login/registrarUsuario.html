@@ -14,21 +14,22 @@
         
     <div class="container">
         <div class="container-form">
-            <form class="sign-in">
+            <form class="sign-in" id="register-form">
                 <h2 class="fuente1">Registrar Usuario</h2>
+                
                 <div class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Nombres">
+                    <input type="text" id="Nombres" placeholder="Nombres" onkeypress="soloLetras(event);" required>
                 </div>
                 
                 <div class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Apellidos">
+                    <input type="text" id="Apellidos" placeholder="Apellidos" onkeypress="soloLetras(event);" required>
                 </div>
                 
                 <div class="container-input">
                     <ion-icon name="male-outline"></ion-icon>
-                    <select>
+                    <select id="Genero">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>
@@ -36,38 +37,37 @@
                 
                 <div class="container-input">
                     <ion-icon name="card-outline"></ion-icon>
-                    <select>
-                        <option value="cedula">Cedula de Ciudadania</option>
+                    <select id="TipoDocumento">
+                        <option value="cedula">Cédula de Ciudadanía</option>
                         <option value="cedula_extranjeria">Cédula de Extranjería</option>
                         <option value="pasaporte">Pasaporte</option>
                     </select>
-                    <!-- <input type="text" placeholder="N° Documento"> -->
                 </div>
-                
                 
                 <div class="container-input">
                     <ion-icon name="card-outline"></ion-icon>
-                    <input type="text" placeholder="N° Documento">
+                    <input type="number" id="documentoIdentidad" placeholder="N° Documento" onkeypress="soloNumeros(event);" required>
                 </div>
                 
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" placeholder="Correo Electrónico">
+                    <input type="email" id="Correo" placeholder="Correo Electrónico" onkeypress="alfaNumericosSignos(event);" required>
                 </div>
                 
                 <div class="container-input">
                     <ion-icon name="call-outline"></ion-icon>
-                    <input type="tel" placeholder="Celular">
+                    <input type="tel" id="Celular" placeholder="Celular" onkeypress="soloNumeros(event);" required>
                 </div>
                 
-                <!-- <div class="container-input">
+                <div class="container-input" style="display: none;">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Usuario">
-                </div> -->
+                    <input type="text" id="rol" value="Usuario" readonly>
+                </div>                
                 
-                <button class="button">REGISTRAR</button>
+                <button class="button" type="submit" onclick="registrarUser(event)">REGISTRAR</button>
             </form>
         </div>
+        
 
         <div class="container-form">
         </div>
@@ -86,5 +86,9 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/front-end/js/user.js"></script>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
 </body>
 </html>

@@ -328,7 +328,8 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="nombreMarca"><i class="fas fa-user"></i> Nombre:</label>
-                                        <input type="text" id="nombreMarca" class="form-control" style="border: 1px solid black;" required>
+                                        <input type="text" id="nombreMarca" class="form-control" style="border: 1px solid black;" 
+                                        onkeypress="soloLetras(event);" required>
                                     </div>
 
                                     <div class="col col-xl-12 col-12">
@@ -365,20 +366,8 @@
                 icon.classList.add("fa-user"); // Cambiar a ícono de usuario
             }
         }
-
-
-        const inputText = document.getElementById('texto');
-        const clearBtn = document.getElementById('clear');
-
-        // Event listener para detectar cambios en el input
-        inputText.addEventListener('input', function () {
-            if (inputText.value.length > 0) {
-                clearBtn.style.display = 'inline-block';
-            } else {
-                clearBtn.style.display = 'none';
-            }
-        });
     </script>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
     <script src="/front-end/js/adminPerfiles.js"></script>
 </body>
 
