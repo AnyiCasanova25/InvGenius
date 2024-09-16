@@ -91,6 +91,10 @@ body {
     cursor: pointer;
 }
 
+.centrar{
+    text-align: center;
+}
+
 .container-form span {
     font-size: 12px;
     margin-bottom: 15px;
@@ -98,7 +102,7 @@ body {
 }
 
 .container-input {
-    width: 90%;
+    width: 70%;
     height: 7%;
     margin-bottom: 3%;
     display: flex;

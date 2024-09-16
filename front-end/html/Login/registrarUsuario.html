@@ -33,6 +33,7 @@
                     <select id="Genero">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
                     </select>
                 </div>
 
@@ -103,7 +104,10 @@
                 genderIcon.setAttribute('name', 'male-outline');
             } else if (selectedValue === 'Femenino') {
                 genderIcon.setAttribute('name', 'female-outline');
+            } else if (selectedValue === 'Otro') {
+                genderIcon.setAttribute('name', 'transgender');
             }
+            
         });
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
