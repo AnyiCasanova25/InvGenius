@@ -5,13 +5,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Builder
 @Data
 @NoArgsConstructor
@@ -30,11 +33,11 @@ public class categoria {
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 
-    @Column(name = "imagenUrl")
-    private String imagenUrl; // Aquí se almacena la ruta o nombre del archivo de imagen
+    @Column(name = "ubicacion", nullable = false, length = 20)
+    private String ubicacion;
 
-    @OneToOne
-    @JoinColumn(name = "idUbicacion")
-    private ubicacion ubicacion;
+    @Lob // Indica que se trata de un campo grande (BLOB)
+    @Column(name = "imagenUrl", columnDefinition = "BLOB")
+    private byte[] imagenUrl; // Aquí se almacena la imagen en formato binario
 
 }

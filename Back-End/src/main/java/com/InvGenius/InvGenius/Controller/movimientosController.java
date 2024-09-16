@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 // import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.ImovimientoService;
 import com.InvGenius.InvGenius.models.movimientos;
-import lombok.var;
 
 @RestController
 @RequestMapping("/api/v1/movimientos")
@@ -39,14 +39,9 @@ public class movimientosController {
 
         // Añadir campos obligatorios
 
-        if (movimientos.getTipomovimiento().equals("")) {
+        if (movimientos.getTipoMovimiento().equals("")) {
 
             return new ResponseEntity<>("El tipo de movimiento es obligatorio", HttpStatus.BAD_REQUEST);
-        }
-
-        if (movimientos.getCantidadProducto().equals("")) {
-
-            return new ResponseEntity<>("La cantidad de producto es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (movimientos.getFechaMovimiento().equals("")) {
@@ -54,11 +49,15 @@ public class movimientosController {
             return new ResponseEntity<>("La fecha del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
         }
 
+        if (movimientos.getCantidadProducto().equals("")) {
+
+            return new ResponseEntity<>("La cantidad de producto es obligatorio ", HttpStatus.BAD_REQUEST);
+        }
+        
         if (movimientos.getDescripcionMovimiento().equals("")) {
 
-            return new ResponseEntity<>("La descripcion del movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("La descripcion de movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
         }
-
         // todo bien
         movimientosService.save(movimientos);
         return new ResponseEntity<>(movimientos, HttpStatus.OK);
@@ -85,12 +84,12 @@ public class movimientosController {
 
     // @PutMapping("/{id}")
     // public ResponseEntity<Object> update(@PathVariable String id,
-    //         @ModelAttribute("movimientos") movimientos movimientosUpdate) {
+    //         @RequestBody movimientos movimientosUpdate) {
     //     var movimientos = movimientosService.findOne(id).get();
 
     //     if (movimientos != null) {
 
-    //         movimientos.setTipomovimiento(movimientosUpdate.getTipomovimiento());
+    //         movimientos.setTipoMovimiento(movimientosUpdate.getTipoMovimiento());
     //         movimientos.setCantidadProducto(movimientosUpdate.getCantidadProducto());
     //         movimientos.setFechaMovimiento(movimientosUpdate.getFechaMovimiento());
     //         movimientos.setDescripcionMovimiento(movimientosUpdate.getDescripcionMovimiento());
@@ -108,5 +107,4 @@ public class movimientosController {
 
     // return ".......";
     // }
-
 }

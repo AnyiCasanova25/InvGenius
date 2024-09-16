@@ -1,0 +1,314 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #f4f5f7;
+    margin-top: 40px;
+}
+.container {
+    margin-top: 20px;
+}
+.section-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+.info-card {
+    background-color: #3E5059;
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.info-card i {
+    color: #fff;
+    margin-bottom: 10px;
+}
+.info-card h5 {
+    margin: 0;
+    color: #fff;
+}
+.input-group {
+    margin-bottom: 20px;
+}
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 5px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control:focus {
+    border-color: #3E5059;
+    box-shadow: 0 0 0 0.2rem rgba(62, 80, 89, 0.25);
+}
+.btn-custom {
+    background-color: #343a40;
+    color: #ffffff;
+    height: 100%;
+}
+.btn-custom:hover {
+    background-color: #495057;
+    color: #d4d4d4;
+}
+.table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.table thead th {
+    background-color: #3E5059;
+    color: #fff;
+    text-align: center;
+}
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+.table td {
+    vertical-align: middle;
+}
+.table-responsive{
+    overflow-x: auto;
+    width: 98%;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+@media (max-width: 768px) {
+    .info-card {
+        padding: 15px;
+    }
+    .info-card i {
+        font-size: 2rem;
+    }
+    .section-header {
+        font-size: 20px;
+    }
+}
+@media (max-width: 576px) {
+    .section-header {
+        font-size: 18px;
+    }
+    .info-card {
+        padding: 10px;
+    }
+    .info-card i {
+        font-size: 1.5rem;
+    }
+}
+
+/* Modals */
+.modal-content {
+    background-color: #f5f5f5;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Titillium Web', sans-serif; 
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Titillium Web', sans-serif; 
+}
+
+.centrarTextoModal {
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif; 
+}
+
+.centrarCuadroCheck {
+    padding-left: 24%;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.centerLogoNombreModal {
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif; 
+}
+
+.centerLogoNombreModal img {
+    max-width: 100%;
+}
+
+.shop-grid {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.shop-card {
+    background-color: #78909C;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.shop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-body figure {
+    margin: 0;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    border-bottom: 2px solid #fff;
+}
+
+.card-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.title {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #fff;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.action-icon {
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.action-icon:hover {
+    color: #000000;
+}
+
+.right-icon {
+    color: black; 
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.product-info {
+    display: flex;
+    gap: 20px;
+}
+
+.product-image img {
+    max-width: 50%;
+    height: auto;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-description {
+    flex: 1;
+}
+
+.search-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-group .form-control {
+    flex: 1;
+}
+
+.clear-btn {
+    margin-left: -20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.inventory-table {
+    margin-top: 30px;
+}
+
+.inventory-table .table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.inventory-table .thead-dark th {
+    background-color: #343a40;
+    color: white;
+}
+
+.movements {
+    margin-top: 30px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: #78909C;
+    box-shadow: inset 0 calc(-1* var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}
+
+.Position-information{
+    width: 98%;
+}
+
+.swal2-container .swal2-styled.swal2-confirm {
+    border: 0 !important;
+    border-radius: .25em !important;
+    background-color: #3e5059 !important;
+    color: #fff !important;
+    font-size: 1em !important;
+}

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="/front-end/img/Pagina/Logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InvGenius</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -14,130 +14,259 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/front-end/css/estilo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/front-end/css/menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+    <script src="/front-end/js/menu.js"></script>
+    <link rel="stylesheet" href="/front-end/css/style.css">
+
 </head>
+
 <body>
-    <div class="container">
-        <header class="border-bottom lh-1 py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-8 pt-1">
-                    <a href="/front-end/html/paginaPrincipal/novedades.html"><img src="/front-end/img/Pagina/Logo.png"
-                            width="40px" height="50px" style="margin-right: 1%;"><img class="Nombre-Tamaño"
-                            src="/front-end/img/Pagina/Nombre.png" width="200px" height="60px">
-                    </a>
-                </div>
-                <div class="col-2 d-flex justify-content-end align-items-center ">
-                    <div class="profile">
-                        <div class="profile">
-                            <img src="/front-end/img/Pagina/perfil.png" alt="Perfil" width="50xp" height="50xp">
-                            <div class="dropdown-content">
-                                <a href="/front-end/html/Perfil/perfilUser.html">Perfil Usuario</a>
-                                <a href="/front-end/html/inicioSesión/registrarUsuario.html">Registrar Usuario</a>
-                                <a href="/front-end/html/Perfil/adminPerfiles.html">Administrar Perfiles</a>
-                                <a href="/front-end/html/paginaPrincipal/novedadesUsuario.html">Novedades Usuario</a>
-                                <a href="/front-end/html/Perfil/cambiarContraseña.html">Cambiar Contraseña</a>
-                                <hr>
-                                <a href="/front-end/html/inicioSesión/iniciarSesión.html">Cerrar Sesión</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Navegacion -->
-        <div class="nav-scroller py-1 mb-3 border-bottom">
-            <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis"
-                    href="../Administrador/vistaPrevia/productosCaducados.html">Vista previa <i
-                        class="fa-solid fa-bullhorn"></i></a>
-                <a class="nav-item nav-link link-body-emphasis active"
-                    href="../Administrador/producto.html">Producto <i
-                        class="fas fa-shopping-cart"></i></a>
-                <a class="nav-item nav-link link-body-emphasis"
-                    href="../Administrador/proveedores.html">Proveedores <i class="fas fa-truck"></i></a>
-                <a class="nav-item nav-link link-body-emphasis"
-                    href="../Administrador/Categoria/categoria.html">Categoria <i
-                        class="fas fa-border-all"></i></a>
-                <a class="nav-item nav-link link-body-emphasis"
-                    href="../Administrador/informe.html">Informe <i class="fas fa-list-ul"></i></a>
-            </nav>
+    <!-- <div id="menuEstudiante"></div> -->
+    <nav class="menun">
+        <div class="logo-container">
+            <img src="/front-end/img/Pagina/Logo.png" class="logo">
+            <span class="brand-name">InvGenius</span>
         </div>
-        <div class="negro">
-            <div class="row centradoInfo-sm justify-content-around">
-                <div class="col-lg-3 mb-3">
-                    <a href="#" class="fondoDatoTarjeta" data-bs-toggle="modal" data-bs-target="#modalEntrada">
-                        <i style="margin-left: 15%;" class="fa-solid fa-truck-fast fa-3x"></i>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="menu">
+            <li><a href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">Vista previa
+                    <i class="fa-solid fa-bullhorn"></i></li></a>
+            <li><a class="active" href="/front-end/html/Roles/Administrador/producto.html">Producto
+                    <i class="fas fa-shopping-cart"></i></li></a>
+            <li><a href="/front-end/html/Roles/Administrador/proveedores.html">Proveedores
+                    <i class="fa-solid fa-people-carry-box"></i></li></a>
+            <li><a href="/front-end/html/Roles/Administrador/Categoria/categoria.html">Categoría
+                    <i class="fa-solid fa-tags"></i></li></a>
+            <li><a href="/front-end/html/Roles/Administrador/informe.html">Informe
+                    <i class="fas fa-list-ul"></i></li></a>
+        </ul>
+        <div style="display: flex; align-items: center;">
+            <div class="profile" style="display: flex; align-items: center; position: relative;">
+                <img src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="50px">
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Julian Fierro</p>
+                <div class="dropdown-content">
+                    <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
+                    <a href="/front-end/html/Roles/Administrador/administrar.html">Administrar</a>
+                    <a href="/front-end/html/Login/registrarUsuario.html">Registrar Usuario</a>
+                    <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
+                    <hr>
+                    <a href="/front-end/html/Login/login.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="info-card">
+                    <a class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProducto">
+                        <i class="fas fa-shopping-basket fa-3x"></i>
                         <div class="Position-information">
-                            <h1 class="fw-normal alinearDato"><b>Entrada</b></h1>
+                            <h5><b>Registrar Producto</b></h5>
                         </div>
                     </a>
                 </div>
             </div>
-            <br>
-            <br>
-            <div class="colorFondoTabla">
-                <div class="input-group mb-3">
-                    <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                        onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                        aria-describedby="button-addon2">
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-outline-dark custom-btn"
-                            onclick="listarProveedor(); blanquearCampos()">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <i class="fa-solid fa-eraser"></i>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="Position-information">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Administrar Entrada de Productos
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                            aria-label="Buscar"
+                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-custom"
+                                                onclick="listarProveedor(); blanquearCampos()">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <i class="fa-solid fa-eraser"></i>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center align-middle">Categoría</th>
+                                                    <th class="text-center align-middle">Producto</th>
+                                                    <th class="text-center align-middle">Marca</th>
+                                                    <th class="text-center align-middle">Unidad de Medida</th>
+                                                    <th class="text-center align-middle">Ingresar Producto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cuerpoTabla"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                        </button>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Administrar Salida de Producto
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="texto" class="form-control"
+                                                    placeholder="Buscar..." aria-label="Buscar"
+                                                    onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                                    aria-describedby="button-addon2">
+                                                <div class="input-group-append">
+                                                    <button type="button" class="btn btn-custom"
+                                                        onclick="listarProveedor(); blanquearCampos()">
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <i class="fa-solid fa-eraser"></i>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center align-middle">Lote</th>
+                                                            <th class="text-center align-middle">Categoría</th>
+                                                            <th class="text-center align-middle">Producto</th>
+                                                            <th class="text-center align-middle">Marca</th>
+                                                            <th class="text-center align-middle">Proveedor</th>
+                                                            <th class="text-center align-middle">Stock</th>
+                                                            <th class="text-center align-middle">Sacar Producto</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="cuerpoTabla2"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th class="text-center align-middle">Lote</th>
-                            <th class="text-center align-middle">Categoría</th>
-                            <th class="text-center align-middle">Producto</th>
-                            <th class="text-center align-middle">Marca</th>
-                            <th class="text-center align-middle">Fecha Vencimiento</th>
-                            <th class="text-center align-middle">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpoTabla"></tbody>
-                </table>
-                <script>
-                    // Datos quemados
-                    const datos = [
-                        { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', fechaVencimiento: '2024-09-01' },
-                        { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', fechaVencimiento: '2024-08-20' },
-                        { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
-                        { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
-                    ];
+            </div>
+        </div>
 
-                    // Selecciona el cuerpo de la tabla
-                    const cuerpoTabla = document.getElementById('cuerpoTabla');
+    </div>
+    <!-- Modals -->
+    <!-- Modal para agregar productos de datos -->
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog fondomodaldialog ">
+            <div class="modal-content col modal-custom">
+                <div class="modal-header">
+                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="X"></button>
 
-                    // Recorre los datos y añade filas a la tabla
-                    datos.forEach(dato => {
-                        const fila = document.createElement('tr');
-                        fila.innerHTML = `
-                            <td class="text-center align-middle">${dato.lote}</td>
-                            <td class="text-center align-middle">${dato.categoria}</td>
-                            <td class="text-center align-middle">${dato.producto}</td>
-                            <td class="text-center align-middle">${dato.marca}</td>
-                            <td class="text-center align-middle">${dato.fechaVencimiento}</td>
-                            <td class="text-center align-middle">
-                                <i class="fa-solid fa-cart-flatbed" data-bs-toggle="modal" data-bs-target="#modalEntrada" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-door-open" data-bs-toggle="modal" data-bs-target="#modalSalida" style="cursor: pointer; margin-left: 10px;"></i>
-                            </td>
-                        `;
-                        cuerpoTabla.appendChild(fila);
-                    });
-                </script>
+                    <div class="col centerLogoNombreModal">
+                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                    </div>
+                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                        Registrar Producto
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="centradoo">
+                            <div>
+                                <br>
+                                <form class="row table-hover needs-validation">
+
+                                    <div class="col col-xl-6 col-12 table-hover">
+                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Nombre:</label>
+                                        <input type="text" id="nombreProveedor" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarnombreProducto(this)"
+                                            onkeypress="soloLetras(event);" required>
+                                    </div>
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="Marca"><i class="fa-solid fa-tag"></i> Marca:</label>
+                                        <select id="Marca" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="">Seleccione una unidad</option>
+                                            <option value="Diana">Diana</option>
+                                            <option value="Alpina">Alpina</option>
+                                        </select>
+                                    </div>
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="Medida"><i class="fas fa-sort-numeric-up"></i> Unidad de
+                                            Medida:</label>
+                                        <select id="Medida" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="">Seleccione una unidad</option>
+                                            <option value="gramos">Gramos (g)</option>
+                                            <option value="kilogramos">Kilogramos (kg)</option>
+                                            <option value="toneladas">Toneladas (t)</option>
+                                            <option value="libras">Libras (lb)</option>
+                                            <option value="onzas">Onzas (oz)</option>
+                                        </select>
+                                    </div> 
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="Marca"><i class="fa-solid fa-tags"></i> Categoría:</label>
+                                        <select id="Marca" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="">Seleccione una unidad</option>
+                                            <option value="Lacteos">Lacteos</option>
+                                            <option value="Carnes">Carnes</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="imagen"><i class="fa-solid fa-image"></i> Cargar imagen:</label>
+                                        <input type="file" id="imagen" class="form-control" accept="image/*"
+                                            style="border: 1px solid black;" required>
+                                    </div>
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
+                                            producto:</label>
+                                        <textarea id="descripcion" class="form-control" rows="5"
+                                            style="border: 1px solid black;" onkeypress="alfaNumericosSignos(event);"
+                                            required minlength="50"></textarea>
+                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe
+                                            tener al menos 10 caracteres.</small>
+                                    </div>
+
+                                </form>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="registrarProducto()">Agregar</button>
+                </div>
             </div>
         </div>
     </div>
-
-
     <!-- Modal para entrada de datos -->
-
     <div class="modal fade" id="modalEntrada" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
@@ -157,42 +286,27 @@
                 <div class="modal-body">
                     <div>
                         <div class="centradoo">
-                            <div class="container col">
+                            <div>
                                 <br>
                                 <form class="row table-hover needs-validation">
-                                    <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="categoria"><i class="fas fa-tag"></i> Categoría:</label>
-                                        <input type="text" id="categoria" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                    <div class="col col-xl-12 col-12 table-hover">
+                                        <label for="categoria"><i class="fas fa-shopping-basket"></i> Producto:</label>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required readonly>
                                     </div>
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre:</label>
-                                        <input type="text" id="nombreProducto" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                    
+                                    <div class="col col-xl-3 col-12 table-hover">
+                                        <label for="categoria"><i class="fa-solid fa-hashtag"></i>
+                                            Cantidad:</label>
+                                        <input type="number" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" onkeypress="soloNumeros(event);" required>
                                     </div>
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="Medida"><i class="fas fa-sort-numeric-up"></i> Unidad de Medida:</label>
-                                        <select id="Medida" class="form-control" style="border: 1px solid black;" required>
-                                            <option value="">Seleccione una unidad</option>
-                                            <option value="gramos">Gramos (g)</option>
-                                            <option value="kilogramos">Kilogramos (kg)</option>
-                                            <option value="toneladas">Toneladas (t)</option>
-                                            <option value="libras">Libras (lb)</option>
-                                            <option value="onzas">Onzas (oz)</option>
-                                        </select>
-                                    </div>
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="Cantidad"><i class="fas fa-hashtag"></i> Cantidad</label>
-                                        <input type="number" id="Cantidad" class="form-control"
-                                            style="border: 1px solid black;" required>
-                                    </div>
-                                    <div class="col col-xl-6 col-12">
+                                    <div class="col col-xl-4 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
                                             Ingreso:</label>
                                         <input type="date" id="fechaIngreso" class="form-control"
                                             style="border: 1px solid black;" required>
                                     </div>
-                                    <div class="col col-xl-6 col-12">
+                                    <div class="col col-xl-5 col-12">
                                         <label for="fechaCaducidad"><i class="fas fa-calendar-times"></i> Fecha de
                                             Caducidad:</label>
                                         <input type="date" id="fechaCaducidad" class="form-control"
@@ -200,17 +314,14 @@
                                     </div>
                                     <div class="col col-xl-12 col-12">
                                         <label for="proveedor"><i class="fas fa-user"></i> Proveedor:</label>
-                                        <input type="text" id="proveedor" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                        <select id="proveedor" class="form-control" style="border: 1px solid black;"
+                                            required>
+                                            <option value="" disabled selected>Seleccione un proveedor</option>
+                                            <option value="1112132434">Julian Fierro - 1112132434</option>
+                                            <option value="83283828382">William Gonzalez - 83283828382</option>
+                                        </select>
                                     </div>
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
-                                            producto:</label>
-                                        <textarea id="descripcion" class="form-control" rows="5"
-                                            style="border: 1px solid black;" required minlength="50"></textarea>
-                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe
-                                            tener al menos 10 caracteres.</small>
-                                    </div>
+
                                 </form>
                                 <br>
                             </div>
@@ -223,9 +334,7 @@
             </div>
         </div>
     </div>
-
     <!-- Modal para salida de productos -->
-
     <div class="modal fade" id="modalSalida" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
@@ -244,30 +353,20 @@
                 <div class="modal-body">
                     <div>
                         <div class="centradoo">
-                            <div class="container col">
+                            <div>
                                 <br>
                                 <form class="row table-hover needs-validation">
-
-
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="Cantidad"><i class="fas fa-hashtag"></i> Cantidad</label>
-                                        <input type="number" id="Cantidad" class="form-control"
-                                            style="border: 1px solid black;" required>
+                                    <div class="col col-xl-12 col-12 table-hover">
+                                        <label for="categoria"><i class="fas fa-shopping-basket"></i> Producto:</label>
+                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required readonly>
                                     </div>
-
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="Lote"><i class="fas fa-box"></i> Lote:</label>
-                                        <input type="text" id="Lote" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarLote(this)" required>
+                                    
+                                    <div class="col col-xl-6 col-12 table-hover">
+                                        <label for="categoria"><i class="fa-solid fa-hashtag"></i>
+                                            Cantidad:</label>
+                                        <input type="number" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" onkeypress="soloNumeros(event);" required>
                                     </div>
-
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="Marca"><i class="fas fa-box"></i> Marca:</label>
-                                        <input type="text" id="Marca" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarNombreProducto(this)"
-                                            required>
-                                    </div>
-
                                     <div class="col col-xl-6 col-12">
                                         <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de
                                             Salida:</label>
@@ -275,7 +374,6 @@
                                             style="border: 1px solid black;" onfocusout="validarFechaIngreso(this)"
                                             required>
                                     </div>
-
                                 </form>
                                 <br>
                             </div>
@@ -289,49 +387,72 @@
         </div>
     </div>
 
-    <!-- <script>
-        // Obtener la fecha actual
-        document.addEventListener('DOMContentLoaded', function() {
-            const fechaIngreso = document.getElementById('fechaIngreso');
-            const fechaCaducidad = document.getElementById('fechaCaducidad');
-    
-            const fechaIngresoHoy = new Date();
-            const dia = fechaIngresoHoy.getDate().toString().padStart(2, '0');
-            const mes = (fechaIngresoHoy.getMonth() + 1).toString().padStart(2, '0');
-            const anio = fechaIngresoHoy.getFullYear();
-    
-            fechaIngreso.value = `${anio}-${mes}-${dia}`;
-    
-            fechaIngreso.addEventListener('change', function() {
-                const fechaSeleccionada = new Date(fechaIngreso.value);
-                const nuevaFechaCaducidad = new Date(fechaSeleccionada);
-                nuevaFechaCaducidad.setMonth(nuevaFechaCaducidad.getMonth() + 1);
-    
-                const diaCaducidad = nuevaFechaCaducidad.getDate().toString().padStart(2, '0');
-                const mesCaducidad = (nuevaFechaCaducidad.getMonth() + 1).toString().padStart(2, '0');
-                const anioCaducidad = nuevaFechaCaducidad.getFullYear();
-    
-                fechaCaducidad.min = `${anioCaducidad}-${mesCaducidad}-${diaCaducidad}`;
-                fechaCaducidad.value = `${anioCaducidad}-${mesCaducidad}-${diaCaducidad}`;
-            });
-    
-            fechaIngreso.dispatchEvent(new Event('change'));
+
+
+    <script>
+        // Datos quemados
+        const datos = [
+            { categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', unidadMedida: 'Gramos' },
+            { categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', unidadMedida: 'Gramos' },
+            { categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', unidadMedida: 'Gramos' },
+            { categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', unidadMedida: 'Gramos' }
+        ];
+
+        // Selecciona el cuerpo de la tabla
+        const cuerpoTabla = document.getElementById('cuerpoTabla');
+
+        // Recorre los datos y añade filas a la tabla
+        datos.forEach(dato => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+            <td class="text-center align-middle">${dato.categoria}</td>
+            <td class="text-center align-middle">${dato.producto}</td>
+            <td class="text-center align-middle">${dato.marca}</td>
+            <td class="text-center align-middle">${dato.unidadMedida}</td>
+            <td class="text-center align-middle">
+                <i class="fa-solid fa-box" data-bs-toggle="modal" data-bs-target="#modalEntrada" style="cursor: pointer;" data-bs-toggle="tooltip" title="Entrar producto"></i>
+            </td>
+        `;
+            cuerpoTabla.appendChild(fila);
         });
 
+        const datos2 = [
+            { lote: 'L001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', proveedor: 'Proveedor 1', stock: '100' },
+            { lote: 'L002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', proveedor: 'Proveedor 2', stock: '150' },
+            { lote: 'L003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', proveedor: 'Proveedor 3', stock: '200' },
+            { lote: 'L004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', proveedor: 'Proveedor 4', stock: '120' }
+        ];
 
-        // Obtener la fecha actual
-        const fechaSalidaHoy = new Date();
+        // Selecciona el cuerpo de la segunda tabla
+        const cuerpoTabla2 = document.getElementById('cuerpoTabla2');
 
-        // Formatear la fecha actual como YYYY-MM-DD (formato requerido para el input type="date")
-        const diaa = fechaSalidaHoy.getDate().toString().padStart(2, '0');
-        const mess = (fechaSalidaHoy.getMonth() + 1).toString().padStart(2, '0'); // El mes se cuenta desde 0, por eso se suma 1
-        const anioo = fechaSalidaHoy.getFullYear();
+        // Recorre los datos y añade filas a la tabla
+        datos2.forEach(dato => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+            <td class="text-center align-middle">${dato.lote}</td>
+            <td class="text-center align-middle">${dato.categoria}</td>
+            <td class="text-center align-middle">${dato.producto}</td>
+            <td class="text-center align-middle">${dato.marca}</td>
+            <td class="text-center align-middle">${dato.proveedor}</td>
+            <td class="text-center align-middle">${dato.stock}</td>
+            <td class="text-center align-middle">
+                <i class="fa-solid fa-box-open" data-bs-toggle="modal" data-bs-target="#modalSalida" style="cursor: pointer;" data-bs-toggle="tooltip" title="Sacar producto"></i>
+            </td>
+        `;
+            cuerpoTabla2.appendChild(fila);
+        });
 
-        // Establecer el valor predeterminado del campo de fecha
-        document.getElementById('fechaSalida').value = `${anioo}-${mess}-${diaa}`;
-
-
-    </script> -->
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl, {
+                    delay: { "show": 0, "hide": 0 } // Mostrar inmediatamente, ocultar con un pequeño retraso
+                });
+            });
+        });
+    </script>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
     <script src="/front-end/js/producto.js"></script>
 </body>
 
