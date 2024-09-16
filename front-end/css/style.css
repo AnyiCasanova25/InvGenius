@@ -73,6 +73,10 @@ body {
 .table td {
     vertical-align: middle;
 }
+.table-responsive{
+    overflow-x: auto;
+    width: 98%;
+}
 .btn-secondary {
     background-color: #6c757d;
     border: none;
@@ -166,10 +170,6 @@ body {
 .shop-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-}
-.table-responsive{
-    overflow-x: auto;
-    width: 100%;
 }
 
 .card-body {
@@ -303,4 +303,12 @@ body {
 
 .Position-information{
     width: 98%;
+}
+
+.swal2-container .swal2-styled.swal2-confirm {
+    border: 0 !important;
+    border-radius: .25em !important;
+    background-color: #3e5059 !important;
+    color: #fff !important;
+    font-size: 1em !important;
 }

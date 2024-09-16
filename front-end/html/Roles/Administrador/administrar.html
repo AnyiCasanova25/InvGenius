@@ -247,40 +247,42 @@
                                     <input type="hidden" id="userId">
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
-                                        <input type="text" id="nombre" class="form-control" style="border: 1px solid black;" required>
+                                        <input type="text" id="nombre" class="form-control" style="border: 1px solid black;" 
+                                        onkeypress="soloLetras(event);" required>
                                     </div>
     
                                     <div class="col col-xl-6 col-12">
                                         <label for="apellido"><i class="fas fa-user"></i> Apellido:</label>
-                                        <input type="text" id="apellido" class="form-control" style="border: 1px solid black;" required>
-                                    </div>
-
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="documento"><i class="fas fa-id-card"></i> Tipo Documento:</label>
-                                        <select id="documento">
-                                            <option value="cedula">Cédula de Ciudadanía</option>
-                                            <option value="cedula_extranjeria">Cédula de Extranjería</option>
-                                            <option value="pasaporte">Pasaporte</option>
-                                        </select>
+                                        <input type="text" id="apellido" class="form-control" style="border: 1px solid black;" 
+                                        onkeypress="soloLetras(event);" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="documento"><i class="fas fa-id-card"></i> Documento:</label>
-                                        <select id="documento">
+                                        <select id="documento" class="form-control" style="border: 1px solid black;" required>
                                             <option value="cedula">Cédula de Ciudadanía</option>
                                             <option value="cedula_extranjeria">Cédula de Extranjería</option>
                                             <option value="pasaporte">Pasaporte</option>
                                         </select>
                                     </div>
+                                    
+    
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="documento"><i class="fas fa-id-card"></i> Documento:</label>
+                                        <input type="number" id="documento" class="form-control" style="border: 1px solid black;" 
+                                        onkeypress="soloNumeros(event);" required>
+                                    </div>
     
                                     <div class="col col-xl-6 col-12">
                                         <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono:</label>
-                                        <input type="text" id="telefono" class="form-control" style="border: 1px solid black;" required>
+                                        <input type="text" id="telefono" class="form-control" style="border: 1px solid black;" 
+                                        onkeypress="soloNumeros(event);" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="correo"><i class="fa-solid fa-phone"></i> Correo:</label>
-                                        <input type="email" id="correo" class="form-control" style="border: 1px solid black;" required>
+                                        <input type="email" id="correo" class="form-control" style="border: 1px solid black;" 
+                                        onkeypress="alfaNumericosSignos(event);" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
