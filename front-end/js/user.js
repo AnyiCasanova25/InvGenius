@@ -1,8 +1,8 @@
 // var url = "http://10.192.80.134:8080/api/v1/user/";
 var url = "http://localhost:8080/api/v1/user/";
 
-function registrarUser(event) {
-    event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+function registrarUser() {
+    // event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
     // Obtener los valores de los campos del formulario
     let nombres = document.getElementById("Nombres").value;
