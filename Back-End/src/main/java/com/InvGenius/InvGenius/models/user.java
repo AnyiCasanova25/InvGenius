@@ -1,10 +1,21 @@
 package com.InvGenius.InvGenius.models;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +25,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "user")
-public class user {
+@Entity
+@Table(name = "user")
+public class user implements UserDetails{
     
     /*id
      * nombres
@@ -33,7 +45,7 @@ public class user {
      @Column(name = "idUser", nullable = false, length = 36)
      private String idUser;
 
-     @Column(name = "documentoIdentidad", nullable = false, length = 36)
+     @Column(name = "documentoIdentidad", nullable = true, length = 36)
      private String documentoIdentidad;
 
      @Column(name = "nombres", nullable = false, length = 36)
@@ -42,21 +54,40 @@ public class user {
      @Column(name = "apellidos", nullable = false, length = 36)
      private String apellidos;
 
-     @Column(name = "celular", nullable = false, length = 13)
+     @Column(name = "celular", nullable = true, length = 13)
      private String celular;
 
      @Column(name = "correo", nullable = false, length = 100)
      private String correo;
 
-     @Column(name = "password", nullable = false, length = 8)
+     @Column(name = "password", nullable = false, length = 60)
      private String password;
 
      private String confirmarPassword;
 
-     @Column(name = "rol", nullable = false, length = 36)
-     private String rol;
-
-     @Column(name = "imagenUser", nullable = false)
+     @Column(name = "imagenUser", nullable = true)
      private String imagenUser;
 
+     @Column(name = "estado", nullable = true, length = 10)
+     private String estado;
+
+     @Enumerated(EnumType.STRING)
+     private  tipoDocumento tipoDocumento;
+
+    //  @Column(name = "rol", nullable = false, length = 36)
+    //  private String rol;
+
+
+    @Enumerated(EnumType.STRING)
+    private rol rol;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(this.rol.name()));
+    }
+
+    @Override
+    public String getUsername() {
+       return this.correo;
+    }
 }

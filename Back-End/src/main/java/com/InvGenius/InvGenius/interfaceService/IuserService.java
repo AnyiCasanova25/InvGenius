@@ -3,6 +3,8 @@ package com.InvGenius.InvGenius.interfaceService;
 import java.util.List;
 import java.util.Optional;
 
+import com.InvGenius.InvGenius.models.authResponse;
+import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.user;
 
 public interface IuserService {
@@ -17,6 +19,10 @@ public interface IuserService {
 
     //cambiar el int
     public int delete(String id);
+
+    public authResponse register(registerRequest request);
+
+    public Optional<user> findByUsername(String userName);
 
 
 }

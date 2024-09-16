@@ -13,8 +13,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
-import com.InvGenius.InvGenius.service.userService;
+import com.InvGenius.InvGenius.service.authService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -25,7 +26,7 @@ class InvGeniusApplicationTests {
     private MockMvc mockMvc;
 
 	@Autowired
-	private userService uService;
+	private authService uService;
 
 	@Test
 	void contextLoads() {
@@ -41,7 +42,7 @@ class InvGeniusApplicationTests {
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
-		user.setRol("Admin");
+		user.setRol(rol.User);
 		user.setImagenUser("imagenUser");
 
 		
@@ -59,7 +60,7 @@ class InvGeniusApplicationTests {
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
-		user.setRol("Admin");
+		user.setRol(rol.User);
 		user.setImagenUser("imagenUser");
 
 		
@@ -77,7 +78,7 @@ class InvGeniusApplicationTests {
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
-		user.setRol("Admin");
+		user.setRol(rol.User);
 		user.setImagenUser("imagenUser");
 
 		
@@ -116,7 +117,7 @@ class InvGeniusApplicationTests {
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
-		user.setRol("Admin");
+		user.setRol(rol.User);
 		user.setImagenUser("imagenUser");
         // el resto de los datos
 
@@ -144,7 +145,7 @@ class InvGeniusApplicationTests {
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
-		user.setRol("Admin");
+		user.setRol(rol.User);
 		user.setImagenUser("imagenUser");
         // el resto de los datos
 
@@ -172,7 +173,7 @@ class InvGeniusApplicationTests {
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
-		user.setRol("Admin");
+		user.setRol(rol.User);
 		user.setImagenUser("imagenUser");
         // el resto de los datos
 
