@@ -11,6 +11,7 @@ function registrarUser(event) {
     let correo = document.getElementById("Correo").value;
     let celular = document.getElementById("Celular").value;
     let rol = document.getElementById("rol").value;
+    let imagenUser = document.getElementById("imagenUser").value;
 
     // Datos del formulario
     let formData = {
@@ -19,7 +20,8 @@ function registrarUser(event) {
         "documentoIdentidad": documentoIdentidad,
         "correo": correo,
         "celular": celular,
-        "rol": rol
+        "rol": rol,
+        "imagenUser": imagenUser
     };
 
     // Enviar los datos mediante AJAX
