@@ -281,11 +281,10 @@ select:focus {
     outline: none; /* Elimina el contorno cuando está enfocado */
 }
 
-div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
-    border: 0;
-    border-radius: .25em;
-    background: initial;
-    background-color: #3e5059;
-    color: #fff;
-    font-size: 1em;
+.swal2-container .swal2-styled.swal2-confirm {
+    border: 0 !important;
+    border-radius: .25em !important;
+    background-color: #3e5059 !important;
+    color: #fff !important;
+    font-size: 1em !important;
 }
