@@ -226,18 +226,16 @@
     </div>
     <!-- Modal Admin Perfiles-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog fondomodaldialog ">
+        <div class="modal-dialog fondomodaldialog">
             <div class="modal-content col modal-custom">
                 <div class="modal-header">
-                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="X"></button>
+                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
                     <div class="col centerLogoNombreModal">
                         <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
                         <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
-                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Registro Proveedor
+                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel" style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                        Editar Usuario
                     </h1>
                 </div>
                 <div class="modal-body">
@@ -245,43 +243,44 @@
                         <div class="centradoo">
                             <div class="container col">
                                 <br>
-                                <form class="row table-hover needs-validation">
-
+                                <form id="formEditUser" class="row table-hover needs-validation">
+                                    <input type="hidden" id="userId">
                                     <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Nombre:</label>
-                                        <input type="text" id="nombreProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarnombreProveedor(this)"
-                                            onkeypress="soloLetras(event);" required>
+                                        <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
+                                        <input type="text" id="nombre" class="form-control" style="border: 1px solid black;" required>
+                                    </div>
+    
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="apellido"><i class="fas fa-user"></i> Apellido:</label>
+                                        <input type="text" id="apellido" class="form-control" style="border: 1px solid black;" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="apellidoProveedor"><i class="fas fa-user"></i> Apellido:</label>
-                                        <input type="text" id="apellidoProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarapellidoProveedor(this)"
-                                            onkeypress="soloLetras(event);" required>
+                                        <label for="documento"><i class="fas fa-id-card"></i> Tipo Documento:</label>
+                                        <select id="documento">
+                                            <option value="cedula">Cédula de Ciudadanía</option>
+                                            <option value="cedula_extranjeria">Cédula de Extranjería</option>
+                                            <option value="pasaporte">Pasaporte</option>
+                                        </select>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="documentoProveedor"><i class="fas fa-id-card"></i>
-                                            Documento:</label>
-                                        <input type="number" id="documentoProveedor" class="form-control"
-                                            style="border: 1px solid black;"
-                                            onfocusout="validardocumentoProveedor(this)"
-                                            onkeypress="soloNumeros(event);" required>
+                                        <label for="documento"><i class="fas fa-id-card"></i> Documento:</label>
+                                        <select id="documento">
+                                            <option value="cedula">Cédula de Ciudadanía</option>
+                                            <option value="cedula_extranjeria">Cédula de Extranjería</option>
+                                            <option value="pasaporte">Pasaporte</option>
+                                        </select>
+                                    </div>
+    
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono:</label>
+                                        <input type="text" id="telefono" class="form-control" style="border: 1px solid black;" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="empresaProveedor"><i class="fas fa-building"></i> Empresa:</label>
-                                        <input type="text" id="empresaProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarnumeroProveedor(this)"
-                                            onkeypress="alfaNumericosSignos(event);" required>
-                                    </div>
-
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="numeroProveedor"><i class="fa-solid fa-phone"></i> Telefono:</label>
-                                        <input type="text" id="numeroProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarempresaProveedor(this)"
-                                            onkeypress="soloNumeros(event);" required>
+                                        <label for="correo"><i class="fa-solid fa-phone"></i> Correo:</label>
+                                        <input type="email" id="correo" class="form-control" style="border: 1px solid black;" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
@@ -293,19 +292,20 @@
                                             <option value="Inactivo">Inactivo</option>
                                         </select>
                                     </div>
-
+    
                                 </form>
                                 <br>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-dark" onclick="registrarProveedor() ">Registrar</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" id="saveChanges">Guardar Cambios</button>
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- Modal marca-->
     <div class="modal fade" id="modalMarca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
@@ -360,17 +360,17 @@
         function toggleUserRole(iconId) {
             var icon = document.getElementById(iconId).querySelector("i");
 
-            if (icon.classList.contains("fa-user")) {
-                icon.classList.remove("fa-user");
-                icon.classList.add("fa-user-tie"); // Cambiar a ícono de administrador
+            if (icon.classList.contains("fa-solid fa-user-large")) {
+                icon.classList.remove("fa-solid fa-user-large");
+                icon.classList.add("fa-solid fa-user-tie"); // Cambiar a ícono de administrador
             } else {
-                icon.classList.remove("fa-user-tie");
-                icon.classList.add("fa-user"); // Cambiar a ícono de usuario
+                icon.classList.remove("fa-solid fa-user-tie");
+                icon.classList.add("fa-solid fa-user-large"); // Cambiar a ícono de usuario
             }
         }
     </script>
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
-    <script src="/front-end/js/adminPerfiles.js"></script>
+    <script src="/front-end/js/user.js"></script>
 </body>
 
 </html>
