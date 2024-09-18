@@ -66,6 +66,18 @@
     <br>
     <br>
     <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="info-card">
+                    <a class="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProducto">
+                        <i class="fas fa-shopping-basket fa-3x"></i>
+                        <div class="Position-information">
+                            <h5><b>Registrar Producto</b></h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="Position-information">
@@ -82,41 +94,36 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="input-group mb-3">
-                                                <input type="text" id="texto" class="form-control"
-                                                    placeholder="Buscar..." aria-label="Buscar"
-                                                    onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                                                    aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-custom"
-                                                        onclick="listarProveedor(); blanquearCampos()">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <i class="fa-solid fa-eraser"></i>
-                                                        </div>
-                                                    </button>
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                            aria-label="Buscar"
+                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-custom"
+                                                onclick="listarProveedor(); blanquearCampos()">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <i class="fa-solid fa-eraser"></i>
                                                 </div>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr></tr>
-                                                        <th class="text-center align-middle">Tipo Documento</th>
-                                                        <th class="text-center align-middle">N° Documento</th>
-                                                            <th class="text-center align-middle">Nombre</th>
-                                                            <th class="text-center align-middle">Apellido</th>
-                                                            <th class="text-center align-middle">Correo</th>
-                                                            <th class="text-center align-middle">Teléfono</th>
-                                                            <th class="text-center align-middle">Rol</th>
-                                                            <th class="text-center align-middle">Estado</th> 
-                                                            <th class="text-center align-middle">Opciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="cuerpoTabla"></tbody>
-                                                </table>
-                                            </div>
+                                            </button>
                                         </div>
+                                    </div>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center align-middle">Lote</th>
+                                                    <th class="text-center align-middle">Categoría</th>
+                                                    <th class="text-center align-middle">Producto</th>
+                                                    <th class="text-center align-middle">Marca</th>
+                                                    <th class="text-center align-middle">Proveedor</th>
+                                                    <th class="text-center align-middle">Stock</th>
+                                                    <th class="text-center align-middle">Sacar Producto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cuerpoTabla2"></tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -131,37 +138,37 @@
                             <div id="collapseTwo" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="input-group mb-3">
-                                                <input type="text" id="texto" class="form-control"
-                                                    placeholder="Buscar..." aria-label="Buscar"
-                                                    onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                                                    aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-custom"
-                                                        onclick="listarProveedor(); blanquearCampos()">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <i class="fa-solid fa-eraser"></i>
-                                                        </div>
-                                                    </button>
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                            aria-label="Buscar"
+                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-custom"
+                                                onclick="listarProveedor(); blanquearCampos()">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <i class="fa-solid fa-eraser"></i>
                                                 </div>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center align-middle">Destinatario</th>
-                                                            <th class="text-center align-middle">Solicitudes</th>
-                                                            <th class="text-center align-middle">Fecha Envio</th>
-                                                            <th class="text-center align-middle">Opciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="cuerpoTabla"></tbody>
-                                                </table>
-                                            </div>
+                                            </button>
                                         </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr></tr>
+                                                <th class="text-center align-middle">Tipo Documento</th>
+                                                <th class="text-center align-middle">N° Documento</th>
+                                                    <th class="text-center align-middle">Nombre</th>
+                                                    <th class="text-center align-middle">Apellido</th>
+                                                    <th class="text-center align-middle">Correo</th>
+                                                    <th class="text-center align-middle">Teléfono</th>
+                                                    <th class="text-center align-middle">Rol</th>
+                                                    <th class="text-center align-middle">Estado</th> 
+                                                    <th class="text-center align-middle">Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cuerpoTabla"></tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -176,45 +183,31 @@
                             <div id="collapseThree" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="input-group mb-3">
-                                                <input type="text" id="texto" class="form-control"
-                                                    placeholder="Buscar..." aria-label="Buscar"
-                                                    onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                                                    aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-custom"
-                                                        onclick="listarProveedor(); blanquearCampos()">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <i class="fa-solid fa-eraser"></i>
-                                                        </div>
-                                                    </button>
-                                                    <button type="button" class="btn btn-custom"
-                                                        onclick="listarProveedor(); blanquearCampos()"
-                                                        data-bs-toggle="modal" data-bs-target="#modalMarca">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </button>
-
-
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                            aria-label="Buscar"
+                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-custom"
+                                                onclick="listarProveedor(); blanquearCampos()">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <i class="fa-solid fa-eraser"></i>
                                                 </div>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center align-middle">Marca</th>
-                                                            <th class="text-center align-middle">Estado</th>
-                                                            <th class="text-center align-middle">Opciones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="cuerpoTabla"></tbody>
-                                                </table>
-                                            </div>
+                                            </button>
                                         </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center align-middle">Marca</th>
+                                                    <th class="text-center align-middle">Estado</th>
+                                                    <th class="text-center align-middle">Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cuerpoTabla"></tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

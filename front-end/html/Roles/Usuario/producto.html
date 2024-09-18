@@ -129,40 +129,35 @@
                             <div id="collapseTwo" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="input-group mb-3">
-                                                <input type="text" id="texto" class="form-control"
-                                                    placeholder="Buscar..." aria-label="Buscar"
-                                                    onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                                                    aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-custom"
-                                                        onclick="listarProveedor(); blanquearCampos()">
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <i class="fa-solid fa-eraser"></i>
-                                                        </div>
-                                                    </button>
+                                    <div class="input-group mb-3">
+                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                            aria-label="Buscar"
+                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-custom"
+                                                onclick="listarProveedor(); blanquearCampos()">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <i class="fa-solid fa-eraser"></i>
                                                 </div>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center align-middle">Lote</th>
-                                                            <th class="text-center align-middle">Categoría</th>
-                                                            <th class="text-center align-middle">Producto</th>
-                                                            <th class="text-center align-middle">Marca</th>
-                                                            <th class="text-center align-middle">Proveedor</th>
-                                                            <th class="text-center align-middle">Stock</th>
-                                                            <th class="text-center align-middle">Sacar Producto</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="cuerpoTabla2"></tbody>
-                                                </table>
-                                            </div>
+                                            </button>
                                         </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center align-middle">Lote</th>
+                                                    <th class="text-center align-middle">Categoría</th>
+                                                    <th class="text-center align-middle">Producto</th>
+                                                    <th class="text-center align-middle">Marca</th>
+                                                    <th class="text-center align-middle">Proveedor</th>
+                                                    <th class="text-center align-middle">Stock</th>
+                                                    <th class="text-center align-middle">Sacar Producto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cuerpoTabla2"></tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -171,6 +166,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
     </div>
     <!-- Modals -->
@@ -287,9 +284,10 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-shopping-basket"></i> Producto:</label>
-                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required readonly>
+                                        <input type="text" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" required readonly>
                                     </div>
-                                    
+
                                     <div class="col col-xl-3 col-12 table-hover">
                                         <label for="categoria"><i class="fa-solid fa-hashtag"></i>
                                             Cantidad:</label>
@@ -354,9 +352,10 @@
                                 <form class="row table-hover needs-validation">
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="categoria"><i class="fas fa-shopping-basket"></i> Producto:</label>
-                                        <input type="text" id="categoria" class="form-control" style="border: 1px solid black;" required readonly>
+                                        <input type="text" id="categoria" class="form-control"
+                                            style="border: 1px solid black;" required readonly>
                                     </div>
-                                    
+
                                     <div class="col col-xl-6 col-12 table-hover">
                                         <label for="categoria"><i class="fa-solid fa-hashtag"></i>
                                             Cantidad:</label>
