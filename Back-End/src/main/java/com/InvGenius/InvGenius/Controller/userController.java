@@ -112,7 +112,7 @@ public class userController {
         // email.enviarCorreoRegistro(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-<<<<<<< HEAD
+
 
     @GetMapping("profile/")
     public ResponseEntity<user> getProfile() {
@@ -120,12 +120,10 @@ public class userController {
        user user = (user) auth.getPrincipal();
        return new ResponseEntity<user>(user, HttpStatus.OK);
     }
-=======
     // @PostMapping("/register/")
     // public ResponseEntity<String> register(@RequestBody String entity) {
     //     return new ResponseEntity<>("end-point Publico register",HttpStatus.OK);
     // }
->>>>>>> 629863c936d21bfa29e66e370da7a435b8ea2fe7
 
     @GetMapping("/admin/findAll/")
     public ResponseEntity <String> findAll() {
