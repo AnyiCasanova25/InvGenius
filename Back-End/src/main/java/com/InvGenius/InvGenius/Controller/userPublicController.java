@@ -29,9 +29,9 @@ public class userPublicController {
         return new ResponseEntity<authResponse>(response,HttpStatus.OK);
     }
 
-    // @PostMapping("/register/")
-    // public ResponseEntity<authResponse> register(@RequestBody registerRequest request) {
-    //    authResponse response = authService.register(request);
-    //    return new ResponseEntity<authResponse>(response,HttpStatus.OK); 
-    // }
+    @PostMapping("/register/")
+    public ResponseEntity<authResponse> register(@RequestBody registerRequest request) {
+       authResponse response = authService.register(request);
+       return new ResponseEntity<authResponse>(response,HttpStatus.OK); 
+    }
 }
