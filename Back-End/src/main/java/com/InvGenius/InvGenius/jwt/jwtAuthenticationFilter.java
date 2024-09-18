@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.InvGenius.InvGenius.models.user;
 import com.InvGenius.InvGenius.service.jwtService;
 
 import jakarta.servlet.FilterChain;
