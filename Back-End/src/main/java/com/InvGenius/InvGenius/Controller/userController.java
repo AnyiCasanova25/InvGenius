@@ -117,6 +117,7 @@ public class userController {
        user user = (user) auth.getPrincipal();
        return new ResponseEntity<user>(user, HttpStatus.OK);
     }
+
     // @PostMapping("/register/")
     // public ResponseEntity<String> register(@RequestBody String entity) {
     //     return new ResponseEntity<>("end-point Publico register",HttpStatus.OK);

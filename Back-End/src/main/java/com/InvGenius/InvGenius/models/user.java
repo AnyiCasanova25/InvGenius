@@ -27,9 +27,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
-public class user implements UserDetails{
-    
-    /*id
+public class user implements UserDetails {
+
+    /*
+     * id
      * nombres
      * apellidos
      * documentos
@@ -40,43 +41,42 @@ public class user implements UserDetails{
      * rol
      */
 
-     @Id
-     @GeneratedValue(strategy = GenerationType.UUID)
-     @Column(name = "idUser", nullable = false, length = 36)
-     private String idUser;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "idUser", nullable = false, length = 36)
+    private String idUser;
 
-     @Column(name = "documentoIdentidad", nullable = true, length = 36)
-     private String documentoIdentidad;
+    @Column(name = "documentoIdentidad", nullable = true, length = 36)
+    private String documentoIdentidad;
 
-     @Column(name = "nombres", nullable = false, length = 36)
-     private String nombres;
+    @Column(name = "nombres", nullable = false, length = 36)
+    private String nombres;
 
-     @Column(name = "apellidos", nullable = false, length = 36)
-     private String apellidos;
+    @Column(name = "apellidos", nullable = false, length = 36)
+    private String apellidos;
 
-     @Column(name = "celular", nullable = true, length = 13)
-     private String celular;
+    @Column(name = "celular", nullable = true, length = 13)
+    private String celular;
 
-     @Column(name = "correo", nullable = false, length = 100)
-     private String correo;
+    @Column(name = "correo", nullable = false, length = 100)
+    private String correo;
 
-     @Column(name = "password", nullable = false, length = 60)
-     private String password;
+    @Column(name = "password", nullable = false, length = 60)
+    private String password;
 
-     private String confirmarPassword;
+    private String confirmarPassword;
 
-     @Column(name = "imagenUser", nullable = true)
-     private String imagenUser;
+    @Column(name = "imagenUser", nullable = true)
+    private String imagenUser;
 
-     @Column(name = "estado", nullable = true, length = 10)
-     private String estado;
+    @Column(name = "estado", nullable = true, length = 10)
+    private String estado;
 
-     @Enumerated(EnumType.STRING)
-     private  tipoDocumento tipoDocumento;
+    @Enumerated(EnumType.STRING)
+    private tipoDocumento tipoDocumento;
 
-    //  @Column(name = "rol", nullable = false, length = 36)
-    //  private String rol;
-
+    @Enumerated(EnumType.STRING)
+    private genero genero;
 
     @Enumerated(EnumType.STRING)
     private rol rol;
@@ -88,6 +88,6 @@ public class user implements UserDetails{
 
     @Override
     public String getUsername() {
-       return this.correo;
+        return this.correo;
     }
 }
