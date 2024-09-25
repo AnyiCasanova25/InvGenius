@@ -25,12 +25,16 @@ public class jwtService {
     }
 
     private String getToken(HashMap<String,Object> extraClaims,UserDetails userData) {
+        var fechageneración=new Date(System.currentTimeMillis());
+        var fechaVencimiento=new Date(fechageneración.getTime()+1000*60*60*24);
         var token = Jwts
             .builder()
             .setClaims(extraClaims)
             .setSubject(userData.getUsername())
             .setIssuedAt(new Date(System.currentTimeMillis()))
             .setExpiration(new Date(System.currentTimeMillis()+1000*60*60*24))//un dia de vigencia 
+            .setIssuedAt(fechageneración)
+            .setExpiration(fechaVencimiento)//un dia de vigencia 
             .signWith(getKey(),SignatureAlgorithm.HS256)
             .compact();
         return token;
