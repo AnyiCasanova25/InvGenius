@@ -66,7 +66,7 @@ public class authService implements IuserService{
         .rol(rol.User)
         .correo(request.getUserName())
         .password(passwordEncoder.encode(password))
-        .cambiarPassword(true)
+        // .cambiarPassword(true)
         // .password(passwordEncoder.encode(request.getPassword())) //cuando se solicita la contraseña al usuario
         .build();
 

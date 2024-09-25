@@ -27,8 +27,8 @@ public class userController {
     @Autowired
     private IuserService userService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    // @Autowired
+    // private PasswordEncoder passwordEncoder;
 
     // @Autowired
     // private JavaMailSender javaMailSender;
@@ -110,27 +110,27 @@ public class userController {
         return new ResponseEntity<user>(user, HttpStatus.OK);
     }
 
-    @PutMapping("/changePassword")
-    public ResponseEntity<?> changePassword(@RequestBody changePasswordRequest request) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        user user = (user) auth.getPrincipal();
+    // @PutMapping("/changePassword")
+    // public ResponseEntity<?> changePassword(@RequestBody changePasswordRequest request) {
+    //     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    //     user user = (user) auth.getPrincipal();
 
-        if (user.isCambiarPassword()) {
-            // Validar que las contraseñas coincidan
-            if (!request.getNewPassword().equals(request.getConfirmPassword())) {
-                return new ResponseEntity<>("Las contraseñas no coinciden", HttpStatus.BAD_REQUEST);
-            }
+    //     if (user.isCambiarPassword()) {
+    //         // Validar que las contraseñas coincidan
+    //         if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+    //             return new ResponseEntity<>("Las contraseñas no coinciden", HttpStatus.BAD_REQUEST);
+    //         }
 
-            // Actualizar la contraseña
-            user.setPassword(passwordEncoder.encode(request.getNewPassword()));
-            user.setCambiarPassword(false); // Cambiar el estado de la contraseña a no temporal
-            userService.save(user);
+    //         // Actualizar la contraseña
+    //         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+    //         user.setCambiarPassword(false); // Cambiar el estado de la contraseña a no temporal
+    //         userService.save(user);
 
-            return new ResponseEntity<>("Contraseña cambiada exitosamente", HttpStatus.OK);
-        }
+    //         return new ResponseEntity<>("Contraseña cambiada exitosamente", HttpStatus.OK);
+    //     }
 
-        return new ResponseEntity<>("La contraseña no es temporal", HttpStatus.BAD_REQUEST);
-    }
+    //     return new ResponseEntity<>("La contraseña no es temporal", HttpStatus.BAD_REQUEST);
+    // }
 
     // @PostMapping("/register/")
     // public ResponseEntity<String> register(@RequestBody String entity) {
