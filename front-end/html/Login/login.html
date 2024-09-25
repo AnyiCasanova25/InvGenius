@@ -14,20 +14,20 @@
         
     <div class="container">
         <div class="container-form">
-            <form class="sign-in">
+            <div class="sign-in">
                 <h2 class="fuente1">Iniciar Sesión</h2>
                 <span>Use su correo y contraseña</span>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" placeholder="Correo electrónico">
+                    <input type="email" id="userName" placeholder="Correo electrónico">
                 </div>                
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Contraseña">
+                    <input type="password" id="password" placeholder="Contraseña">
                 </div>
                 <a id="btn-sign-up"><u>¿Olvidaste tu contraseña?</u></a>
-                <button class="button"><a href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">INICIAR</a></button>
-            </form>
+                <button class="button" onclick="Iniciar()"><a>INICIAR</a></button>
+            </div>
         </div>
 
         <div class="container-form">
@@ -67,5 +67,7 @@
     <script src="/front-end/js/login.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
