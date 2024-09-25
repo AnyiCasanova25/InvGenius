@@ -30,7 +30,7 @@ public class jwtService {
             .setClaims(extraClaims)
             .setSubject(userData.getUsername())
             .setIssuedAt(new Date(System.currentTimeMillis()))
-            .setExpiration(new Date(System.currentTimeMillis()+1000*60*24))//un dia de vigencia 
+            .setExpiration(new Date(System.currentTimeMillis()+1000*60*60*24))//un dia de vigencia 
             .signWith(getKey(),SignatureAlgorithm.HS256)
             .compact();
         return token;

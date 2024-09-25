@@ -72,8 +72,8 @@ public class user implements UserDetails {
     @Column(name = "estado", nullable = true, length = 10)
     private String estado;
 
-    // @Column(name = "cambiarPassword", nullable = false)
-    // private boolean cambiarPassword;
+    @Column(name = "cambiarPassword", nullable = false)
+    private boolean cambiarPassword;
 
     @Enumerated(EnumType.STRING)
     private tipoDocumento tipoDocumento;

@@ -1,11 +1,16 @@
 package com.InvGenius.InvGenius.Controller;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+// import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-// import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,27 +20,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.IuserService;
-// import com.InvGenius.InvGenius.models.changePasswordRequest;
+import com.InvGenius.InvGenius.models.changePasswordRequest;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/v1/user")
-
+@RequiredArgsConstructor
 public class userController {
 
     @Autowired
     private IuserService userService;
 
-    // @Autowired
-    // private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private final AuthenticationManager authenticationManager;
 
     // @Autowired
     // private JavaMailSender javaMailSender;
 
     // private static int numeroAleatorioEnRango(int minimo, int maximo) {
     // // nextInt regresa en rango pero con límite superior exclusivo, por eso
-    // sumamos
+    // // sumamos
     // // 1
     // return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
     // }
@@ -110,27 +120,33 @@ public class userController {
         return new ResponseEntity<user>(user, HttpStatus.OK);
     }
 
-    // @PutMapping("/changePassword")
-    // public ResponseEntity<?> changePassword(@RequestBody changePasswordRequest request) {
-    //     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    //     user user = (user) auth.getPrincipal();
+    @PutMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@RequestBody changePasswordRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        user user = (user) auth.getPrincipal();
+        // 1 paso preguntar si la contraseña actual es igual a la base datos
+        // 2 paso preguntar si la nueva contraseña es distinta a la actual
+        // 3 paso preguntar si la nueva y la confirmación son iguales ok
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        user.getCorreo(),
+                        request.getActualPassword()));
+        if (request.getNewPassword().equals(request.getActualPassword())) {
+            return new ResponseEntity<>("Error, la contraseña actual y la contraseña nueva son iguales",
+                    HttpStatus.BAD_REQUEST);
+        }
 
-    //     if (user.isCambiarPassword()) {
-    //         // Validar que las contraseñas coincidan
-    //         if (!request.getNewPassword().equals(request.getConfirmPassword())) {
-    //             return new ResponseEntity<>("Las contraseñas no coinciden", HttpStatus.BAD_REQUEST);
-    //         }
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            return new ResponseEntity<>("Error las contraseñas no coinciden", HttpStatus.BAD_REQUEST);
 
-    //         // Actualizar la contraseña
-    //         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
-    //         user.setCambiarPassword(false); // Cambiar el estado de la contraseña a no temporal
-    //         userService.save(user);
-
-    //         return new ResponseEntity<>("Contraseña cambiada exitosamente", HttpStatus.OK);
-    //     }
-
-    //     return new ResponseEntity<>("La contraseña no es temporal", HttpStatus.BAD_REQUEST);
-    // }
+        }
+        // // Actualizar la contraseña
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        user.setCambiarPassword(false); // Cambiar el estado de la contraseña a no
+        // temporal
+        userService.save(user);
+        return new ResponseEntity<>("Contraseña cambiada exitosamente", HttpStatus.OK);
+    }
 
     // @PostMapping("/register/")
     // public ResponseEntity<String> register(@RequestBody String entity) {
