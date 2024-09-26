@@ -13,4 +13,5 @@ public class loginRequest {
     
     private String userName;
     private String password;
+    private String rol;
 }
