@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-//import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.InvGenius.InvGenius.jwt.jwtAuthenticationFilter;
@@ -26,6 +25,7 @@ public class securityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
+                
                 .authorizeHttpRequests(
                         autRequest -> autRequest
                                 .requestMatchers("/api/v1/public/**").permitAll()

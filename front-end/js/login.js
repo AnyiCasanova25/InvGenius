@@ -27,9 +27,9 @@ function Iniciar() {
       contentType: "application/json",
       success: function (result) {
          const token = result.token;
-         let tokens = JSON.parse(localStorage.getItem('authTokens')) || [];
-         tokens.push(token);
-         localStorage.setItem('authTokens', JSON.stringify(tokens));
+         //let tokens = localStorage.getItem('authTokens');
+      
+         localStorage.setItem('authTokens',token);
          window.location.href = "/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html";
       },
       error: function (error) {

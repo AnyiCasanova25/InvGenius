@@ -19,13 +19,19 @@ function buscarProveedorPorFiltro(filtro) {
 }
 
 function listarProveedor() {
+    const token = localStorage.getItem('authTokens');
     $.ajax({
         url: url,
         type: "GET",
+        headers: {
+          'Authorization': 'Bearer ' + token
+        },
         success: function (result) {
             mostrarTabla(result);
         },
-        error: function (error) {
+        error: function (xhr, status, error) {
+            // Manejo más detallado de errores
+            console.error("Error en la petición:", xhr.responseText);
             alert("Error en la petición: " + error);
         }
     });
@@ -106,9 +112,13 @@ function registrarProveedor() {
     }
 
     if (validarCampos()) {
+        const token = localStorage.getItem('authTokens');
         $.ajax({
             url: urlLocal,
             type: "POST",
+            headers: {
+              'Authorization': 'Bearer ' + token
+            },
             contentType: "application/json",
             data: JSON.stringify(forData),
             success: function (response) {
