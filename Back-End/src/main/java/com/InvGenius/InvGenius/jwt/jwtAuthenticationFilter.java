@@ -52,11 +52,12 @@ public class jwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
     private String getTokenFromRequest(HttpServletRequest request) {
-        final String authHeader= request.getHeader(HttpHeaders.AUTHORIZATION);
+        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
             return authHeader.substring(7);
         }
         return null;
     }
+    
 
 }

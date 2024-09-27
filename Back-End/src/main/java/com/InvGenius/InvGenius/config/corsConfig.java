@@ -28,7 +28,8 @@ public class corsConfig {
         //permitir el envio de ciertos encabezados en las solicitudes
         config.addAllowedHeader("Authorization");
         config.addAllowedHeader("Content-Type");
-
+        //config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        config.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

@@ -9,10 +9,6 @@
             android:icon="@drawable/novedades"
             android:title="@string/Novedades" />
         <item
-            android:id="@+id/nav_producto"
-            android:icon="@drawable/producto"
-            android:title="@string/Producto" />
-        <item
             android:id="@+id/nav_categoria"
             android:icon="@drawable/categoria"
             android:title="@string/Categoria" />

@@ -49,10 +49,7 @@ class NovedadesFragment : Fragment() {
             binding.textNovedades.text = text
         }
 
-        // Configura los botones para mostrar los LinearLayouts correspondientes
-        binding.btnNovedadesEmpleados.setOnClickListener {
-            mostrarFragment(binding.btnNovedadesEmpleados, binding.Linear1)
-        }
+        // Configura los botones para mostrar los LinearLayouts correspondiente
         binding.btnProductosCaducados.setOnClickListener {
             mostrarFragment(binding.btnProductosCaducados, binding.Linear2)
         }
@@ -62,26 +59,6 @@ class NovedadesFragment : Fragment() {
         binding.btnBajoStock.setOnClickListener {
             mostrarFragment(binding.btnBajoStock, binding.Linear4)
         }
-
-        // Configuración del RecyclerView
-        val listNovedadesDeUsuario = mutableListOf(
-            usuario("1", "10/08/2024"),
-            usuario("2", "10/08/2024"),
-            usuario("3", "10/08/2024"),
-            usuario("4", "10/08/2024"),
-            usuario("5", "10/08/2024"),
-            usuario("6", "10/08/2024"),
-            usuario("7", "10/08/2024"),
-            usuario("8", "10/08/2024"),
-            usuario("9", "10/08/2024"),
-            usuario("10", "10/08/2024")
-        )
-
-        val recycler: RecyclerView = binding.RVNovedadesUsuario
-        recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = adapterUsuario(listNovedadesDeUsuario)
-
-
 
         val listNovedadesDeProductosCaducados = mutableListOf(
             productos_caducados("1", "10/08/2024"),
@@ -143,9 +120,7 @@ class NovedadesFragment : Fragment() {
 
     fun mostrarFragment(buttonMostrar: Button, Linear: LinearLayout) {
         // Ocultar todas las vistas cuando el botón no coincide
-        if (binding.btnNovedadesEmpleados != buttonMostrar) {
-            binding.Linear1.visibility = View.GONE
-        }
+
         if (binding.btnProductosCaducados != buttonMostrar) {
             binding.Linear2.visibility = View.GONE
         }

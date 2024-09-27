@@ -113,6 +113,7 @@ function registrarProveedor() {
 
     if (validarCampos()) {
         const token = localStorage.getItem('authTokens');
+        console.log("Token:", token); 
         $.ajax({
             url: urlLocal,
             type: "POST",
