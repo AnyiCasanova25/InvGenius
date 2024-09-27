@@ -1,6 +1,16 @@
 package com.example.invgeniusmovil.models.Novedades
 
-data class usuario(
-    val num: String,
-    val date: String
+
+
+data class User(
+    val nombre: String,
+    val apellido: String,
+    val documentos: String,
+    val celular: Int,
+    val correo: String,gi
+    val contraseña: String,
+    val confirmar_contraseña: String,
+    val rol: Boolean,
+
 )
+
