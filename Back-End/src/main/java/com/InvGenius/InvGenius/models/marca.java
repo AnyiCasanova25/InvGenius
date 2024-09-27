@@ -30,9 +30,6 @@ public class marca {
      @Column(name = "nombreMarca" , nullable = false, length = 36)
      private String nombreMarca;
 
-     @Column(name = "imagenMarca" , nullable = false)
-     private String imagenMarca;
-
      @Column(name = "estado" , nullable = false, length = 36)
      private String estado;
 

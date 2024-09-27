@@ -58,12 +58,29 @@ public class marcaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable String id) {
-        marcaService.delete(id);
-        return new ResponseEntity<>("Marca Eliminada", HttpStatus.OK);
+        var optionalMarca = marcaService.findOne(id);
+
+        if (optionalMarca.isPresent()) {
+            var marca = optionalMarca.get();
+
+            if ("Activo".equals(marca.getEstado())) {
+                marca.setEstado("Inactivo");
+                marcaService.save(marca);
+                return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
+            } else {
+                marca.setEstado("Activo");
+                marcaService.save(marca);
+                return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+            }
+        } else {
+            return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+        }
     }
 
+
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody marca marcaUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, 
+            @RequestBody marca marcaUpdate){
         var marca = marcaService.findOne(id).get();
 
         if (marca != null) {

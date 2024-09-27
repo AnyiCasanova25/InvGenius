@@ -96,21 +96,21 @@
                                             </button>
                                         </div>
                                     </div>
-                                    
                                     <div class="table-responsive">
                                         <table class="table table-hover table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center align-middle">Lote</th>
-                                                    <th class="text-center align-middle">Categoría</th>
-                                                    <th class="text-center align-middle">Producto</th>
-                                                    <th class="text-center align-middle">Marca</th>
-                                                    <th class="text-center align-middle">Proveedor</th>
-                                                    <th class="text-center align-middle">Stock</th>
-                                                    <th class="text-center align-middle">Sacar Producto</th>
+                                                    <th class="text-center align-middle">N° Documento</th>
+                                                    <th class="text-center align-middle">Nombre</th>
+                                                    <th class="text-center align-middle">Apellido</th>
+                                                    <th class="text-center align-middle">Teléfono</th>
+                                                    <th class="text-center align-middle">Correo</th>
+                                                    <th class="text-center align-middle">Rol</th>
+                                                    <th class="text-center align-middle">Estado</th>
+                                                    <th class="text-center align-middle">Opciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="cuerpoTabla2"></tbody>
+                                            <tbody id="#"></tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -167,18 +167,19 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="input-group mb-3">
-                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
-                                            aria-label="Buscar"
-                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
-                                            aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-custom"
-                                                onclick="listarProveedor(); blanquearCampos()">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fa-solid fa-eraser"></i>
-                                                </div>
-                                            </button>
-                                            <button type="button" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#modalMarca">
+                                        <div class="input-group">
+                                            <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                                aria-label="Buscar"
+                                                onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                                aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-custom" onclick="listarMarca(); blanquearCamposMarca()">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <i class="fa-solid fa-eraser"></i>
+                                                    </div>
+                                                </button>
+                                            <button type="button" class="btn btn-custom" data-bs-toggle="modal"
+                                                onclick="registrarMarcaBandera=true; limpiar();" data-bs-target="#modalMarca">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <i class="fa-solid fa-plus"></i>
                                                 </div>
@@ -194,7 +195,7 @@
                                                     <th class="text-center align-middle">Opciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="cuerpoTabla"></tbody>
+                                            <tbody id="cuerpoTablaMarca"></tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -224,52 +225,49 @@
                         <div class="centradoo">
                             <div class="container col">
                                 <br>
-                                <form id="formEditUser" class="row table-hover needs-validation">
-                                    <input type="hidden" id="userId">
+                                <form id="formEditUser" class="row table-hover needs-validation"></form>
+
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="documentoProveedor"><i class="fas fa-id-card"></i>
+                                            Documento:</label>
+                                        <input type="number" id="documentoProveedor" class="form-control"
+                                            style="border: 1px solid black;"
+                                            onfocusout="validardocumentoProveedor(this)"
+                                            onkeypress="soloNumeros(event);" required>
+                                    </div>
+
                                     <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
-                                        <input type="text" id="nombre" class="form-control" style="border: 1px solid black;" 
-                                        onkeypress="soloLetras(event);" required>
+                                        <label for="nombres"><i class="fas fa-user"></i> Nombre:</label>
+                                        <input type="text" id="nombres" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarnombres(this)"
+                                            onkeypress="soloLetras(event);" required>
                                     </div>
     
                                     <div class="col col-xl-6 col-12">
-                                        <label for="apellido"><i class="fas fa-user"></i> Apellido:</label>
-                                        <input type="text" id="apellido" class="form-control" style="border: 1px solid black;" 
-                                        onkeypress="soloLetras(event);" required>
+                                        <label for="apellidos"><i class="fas fa-user"></i> Apellido:</label>
+                                        <input type="text" id="apellidos" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarapellidos(this)"
+                                            onkeypress="soloLetras(event);" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="documento"><i class="fas fa-id-card"></i> Documento:</label>
-                                        <select id="documento" class="form-control" style="border: 1px solid black;" required>
-                                            <option value="cedula">Cédula de Ciudadanía</option>
-                                            <option value="cedula_extranjeria">Cédula de Extranjería</option>
-                                            <option value="pasaporte">Pasaporte</option>
-                                        </select>
-                                    </div>
-                                    
-    
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="documento"><i class="fas fa-id-card"></i> Documento:</label>
-                                        <input type="number" id="documento" class="form-control" style="border: 1px solid black;" 
-                                        onkeypress="soloNumeros(event);" required>
-                                    </div>
-    
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="telefono"><i class="fa-solid fa-phone"></i> Teléfono:</label>
-                                        <input type="text" id="telefono" class="form-control" style="border: 1px solid black;" 
-                                        onkeypress="soloNumeros(event);" required>
+                                        <label for="celular"><i class="fa-solid fa-phone"></i> Teléfono:</label>
+                                        <input type="number" id="celular" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarcelular(this)"
+                                            onkeypress="soloNumeros(event);" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="correo"><i class="fa-solid fa-phone"></i> Correo:</label>
-                                        <input type="email" id="correo" class="form-control" style="border: 1px solid black;" 
-                                        onkeypress="alfaNumericosSignos(event);" required>
+                                        <input type="email" id="correo" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarcorreo(this)"
+                                            onkeypress="alfaNumericosSignos(event);" required>
                                     </div>
 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="estadoProveedor"><i class="fas fa-check-circle"></i> Estado:</label>
-                                        <select id="estadoProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarestadoProveedor(this)"
+                                        <label for="estado"><i class="fas fa-check-circle"></i> Estado:</label>
+                                        <select id="estado" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarestado(this)"
                                             onkeypress="soloLetras(event);" required>
                                             <option value="Activo" selected>Activo</option>
                                             <option value="Inactivo">Inactivo</option>
@@ -314,13 +312,14 @@
                                     <div class="col col-xl-12 col-12 table-hover">
                                         <label for="nombreMarca"><i class="fa-solid fa-tag"></i> Nombre:</label>
                                         <input type="text" id="nombreMarca" class="form-control"
-                                            style="border: 1px solid black;" onkeypress="soloLetras(event);" required>
+                                            style="border: 1px solid black;" onfocusout="validarnombreMarca(this)"
+                                            onkeypress="alfaNumericosSignos(event);" required>
                                     </div>
 
                                     <div class="col col-xl-12 col-12">
-                                        <label for="estadoProveedor"><i class="fas fa-check-circle"></i> Estado:</label>
-                                        <select id="estadoProveedor" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarestadoProveedor(this)"
+                                        <label for="estado  "><i class="fas fa-check-circle"></i> Estado:</label>
+                                        <select id="estado  " class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarestado(this)"
                                             onkeypress="soloLetras(event);" required>
                                             <option value="Activo" selected>Activo</option>
                                             <option value="Inactivo">Inactivo</option>
@@ -333,7 +332,7 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-dark" onclick="registrarProveedor() ">Registrar</button>
+                    <button type="button" class="btn btn-dark" onclick="registrarMarca() ">Registrar</button>
                 </div>
             </div>
         </div>
@@ -353,7 +352,8 @@
         }
     </script>
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
-    <script src="/front-end/js/user.js"></script>
+    <script src="/front-end/js/administrarMarca.js"></script>
+    <!-- <script src="/front-end/js/administrar.js"></script> -->
 </body>
 
 </html>

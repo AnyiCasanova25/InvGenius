@@ -2,12 +2,14 @@
 // var url = "http://10.192.80.134:8080/api/v1/proveedor/";
 
 var url = "http://localhost:8080/api/v1/proveedor/";
+var registrarProveedorBandera = true;
+var idProveedor = "";
 
-
+// Función para buscar proveedores por filtro
 function buscarProveedorPorFiltro(filtro) {
     if (filtro.trim() !== "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/proveedor/busquedaFiltros/" + filtro,
+            url: url + "busquedaFiltros/" + filtro,
             type: "GET",
             success: function (result) {
                 mostrarTabla(result);
@@ -18,41 +20,41 @@ function buscarProveedorPorFiltro(filtro) {
     }
 }
 
+// Función para listar todos los proveedores
 function listarProveedor() {
     const token = localStorage.getItem('authTokens');
     $.ajax({
         url: url,
         type: "GET",
         headers: {
-          'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token
         },
         success: function (result) {
             mostrarTabla(result);
         },
         error: function (xhr, status, error) {
-            // Manejo más detallado de errores
             console.error("Error en la petición:", xhr.responseText);
             alert("Error en la petición: " + error);
         }
     });
 }
 
-
-function mostrarTabla(result){
+// Función para mostrar los proveedores en la tabla
+function mostrarTabla(result) {
     var cuerpoTabla = document.getElementById("cuerpoTabla");
     cuerpoTabla.innerHTML = "";
 
     for (var i = 0; i < result.length; i++) {
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
+            <td class="text-center align-middle">${result[i]["documentoProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["nombreProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["apellidoProveedor"]}</td>
-            <td class="text-center align-middle">${result[i]["documentoProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["numeroProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["empresaProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["estadoProveedor"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" onclick="registrarProveedorBandera=false;" data-id="${result[i]["idProveedor"]}"></i>
+                <i class="fas fa-edit editar" data-id="${result[i]["idProveedor"]}"></i>
                 <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idProveedor"]}"></i>
             </td>
         `;
@@ -60,12 +62,12 @@ function mostrarTabla(result){
     }
 }
 
+// Función para blanquear los campos del formulario
 function blanquearCampos() {
     document.getElementById('texto').value = "";
 }
 
-var registrarProveedorBandera = true;
-
+// Función para registrar o actualizar un proveedor
 function registrarProveedor() {
     var nombreProveedor = document.getElementById("nombreProveedor");
     var apellidoProveedor = document.getElementById("apellidoProveedor");
@@ -75,19 +77,13 @@ function registrarProveedor() {
     var estadoProveedor = document.getElementById("estadoProveedor");
 
     // Verificar si algún campo obligatorio está vacío
-    if (!validarnombreProveedor(nombreProveedor) ||
-        !validarapellidoProveedor(apellidoProveedor) ||
-        !validardocumentoProveedor(documentoProveedor) ||
-        !validarnumeroProveedor(numeroProveedor) ||
-        !validarempresaProveedor(empresaProveedor) ||
-        !validarestadoProveedor(estadoProveedor)) {
-        // Mostrar una alerta indicando que todos los campos son obligatorios
+    if (!validarCampos()) {
         Swal.fire({
             title: "¡Error!",
             text: "¡Llene todos los campos correctamente!",
             icon: "error"
         });
-        return; // Salir de la función si algún campo está vacío
+        return; // Salir si algún campo es inválido
     }
 
     var forData = {
@@ -99,60 +95,40 @@ function registrarProveedor() {
         "estadoProveedor": estadoProveedor.value,
     };
 
-    var metodo = "";
-    var urlLocal = "";
-    var textoimprimir = "";
-    if (registrarProveedorBandera == true) {
-        metodo = "POST";
-        urlLocal = url;
+    var metodo = registrarProveedorBandera ? "POST" : "PUT";
+    var urlLocal = registrarProveedorBandera ? url : url + idProveedor;
 
-    } else {
-        metodo = "PUT";
-        urlLocal = url + idProveedor;
-    }
-
-    if (validarCampos()) {
-        const token = localStorage.getItem('authTokens');
-        console.log("Token:", token); 
-        $.ajax({
-            url: urlLocal,
-            type: "POST",
-            headers: {
-              'Authorization': 'Bearer ' + token
-            },
-            contentType: "application/json",
-            data: JSON.stringify(forData),
-            success: function (response) {
-                limpiar();
-                Swal.fire({
-                    title: "LISTO",
-                    text: "Felicidades, Registro exitoso",
-                    icon: "success"
-                }).then(function () {
-                    // Aquí puedes agregar más acciones después del registro exitoso
-                    $('#exampleModal').modal('hide');
-                    listarProveedor(); // Aquí se vuelve a listar los productos
-                });
-            },
-            error: function (xhr, status, error) {
-                Swal.fire({
-                    title: "Error",
-                    text: "¡Error al registrar este Proveedor",
-                    icon: "error"
-                });
-            }
-        });
-    } else {
-        Swal.fire({
-            title: "Error",
-            text: "¡Llene todos los campos correctamente!",
-            icon: "error"
-        });
-    }
-};
+    const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlLocal,
+        type: metodo,
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        contentType: "application/json",
+        data: JSON.stringify(forData),
+        success: function (response) {
+            limpiar();
+            Swal.fire({
+                title: "LISTO",
+                text: "Felicidades, Registro exitoso",
+                icon: "success"
+            }).then(function () {
+                $('#exampleModal').modal('hide');
+                listarProveedor(); // Refrescar la tabla
+            });
+        },
+        error: function (xhr, status, error) {
+            Swal.fire({
+                title: "Error",
+                text: "¡Error al registrar o actualizar este Proveedor!",
+                icon: "error"
+            });
+        }
+    });
+}
 
 // Función para validar campos
-
 function validarCampos() {
     var nombreProveedor = document.getElementById("nombreProveedor");
     var apellidoProveedor = document.getElementById("apellidoProveedor");
@@ -166,20 +142,13 @@ function validarCampos() {
         validarempresaProveedor(empresaProveedor) && validarestadoProveedor(estadoProveedor);
 }
 
+// Funciones de validación por campo
 function validarCampo(cuadroNumero, minLength, maxLength) {
     var valor = cuadroNumero.value.trim();
-    var valido = true;
-    if (valor.length < minLength || valor.length > maxLength) {
-        valido = false;
-    }
-    if (valido) {
-        cuadroNumero.className = "form-control is-valid";
-    } else {
-        cuadroNumero.className = "form-control is-invalid";
-    }
+    var valido = (valor.length >= minLength && valor.length <= maxLength);
+    cuadroNumero.className = "form-control " + (valido ? "is-valid" : "is-invalid");
     return valido;
 }
-
 
 function validarnombreProveedor(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 41);
@@ -205,25 +174,19 @@ function validarestadoProveedor(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 21);
 }
 
+// Función para limpiar el formulario
 function limpiar() {
-    document.getElementById("nombreProveedor").value = "";
-    document.getElementById("nombreProveedor").className = "form-control";
-    document.getElementById("apellidoProveedor").value = "";
-    document.getElementById("apellidoProveedor").className = "form-control";
-    document.getElementById("documentoProveedor").value = "";
-    document.getElementById("documentoProveedor").className = "form-control";
-    document.getElementById("numeroProveedor").value = "";
-    document.getElementById("numeroProveedor").className = "form-control";
-    document.getElementById("empresaProveedor").value = "";
-    document.getElementById("empresaProveedor").className = "form-control";
-    document.getElementById("estadoProveedor").value = "";
-    document.getElementById("estadoProveedor").className = "form-control";
+    document.querySelectorAll(".form-control").forEach(function (input) {
+        input.value = "";
+        input.className = "form-control";
+    });
 }
 
-var idProveedor = "";
+// Función para editar proveedor
 $(document).on("click", ".editar", function () {
     limpiar();
     idProveedor = $(this).data("id");
+    registrarProveedorBandera = false; // Cambiar bandera para editar
 
     $.ajax({
         url: url + idProveedor,
@@ -243,7 +206,7 @@ $(document).on("click", ".editar", function () {
     });
 });
 
-
+// Función para cambiar estado del proveedor
 $(document).on("click", ".cambiarEstado", function () {
     var idProveedor = $(this).data("id");
     $.ajax({
@@ -257,15 +220,17 @@ $(document).on("click", ".cambiarEstado", function () {
                 showConfirmButton: false,
                 timer: 1500
             });
-            listarProveedor ();
+            listarProveedor();
         }
     });
 });
 
-// Llamar a la función para listar cliente al cargar la página
+// Llamar a la función para listar proveedores al cargar la página
 $(document).ready(function () {
     listarProveedor();
 });
+
+// Función adicional para actualizar lista de proveedores después de registrar/editar
 function actualizarlistarProveedor() {
     listarProveedor();
 }
