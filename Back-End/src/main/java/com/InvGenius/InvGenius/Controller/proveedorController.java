@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.InvGenius.InvGenius.models.estadoProveedor;
 import com.InvGenius.InvGenius.models.proveedor;
 import com.InvGenius.InvGenius.interfaceService.IproveedorService;
 
@@ -91,13 +92,13 @@ public class proveedorController {
    public ResponseEntity<Object> delete(@PathVariable String id) {
        var proveedor = proveedorService.findOne(id).get();
        if (proveedor != null) {
-           if (proveedor.getEstadoProveedor().equals("Activo")) {
+           if (proveedor.getEstadoProveedor() == estadoProveedor.Activo) {
 
-               proveedor.setEstadoProveedor("Inactivo");
+               proveedor.setEstadoProveedor(estadoProveedor.Inactivo);
                proveedorService.save(proveedor);
                return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
            } else
-               proveedor.setEstadoProveedor("Activo");
+               proveedor.setEstadoProveedor(estadoProveedor.Inactivo);
            proveedorService.save(proveedor);
            return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
        } else {

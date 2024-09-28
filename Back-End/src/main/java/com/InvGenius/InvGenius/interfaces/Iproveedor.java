@@ -11,7 +11,7 @@ import com.InvGenius.InvGenius.models.proveedor;
 @Repository
 public interface Iproveedor extends CrudRepository<proveedor, String> {
 
-    @Query("SELECT prov FROM proveedor prov WHERE prov.empresaProveedor LIKE %?1% OR prov.documentoProveedor LIKE %?2%")
+    @Query("SELECT prov FROM proveedor prov WHERE (prov.empresaProveedor LIKE %?1% OR prov.documentoProveedor LIKE %?2%) AND prov.estadoProveedor ='Activo'")
     List<proveedor> proveedorExist(String empresaProveedor, String documentoProveedor);
 
 }
