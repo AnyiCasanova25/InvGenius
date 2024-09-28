@@ -1,5 +1,7 @@
 package com.InvGenius.InvGenius.models;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +41,7 @@ public class novedad {
     private String cuerpo;
 
     @Column(name = "fechaNovedad", nullable = false)
-    private String fechaNovedad;
+    private Date fechaNovedad;
 
     @Column(name = "imagenNovedad", nullable = false)
     private String imagenNovedad;

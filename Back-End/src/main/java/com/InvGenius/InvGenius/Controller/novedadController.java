@@ -42,11 +42,7 @@ public class novedadController {
             return new ResponseEntity<>("El contenedor *cuerpo*, es un campo obligatorio",HttpStatus.BAD_REQUEST);
         }
 
-        if (novedad.getFechaNovedad().equals("")) {
-            
-            return new ResponseEntity<>("El contenedor *fechaNovedad*, es un campo obligatorio",HttpStatus.BAD_REQUEST);
-        }
-
+        novedad.setFechaNovedad(new Date());
         novedadService.save(novedad);
         return new ResponseEntity<>(novedad, HttpStatus.OK);
     }
