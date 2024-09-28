@@ -136,8 +136,8 @@ function validarCampos() {
     // var estado = document.getElementById("estado");
 
     return validarpara(para) && validarasunto(asunto) &&
-        validarcuerpo(cuerpo);
-        //  && validarfechaNovedad(fechaNovedad) && validarestado(estado) ;
+        validarcuerpo(cuerpo) && validarfechaNovedad(fechaNovedad);
+        // && validarestado(estado) ;
 }
 
 // Funciones de validación por campo
@@ -160,9 +160,9 @@ function validarcuerpo(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 501);
 }
 
-// function validarfechaNovedad(cuadroNumero) {
-//     return validarCampo(cuadroNumero, 1, 100);
-// }
+function validarfechaNovedad(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 100);
+}
 
 // function validarestado(cuadroNumero) {
 //     return validarCampo(cuadroNumero, 1, 41);
@@ -190,7 +190,7 @@ $(document).on("click", ".editar", function () {
             document.getElementById("para").value = novedad.para;
             document.getElementById("asunto").value = novedad.asunto;
             document.getElementById("cuerpo").value = novedad.cuerpo;
-            // document.getElementById("fechaNovedad").value = novedad.fechaNovedad;
+            document.getElementById("fechaNovedad").value = novedad.fechaNovedad;
             document.getElementById("imagenNovedad").value = novedad.imagenNovedad;
             // document.getElementById("estado").value = novedad.estado;
             $('#exampleModal').modal('show');
