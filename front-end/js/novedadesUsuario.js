@@ -50,6 +50,7 @@ function mostrarTabla(result) {
             <td class="text-center align-middle">${result[i]["para"]}</td>
             <td class="text-center align-middle">${result[i]["asunto"]}</td>
             <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
+            <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
             <td class="text-center align-middle">${result[i]["para"]}</td>
             <td class="text-center align-middle">
                 <i class="fas fa-edit editar" data-id="${result[i]["idNovedad"]}"></i>
@@ -71,7 +72,7 @@ function registrarNovedad() {
     var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
-    // var fechaNovedad = document.getElementById("fechaNovedad");
+    var fechaNovedad = document.getElementById("fechaNovedad");
     var imagenNovedad = document.getElementById("imagenNovedad");
     // var estado = document.getElementById("estado");
 
@@ -89,7 +90,7 @@ function registrarNovedad() {
         "para": para.value,
         "asunto": asunto.value,
         "cuerpo": cuerpo.value,
-        // "fechaNovedad": fechaNovedad.value,
+        "fechaNovedad": fechaNovedad.value,
         "imagenNovedad": imagenNovedad.value,
         // "estado": estado.value,
     };
@@ -132,7 +133,7 @@ function validarCampos() {
     var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
-    // var fechaNovedad = document.getElementById("fechaNovedad");
+    var fechaNovedad = document.getElementById("fechaNovedad");
     // var estado = document.getElementById("estado");
 
     return validarpara(para) && validarasunto(asunto) &&

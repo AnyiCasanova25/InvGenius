@@ -162,8 +162,13 @@
                                                accept="image/*" required>
                                     </div>                          -->
                                     <div class="col col-xl-12 col-12">
-                                        <input type="text" id="fechaNovedad" class="form-control" style="display:none;"onfocusout="validarfechaNovedad(this)" required>
+                                        <label for="fechaNovedad"><i class="fas fa-font"></i> Cargar fecha::</label>
+                                        <input type="date" id="fechaNovedad" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarfechaNovedad(this)" required>
                                     </div>
+                                    <!-- <div class="col col-xl-12 col-12">
+                                        <input type="text" id="fechaNovedad" class="form-control" style="display:none;"onfocusout="validarfechaNovedad(this)" required>
+                                    </div> -->
                                     
                                     <script>
                                         // Selecciona la fechaNovedad actual automáticamente
