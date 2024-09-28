@@ -16,7 +16,7 @@ function buscarUserrFiltro(filtro) {
             },
         });
     } else {
-        listarUser;
+        listarUser();
     }
 }
 
@@ -24,7 +24,7 @@ function buscarUserrFiltro(filtro) {
 function listarUser() {
     // const token = localStorage.getItem('authTokens');
     $.ajax({
-        url: url,
+        url: url + "profile/",
         type: "GET",
         // headers: {
         //     'Authorization': 'Bearer ' + token

@@ -2,25 +2,63 @@
 // var url = "http://10.192.80.134:8080/api/v1/marca/";
 
 var url = "http://localhost:8080/api/v1/marca/";
-var registrarMarcaBandera = true;
+var registrarMarcaBandera = true;  
 var idMarca = "";
 
-// Función para buscar User por filtro
-// function buscarMarcaFiltro(filtro) {
-//     if (filtro.trim() !== "") {
-//         $.ajax({
-//             url: url + "busquedaFiltros/" + filtro,
-//             type: "GET",
-//             success: function (result) {
-//                 mostrarTabla(result);
-//             },
-//         });
-//     } else {
-//         listarMarca;
-//     }
-// }
+// Función para registrar o actualizar una marca
+function registrarMarca() {
+    var nombreMarca = document.getElementById("nombreMarca").value.trim();
+    var estado = document.getElementById("estado").value.trim();
 
-// Función para listar todos los User
+    if (registrarMarcaBandera) {
+        estado = "Activo";  // Forzar el estado a "Activo" al registrar una nueva marca
+    }
+
+    if (!validarCampos()) {
+        Swal.fire({
+            title: "¡Error!",
+            text: "¡Llene todos los campos correctamente!",
+            icon: "error"
+        });
+        return; 
+    }
+
+    var forData = {
+        "nombreMarca": nombreMarca,
+        "estado": estado
+    };
+
+    var metodo = registrarMarcaBandera ? "POST" : "PUT";
+    var urlLocal = registrarMarcaBandera ? url : url + idMarca;
+    
+
+    $.ajax({
+        url: urlLocal,
+        type: metodo,
+        contentType: "application/json",
+        data: JSON.stringify(forData),
+        success: function (response) {
+            limpiarFormulario();
+            Swal.fire({
+                title: "LISTO",
+                text: "Registro exitoso",
+                icon: "success"
+            }).then(function () {
+                $('#modalMarca').modal('hide'); 
+                listarMarca(); 
+            });
+        },
+        error: function (xhr, status, error) {
+            Swal.fire({
+                title: "Error",
+                text: "¡Error al registrar o actualizar la marca!",
+                icon: "error"
+            });
+        }
+    });
+}
+
+// Función para listar marcas (se debe definir según tu implementación)
 function listarMarca() {
     // const token = localStorage.getItem('authTokens');
     $.ajax({
@@ -50,123 +88,70 @@ function mostrarTabla(result) {
             <td class="text-center align-middle">${result[i]["nombreMarca"]}</td>
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idMarca"]}"></i>
-                <i class="fas fa-toggle-on cambiarEstado" data-id="${result[i]["idMarca"]}"></i>
+                <i class="fas fa-edit editar" data-id="${result[i]["idMarca"]}"></i>  <!-- Icono de editar -->
+                <i class="fas fa-toggle-on cambiarEstado" data-id="${result[i]["idMarca"]}"></i>  <!-- Icono de cambio de estado -->
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
 }
 
-// Función para blanquear los campos del formulario
-function blanquearCamposMarca() {
-    document.getElementById('texto').value = "";
-}
+// Función para limpiar el formulario completamente, incluyendo el estado si es necesario
+function limpiarFormulario() {
+    document.getElementById("nombreMarca").value = "";  // Limpiar el campo de nombre de marca
 
-// Función para registrar o actualizar un user
-function registrarMarca() {
-    var nombreMarca = document.getElementById("nombreMarca");
-    var estado = document.getElementById("estado");
-
-    if (!validarCampos()) {
-        Swal.fire({
-            title: "¡Error!",
-            text: "¡Llene todos los campos correctamente!",
-            icon: "error"
-        });
-        return; // Salir si algún campo es inválido
+    if (registrarMarcaBandera) {
+        document.getElementById("estado").value = "Activo";
     }
 
-    var forData = {
-        "nombreMarca": nombreMarca.value,
-        "estado": estado.value,
-    };
-
-    var metodo = registrarMarcaBandera ? "POST" : "PUT";
-    var urlLocal = registrarMarcaBandera ? url : url + idMarca;
-
-    const token = localStorage.getItem('authTokens');
-    $.ajax({
-        url: urlLocal,
-        type: metodo,
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        contentType: "application/json",
-        data: JSON.stringify(forData),
-        success: function (response) {
-            limpiar();
-            Swal.fire({
-                title: "LISTO",
-                text: "Felicidades, Registro exitoso",
-                icon: "success"
-            }).then(function () {
-                $('#modalMarca').modal('hide');
-                listarMarca(); // Refrescar la tabla
-            });
-        },
-        error: function (xhr, status, error) {
-            Swal.fire({
-                title: "Error",
-                text: "¡Error al registrar o actualizar esta Marca!",
-                icon: "error"
-            });
-        }
-    });
+    document.getElementById("nombreMarca").className = "form-control";
+    document.getElementById("estado").className = "form-control";
 }
-
-// Función para validar campos
+// Validaciones para campos individuales
 function validarCampos() {
-    var nombreMarca = document.getElementById("nombreMarca");
-    var estado = document.getElementById("estado");
-
-    return validarnombreMarca(nombreMarca) && validarestado(estado);
+    return validarnombreMarca(document.getElementById("nombreMarca")) && validarestado(document.getElementById("estado"));
 }
 
-// Funciones de validación por campo
-function validarCampo(cuadroNumero, minLength, maxLength) {
-    var valor = cuadroNumero.value.trim();
+function validarnombreMarca(input) {
+    return validarCampo(input, 1, 50);  // Validar que tenga entre 1 y 50 caracteres
+}
+
+function validarestado(input) {
+    return validarCampo(input, 1, 20);  // Validar que tenga entre 1 y 20 caracteres
+}
+
+function validarCampo(input, minLength, maxLength) {
+    var valor = input.value.trim();
     var valido = (valor.length >= minLength && valor.length <= maxLength);
-    cuadroNumero.className = "form-control " + (valido ? "is-valid" : "is-invalid");
+    input.className = "form-control " + (valido ? "is-valid" : "is-invalid");  // Agregar clase de validación
     return valido;
 }
 
-function validarnombreMarca(cuadroNumero) {
-    return validarCampo(cuadroNumero, 1, 50);
-}
 
-function validarestado(cuadroNumero) {
-    return validarCampo(cuadroNumero, 1, 21);
-}
-
-// Función para limpiar el formulario
-function limpiar() {
-    document.querySelectorAll(".form-control").forEach(function (input) {
-        input.value = "";
-        input.className = "form-control";
-    });
-}
-
-// Función para editar user
+// Función para editar marca
 $(document).on("click", ".editar", function () {
-    limpiar();
     idMarca = $(this).data("id");
-    registrarMarcaBandera = false; // Cambiar bandera para editar
+    registrarMarcaBandera = false;
+
 
     $.ajax({
         url: url + idMarca,
         type: "GET",
         success: function (marca) {
+            // Rellenar los campos con los datos de la marca
             document.getElementById("nombreMarca").value = marca.nombreMarca;
-            document.getElementById("estado").value = marca.estado;
-            $('#modalMarca').modal('show');
+            document.getElementById("estado").value = marca.estado;  
+            $('#modalMarca').modal('show');  
         },
         error: function (error) {
-            alert("Error al obtener los datos del proveedor: " + error.statusText);
+            Swal.fire({
+                title: "Error",
+                text: "Error al obtener los datos de la marca: " + error.statusText,
+                icon: "error"
+            });
         }
     });
 });
-
 $(document).on("click", ".cambiarEstado", function () {
     var idMarca = $(this).data("id");
     $.ajax({
@@ -185,6 +170,8 @@ $(document).on("click", ".cambiarEstado", function () {
     });
 });
 
+
+// Inicializar listado de marcas al cargar la página
 $(document).ready(function () {
     listarMarca();
 });
@@ -192,3 +179,5 @@ $(document).ready(function () {
 function actualizarlistarMarca() {
     listarMarca();
 }
+
+
