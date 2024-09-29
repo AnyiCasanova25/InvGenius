@@ -161,19 +161,32 @@
                                         <input type="file" id="imagenNovedad" class="form-control" style="border: 1px solid black;" 
                                                accept="image/*" required>
                                     </div>                          -->
-                                    <div class="col col-xl-12 col-12">
-                                        <label for="fechaNovedad"><i class="fas fa-font"></i> Cargar fecha::</label>
+                                    <div class="col col-xl-12 col-12" >
                                         <input type="date" id="fechaNovedad" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarfechaNovedad(this)" required>
                                     </div>
+                                    
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            // Obtener el campo de fecha
+                                            var fechaInput = document.getElementById('fechaNovedad');
+                                            // Crear una nueva fecha
+                                            var today = new Date();
+                                            // Formatear la fecha como yyyy-mm-dd
+                                            var yyyy = today.getFullYear();
+                                            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Mes con dos dígitos
+                                            var dd = String(today.getDate()).padStart(2, '0'); // Día con dos dígitos
+                                            var formattedDate = yyyy + '-' + mm + '-' + dd;
+                                            // Asignar la fecha formateada al campo
+                                            fechaInput.value = formattedDate;
+                                        });
+                                    
+                                    </script>
+                                    
                                     <!-- <div class="col col-xl-12 col-12">
                                         <input type="text" id="fechaNovedad" class="form-control" style="display:none;"onfocusout="validarfechaNovedad(this)" required>
                                     </div> -->
-                                    
-                                    <script>
-                                        // Selecciona la fechaNovedad actual automáticamente
-                                        document.getElementById('fechaNovedad').valueAsDate = new Date();
-                                    </script>                                          
+                                                                      
                                 </form>
                                 <br>
                             </div>

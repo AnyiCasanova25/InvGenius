@@ -173,10 +173,14 @@ function validarfechaNovedad(cuadroNumero) {
 // Función para limpiar el formulario
 function limpiar() {
     document.querySelectorAll(".form-control").forEach(function (input) {
-        input.value = "";
-        input.className = "form-control";
+        // Comprobar si el input es el campo de fecha
+        if (input.id !== "fechaNovedad") {
+            input.value = "";
+            input.className = "form-control";
+        }
     });
 }
+
 
 // Función para editar proveedor
 $(document).on("click", ".editar", function () {
