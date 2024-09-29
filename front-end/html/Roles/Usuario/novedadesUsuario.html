@@ -161,6 +161,15 @@
                                         <input type="file" id="imagenNovedad" class="form-control" style="border: 1px solid black;" 
                                                accept="image/*" required>
                                     </div>                          -->
+
+                                    <div class="col col-xl-6 col-12" style="display:none;">
+                                        <label for="estadoNovedad"><i class="fas fa-check-circle"></i> Estado:</label>
+                                        <select id="estadoNovedad" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarestadoNovedad(this)"
+                                            onkeypress="soloLetras(event);" required>
+                                            <option value="Enviada" selected>Enviada</option>
+                                        </select>
+                                    </div>
                                     <div class="col col-xl-12 col-12" >
                                         <input type="date" id="fechaNovedad" class="form-control" style="display:none;"
                                             style="border: 1px solid black;" onfocusout="validarfechaNovedad(this)" required>
@@ -180,13 +189,7 @@
                                             // Asignar la fecha formateada al campo
                                             fechaInput.value = formattedDate;
                                         });
-                                    
                                     </script>
-                                    
-                                    <!-- <div class="col col-xl-12 col-12">
-                                        <input type="text" id="fechaNovedad" class="form-control" style="display:none;"onfocusout="validarfechaNovedad(this)" required>
-                                    </div> -->
-                                                                      
                                 </form>
                                 <br>
                             </div>
