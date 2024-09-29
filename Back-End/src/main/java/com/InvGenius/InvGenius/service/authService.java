@@ -56,7 +56,7 @@ public class authService implements IuserService{
         }
         return cadena;
     }
-    
+
 //    user.setPassword(codigoAleatorio());
 
 
