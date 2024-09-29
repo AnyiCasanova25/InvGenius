@@ -53,7 +53,7 @@ function mostrarTabla(result) {
             <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
             <td class="text-center align-middle">${result[i]["para"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idNovedad"]}"></i>
+                <i class="fas fa-edit editar" data-id="${result[i]["idNovedad"]}" title="Editar Novedad"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);

@@ -54,8 +54,8 @@ function mostrarTabla(result) {
             <td class="text-center align-middle">${result[i]["empresaProveedor"]}</td>
             <td class="text-center align-middle">${result[i]["estadoProveedor"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idProveedor"]}"></i>
-                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idProveedor"]}"></i>
+                <i class="fas fa-edit editar" data-id="${result[i]["idProveedor"]}" title="Editar Proveedor"></i>
+                <i class="fas fa-toggle-on cambiarEstado" data-id="${result[i]["idProveedor"]}" title="Cambiar Estado de Proveedor"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);

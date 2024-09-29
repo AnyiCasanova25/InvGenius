@@ -102,8 +102,8 @@ function mostrarTabla(result) {
             <td class="text-center align-middle">${result[i]["nombreMarca"]}</td>
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idMarca"]}"></i>  <!-- Icono de editar -->
-                <i class="fas fa-toggle-on cambiarEstado" data-id="${result[i]["idMarca"]}"></i>  <!-- Icono de cambio de estado -->
+                <i class="fas fa-edit editar" data-id="${result[i]["idMarca"]}" title="Editar Marca"></i>
+                <i class="fas fa-toggle-on cambiarEstado" data-id="${result[i]["idMarca"]}" title="Cambiar Estado de Marca"></i>  <!-- Icono de cambio de estado -->
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
