@@ -19,8 +19,8 @@ import com.InvGenius.InvGenius.models.loginRequest;
 import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
-import com.InvGenius.InvGenius.models.genero;
-import com.InvGenius.InvGenius.models.tipoDocumento;
+// import com.InvGenius.InvGenius.models.genero;
+// import com.InvGenius.InvGenius.models.tipoDocumento;
 
 import lombok.RequiredArgsConstructor;
 
@@ -70,8 +70,8 @@ public class authService implements IuserService{
         .documentoIdentidad(request.getDocumentoIdentidad())
         .celular(request.getCelular())
         .estado(request.getEstado())
-        .tipoDocumento(tipoDocumento.CC)
-        .genero(genero.Otro)
+        .tipoDocumento(request.getTipoDocumento())
+        .genero(request.getGenero())
         .password(passwordEncoder.encode(password))
         .cambiarPassword(true)
         // .password(passwordEncoder.encode(request.getPassword())) //cuando se solicita la contraseña al usuario

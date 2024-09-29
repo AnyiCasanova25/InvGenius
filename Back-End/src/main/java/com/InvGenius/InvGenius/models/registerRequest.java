@@ -17,5 +17,7 @@ public class registerRequest {
     private String documentoIdentidad;
     private String celular;
     private String estado;
+    private String genero;
+    private String tipoDocumento;
     
 }

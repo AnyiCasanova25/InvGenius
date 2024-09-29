@@ -75,11 +75,17 @@ public class user implements UserDetails {
     @Column(name = "cambiarPassword", nullable = false)
     private boolean cambiarPassword;
 
-    @Enumerated(EnumType.STRING)
-    private tipoDocumento tipoDocumento;
+    @Column(name = "tipoDocumento", nullable = false)
+    private String tipoDocumento;
 
-    @Enumerated(EnumType.STRING)
-    private genero genero;
+    @Column(name = "genero", nullable = false)
+    private String genero;
+
+    // @Enumerated(EnumType.STRING)
+    // private tipoDocumento tipoDocumento;
+
+    // @Enumerated(EnumType.STRING)
+    // private genero genero;
 
     @Enumerated(EnumType.STRING)
     private rol rol;
