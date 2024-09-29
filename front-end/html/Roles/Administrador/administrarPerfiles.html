@@ -146,8 +146,8 @@
                                                 <tr></tr>
                                                 <th class="text-center align-middle">Remitente</th>
                                                 <th class="text-center align-middle">Solicitudes</th>
-                                                    <th class="text-center align-middle">Fecha Envio</th>
-                                                    <th class="text-center align-middle">Opciones</th>
+                                                <th class="text-center align-middle">Fecha Envio</th>
+                                                <th class="text-center align-middle">Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="cuerpoTabla"></tbody>
@@ -168,35 +168,38 @@
                                 <div class="accordion-body">
                                     <div class="input-group mb-3">
                                         <div class="input-group">
-                                            <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+
+                                            <input type="text" id="texto1" class="form-control" placeholder="Buscar..."
                                                 aria-label="Buscar"
-                                                onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                                onkeyup="buscarMarcaPorFiltro(document.getElementById('texto1').value)"
                                                 aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-custom" onclick="listarMarca(); blanquearCamposMarca()">
+                                                <button type="button" class="btn btn-custom" onclick="listarMarca(); blanquearCampos()">
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <i class="fa-solid fa-eraser"></i>
                                                     </div>
                                                 </button>
-                                            <button type="button" class="btn btn-custom" data-bs-toggle="modal"
-                                                onclick="registrarMarcaBandera=true; limpiarFormulario();" data-bs-target="#modalMarca">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </div>
-                                            </button>                                            
+                                                <button type="button" class="btn btn-custom" data-bs-toggle="modal"
+                                                    onclick="registrarMarcaBandera=true; limpiarFormulario();"
+                                                    data-bs-target="#modalMarca">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <i class="fa-solid fa-plus"></i>
+                                                    </div>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center align-middle">Marca</th>
-                                                    <th class="text-center align-middle">Estado</th>
-                                                    <th class="text-center align-middle">Opciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="cuerpoTablaMarca"></tbody>
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center align-middle">Marca</th>
+                                                        <th class="text-center align-middle">Estado</th>
+                                                        <th class="text-center align-middle">Opciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="cuerpoTablaMarca"></tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -205,27 +208,28 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal Admin Perfiles-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog fondomodaldialog">
-            <div class="modal-content col modal-custom">
-                <div class="modal-header">
-                    <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
-                    <div class="col centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
-                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+        <!-- Modal Admin Perfiles-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog fondomodaldialog">
+                <div class="modal-content col modal-custom">
+                    <div class="modal-header">
+                        <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="X"></button>
+                        <div class="col centerLogoNombreModal">
+                            <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                            <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                        </div>
+                        <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                            style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                            Editar Usuario
+                        </h1>
                     </div>
-                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel" style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Editar Usuario
-                    </h1>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <div class="centradoo">
-                            <div class="container col">
-                                <br>
-                                <form id="formEditUser" class="row table-hover needs-validation"></form>
+                    <div class="modal-body">
+                        <div>
+                            <div class="centradoo">
+                                <div class="container col">
+                                    <br>
+                                    <form id="formEditUser" class="row table-hover needs-validation"></form>
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="documentoProveedor"><i class="fas fa-id-card"></i>
@@ -242,7 +246,7 @@
                                             style="border: 1px solid black;" onfocusout="validarnombres(this)"
                                             onkeypress="soloLetras(event);" required>
                                     </div>
-    
+
                                     <div class="col col-xl-6 col-12">
                                         <label for="apellidos"><i class="fas fa-user"></i> Apellido:</label>
                                         <input type="text" id="apellidos" class="form-control"
@@ -266,93 +270,94 @@
 
                                     <div class="col col-xl-6 col-12">
                                         <label for="estado"><i class="fas fa-check-circle"></i> Estado:</label>
-                                        <select id="estado" class="form-control"
-                                            style="border: 1px solid black;" onfocusout="validarestado(this)"
-                                            onkeypress="soloLetras(event);" required>
+                                        <select id="estado" class="form-control" style="border: 1px solid black;"
+                                            onfocusout="validarestado(this)" onkeypress="soloLetras(event);" required>
                                             <option value="Activo" selected>Activo</option>
                                             <option value="Inactivo">Inactivo</option>
                                         </select>
                                     </div>
-    
-                                </form>
-                                <br>
+
+                                    </form>
+                                    <br>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" id="saveChanges">Guardar Cambios</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal Registro Marca -->
-<div class="modal fade" id="modalMarca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog fondomodaldialog">
-        <div class="modal-content col modal-custom">
-            <div class="modal-header">
-                <!-- Botón de cierre sin aria-hidden -->
-                <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close" id="X"></button>
-                <div class="col centerLogoNombreModal">
-                    <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
-                    <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                </div>
-                <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
-                    style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                    Registro Marca
-                </h1>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <div class="centradoo">
-                        <div>
-                            <br>
-                            <form class="row table-hover needs-validation" id="formRegistroMarca">
-                                <div class="col col-xl-12 col-12 table-hover">
-                                    <label for="nombreMarca"><i class="fa-solid fa-tag"></i> Nombre:</label>
-                                    <input type="text" id="nombreMarca" class="form-control"
-                                        style="border: 1px solid black;" onfocusout="validarnombreMarca(this)"
-                                        onkeypress="alfaNumericosSignos(event);" required>
-                                </div>
-
-                                <div class="col col-xl-12 col-12">
-                                    <label for="estado"><i class="fas fa-check-circle"></i> Estado:</label>
-                                    <select id="estado" class="form-control" style="border: 1px solid black;"
-                                        onfocusout="validarestado(this)" onkeypress="soloLetras(event);" required>
-                                        <option value="Activo" selected>Activo</option>
-                                        <option value="Inactivo">Inactivo</option>
-                                    </select>
-                                </div>
-                            </form>
-                            <br>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" id="saveChanges">Guardar Cambios</button>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" onclick="registrarMarca()">Registrar</button>
+        </div>
+
+        <!-- Modal Registro Marca -->
+        <div class="modal fade" id="modalMarca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog fondomodaldialog">
+                <div class="modal-content col modal-custom">
+                    <div class="modal-header">
+                        <!-- Botón de cierre sin aria-hidden -->
+                        <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="X"></button>
+                        <div class="col centerLogoNombreModal">
+                            <img src="/front-end/img/Pagina/Logo.png" width="15%" style="margin-right: 3%;">
+                            <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                        </div>
+                        <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                            style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                            Registro Marca
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <div class="centradoo">
+                                <div>
+                                    <br>
+                                    <form class="row table-hover needs-validation" id="formRegistroMarca">
+                                        <div class="col col-xl-12 col-12 table-hover">
+                                            <label for="nombreMarca"><i class="fa-solid fa-tag"></i> Nombre:</label>
+                                            <input type="text" id="nombreMarca" class="form-control"
+                                                style="border: 1px solid black;" onfocusout="validarnombreMarca(this)"
+                                                onkeypress="alfaNumericosSignos(event);" required>
+                                        </div>
+
+                                        <div class="col col-xl-12 col-12" style="display:none;">
+                                            <label for="estado"><i class="fas fa-check-circle"></i> Estado:</label>
+                                            <select id="estado" class="form-control" style="border: 1px solid black;"
+                                                onfocusout="validarestado(this)" onkeypress="soloLetras(event);"
+                                                required>
+                                                <option value="Activo" selected>Activo</option>
+                                                <option value="Inactivo">Inactivo</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" onclick="registrarMarca()">Registrar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-    <script>
-        function toggleUserRole(iconId) {
-            var icon = document.getElementById(iconId).querySelector("i");
+        <script>
+            function toggleUserRole(iconId) {
+                var icon = document.getElementById(iconId).querySelector("i");
 
-            if (icon.classList.contains("fa-solid fa-user-large")) {
-                icon.classList.remove("fa-solid fa-user-large");
-                icon.classList.add("fa-solid fa-user-tie"); // Cambiar a ícono de administrador
-            } else {
-                icon.classList.remove("fa-solid fa-user-tie");
-                icon.classList.add("fa-solid fa-user-large"); // Cambiar a ícono de usuario
+                if (icon.classList.contains("fa-solid fa-user-large")) {
+                    icon.classList.remove("fa-solid fa-user-large");
+                    icon.classList.add("fa-solid fa-user-tie"); // Cambiar a ícono de administrador
+                } else {
+                    icon.classList.remove("fa-solid fa-user-tie");
+                    icon.classList.add("fa-solid fa-user-large"); // Cambiar a ícono de usuario
+                }
             }
-        }
-    </script>
-    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
-    <script src="/front-end/js/administrarMarca.js"></script>
-    <!-- <script src="/front-end/js/administrar.js"></script> -->
+        </script>
+        <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+        <script src="/front-end/js/administrarMarca.js"></script>
+        <!-- <script src="/front-end/js/administrar.js"></script> -->
 </body>
 
 </html>

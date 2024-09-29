@@ -5,6 +5,20 @@ var url = "http://localhost:8080/api/v1/marca/";
 var registrarMarcaBandera = true;  
 var idMarca = "";
 
+// Función para buscar proveedores por filtro
+function buscarMarcaPorFiltro(filtro) {
+    if (filtro.trim() !== "") {
+        $.ajax({
+            url: url + "busquedaFiltros/" + filtro,
+            type: "GET",
+            success: function (result) {
+                mostrarTabla(result);
+            },
+        });
+    } else {
+        listarMarca();
+    }
+}
 // Función para registrar o actualizar una marca
 function registrarMarca() {
     var nombreMarca = document.getElementById("nombreMarca").value.trim();
@@ -179,5 +193,7 @@ $(document).ready(function () {
 function actualizarlistarMarca() {
     listarMarca();
 }
-
+function blanquearCampos() {
+    document.getElementById('texto1').value = "";
+}
 

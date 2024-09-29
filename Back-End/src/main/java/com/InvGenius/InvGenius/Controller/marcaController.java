@@ -19,41 +19,47 @@ import com.InvGenius.InvGenius.models.marca;
 @RequestMapping("/api/v1/marca")
 
 public class marcaController {
-    
+
     @Autowired
     private ImarcaService marcaService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save (@RequestBody marca marca){
+    public ResponseEntity<Object> save(@RequestBody marca marca) {
 
-        //Verificar si la marca existe
+        // Verificar si la marca existe
         var listaMarca = marcaService.marcaExist(marca.getNombreMarca());
 
-        if (listaMarca.size() !=0) {
+        if (listaMarca.size() != 0) {
             return new ResponseEntity<>("Esta marca ya existe", HttpStatus.BAD_REQUEST);
         }
 
-        //Añadir campos obligatorios
+        // Añadir campos obligatorios
         if (marca.getEstado().equals("")) {
-            
-            return new ResponseEntity<>("El estado es un campo obligatorio",HttpStatus.BAD_REQUEST);   
+
+            return new ResponseEntity<>("El estado es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        //todo bien
+        // todo bien
         marcaService.save(marca);
         return new ResponseEntity<>(marca, HttpStatus.OK);
     }
 
     @GetMapping("/")
-    public ResponseEntity<Object> findAll(){
+    public ResponseEntity<Object> findAll() {
         var listaMarca = marcaService.findAll();
-        return new ResponseEntity<>(listaMarca,HttpStatus.OK);
+        return new ResponseEntity<>(listaMarca, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity <Object> findOne(@PathVariable String id) {
+    public ResponseEntity<Object> findOne(@PathVariable String id) {
         var marca = marcaService.findOne(id);
         return new ResponseEntity<>(marca, HttpStatus.OK);
+    }
+
+    @GetMapping("/busquedaFiltros/{filtro}")
+    public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
+        var listaMarca = marcaService.marcaExist(filtro);
+        return new ResponseEntity<>(listaMarca, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -77,21 +83,20 @@ public class marcaController {
         }
     }
 
-
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, 
-            @RequestBody marca marcaUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id,
+            @RequestBody marca marcaUpdate) {
         var marca = marcaService.findOne(id).get();
 
         if (marca != null) {
-            
+
             marca.setNombreMarca(marcaUpdate.getNombreMarca());
             marca.setEstado(marcaUpdate.getEstado());
 
             marcaService.save(marca);
 
             return new ResponseEntity<>(marca, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>("Error marca NO encontrada", HttpStatus.BAD_REQUEST);
         }
     }
