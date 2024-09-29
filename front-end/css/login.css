@@ -67,6 +67,12 @@ body {
     overflow: hidden;
 }
 
+.container-estado, 
+ion-icon, 
+#estado {
+    display: none; /* Oculta los elementos sin eliminarlos del flujo del documento */
+}
+
 .sign-in {
     display: flex;
     flex-direction: column;

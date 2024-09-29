@@ -1,5 +1,5 @@
 // var url = "http://10.192.80.134:8080/api/v1/user/";
-var url = "http://localhost:8080/api/v1/user/";
+var url = "http://localhost:8080/api/v1/public/user/";
 
 function registrarUser() {
     // event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
@@ -8,7 +8,10 @@ function registrarUser() {
     let nombres = document.getElementById("Nombres").value;
     let apellidos = document.getElementById("Apellidos").value;
     let documentoIdentidad = document.getElementById("documentoIdentidad").value;
-    let correo = document.getElementById("Correo").value;
+    let tipoDocumento = document.getElementById("tipoDocumento").value;
+    let estado = document.getElementById("estado").value;
+    let genero = document.getElementById("genero").value;
+    let userName = document.getElementById("userName").value;
     let celular = document.getElementById("Celular").value;
     let rol = document.getElementById("rol").value;
     let imagenUser = document.getElementById("imagenUser").value;
@@ -17,8 +20,11 @@ function registrarUser() {
     let formData = {
         "nombres": nombres,
         "apellidos": apellidos,
+        "tipoDocumento": tipoDocumento,
         "documentoIdentidad": documentoIdentidad,
-        "correo": correo,
+        "genero": genero,
+        "estado":estado ,
+        "userName": userName,
         "celular": celular,
         "rol": rol,
         "imagenUser": imagenUser
@@ -26,7 +32,7 @@ function registrarUser() {
 
     // Enviar los datos mediante AJAX
     $.ajax({
-        url: url,
+        url: url + "register/",
         type: "POST",
         data: JSON.stringify(formData), // Convertir los datos a JSON
         contentType: "application/json", // Establecer el tipo de contenido
@@ -62,21 +68,6 @@ function refrescarPagina() {
 }
 
 
-
-
-
-
-
-
-
-
-
-// URL de la API se declara una url por si se modifica solo cambiar donde la declaro y no entodas las demas partes
-// var url = "http://10.192.80.134:8080/api/v1/user/";
-
-// URL de la API
-var url = "http://localhost:8080/api/v1/user/";
-
 function listarUser() {
     $.ajax({
         url: url,
@@ -100,10 +91,10 @@ function mostrarTabla(result) {
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
             <td class="align-middle">${result[i]["documentoIdentidad"]}</td>
-            <td class="align-middle">${result[i]["documentoIdentidad"]}</td>
+            <td class="align-middle">${result[i]["tipoDocumento"]}</td>
             <td class="text-center align-middle">${result[i]["nombres"]}</td>
             <td class="text-center align-middle">${result[i]["apellidos"]}</td>
-            <td class="text-center align-middle">${result[i]["correo"]}</td>
+            <td class="text-center align-middle">${result[i]["Correo"]}</td>
             <td class="text-center align-middle">${result[i]["celular"]}</td>
             <td class="text-center align-middle">${result[i]["rol"]}</td>
             <td class="text-center align-middle">${result[i]["estado"]}</td>
@@ -188,7 +179,7 @@ $(document).on("click", ".abrirModal", function () {
             $('#userId').val(user.idUser);
             $('#nombre').val(user.nombres);
             $('#apellido').val(user.apellidos);
-            $('#correo').val(user.correo);
+            $('#userName').val(user.userName);
             $('#documento').val(user.documentoIdentidad);
             $('#telefono').val(user.celular);
 
@@ -214,7 +205,7 @@ $('#saveChanges').on('click', function () {
         apellidos: $('#apellido').val(),
         documentoIdentidad: $('#documento').val(),
         celular: $('#telefono').val(),
-        correo: $('#correo').val()
+        userName: $('#userName').val()
 
     };
 

@@ -30,7 +30,7 @@
 
                 <div class="container-input">
                     <ion-icon id="gender-icon" name="male-outline"></ion-icon>
-                    <select id="Genero">
+                    <select id="genero">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Otro">Otro</option>
@@ -39,10 +39,10 @@
 
                 <div class="container-input">
                     <ion-icon name="card-outline"></ion-icon>
-                    <select id="documentoIdentidad">
-                        <option value="cedula">Cédula de Ciudadanía</option>
-                        <option value="cedula_extranjeria">Cédula de Extranjería</option>
-                        <option value="pasaporte">Pasaporte</option>
+                    <select id="tipoDocumento">
+                        <option value="CC">Cédula de Ciudadanía</option>
+                        <option value="CE">Cédula de Extranjería</option>
+                        <option value="PP">Pasaporte</option>
                     </select>
                 </div>
 
@@ -54,7 +54,7 @@
 
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" id="Correo" placeholder="Correo Electrónico"
+                    <input type="email" id="userName" placeholder="Correo Electrónico"
                         onkeypress="alfaNumericosSignos(event);" required>
                 </div>
 
@@ -65,13 +65,15 @@
 
                 <div class="container-input" style="display: none;">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" id="rol" value="Usuario" readonly>
+                    <input type="text" id="rol" value="User" readonly>
                 </div>
 
                 <div class="container-input" style="display: none;">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" id="imagenUser" value="nn" readonly>
+                    <input type="text" id="imagenUser" value="null" readonly>
+                    <input type="text" id="estado" value="Activo" readonly>
                 </div>
+
 
                 <button class="button" type="button" onclick="registrarUser()">REGISTRAR</button>
             </form>
@@ -96,7 +98,7 @@
 
 
     <script>
-        document.getElementById('Genero').addEventListener('change', function () {
+        document.getElementById('genero').addEventListener('change', function () {
             const genderIcon = document.getElementById('gender-icon');
             const selectedValue = this.value;
 
