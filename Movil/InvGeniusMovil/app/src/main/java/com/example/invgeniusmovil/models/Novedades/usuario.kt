@@ -7,7 +7,7 @@ data class User(
     val apellido: String,
     val documentos: String,
     val celular: Int,
-    val correo: String,gi
+    val correo: String,
     val contraseña: String,
     val confirmar_contraseña: String,
     val rol: Boolean,
