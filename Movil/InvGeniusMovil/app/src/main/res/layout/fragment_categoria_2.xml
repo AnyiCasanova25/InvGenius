@@ -2,5 +2,127 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#C0CCD5"
+        android:padding="16dp">
+
+        <!-- Barra Superior -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#7E868C"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/categoria_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoría"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Título Categoría -->
+        <TextView
+            android:id="@+id/titulo_categoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Categoría Lácteos"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Barra de Búsqueda -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:elevation="4dp"
+            android:padding="8dp">
+
+            <EditText
+                android:id="@+id/edit_text_buscar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Buscar..."
+                android:padding="10dp"
+                android:background="@null" />
+
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_search"
+                android:contentDescription="Buscar" />
+        </LinearLayout>
+
+        <!-- Contenedor para los Productos -->
+        <GridLayout
+            android:id="@+id/productos_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:columnCount="2"
+            android:rowCount="3"
+            android:padding="8dp"
+            android:background="#E0E0E0"
+            android:layout_gravity="center">
+
+            <!-- Productos de ejemplo -->
+            <TextView
+                android:id="@+id/producto_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Leche"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_margin="8dp" />
+
+            <TextView
+                android:id="@+id/producto_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Yogur"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_margin="8dp" />
+
+            <TextView
+                android:id="@+id/producto_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Mantequilla"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_margin="8dp" />
+
+            <TextView
+                android:id="@+id/producto_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Queso"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_margin="8dp" />
+        </GridLayout>
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
