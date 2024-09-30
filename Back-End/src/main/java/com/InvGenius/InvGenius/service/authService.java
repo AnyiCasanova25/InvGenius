@@ -19,8 +19,6 @@ import com.InvGenius.InvGenius.models.loginRequest;
 import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
-// import com.InvGenius.InvGenius.models.genero;
-// import com.InvGenius.InvGenius.models.tipoDocumento;
 
 import lombok.RequiredArgsConstructor;
 
@@ -46,7 +44,7 @@ public class authService implements IuserService{
     private String codigoAleatorio() {
         int longitud = 25;
         // El banco de caracteres
-        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*(";
+        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         // La cadena en donde iremos agregando un carácter aleatorio
         String cadena = "";
         for (int x = 0; x < longitud; x++) {

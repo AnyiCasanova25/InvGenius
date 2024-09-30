@@ -3,19 +3,17 @@ package com.InvGenius.InvGenius.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.InvGenius.InvGenius.models.estadoProveedor;
-import com.InvGenius.InvGenius.models.proveedor;
 import com.InvGenius.InvGenius.interfaceService.IproveedorService;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.InvGenius.InvGenius.models.proveedor;
 
 @RestController
 @RequestMapping("/api/v1/proveedor")
@@ -87,25 +85,27 @@ public class proveedorController {
       return new ResponseEntity<>(proveedor, HttpStatus.OK);
    }
 
-
    @DeleteMapping("/{id}")
-   public ResponseEntity<Object> delete(@PathVariable String id) {
-       var proveedor = proveedorService.findOne(id).get();
-       if (proveedor != null) {
-           if (proveedor.getEstadoProveedor() == estadoProveedor.Activo) {
+    public ResponseEntity<Object> delete(@PathVariable String id) {
+        var optionalproveedor = proveedorService.findOne(id);
 
-               proveedor.setEstadoProveedor(estadoProveedor.Inactivo);
-               proveedorService.save(proveedor);
-               return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
-           } else
-               proveedor.setEstadoProveedor(estadoProveedor.Inactivo);
-           proveedorService.save(proveedor);
-           return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
-       } else {
-           return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
-       }
-   }
+        if (optionalproveedor.isPresent()) {
+            var proveedor = optionalproveedor.get();
 
+            if ("Activo".equals(proveedor.getEstadoProveedor())) {
+                proveedor.setEstadoProveedor("Inactivo");
+                proveedorService.save(proveedor);
+                return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
+            } else {
+                proveedor.setEstadoProveedor("Activo");
+                proveedorService.save(proveedor);
+                return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+            }
+        } else {
+            return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+        }
+    }
+   
    @PutMapping("/{id}")
    public ResponseEntity<Object> update(@PathVariable String id,
          @RequestBody proveedor proveedorUpdate) {
