@@ -1,9 +1,16 @@
-//urls
-var Servidor = "http://localhost:8080/api/v1/"
-var urlMarca = Servidor + "marca/";
-var urlNovedad = Servidor + "novedad/";
-var urlUsuarios = Servidor + "user/";
 
+$(document).ready(function () {
+    listarNovedad();
+    listarMarca();
+    listarUser();
+});
+
+
+function blanquearCampos() {
+    document.getElementById('texto1').value = "";
+    document.getElementById('texto2').value = "";
+    document.getElementById('texto3').value = "";
+}
 
 //Apartado de marca
 var registrarMarcaBandera = true;  
@@ -144,14 +151,10 @@ function validarCampo(input, minLength, maxLength) {
     input.className = "form-control " + (valido ? "is-valid" : "is-invalid");  // Agregar clase de validación
     return valido;
 }
-
-
 // Función para editar marca
 $(document).on("click", ".editar", function () {
     idMarca = $(this).data("id");
     registrarMarcaBandera = false;
-
-
     $.ajax({
         url: urlMarca + idMarca,
         type: "GET",
@@ -187,23 +190,11 @@ $(document).on("click", ".cambiarEstado", function () {
         }
     });
 });
-
-
-// Inicializar listado de marcas al cargar la página
-$(document).ready(function () {
-    listarMarca();
-});
-
 function actualizarlistarMarca() {
     listarMarca();
 }
-function blanquearCampos() {
-    document.getElementById('texto1').value = "";
-}
 
 //Apartado Novedades
-// Función para buscar proveedores por filtro
-
 var idNovedad = "";
 function buscarNovedadPorFiltro(filtro) {
     if (filtro.trim() !== "") {
@@ -218,7 +209,6 @@ function buscarNovedadPorFiltro(filtro) {
         listarNovedad();
     }
 }
-// Función para listar todos los novedades
 function listarNovedad() {
     const token = localStorage.getItem('authTokens');
     $.ajax({
@@ -236,7 +226,6 @@ function listarNovedad() {
         }
     });
 }
-
 function mostrarTablaNovedades(result) {
     var cuerpoTabla = document.getElementById("cuerpoTablaNovedades");
     cuerpoTabla.innerHTML = "";
@@ -255,8 +244,6 @@ function mostrarTablaNovedades(result) {
         cuerpoTabla.appendChild(trRegistro);
     }
 }
-
-// Función para cambiar estado del novedad
 $(document).on("click", ".cambiarEstado", function () {
     var idNovedad = $(this).data("id");
     $.ajax({
@@ -281,3 +268,61 @@ $(document).on("click", ".cambiarEstado", function () {
         }
     });
 });
+function actualizarlistarNovedad() {
+    listarNovedad();
+}
+
+//Apartado Perfil
+function buscarUserrFiltro(filtro) {
+    if (filtro.trim() !== "") {
+        $.ajax({
+            url: urlUsuarios + "busquedaFiltros/" + filtro,
+            type: "GET",
+            success: function (result) {
+                mostrarTabla(result);
+            },
+        });
+    } else {
+        listarUser();
+    }
+}
+function listarUser() {
+    // const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlUsuarios,
+        type: "GET",
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (result) {
+            mostrarTablaPerfiles(result);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error en la petición:", xhr.responseText);
+            alert("Error en la petición: " + error);
+        }
+    });
+}
+function mostrarTablaPerfiles(result) {
+    var cuerpoTabla = document.getElementById("cuerpoTablaPerfiles");
+    cuerpoTabla.innerHTML = "";
+
+    for (var i = 0; i < result.length; i++) {
+        var trRegistro = document.createElement("tr");
+        trRegistro.innerHTML = `
+            <td class="text-center align-middle">${result[i]["documentoIdentidad"]}</td>
+            <td class="text-center align-middle">${result[i]["nombres"]}</td>
+            <td class="text-center align-middle">${result[i]["apellidos"]}</td>
+            <td class="text-center align-middle">${result[i]["celular"]}</td>
+            <td class="text-center align-middle">${result[i]["correo"]}</td>
+            <td class="text-center align-middle">${result[i]["rol"]}</td>
+            <td class="text-center align-middle">${result[i]["estado"]}</td>
+            <td class="text-center align-middle">
+                <i class="fas fa-edit editar" data-id="${result[i]["idUser"]}"></i>
+                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idUser"]}"></i>
+                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idUser"]}"></i>
+            </td>
+        `;
+        cuerpoTabla.appendChild(trRegistro);
+    }
+}

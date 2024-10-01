@@ -27,7 +27,8 @@ function listarProveedor() {
         url: url,
         type: "GET",
         headers: {
-            'Authorization': 'Bearer ' + token
+            "contentType":"application/json",
+            "Authorization": "Bearer " + token
         },
         success: function (result) {
             mostrarTabla(result);

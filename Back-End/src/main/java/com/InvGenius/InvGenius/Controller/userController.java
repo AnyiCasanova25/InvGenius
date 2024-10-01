@@ -153,20 +153,20 @@ public class userController {
     // return new ResponseEntity<>("end-point Publico register",HttpStatus.OK);
     // }
 
-    @GetMapping("/admin/findAll/")
-    public ResponseEntity<String> findAll() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        var user = (user) auth.getPrincipal();
-        if (user.getRol() != rol.Admin)
-            return new ResponseEntity<String>("No tiene permiso", HttpStatus.FORBIDDEN);
-        return new ResponseEntity<String>("Metodo admin", HttpStatus.OK);
-    }
-
-    // @GetMapping("/")
-    // public ResponseEntity<Object> findAll(){
-    // var listaUser = userService.findAll();
-    // return new ResponseEntity<>(listaUser,HttpStatus.OK);
+    // @GetMapping("/admin/findAll/")
+    // public ResponseEntity<String> findAll() {
+    //     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    //     var user = (user) auth.getPrincipal();
+    //     if (user.getRol() != rol.Admin)
+    //         return new ResponseEntity<String>("No tiene permiso", HttpStatus.FORBIDDEN);
+    //     return new ResponseEntity<String>("Metodo admin", HttpStatus.OK);
     // }
+
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+    var listaUser = userService.findAll();
+    return new ResponseEntity<>(listaUser,HttpStatus.OK);
+    }
 
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {

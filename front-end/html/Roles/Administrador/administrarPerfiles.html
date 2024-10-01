@@ -83,13 +83,13 @@
                                 <div class="accordion-body">
 
                                     <div class="input-group mb-3">
-                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                        <input type="text" id="texto3" class="form-control" placeholder="Buscar..."
                                             aria-label="Buscar"
-                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            onkeyup="buscarNovedadPorFiltro(document.getElementById('texto3').value)"
                                             aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-custom"
-                                                onclick="listarProveedor(); blanquearCampos()">
+                                                onclick="listarUser(); blanquearCampos()">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <i class="fa-solid fa-eraser"></i>
                                                 </div>
@@ -110,7 +110,7 @@
                                                     <th class="text-center align-middle">Opciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="#"></tbody>
+                                            <tbody id="cuerpoTablaPerfiles"></tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -127,13 +127,13 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="input-group mb-3">
-                                        <input type="text" id="texto" class="form-control" placeholder="Buscar..."
+                                        <input type="text" id="texto2" class="form-control" placeholder="Buscar..."
                                             aria-label="Buscar"
-                                            onkeyup="buscarNovedadPorFiltro(document.getElementById('texto').value)"
+                                            onkeyup="buscarNovedadPorFiltro(document.getElementById('texto2').value)"
                                             aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-custom"
-                                                onclick="listarProveedor(); blanquearCampos()">
+                                                onclick="listarNovedad(); blanquearCampos()">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <i class="fa-solid fa-eraser"></i>
                                                 </div>
@@ -144,11 +144,11 @@
                                         <table class="table table-hover table-striped">
                                             <thead>
                                                 <tr>
-                                                <th class="text-center align-middle">Solicitudes</th>
-                                                <th class="text-center align-middle">Cuerpo</th>
-                                                <th class="text-center align-middle">Fecha Envio</th>
-                                                <th class="text-center align-middle">Estado</th>
-                                                <th class="text-center align-middle">Opciones</th>
+                                                    <th class="text-center align-middle">Solicitudes</th>
+                                                    <th class="text-center align-middle">Cuerpo</th>
+                                                    <th class="text-center align-middle">Fecha Envio</th>
+                                                    <th class="text-center align-middle">Estado</th>
+                                                    <th class="text-center align-middle">Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="cuerpoTablaNovedades"></tbody>
@@ -175,7 +175,8 @@
                                                 onkeyup="buscarMarcaPorFiltro(document.getElementById('texto1').value)"
                                                 aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button type="button" class="btn btn-custom" onclick="listarMarca(); blanquearCampos()">
+                                                <button type="button" class="btn btn-custom"
+                                                    onclick="listarMarca(); blanquearCampos()">
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <i class="fa-solid fa-eraser"></i>
                                                     </div>
@@ -342,7 +343,6 @@
                 </div>
             </div>
         </div>
-
         <script>
             function toggleUserRole(iconId) {
                 var icon = document.getElementById(iconId).querySelector("i");
@@ -356,6 +356,7 @@
                 }
             }
         </script>
+        <script src="/front-end/js/jsUrl/Urls.js"></script>
         <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
         <script src="/front-end/js/administrar.js"></script>
         <!-- <script src="/front-end/js/administrarNovedades.js"></script> -->

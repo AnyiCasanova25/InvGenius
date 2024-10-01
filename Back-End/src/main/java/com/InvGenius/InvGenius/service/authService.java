@@ -58,6 +58,7 @@ public class authService implements IuserService{
 //    user.setPassword(codigoAleatorio());
 
 
+     @Override
     public authResponse register(registerRequest request) {
         String password=codigoAleatorio();//llamar al método encargado de generar la contraseña aleatoria
         user userData = user.builder()
