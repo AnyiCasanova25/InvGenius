@@ -1,5 +1,5 @@
+var url = "http://localhost:8080/api/v1/public/user/";
 // var url = "http://10.192.80.141:8080/api/v1/public/user/";
-var url = "http://10.192.80.141:8080/api/v1/public/user/";
 
 function registrarUser() {
     // event.preventDefault(); // Evitar el comportamiento predeterminado del formulario

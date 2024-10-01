@@ -10,7 +10,7 @@ btnSignUp.addEventListener("click", () => {
 });
 
 // var url = "http://10.192.80.141:8080/api/v1/public/user/login";
-var url = "http://10.192.80.141:8080/api/v1/public/user/login";
+var url = "http://localhost:8080/api/v1/public/user/login";
 
 function Iniciar() {
    let userName = document.getElementById("userName").value;
