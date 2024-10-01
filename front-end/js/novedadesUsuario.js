@@ -47,7 +47,6 @@ function mostrarTabla(result) {
     for (var i = 0; i < result.length; i++) {
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
-            <td class="text-center align-middle">${result[i]["para"]}</td>
             <td class="text-center align-middle">${result[i]["asunto"]}</td>
             <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
             <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
@@ -58,8 +57,8 @@ function mostrarTabla(result) {
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
+            // <td class="text-center align-middle">${result[i]["para"]}</td>
     
-    // <td class="text-center align-middle">${result[i]["estado"]}</td>
 }
 
 // Función para blanquear los campos del formulario
@@ -69,7 +68,7 @@ function blanquearCampos() {
 
 // Función para registrar o actualizar un proveedor
 function registrarNovedad() {
-    var para = document.getElementById("para");
+    // var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
     var fechaNovedad = document.getElementById("fechaNovedad");
@@ -87,7 +86,7 @@ function registrarNovedad() {
     }
 
     var forData = {
-        "para": para.value,
+        // "para": para.value,
         "asunto": asunto.value,
         "cuerpo": cuerpo.value,
         "fechaNovedad": fechaNovedad.value,
@@ -130,14 +129,15 @@ function registrarNovedad() {
 
 // Función para validar campos
 function validarCampos() {
-    var para = document.getElementById("para");
+    // var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
     var fechaNovedad = document.getElementById("fechaNovedad");
     // var estado = document.getElementById("estado");
 
-    return validarpara(para) && validarasunto(asunto) &&
-        validarcuerpo(cuerpo) && validarfechaNovedad(fechaNovedad);
+    return validarasunto(asunto) && validarcuerpo(cuerpo) && validarfechaNovedad(fechaNovedad);
+    // validarpara(para) && 
+    
         // && validarestado(estado) ;
 }
 
@@ -149,9 +149,9 @@ function validarCampo(cuadroNumero, minLength, maxLength) {
     return valido;
 }
 
-function validarpara(cuadroNumero) {
-    return validarCampo(cuadroNumero, 1, 100);
-}
+// function validarpara(cuadroNumero) {
+//     return validarCampo(cuadroNumero, 1, 100);
+// }
 
 function validarasunto(cuadroNumero) {
     return validarCampo(cuadroNumero, 1, 100);
@@ -193,7 +193,7 @@ $(document).on("click", ".editar", function () {
         url: url + idNovedad,
         type: "GET",
         success: function (novedad) {
-            document.getElementById("para").value = novedad.para;
+            // document.getElementById("para").value = novedad.para;
             document.getElementById("asunto").value = novedad.asunto;
             document.getElementById("cuerpo").value = novedad.cuerpo;
             document.getElementById("fechaNovedad").value = novedad.fechaNovedad;

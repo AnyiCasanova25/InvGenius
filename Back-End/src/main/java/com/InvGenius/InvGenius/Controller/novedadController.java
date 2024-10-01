@@ -27,10 +27,10 @@ public class novedadController {
     @PostMapping("/")
     public ResponseEntity<Object> save(@RequestBody novedad novedad) {
 
-        if (novedad.getPara().equals("")) {
+        // if (novedad.getPara().equals("")) {
             
-            return new ResponseEntity<>("El contenedor *para*, es un campo obligatorio",HttpStatus.BAD_REQUEST);
-        }
+        //     return new ResponseEntity<>("El contenedor *para*, es un campo obligatorio",HttpStatus.BAD_REQUEST);
+        // }
 
         if (novedad.getAsunto().equals("")) {
             
@@ -40,6 +40,11 @@ public class novedadController {
         if (novedad.getCuerpo().equals("")) {
             
             return new ResponseEntity<>("El contenedor *cuerpo*, es un campo obligatorio",HttpStatus.BAD_REQUEST);
+        }
+
+        if (novedad.getEstadoNovedad().equals("")) {
+            
+            return new ResponseEntity<>("El contenedor *estado*, es un campo obligatorio",HttpStatus.BAD_REQUEST);
         }
 
         //novedad.setFechaNovedad(new Date());
@@ -83,9 +88,10 @@ public class novedadController {
 
         if (novedad != null) {
             
-            novedad.setPara(novedadUpdate.getPara());
+            // novedad.setPara(novedadUpdate.getPara());
             novedad.setAsunto(novedadUpdate.getAsunto());
             novedad.setCuerpo(novedadUpdate.getCuerpo());
+            novedad.setEstadoNovedad(novedadUpdate.getEstadoNovedad());
 
             novedadService.save(novedad);
 
