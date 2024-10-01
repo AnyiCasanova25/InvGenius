@@ -37,10 +37,6 @@ public class proveedor {
     @Column(name = "estadoProveedor", nullable = false, length = 40)
     private String estadoProveedor;
 
-    // @Enumerated(EnumType.STRING)
-    // //@Column(name = "estadoProveedor", nullable = false, length = 20)
-    // private estadoProveedor estadoProveedor;
-
     @Column(name = "numeroProveedor", nullable = false, length = 15)
     private String numeroProveedor;
 

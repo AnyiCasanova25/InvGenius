@@ -81,12 +81,6 @@ public class user implements UserDetails {
     @Column(name = "genero", nullable = false)
     private String genero;
 
-    // @Enumerated(EnumType.STRING)
-    // private tipoDocumento tipoDocumento;
-
-    // @Enumerated(EnumType.STRING)
-    // private genero genero;
-
     @Enumerated(EnumType.STRING)
     private rol rol;
 

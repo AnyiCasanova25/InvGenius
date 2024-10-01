@@ -53,7 +53,4 @@ public class novedad {
     @Column(name = "estadoNovedad", nullable = false, length = 30)
     private String estadoNovedad;
 
-    // @Enumerated(EnumType.STRING)
-    //  private  estadoNovedad estadoNovedad;
-
 }
