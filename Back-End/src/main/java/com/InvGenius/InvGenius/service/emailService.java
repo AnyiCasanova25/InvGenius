@@ -1,8 +1,11 @@
 package com.InvGenius.InvGenius.service;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.InvGenius.InvGenius.models.user;
@@ -10,6 +13,7 @@ import com.InvGenius.InvGenius.models.user;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
+@Service
 public class emailService {
     
      @Autowired
@@ -22,6 +26,7 @@ public class emailService {
      @GetMapping("/enviar-correo-registro")
     public String enviarCorreoRegistro(user user ,String password) {
         try {
+            TimeUnit.SECONDS.sleep(3);
             String destinatario = user.getCorreo();
             String asunto = "Bienvenido a InvGenius";
             String cuerpo = 
@@ -62,6 +67,7 @@ public class emailService {
     @GetMapping("/enviar-correo-recuperar")
     public String enviarCorreoRecuperar() {
         try {
+            TimeUnit.SECONDS.sleep(3);
             String destinatario = "invgenius2024@gmail.com";
             String asunto = "Recuperacion de contraseña";
             String cuerpo = ""
@@ -89,6 +95,7 @@ public class emailService {
     @GetMapping("/enviar-correo-cambio")
     public String enviarCorreoCambio() {
         try {
+            TimeUnit.SECONDS.sleep(3);
             String destinatario = "invgenius2024@gmail.com";
             String asunto = "Cambio de contraseña";
             String cuerpo = ""

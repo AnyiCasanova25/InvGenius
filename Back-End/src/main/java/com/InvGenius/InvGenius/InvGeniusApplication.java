@@ -7,10 +7,12 @@ package com.InvGenius.InvGenius;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 // import io.jsonwebtoken.SignatureAlgorithm;
 // import io.jsonwebtoken.security.Keys;
 
+@EnableScheduling
 @SpringBootApplication
 public class InvGeniusApplication {
 
