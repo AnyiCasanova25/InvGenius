@@ -1,5 +1,6 @@
 package com.InvGenius.InvGenius.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,12 @@ public class categoriaService implements IcategoriaService {
 
     @Autowired
     private Icategoria data;
+
+    @Override
+	public List<categoria> consultarcategoria() {
+
+		return (ArrayList<categoria>) data.findAll();
+	}
 
     @Override
     public String save(categoria categoria) {
@@ -46,5 +53,15 @@ public class categoriaService implements IcategoriaService {
         data.deleteById(id);
         return 1;
     }
+
+    @Override
+	public int guardarimagenJson(categoria categoria) {
+		int res=0;
+		categoria =data.save(categoria);
+		if(categoria.equals(null)) {
+			res=1;
+		}
+		return res;
+	}
     
 }

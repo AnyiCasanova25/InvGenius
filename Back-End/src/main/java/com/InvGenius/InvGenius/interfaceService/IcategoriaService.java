@@ -17,5 +17,9 @@ public interface IcategoriaService {
     public Optional<categoria> findOne (String id);
 
     public int delete(String id);
+
+    public List<categoria> consultarcategoria();
+
+    public int guardarimagenJson(categoria categoria);
     
 }

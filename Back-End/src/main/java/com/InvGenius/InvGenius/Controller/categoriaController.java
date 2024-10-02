@@ -1,14 +1,21 @@
 package com.InvGenius.InvGenius.Controller;
 
+import java.io.IOException;
+import java.util.Base64;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
-
+import com.InvGenius.InvGenius.models.respuestaImagen;
+import com.InvGenius.InvGenius.service.gestionArchivoService;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,7 +58,37 @@ public ResponseEntity<Object> save(@RequestBody categoria categoria){
     return new ResponseEntity<>(categoria, HttpStatus.OK);
 }
 
+// Método para consultar categorías con manejo de imágenes (ruta cambiada)
+@GetMapping("/consultar-imagenes")
+public ResponseEntity<Object> consultarcategoriaJson() {
+    List<categoria> listaCategoria = categoriaService.consultarcategoria();
+    listaCategoria.forEach(c -> c.setImagen_base("")); // Aquí puedes ajustar cómo se manejan las imágenes
+    return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
+}
 
+    // Método para guardar imagen asociada a una categoría
+    @PostMapping("/imagen")  // Cambio de endpoint para evitar conflicto
+    public ResponseEntity<Object> guardarImagenJson(
+            categoria categoria, 
+            @RequestParam("file") MultipartFile file) throws IOException {
+
+        try {
+            // Guardar el archivo y generar la URL
+            String fileName = gestionArchivoService.storeFile(file);
+            categoria.setImagen_url("http://localhost:8080/api/downloadFile/" + fileName);
+            categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
+
+            int resultado = categoriaService.guardarimagenJson(categoria);
+            if (resultado == 0) {
+                return new ResponseEntity<>(new respuestaImagen("ok", "Se guardó correctamente"), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(new respuestaImagen("error", "Error al guardar"), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        } catch (IOException e) {
+            return new ResponseEntity<>("Error al guardar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     // Filtros de categoría
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
