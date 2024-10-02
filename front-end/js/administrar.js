@@ -234,20 +234,18 @@ function mostrarTablaNovedades(result) {
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
             <td class="text-center align-middle">${result[i]["asunto"]}</td>
-            <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
             <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
             <td class="text-center align-middle">${result[i]["estadoNovedad"]}</td>
             <td class="text-center align-middle">
-                <button class="btn btn-secondary aceptar" data-id="${result[i]["idNovedad"]}" title="Aceptar Novedad">Aceptar</button>
-                <button class="btn" style="background-color: #adb5bd; color: white;" data-id="${result[i]["idNovedad"]}" title="Rechazar Novedad">Rechazar</button>
+                <i class="fas fa-eye ver" data-id="${result[i]['idNovedad']}" title="Ver la Solicitud del Usuario"></i>
+                <i class="fas fa-check confirmar" data-id="${result[i]['idNovedad']}" title="Aceptar Novedad"></i>
+                <i class="fas fa-times eliminar" data-id="${result[i]['idNovedad']}" title="Rechazar Novedad"></i>
             </td>
-
-
-
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
 }
+            // <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
 $(document).on("click", ".cambiarEstado", function () {
     var idNovedad = $(this).data("id");
     $.ajax({
