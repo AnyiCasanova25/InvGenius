@@ -270,14 +270,14 @@
                                             onkeypress="alfaNumericosSignos(event);" required>
                                     </div>
 
-                                    <div class="col col-xl-6 col-12">
+                                    <!-- <div class="col col-xl-6 col-12">
                                         <label for="estado"><i class="fas fa-check-circle"></i> Estado:</label>
                                         <select id="estado" class="form-control" style="border: 1px solid black;"
                                             onfocusout="validarestado(this)" onkeypress="soloLetras(event);" required>
                                             <option value="Activo" selected>Activo</option>
                                             <option value="Inactivo">Inactivo</option>
                                         </select>
-                                    </div>
+                                    </div> -->
 
                                     </form>
                                     <br>
@@ -286,7 +286,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" id="saveChanges">Guardar Cambios</button>
+                        <button type="button" class="btn btn-dark" onclick="registrarUser()">Guardar Cambios</button>
                     </div>
                 </div>
             </div>

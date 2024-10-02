@@ -13,7 +13,7 @@ function blanquearCampos() {
 }
 
 //Apartado de marca
-var registrarMarcaBandera = true;  
+var registrarMarcaBandera = true;
 var idMarca = "";
 
 // Función para buscar proveedores por filtro
@@ -45,7 +45,7 @@ function registrarMarca() {
             text: "¡Llene todos los campos correctamente!",
             icon: "error"
         });
-        return; 
+        return;
     }
 
     var forData = {
@@ -55,7 +55,7 @@ function registrarMarca() {
 
     var metodo = registrarMarcaBandera ? "POST" : "PUT";
     var urlLocal = registrarMarcaBandera ? urlMarca : urlMarca + idMarca;
-    
+
 
     $.ajax({
         url: urlLocal,
@@ -69,8 +69,8 @@ function registrarMarca() {
                 text: "Registro exitoso",
                 icon: "success"
             }).then(function () {
-                $('#modalMarca').modal('hide'); 
-                listarMarca(); 
+                $('#modalMarca').modal('hide');
+                listarMarca();
             });
         },
         error: function (xhr, status, error) {
@@ -114,7 +114,7 @@ function mostrarTabla(result) {
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
                 <i class="fas fa-edit editar" data-id="${result[i]["idMarca"]}" title="Editar Marca"></i>
-                <i class="fas fa-toggle-on cambiarEstado" data-id="${result[i]["idMarca"]}" title="Cambiar Estado de Marca"></i>  <!-- Icono de cambio de estado -->
+                <i class="fas fa-toggle-on cambiarEstadoMarca" data-id="${result[i]["idMarca"]}" title="Cambiar Estado de Marca"></i>  <!-- Icono de cambio de estado -->
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
@@ -161,8 +161,8 @@ $(document).on("click", ".editar", function () {
         success: function (marca) {
             // Rellenar los campos con los datos de la marca
             document.getElementById("nombreMarca").value = marca.nombreMarca;
-            document.getElementById("estado").value = marca.estado;  
-            $('#modalMarca').modal('show');  
+            document.getElementById("estado").value = marca.estado;
+            $('#modalMarca').modal('show');
         },
         error: function (error) {
             Swal.fire({
@@ -173,7 +173,7 @@ $(document).on("click", ".editar", function () {
         }
     });
 });
-$(document).on("click", ".cambiarEstado", function () {
+$(document).on("click", ".cambiarEstadoMarca", function () {
     var idMarca = $(this).data("id");
     $.ajax({
         url: urlMarca + idMarca,
@@ -238,8 +238,12 @@ function mostrarTablaNovedades(result) {
             <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
             <td class="text-center align-middle">${result[i]["estadoNovedad"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idNovedad"]}" title="Editar Novedad"></i>
+                <button class="btn btn-secondary aceptar" data-id="${result[i]["idNovedad"]}" title="Aceptar Novedad">Aceptar</button>
+                <button class="btn" style="background-color: #adb5bd; color: white;" data-id="${result[i]["idNovedad"]}" title="Rechazar Novedad">Rechazar</button>
             </td>
+
+
+
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
@@ -279,7 +283,7 @@ function buscarUserrFiltro(filtro) {
             url: urlUsuarios + "busquedaFiltros/" + filtro,
             type: "GET",
             success: function (result) {
-                mostrarTabla(result);
+                mostrarTablaPerfiles(result);
             },
         });
     } else {
@@ -318,11 +322,196 @@ function mostrarTablaPerfiles(result) {
             <td class="text-center align-middle">${result[i]["rol"]}</td>
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idUser"]}"></i>
-                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idUser"]}"></i>
-                <i class="fa-solid fa-user-slash cambiarEstado" data-id="${result[i]["idUser"]}"></i>
+                <i class="fas fa-edit editar" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
+                <i class="fas fa-user-shield cambiarRolUser" data-id="${result[i]["idUser"]}" title="Cambiar Usuario de Rol"></i>
+                <i class="fas fa-toggle-on cambiarEstadoUser" data-id="${result[i]["idUser"]}" title="Cambiar Estado de Usuario"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
+}
+function registrarUser() {
+    var documentoIdentidad = document.getElementById("documentoIdentidad");
+    var nombres = document.getElementById("nombres");
+    var apellidos = document.getElementById("apellidos");
+    var celular = document.getElementById("celular");
+    var correo = document.getElementById("correo");
+    var rol = document.getElementById("rol");
+    var estado = document.getElementById("estado");
+
+    // Verificar si algún campo obligatorio está vacío
+    if (!validarCamposPerfiles()) {
+        Swal.fire({
+            title: "¡Error!",
+            text: "¡Llene todos los campos correctamente!",
+            icon: "error"
+        });
+        return; // Salir si algún campo es inválido
+    }
+
+    var forData = {
+        "documentoIdentidad": documentoIdentidad.value,
+        "nombres": nombres.value,
+        "apellidos": apellidos.value,
+        "celular": celular.value,
+        "correo": correo.value,
+        "rol": rol.value,
+        "estado": estado.value,
+    };
+
+    var metodo = registrarUserBandera ? "POST" : "PUT";
+    var urlLocal = registrarUserBandera ? urlUsuarios : urlUsuarios + idUser;
+
+    const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlLocal,
+        type: metodo,
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        contentType: "application/json",
+        data: JSON.stringify(forData),
+        success: function (response) {
+            limpiar();
+            Swal.fire({
+                title: "LISTO",
+                text: "Felicidades, Registro exitoso",
+                icon: "success"
+            }).then(function () {
+                $('#exampleModal').modal('hide');
+                listarUser(); // Refrescar la tabla
+            });
+        },
+        error: function (xhr, status, error) {
+            Swal.fire({
+                title: "Error",
+                text: "¡Error al registrar o actualizar este Proveedor!",
+                icon: "error"
+            });
+        }
+    });
+}
+
+// Función para validar campos
+function validarCamposPerfiles() {
+    var documentoIdentidad = document.getElementById("documentoIdentidad");
+    var nombres = document.getElementById("nombres");
+    var apellidos = document.getElementById("apellidos");
+    var celular = document.getElementById("celular");
+    var correo = document.getElementById("correo");
+    // var rol = document.getElementById("rol");
+    // var estado = document.getElementById("estado");
+
+    return validardocumentoIdentidad(documentoIdentidad) && validarnombres(nombres) &&
+        validarapellidos(apellidos) && validarcelular(celular) && validarcorreo(correo);
+    //  &&
+    // validarrol(rol) && validarestado(estado);
+}
+
+// Funciones de validación por campo
+function validarCampo(cuadroNumero, minLength, maxLength) {
+    var valor = cuadroNumero.value.trim();
+    var valido = (valor.length >= minLength && valor.length <= maxLength);
+    cuadroNumero.className = "form-control " + (valido ? "is-valid" : "is-invalid");
+    return valido;
+}
+
+function validardocumentoIdentidad(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 41);
+}
+
+function validarnombres(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 41);
+}
+
+function validarapellidos(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 12);
+}
+
+function validarcelular(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 16);
+}
+
+function validarcorreo(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 16);
+}
+
+// function validarrol(cuadroNumero) {
+//     return validarCampo(cuadroNumero, 1, 41);
+// }
+
+function validarestado(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 21);
+}
+
+function limpiarModalPerfiles() {
+    document.querySelectorAll(".form-control").forEach(function (input) {
+        input.value = "";
+        input.className = "form-control";
+    });
+}
+
+// Función para editar user
+$(document).on("click", ".editar", function () {
+    limpiarModalPerfiles();
+    idUser = $(this).data("id");
+    registrarUserBandera = false; // Cambiar bandera para editar
+
+    $.ajax({
+        url: urlUsuarios + idUser,
+        type: "GET",
+        success: function (user) {
+            document.getElementById("documentoIdentidad").value = user.documentoIdentidad;
+            document.getElementById("nombres").value = user.nombres;
+            document.getElementById("apellidos").value = user.apellidos;
+            document.getElementById("celular").value = user.celular;
+            document.getElementById("correo").value = user.correo;
+            // document.getElementById("rol").value = user.rol;
+            document.getElementById("estado").value = user.estado;
+            $('#exampleModal').modal('show');
+        },
+        error: function (error) {
+            alert("Error al obtener los datos del proveedor: " + error.statusText);
+        }
+    });
+});
+
+// Función para cambiar estado del user
+$(document).on("click", ".cambiarEstadoUser", function () {
+    var idUser = $(this).data("id");
+    $.ajax({
+        url: urlUsuarios + idUser,
+        type: "DELETE",
+        success: function () {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Cambio de estado exitoso",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            listarUser();
+        }
+    });
+});
+$(document).on("click", ".cambiarRolUser", function () {
+    var idUser = $(this).data("id");
+    $.ajax({
+        url: urlUsuarios + idUser,
+        type: "DELETE",
+        success: function () {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Cambio de estado exitoso",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            listarUser();
+        }
+    });
+});
+// Función adicional para actualizar lista de Useres después de registrar/editar
+function actualizarlistarUser() {
+    listarUser();
 }

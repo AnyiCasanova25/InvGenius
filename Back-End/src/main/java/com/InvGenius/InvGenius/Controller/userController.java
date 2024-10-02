@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -179,6 +180,27 @@ public class userController {
         var user = userService.findOne(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+     public ResponseEntity<Object> delete(@PathVariable String id) {
+         var optionaluser = userService.findOne(id);
+ 
+         if (optionaluser.isPresent()) {
+             var user = optionaluser.get();
+ 
+             if ("Activo".equals(user.getEstado())) {
+                 user.setEstado("Inactivo");
+                 userService.save(user);
+                 return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
+             } else {
+                 user.setEstado("Activo");
+                 userService.save(user);
+                 return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+             }
+         } else {
+             return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+         }
+     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id, @RequestBody user userUpdate) {

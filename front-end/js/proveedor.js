@@ -1,7 +1,3 @@
-// URL de la API se declara una url por si se modifica solo cambiar donde la declaro y no entodas las demas partes
-var url = "http://localhost:8080/api/v1/proveedor/";
-
-// var url = "http://10.192.80.141:8080/api/v1/proveedor/";
 var registrarProveedorBandera = true;
 var idProveedor = "";
 
@@ -9,7 +5,7 @@ var idProveedor = "";
 function buscarProveedorPorFiltro(filtro) {
     if (filtro.trim() !== "") {
         $.ajax({
-            url: url + "busquedaFiltros/" + filtro,
+            url: urlProveedor + "busquedaFiltros/" + filtro,
             type: "GET",
             success: function (result) {
                 mostrarTabla(result);
@@ -24,10 +20,9 @@ function buscarProveedorPorFiltro(filtro) {
 function listarProveedor() {
     const token = localStorage.getItem('authTokens');
     $.ajax({
-        url: url,
+        url: urlProveedor,
         type: "GET",
         headers: {
-            "contentType":"application/json",
             "Authorization": "Bearer " + token
         },
         success: function (result) {
@@ -97,7 +92,7 @@ function registrarProveedor() {
     };
 
     var metodo = registrarProveedorBandera ? "POST" : "PUT";
-    var urlLocal = registrarProveedorBandera ? url : url + idProveedor;
+    var urlLocal = registrarProveedorBandera ? urlProveedor : urlProveedor + idProveedor;
 
     const token = localStorage.getItem('authTokens');
     $.ajax({
@@ -190,7 +185,7 @@ $(document).on("click", ".editar", function () {
     registrarProveedorBandera = false; // Cambiar bandera para editar
 
     $.ajax({
-        url: url + idProveedor,
+        url: urlProveedor + idProveedor,
         type: "GET",
         success: function (proveedor) {
             document.getElementById("nombreProveedor").value = proveedor.nombreProveedor;
@@ -211,7 +206,7 @@ $(document).on("click", ".editar", function () {
 $(document).on("click", ".cambiarEstado", function () {
     var idProveedor = $(this).data("id");
     $.ajax({
-        url: url + idProveedor,
+        url: urlProveedor + idProveedor,
         type: "DELETE",
         success: function () {
             Swal.fire({

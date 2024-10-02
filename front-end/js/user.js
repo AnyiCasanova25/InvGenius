@@ -1,6 +1,3 @@
-var url = "http://localhost:8080/api/v1/public/user/";
-// var url = "http://10.192.80.141:8080/api/v1/public/user/";
-
 function registrarUser() {
     // event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
@@ -32,7 +29,7 @@ function registrarUser() {
 
     // Enviar los datos mediante AJAX
     $.ajax({
-        url: url + "register/",
+        url: urlUsuariosRegister + "register/",
         type: "POST",
         data: JSON.stringify(formData), // Convertir los datos a JSON
         contentType: "application/json", // Establecer el tipo de contenido
