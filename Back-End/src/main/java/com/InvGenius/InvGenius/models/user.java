@@ -49,10 +49,10 @@ public class user implements UserDetails {
     @Column(name = "documentoIdentidad", nullable = true, length = 36)
     private String documentoIdentidad;
 
-    @Column(name = "nombres", nullable = false, length = 36)
+    @Column(name = "nombres", nullable = false, length = 100)
     private String nombres;
 
-    @Column(name = "apellidos", nullable = false, length = 36)
+    @Column(name = "apellidos", nullable = false, length = 100)
     private String apellidos;
 
     @Column(name = "celular", nullable = true, length = 13)
@@ -75,10 +75,10 @@ public class user implements UserDetails {
     @Column(name = "cambiarPassword", nullable = false)
     private boolean cambiarPassword;
 
-    @Column(name = "tipoDocumento", nullable = false)
+    @Column(name = "tipoDocumento", nullable = false, length = 10)
     private String tipoDocumento;
 
-    @Column(name = "genero", nullable = false)
+    @Column(name = "genero", nullable = false, length =  100)
     private String genero;
 
     @Enumerated(EnumType.STRING)
