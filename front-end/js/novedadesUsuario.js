@@ -1,7 +1,3 @@
-// URL de la API se declara una url por si se modifica solo cambiar donde la declaro y no entodas las demas partes
-// var url = "http://10.192.80.141:8080/api/v1/novedad/";
-
-var url = "http://localhost:8080/api/v1/novedad/";
 var registrarNovedadBandera = true;
 var idNovedad = "";
 
@@ -9,7 +5,7 @@ var idNovedad = "";
 function buscarNovedadPorFiltro(filtro) {
     if (filtro.trim() !== "") {
         $.ajax({
-            url: url + "busquedaFiltros/" + filtro,
+            url: urlNovedad + "busquedaFiltros/" + filtro,
             type: "GET",
             success: function (result) {
                 mostrarTabla(result);
@@ -24,7 +20,7 @@ function buscarNovedadPorFiltro(filtro) {
 function listarNovedad() {
     const token = localStorage.getItem('authTokens');
     $.ajax({
-        url: url,
+        url: urlNovedad,
         type: "GET",
         headers: {
             'Authorization': 'Bearer ' + token
@@ -95,7 +91,7 @@ function registrarNovedad() {
     };
 
     var metodo = registrarNovedadBandera ? "POST" : "PUT";
-    var urlLocal = registrarNovedadBandera ? url : url + idNovedad;
+    var urlLocal = registrarNovedadBandera ? urlNovedad : urlNovedad + idNovedad;
 
     const token = localStorage.getItem('authTokens');
     $.ajax({
@@ -190,7 +186,7 @@ $(document).on("click", ".editar", function () {
     registrarNovedadBandera = false; // Cambiar bandera para editar
 
     $.ajax({
-        url: url + idNovedad,
+        url: urlNovedad + idNovedad,
         type: "GET",
         success: function (novedad) {
             // document.getElementById("para").value = novedad.para;
@@ -211,7 +207,7 @@ $(document).on("click", ".editar", function () {
 $(document).on("click", ".cambiarEstado", function () {
     var idNovedad = $(this).data("id");
     $.ajax({
-        url: url + idNovedad,
+        url: urlNovedad + idNovedad,
         type: "DELETE",
         success: function () {
             Swal.fire({
