@@ -13,7 +13,7 @@ public interface IuserService {
 
     public List<user> findAll();
 
-    public List<user> userExist(String celular, String correo, String documentoIdentidad);
+    public List<user> userExist(String correo, String documentoIdentidad);
 
     public Optional<user> findOne(String id);
 

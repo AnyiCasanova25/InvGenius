@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.IuserService;
 import com.InvGenius.InvGenius.models.changePasswordRequest;
 import com.InvGenius.InvGenius.models.registerRequest;
+import com.InvGenius.InvGenius.models.response;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
@@ -71,17 +72,20 @@ public class userController {
     public ResponseEntity<Object> register(@RequestBody registerRequest user) {
 
         // Verificar que no exista numero de telefono
-        var listaUser = userService.userExist(user.getCelular(), user.getUserName(), user.getDocumentoIdentidad());
+        var listaUser = userService.userExist(user.getUserName(), user.getDocumentoIdentidad());
+
+        // if (listaUser.size() != 0) {
+        //     return new ResponseEntity<>("Este usuario ya existe", HttpStatus.BAD_REQUEST);
+        // }
 
         if (listaUser.size() != 0) {
-            return new ResponseEntity<>("Este usuario ya existe", HttpStatus.BAD_REQUEST);
-        }
-        // var listaUser = authService.findAll()
-        // .stream().filter(user -> user.getDocumentoIdentidad()
-        // .equals(user.getDocumentoIdentidad()));
-        // if (listaUser.count() !=0) {
-        //     return new ResponseEntity<>("Este usuario ya existe, intenta otra vez por favor", HttpStatus.BAD_REQUEST);
-        // }
+        // Construir una respuesta con el mensaje y el estado
+        response respuesta = response.builder()
+                                     .message("Este usuario ya existe")
+                                     .build();
+        // Retornar el objeto como JSON
+        return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+    }
 
         // Verificar que el campo de de documento de identidad sea diferente a vacio
         // Añadir campos obligatorios
@@ -178,7 +182,7 @@ public class userController {
 
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
-        var listaUser = userService.userExist(filtro, filtro, filtro);
+        var listaUser = userService.userExist(filtro, filtro);
         return new ResponseEntity<>(listaUser, HttpStatus.OK);
     }
 

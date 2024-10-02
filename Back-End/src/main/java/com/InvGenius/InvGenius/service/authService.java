@@ -113,8 +113,8 @@ public class authService implements IuserService{
         return listaUser;
     }
     @Override
-    public List<user> userExist(String celular, String correo, String documentoIdentidad) {
-            List<user> listaUser =data.userExist( celular,  correo, documentoIdentidad);
+    public List<user> userExist(String correo, String documentoIdentidad) {
+            List<user> listaUser =data.userExist(correo, documentoIdentidad);
             return listaUser;
     }
 

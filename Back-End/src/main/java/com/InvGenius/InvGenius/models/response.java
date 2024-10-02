@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class response {
     
-    private String estado;
+    // private String estado;
     private String message;
 }
