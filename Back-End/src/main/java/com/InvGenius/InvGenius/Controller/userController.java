@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.IuserService;
 import com.InvGenius.InvGenius.models.changePasswordRequest;
+import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
@@ -67,10 +68,10 @@ public class userController {
     // }
 
     @PostMapping("/register/")
-    public ResponseEntity<Object> register(@RequestBody user user) {
+    public ResponseEntity<Object> register(@RequestBody registerRequest user) {
 
         // Verificar que no exista numero de telefono
-        var listaUser = userService.userExist(user.getCelular(), user.getCorreo(), user.getDocumentoIdentidad());
+        var listaUser = userService.userExist(user.getCelular(), user.getUserName(), user.getDocumentoIdentidad());
 
         if (listaUser.size() != 0) {
             return new ResponseEntity<>("Este usuario ya existe", HttpStatus.BAD_REQUEST);
@@ -105,16 +106,16 @@ public class userController {
             return new ResponseEntity<>("El numero de telefono es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        if (user.getCorreo().equals("")) {
+        if (user.getUserName().equals("")) {
 
             return new ResponseEntity<>("El correo es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         // user.setPassword(codigoAleatorio());
 
-        // todo bien
-        user.setRol(rol.User);
-        userService.save(user);
+        // todo bien-
+        //user.setRol(rol.User);
+        userService.register(user);
         // emailController email = new emailController(javaMailSender);
         // email.enviarCorreoRegistro(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
