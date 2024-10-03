@@ -1,6 +1,6 @@
 package com.InvGenius.InvGenius.service;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.InvGenius.InvGenius.models.lote;
 import com.InvGenius.InvGenius.models.user;
 
 import jakarta.mail.MessagingException;
@@ -19,6 +20,9 @@ public class emailService {
      @Autowired
     private JavaMailSender javaMailSender;
 
+    @Autowired
+    private loteService loteService;
+
     emailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
@@ -26,7 +30,6 @@ public class emailService {
      @GetMapping("/enviar-correo-registro")
     public String enviarCorreoRegistro(user user ,String password) {
         try {
-            TimeUnit.SECONDS.sleep(3);
             String destinatario = user.getCorreo();
             String asunto = "Bienvenido a InvGenius";
             String cuerpo = 
@@ -65,9 +68,8 @@ public class emailService {
 
     // AQUI
     @GetMapping("/enviar-correo-recuperar")
-    public String enviarCorreoRecuperar() {
+    public String enviarCorreoRecuperarContrasena() {
         try {
-            TimeUnit.SECONDS.sleep(3);
             String destinatario = "invgenius2024@gmail.com";
             String asunto = "Recuperacion de contraseña";
             String cuerpo = ""
@@ -92,10 +94,10 @@ public class emailService {
         }
     }
 
+    //Este solo debe tener un mensaje de que su contraseña se cambio correctamente
     @GetMapping("/enviar-correo-cambio")
     public String enviarCorreoCambio() {
         try {
-            TimeUnit.SECONDS.sleep(3);
             String destinatario = "invgenius2024@gmail.com";
             String asunto = "Cambio de contraseña";
             String cuerpo = ""
@@ -116,8 +118,86 @@ public class emailService {
         }
     }
 
-    @GetMapping("/enviar-correo-caducar")
+    
+    @GetMapping("/loteACaducar/")
     public String enviarCorreoCaducar() {
+        try {
+            List<lote> listaLote = loteService.loteACaducar();
+            if (listaLote.isEmpty()) {
+                return "No hay productos próximos a caducar.";
+            }
+    
+            String destinatario = "invgenius2024@gmail.com";
+            String asunto = "Producto Próximo a Caducar";
+            
+            StringBuilder cuerpo = new StringBuilder()
+                    .append("<h1>Estimado Usuario</h1>")
+                    .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información de los productos:</p>")
+                    .append("<ul>");
+    
+
+            for (lote l : listaLote) {
+                cuerpo.append("<li>")
+                      .append("<strong>Producto:</strong> ")
+                      .append(l.getProducto().getNombreProducto()) 
+                      .append(" - <strong>Fecha de Caducidad:</strong> ")
+                      .append(l.getFechaVencimiento())
+                      .append("</li>");
+            }
+    
+            cuerpo.append("</ul>")
+                  .append("<p>Le recomendamos que venda o promocione estos productos antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>")
+                  .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                  .append("<p>Atentamente,<br>[Anyi Zujey Gomez Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>");
+    
+            var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
+            if (retorno) {
+                return "Se envió correctamente";
+            } else {
+                return "No se pudo enviar";
+            }
+    
+        } catch (Exception e) {
+            return "Error al enviar: " + e.getMessage();
+        }
+    }
+    
+
+    //Corregir este correo
+    @GetMapping("/loteBajoStock/")
+    public String enviarCorreoBajoStock() {
+        try {
+            String destinatario = "invgenius2024@gmail.com";
+            String asunto = "Producto Próximo a Caducar";
+            String cuerpo = ""
+                    + "<h1>Estimado Usuario</h1>"
+                    + "<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información del producto:</p>\r\n"
+                    + "<ul>\r\n"
+                    + "    <li><strong>Producto:</strong> Leche Entera</li>\r\n"
+                    + "    <li><strong>Marca:</strong> Alpina</li>\r\n"
+                    + "    <li><strong>Cantidad:</strong> 5 unidades</li>\r\n"
+                    + "    <li><strong>Fecha de Caducidad:</strong> 15 de junio de 2024</li>\r\n"
+                    + "</ul>\r\n"
+                    + "<p>Le recomendamos que venda o promocione este producto antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>\r\n"
+                    + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
+                    + "<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>\r\n"
+                    + "<p>Atentamente,<br>[Anyi Zujey Gomez Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+
+            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
+            if (retorno) {
+                return "Se envió correctamente";
+            } else {
+                return "No se pudo enviar";
+            }
+
+        } catch (Exception e) {
+            return "Error al enviar: " + e.getMessage();
+        }
+    }
+
+    //Corregir este correo
+    @GetMapping("/loteVencido/")
+    public String enviarCorreoLoteVencido() {
         try {
             String destinatario = "invgenius2024@gmail.com";
             String asunto = "Producto Próximo a Caducar";
