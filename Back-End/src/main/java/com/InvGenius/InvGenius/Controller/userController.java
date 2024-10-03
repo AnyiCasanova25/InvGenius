@@ -70,22 +70,32 @@ public class userController {
 
     @PostMapping("/register/")
     public ResponseEntity<Object> register(@RequestBody registerRequest user) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        user userToken = (user) auth.getPrincipal();
+        if (!userToken.getRol().name().equals(rol.Admin.name())) {
+            response respuesta = response.builder()
+                    .message("No tiene permiso contactese con su administrador")
+                    .build();
+            // Retornar el objeto como JSON
+            return new ResponseEntity<>(respuesta, HttpStatus.FORBIDDEN);
+        }
 
         // Verificar que no exista numero de telefono
         var listaUser = userService.userExist(user.getUserName(), user.getDocumentoIdentidad());
 
         // if (listaUser.size() != 0) {
-        //     return new ResponseEntity<>("Este usuario ya existe", HttpStatus.BAD_REQUEST);
+        // return new ResponseEntity<>("Este usuario ya existe",
+        // HttpStatus.BAD_REQUEST);
         // }
 
         if (listaUser.size() != 0) {
-        // Construir una respuesta con el mensaje y el estado
-        response respuesta = response.builder()
-                                     .message("Este usuario ya existe")
-                                     .build();
-        // Retornar el objeto como JSON
-        return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
-    }
+            // Construir una respuesta con el mensaje y el estado
+            response respuesta = response.builder()
+                    .message("Este usuario ya existe")
+                    .build();
+            // Retornar el objeto como JSON
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
 
         // Verificar que el campo de de documento de identidad sea diferente a vacio
         // Añadir campos obligatorios
@@ -118,7 +128,7 @@ public class userController {
         // user.setPassword(codigoAleatorio());
 
         // todo bien-
-        //user.setRol(rol.User);
+        // user.setRol(rol.User);
         userService.register(user);
         // emailController email = new emailController(javaMailSender);
         // email.enviarCorreoRegistro(user);
@@ -167,17 +177,17 @@ public class userController {
 
     // @GetMapping("/admin/findAll/")
     // public ResponseEntity<String> findAll() {
-    //     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    //     var user = (user) auth.getPrincipal();
-    //     if (user.getRol() != rol.Admin)
-    //         return new ResponseEntity<String>("No tiene permiso", HttpStatus.FORBIDDEN);
-    //     return new ResponseEntity<String>("Metodo admin", HttpStatus.OK);
+    // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    // var user = (user) auth.getPrincipal();
+    // if (user.getRol() != rol.Admin)
+    // return new ResponseEntity<String>("No tiene permiso", HttpStatus.FORBIDDEN);
+    // return new ResponseEntity<String>("Metodo admin", HttpStatus.OK);
     // }
 
     @GetMapping("/")
-    public ResponseEntity<Object> findAll(){
-    var listaUser = userService.findAll();
-    return new ResponseEntity<>(listaUser,HttpStatus.OK);
+    public ResponseEntity<Object> findAll() {
+        var listaUser = userService.findAll();
+        return new ResponseEntity<>(listaUser, HttpStatus.OK);
     }
 
     @GetMapping("/busquedaFiltros/{filtro}")
@@ -193,25 +203,25 @@ public class userController {
     }
 
     @DeleteMapping("/{id}")
-     public ResponseEntity<Object> delete(@PathVariable String id) {
-         var optionaluser = userService.findOne(id);
- 
-         if (optionaluser.isPresent()) {
-             var user = optionaluser.get();
- 
-             if ("Activo".equals(user.getEstado())) {
-                 user.setEstado("Inactivo");
-                 userService.save(user);
-                 return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
-             } else {
-                 user.setEstado("Activo");
-                 userService.save(user);
-                 return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
-             }
-         } else {
-             return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
-         }
-     }
+    public ResponseEntity<Object> delete(@PathVariable String id) {
+        var optionaluser = userService.findOne(id);
+
+        if (optionaluser.isPresent()) {
+            var user = optionaluser.get();
+
+            if ("Activo".equals(user.getEstado())) {
+                user.setEstado("Inactivo");
+                userService.save(user);
+                return new ResponseEntity<>("Se ha desactivado correctamente", HttpStatus.OK);
+            } else {
+                user.setEstado("Activo");
+                userService.save(user);
+                return new ResponseEntity<>("Se ha activado correctamente", HttpStatus.OK);
+            }
+        } else {
+            return new ResponseEntity<>("No se ha encontrado el registro", HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id, @RequestBody user userUpdate) {
