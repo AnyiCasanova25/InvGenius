@@ -15,18 +15,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "user")
+@Entity(name = "user")
 public class user implements UserDetails {
 
     /*
@@ -66,8 +60,8 @@ public class user implements UserDetails {
 
     private String confirmarPassword;
 
-    @Column(name = "imagenUser", nullable = true)
-    private String imagenUser;
+    @Column( name="imagen_base", nullable = true, columnDefinition = "MEDIUMBLOB")
+	private String  imagen_base;
 
     @Column(name = "estado", nullable = true, length = 10)
     private String estado;
@@ -93,4 +87,139 @@ public class user implements UserDetails {
     public String getUsername() {
         return this.correo;
     }
+
+    public user() {
+    }
+
+    public user(String idUser, String documentoIdentidad, String nombres, String apellidos, String celular,
+            String correo, String password, String confirmarPassword, String imagen_base, String estado,
+            boolean cambiarPassword, String tipoDocumento, String genero, com.InvGenius.InvGenius.models.rol rol) {
+        this.idUser = idUser;
+        this.documentoIdentidad = documentoIdentidad;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.celular = celular;
+        this.correo = correo;
+        this.password = password;
+        this.confirmarPassword = confirmarPassword;
+        this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.estado = estado;
+        this.cambiarPassword = cambiarPassword;
+        this.tipoDocumento = tipoDocumento;
+        this.genero = genero;
+        this.rol = rol;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getDocumentoIdentidad() {
+        return documentoIdentidad;
+    }
+
+    public void setDocumentoIdentidad(String documentoIdentidad) {
+        this.documentoIdentidad = documentoIdentidad;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmarPassword() {
+        return confirmarPassword;
+    }
+
+    public void setConfirmarPassword(String confirmarPassword) {
+        this.confirmarPassword = confirmarPassword;
+    }
+
+    public String getImagen_base() {
+        return imagen_base;
+    }
+
+    public void setImagen_base(String imagen_base) {
+        this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public boolean isCambiarPassword() {
+        return cambiarPassword;
+    }
+
+    public void setCambiarPassword(boolean cambiarPassword) {
+        this.cambiarPassword = cambiarPassword;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public rol getRol() {
+        return rol;
+    }
+
+    public void setRol(rol rol) {
+        this.rol = rol;
+    }
+    
 }

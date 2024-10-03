@@ -29,28 +29,22 @@ public class categoria {
     @Column(name = "ubicacion", nullable = false, length = 20)
     private String ubicacion;
 
-    @Column( name="imagen_base", nullable = true)
+    @Column( name="imagen_base", nullable = true, columnDefinition = "MEDIUMBLOB")
 	private String  imagen_base;
 
-	@Column( name="imagen_url", nullable = true, length = 35 )
-	private String imagen_url;
-
-    // @Lob // Indica que se trata de un campo grande (BLOB)
-    // @Column(name = "imagenUrl", columnDefinition = "BLOB")
-    // private byte[] imagenUrl; // Aquí se almacena la imagen en formato binario
+    //maximo 10megas
+    //rechazar la peticion si es muy larga la imagen 
     
 
     public categoria() {
     }
 
-    public categoria(String idCategoria, String nombreCategoria, String estado, String ubicacion, String imagen_base,
-            String imagen_url) {
+    public categoria(String idCategoria, String nombreCategoria, String estado, String ubicacion, String imagen_base) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.estado = estado;
         this.ubicacion = ubicacion;
 		this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
-		this.imagen_url = imagen_url;
     }
 
     public String getIdCategoria() {
@@ -90,17 +84,6 @@ public class categoria {
     }
 
     public void setImagen_base(String imagen_base) {
-        this.imagen_base = imagen_base;
+        this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
     }
-
-    public String getImagen_url() {
-        return imagen_url;
-    }
-
-	public void setImagen_url(String imagen_url) {
-		this.imagen_url ="data:image/jpeg;base64,"+ imagen_url;
-	}
-
-
-
 }

@@ -16,6 +16,12 @@ public class productoService implements IproductoService {
     @Autowired
     private Iproducto data;
 
+    @Override
+	public List<producto> consultarProducto() {
+
+		return (List<producto>) data.findAll();
+	}
+
 
     @Override
     public String save(producto producto) {
@@ -65,4 +71,14 @@ public class productoService implements IproductoService {
         data.deleteById(id);
         return 1;
     }
+//funcion de guardar imagen 
+    @Override
+	public int guardarimagenJson(producto producto) {
+		int res=0;
+		producto =data.save(producto);
+		if(producto.equals(null)) {
+			res=1;
+		}
+		return res;
+	}
 }

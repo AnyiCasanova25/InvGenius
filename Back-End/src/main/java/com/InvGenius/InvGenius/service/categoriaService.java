@@ -1,6 +1,5 @@
 package com.InvGenius.InvGenius.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,7 @@ public class categoriaService implements IcategoriaService {
     @Override
 	public List<categoria> consultarcategoria() {
 
-		return (ArrayList<categoria>) data.findAll();
+		return (List<categoria>) data.findAll();
 	}
 
     @Override
