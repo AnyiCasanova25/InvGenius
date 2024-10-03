@@ -12,7 +12,7 @@ public interface IcategoriaService {
     public List<categoria> findAll();
 
     //para los filtros de categoria
-    public List<categoria> categoriaExist(String nombreCategoria, String estado, String ubicacion);
+    public List<categoria> categoriaExist(String nombreCategoria, String ubicacion);
 
     public Optional<categoria> findOne (String id);
 

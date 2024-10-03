@@ -32,7 +32,7 @@ public class categoriaController {
     @PostMapping("/")
 public ResponseEntity<Object> save(@RequestParam("categoria") categoria categoria){
 
-    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null, null);
+    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null);
 
     if (listaCategoria.size() != 0) {
         return new ResponseEntity<>("La categoría ya existe", HttpStatus.BAD_REQUEST);
@@ -41,10 +41,6 @@ public ResponseEntity<Object> save(@RequestParam("categoria") categoria categori
     // Verifica que los campos requeridos no estén vacíos
     if (categoria.getNombreCategoria().equals("")) {
         return new ResponseEntity<>("El nombre es obligatorio", HttpStatus.BAD_REQUEST);
-    }
-
-    if (categoria.getEstado().equals("")) {
-        return new ResponseEntity<>("El estado es obligatorio", HttpStatus.BAD_REQUEST);
     }
 
     if (categoria.getUbicacion().equals("")) {
@@ -90,7 +86,7 @@ public ResponseEntity<Object> consultarcategoriaJson() {
     // Filtros de categoría
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
-        var listaCategoria = categoriaService.categoriaExist(filtro, filtro, filtro);
+        var listaCategoria = categoriaService.categoriaExist(filtro, filtro);
         return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
     }
 
@@ -122,7 +118,6 @@ public ResponseEntity<Object> consultarcategoriaJson() {
 
         if (categoria != null) {
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
-            categoria.setEstado(categoriaUpdate.getEstado());
             categoria.setUbicacion(categoriaUpdate.getUbicacion());
 
             categoriaService.save(categoria);
