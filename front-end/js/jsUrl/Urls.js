@@ -6,4 +6,5 @@ var urlUsuarios = Servidor + "user/";
 var urlUsuariosRegister = Servidor + "public/user/";
 var urlLogin = Servidor + "public/user/login";
 var urlProveedor = Servidor + "proveedor/";
+var urlCategoria = Servidor + "categoria/";
 
