@@ -102,12 +102,6 @@ public class authService implements IuserService{
     }
 
     @Override
-	public List<user> consultaruser() {
-
-		return (List<user>) data.findAll();
-	}
-
-    @Override
     public String save(user user) {
         data.save(user);
         return user.getIdUser();
@@ -140,14 +134,4 @@ public class authService implements IuserService{
     public Optional<user> findByUsername(String userName) {
        return data.findByUsername(userName);
     }
-
-    @Override
-	public int guardarimagenJson(user user) {
-		int res=0;
-		user =data.save(user);
-		if(user.equals(null)) {
-			res=1;
-		}
-		return res;
-	}
 }

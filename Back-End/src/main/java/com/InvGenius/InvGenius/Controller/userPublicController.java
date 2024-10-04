@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.models.authResponse;
 import com.InvGenius.InvGenius.models.loginRequest;
-import com.InvGenius.InvGenius.models.registerRequest;
+// import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.service.authService;
 
 import lombok.RequiredArgsConstructor;

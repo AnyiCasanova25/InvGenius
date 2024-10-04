@@ -17,7 +17,6 @@ import com.example.invgeniusmovil.adapters.Novedades.adapterProductosCaducados
 import com.example.invgeniusmovil.adapters.Novedades.adapterUsuario
 import com.example.invgeniusmovil.databinding.FragmentNovedadesBinding
 import com.example.invgeniusmovil.models.Novedades.bajo_stock
-import com.example.invgeniusmovil.models.Novedades.usuario
 import com.example.invgeniusmovil.models.Novedades.productos_a_caducar
 import com.example.invgeniusmovil.models.Novedades.productos_caducados
 
