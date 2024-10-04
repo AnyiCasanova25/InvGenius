@@ -370,6 +370,16 @@
                                             style="border: 1px solid black;" onfocusout="validarFechaIngreso(this)"
                                             required>
                                     </div>
+                                    
+                                    <div class="col col-xl-12 col-12">
+                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción de la
+                                            salida:</label>
+                                        <textarea id="descripcion" class="form-control" rows="5"
+                                            style="border: 1px solid black;" onkeypress="alfaNumericosSignos(event);"
+                                            required minlength="50"></textarea>
+                                        <small id="descripcionHelp" class="form-text text-muted">La descripción debe
+                                            tener al menos 10 caracteres.</small>
+                                    </div>
                                 </form>
                                 <br>
                             </div>
