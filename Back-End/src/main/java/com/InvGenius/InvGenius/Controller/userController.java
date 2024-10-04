@@ -1,8 +1,5 @@
 package com.InvGenius.InvGenius.Controller;
 
-import java.io.IOException;
-import java.util.Base64;
-import java.util.List;
 
 // import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,16 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.InvGenius.InvGenius.interfaceService.IuserService;
 
 import com.InvGenius.InvGenius.models.changePasswordRequest;
 import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.response;
-import com.InvGenius.InvGenius.models.respuestaImagen;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 

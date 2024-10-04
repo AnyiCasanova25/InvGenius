@@ -19,15 +19,15 @@ public class TaskCorreoUsuarioRegistrado {
     private emailService emailService;
 
     // Task para enviar el correo de registro
-    @Scheduled(fixedDelay = 3000)  
-    public void sendCorreoRegistro() {
-        var listaUser = authService.findAll(); 
-        for (user user : listaUser) {
-            System.out.println("Enviando correo de bienvenida a: " + user.getUsername());
-            String password = "defaultPassword";
-            emailService.enviarCorreoRegistro(user, password);
-        }
-    }
+    // @Scheduled(fixedDelay = 3000)  
+    // public void sendCorreoRegistro() {
+    //     var listaUser = authService.findAll(); 
+    //     for (user user : listaUser) {
+    //         System.out.println("Enviando correo de bienvenida a: " + user.getUsername());
+    //         String password = "defaultPassword";
+    //         emailService.enviarCorreoRegistro(user, password);
+    //     }
+    // }
     
     // //task para el correo cuando el usuario se registre
     // @Scheduled(fixedRate = 1000)
