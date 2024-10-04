@@ -43,7 +43,7 @@ class InvGeniusApplicationTests {
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
-		user.setImagen_base("imagen_base");
+		// user.setImagen_base("imagen_base");
 
 		
 		var ID = uService.save(user);
@@ -61,7 +61,7 @@ class InvGeniusApplicationTests {
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
-		user.setImagen_base("imagen_base");
+		// user.setImagen_base("imagen_base");
 
 		
 		var ID = uService.save(user);
@@ -79,7 +79,7 @@ class InvGeniusApplicationTests {
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
-		user.setImagen_base("imagen_base");
+		// user.setImagen_base("imagen_base");
 
 		
 		var ID = uService.save(user);
@@ -118,7 +118,7 @@ class InvGeniusApplicationTests {
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
-		user.setImagen_base("imagen_base");
+		// user.setImagen_base("imagen_base");
         // el resto de los datos
 
         // Convertir el objeto Item a JSON
@@ -146,7 +146,7 @@ class InvGeniusApplicationTests {
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
-		user.setImagen_base("imagen_base");
+		// user.setImagen_base("imagen_base");
         // el resto de los datos
 
         // Convertir el objeto Item a JSON
@@ -174,7 +174,7 @@ class InvGeniusApplicationTests {
 		user.setPassword("jajaja");
 		user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
-		user.setImagen_base("imagen_base");
+		// user.setImagen_base("imagen_base");
         // el resto de los datos
 
         // Convertir el objeto Item a JSON
