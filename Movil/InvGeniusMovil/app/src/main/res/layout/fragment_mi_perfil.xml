@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+    android:background="@color/Tablas"
     tools:context=".ui.miPerfil.MiPerfilFragment">
 
     <!-- Título -->
@@ -20,7 +20,7 @@
     <LinearLayout
         android:layout_width="326dp"
         android:layout_height="590dp"
-        android:background="@color/teal_700"
+        android:background="@color/Tablas"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,8 +30,8 @@
 
         <LinearLayout
             android:layout_width="297dp"
-            android:layout_height="543dp"
-            android:background="#70CCCCCC"
+            android:layout_height="506dp"
+            android:background="#70EFE6E6"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -40,8 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abhaya_libre_medium"
-                android:text="Admin"
-                android:textColor="#FFFFFF"
+                android:text="Administrador"
+                android:textColor="#271818"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -61,16 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="19dp" />
 
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/abyssinica_sil"
-                android:text="Laura Ariza"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="22dp" />
@@ -85,7 +75,7 @@
                 app:layout_constraintWidth_percent="0.8">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="226dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="Laura Valentina Ariza Alejo"
@@ -93,12 +83,25 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="227dp"
+                    android:layout_height="wrap_content"
+                    android:text="---------------------------------------------------------" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="1084922588"
                     android:textColor="#000000"
+                    android:textColorHint="#4E2F2F"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="---------------------------------------------------------" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -106,6 +109,12 @@
                     android:text="Laurentivaizalejo@gmail.com"
                     android:textColor="#000000"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="---------------------------------------------------------" />
             </LinearLayout>
 
             <Space
@@ -130,20 +139,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_mi_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

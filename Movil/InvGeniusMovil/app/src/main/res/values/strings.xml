@@ -13,4 +13,6 @@
     <string name="MiPerfil" fontFamily="@font/titillium_web_bold">Mi Perfil</string>
     <string name="CambiarContrasena" fontFamily="@font/titillium_web_bold">Cambiar Contraseña</string>
     <string name="CerrarSesion" fontFamily="@font/titillium_web_bold">Cerrar Sesión</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

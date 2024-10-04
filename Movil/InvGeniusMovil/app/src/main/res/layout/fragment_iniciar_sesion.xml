@@ -153,18 +153,19 @@
                 android:layout_height="37dp" />
 
             <Button
-                android:layout_width="147dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="#3F4745"
                 android:text="Iniciar"
                 android:textColor="#FFFFFF" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="326dp"
                 android:layout_height="wrap_content"
-                android:text="                    ¿Haz olvidado tu contraseña?" />
+                android:backgroundTint="#3F4745"
+                android:text="¿Haz olvidado tu contraseña?" />
 
             <Space
                 android:layout_width="match_parent"

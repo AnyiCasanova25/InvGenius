@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.invgeniusmovil.R
-import com.example.invgeniusmovil.models.Novedades.usuario
+import com.example.invgeniusmovil.models.Novedades.user
+
 
 class adapterUsuario(
-    private val listNovedadesDeUsuario: List<usuario>
+    private val listNovedadesDeUsuario: List<user>
 ) : RecyclerView.Adapter<adapterUsuario.MyHolder>() {
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
