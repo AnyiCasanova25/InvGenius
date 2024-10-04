@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.IloteService;
 import com.InvGenius.InvGenius.models.lote;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,8 +67,8 @@ public class loteController {
     }
 
     @GetMapping("/loteACaducar/")
-    public ResponseEntity<Object>findLoteACaducar(@PathVariable String filtro){
-       var listaLote = loteService.loteExist(filtro);
+    public ResponseEntity<Object>findLoteACaducar(){
+       var listaLote = loteService.loteACaducar();
        return new ResponseEntity<>(listaLote, HttpStatus.OK);
     }
 
