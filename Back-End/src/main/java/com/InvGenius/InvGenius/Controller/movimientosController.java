@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.interfaceService.ImovimientoService;
 import com.InvGenius.InvGenius.models.movimientos;
+import com.InvGenius.InvGenius.models.response;
 
 @RestController
 @RequestMapping("/api/v1/movimientos")
@@ -33,9 +34,15 @@ public class movimientosController {
 
         var listaMovimientos = movimientosService.movimientosExist(movimientos.getFechaMovimiento());
 
-        if (listaMovimientos.size() != 0) {
-            return new ResponseEntity<>("La fecha ya existe", HttpStatus.BAD_REQUEST);
+       if (listaMovimientos.size() != 0) {
+            // Construir una respuesta con el mensaje y el estado
+            response respuesta = response.builder()
+                    .message("la fecha ya existe")
+                    .build();
+            // Retornar el objeto como JSON
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
+
 
         // Añadir campos obligatorios
 

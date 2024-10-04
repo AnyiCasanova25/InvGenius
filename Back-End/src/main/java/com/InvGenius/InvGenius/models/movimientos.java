@@ -56,7 +56,4 @@ public class movimientos {
      @Column(name = "fechaMovimiento", nullable = false, length = 36)
      private Date fechaMovimiento;
 
-     @Column(name = "imagenMovimiento")
-     private String imagenMovimiento;
-
 }

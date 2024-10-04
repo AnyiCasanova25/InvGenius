@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
+import com.InvGenius.InvGenius.models.response;
 import com.InvGenius.InvGenius.models.respuestaImagen;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,9 +36,14 @@ public ResponseEntity<Object> save(@RequestBody categoria categoria){
 
     var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
 
-    if (listaCategoria.size() != 0) {
-        return new ResponseEntity<>("La categoría ya existe", HttpStatus.BAD_REQUEST);
-    }
+        if (listaCategoria.size() != 0) {
+            // Construir una respuesta con el mensaje y el estado
+            response respuesta = response.builder()
+                    .message("La categoria  ya existe")
+                    .build();
+            // Retornar el objeto como JSON
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        }
 
     // Verifica que los campos requeridos no estén vacíos
     if (categoria.getNombreCategoria().equals("")) {
