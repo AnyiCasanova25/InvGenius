@@ -19,6 +19,7 @@ import com.InvGenius.InvGenius.models.respuestaImagen;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -30,9 +31,9 @@ public class categoriaController {
     private IcategoriaService categoriaService;
 
     @PostMapping("/")
-public ResponseEntity<Object> save(@RequestParam("categoria") categoria categoria){
+public ResponseEntity<Object> save(@RequestBody categoria categoria){
 
-    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null);
+    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
 
     if (listaCategoria.size() != 0) {
         return new ResponseEntity<>("La categoría ya existe", HttpStatus.BAD_REQUEST);
@@ -60,11 +61,10 @@ public ResponseEntity<Object> consultarcategoriaJson() {
     return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
 }
 
-    // Método para guardar imagen asociada a una categoría
-    @PostMapping("/imagen")  // Cambio de endpoint para evitar conflicto
-    public ResponseEntity<Object> guardarImagenJson(
-            categoria categoria, 
-            @RequestParam("file") MultipartFile file) throws IOException {
+@PostMapping("/imagen")  // Aquí no debe haber una barra adicional
+public ResponseEntity<Object> guardarImagenJson(
+        categoria categoria, 
+        @RequestParam("file") MultipartFile file) throws IOException {
 
         try {
             // Guardar el archivo y generar la URL
@@ -113,7 +113,7 @@ public ResponseEntity<Object> consultarcategoriaJson() {
 
     // Actualizar una categoría
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestParam("categoria") categoria categoriaUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody categoria categoriaUpdate) {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {
