@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.invgeniusmovil.databinding.FragmentMiPerfilBinding
@@ -12,9 +11,6 @@ import com.example.invgeniusmovil.databinding.FragmentMiPerfilBinding
 class MiPerfilFragment : Fragment() {
 
     private var _binding: FragmentMiPerfilBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,15 +19,13 @@ class MiPerfilFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val miPerfilViewModel =
-                ViewModelProvider(this).get(MiPerfilViewModel::class.java)
+            ViewModelProvider(this).get(MiPerfilViewModel::class.java)
 
         _binding = FragmentMiPerfilBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textMiPerfil
-        miPerfilViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        // Aquí puedes añadir otras vistas o lógica si es necesario
+
         return root
     }
 
