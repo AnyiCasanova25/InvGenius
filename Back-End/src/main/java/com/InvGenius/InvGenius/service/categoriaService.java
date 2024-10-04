@@ -1,6 +1,5 @@
 package com.InvGenius.InvGenius.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +19,7 @@ public class categoriaService implements IcategoriaService {
     @Override
 	public List<categoria> consultarcategoria() {
 
-		return (ArrayList<categoria>) data.findAll();
+		return (List<categoria>) data.findAll();
 	}
 
     @Override
@@ -43,8 +42,8 @@ public class categoriaService implements IcategoriaService {
 
     //Filtros de categoria
     @Override
-	public List<categoria> categoriaExist(String nombreCategoria, String estado, String ubicacion) {
-		List <categoria> listaCategoria=data.categoriaExist( nombreCategoria, estado, ubicacion);
+	public List<categoria> categoriaExist(String nombreCategoria, String ubicacion) {
+		List <categoria> listaCategoria=data.categoriaExist( nombreCategoria, ubicacion);
 		return listaCategoria;
 	}
     

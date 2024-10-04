@@ -23,4 +23,8 @@ public interface IproductoService {
 
     // cambiar el int
     public int delete(String id);
+
+    public List<producto> consultarProducto();
+
+    public int guardarimagenJson(producto producto);
 }

@@ -16,15 +16,24 @@ public class TaskCorreoCaducar {
 
     @Autowired
     private emailService email;
-    
 
+    //En este archivo task ira el loteProximoCaducar, loteBajoStock, loteVencido
+
+    //Task para enviar el correo cuando un lote esta proximo a caducar
     @Scheduled(cron = "* * 23 * * *")
     public void sendNotificacionLoteACaducar(){
-        var listaLote = data.loteACaducar(null);
+        var listaLote = data.loteACaducar();
         for (lote lote : listaLote){
             System.out.println("Lotes proximos a caducar: "+
             lote.getProducto());
             email.enviarCorreoCaducar();
         }
     }
+
+    //Task para enviar el correo cuando el lote este bajo stock
+
+
+
+
+    //Task para enviar el correo cuando el lote este vencido
 }

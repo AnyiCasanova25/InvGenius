@@ -24,5 +24,8 @@ public interface IuserService {
 
     public Optional<user> findByUsername(String userName);
 
+    public List<user> consultaruser();
+
+    public int guardarimagenJson(user user);
 
 }

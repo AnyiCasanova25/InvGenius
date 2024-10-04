@@ -15,12 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.InvGenius.InvGenius.interfaceService.IcategoriaService;
 import com.InvGenius.InvGenius.models.categoria;
 import com.InvGenius.InvGenius.models.respuestaImagen;
-import com.InvGenius.InvGenius.service.gestionArchivoService;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -32,9 +30,9 @@ public class categoriaController {
     private IcategoriaService categoriaService;
 
     @PostMapping("/")
-public ResponseEntity<Object> save(@RequestBody categoria categoria){
+public ResponseEntity<Object> save(@RequestParam("categoria") categoria categoria){
 
-    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null, null);
+    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), null);
 
     if (listaCategoria.size() != 0) {
         return new ResponseEntity<>("La categoría ya existe", HttpStatus.BAD_REQUEST);
@@ -43,10 +41,6 @@ public ResponseEntity<Object> save(@RequestBody categoria categoria){
     // Verifica que los campos requeridos no estén vacíos
     if (categoria.getNombreCategoria().equals("")) {
         return new ResponseEntity<>("El nombre es obligatorio", HttpStatus.BAD_REQUEST);
-    }
-
-    if (categoria.getEstado().equals("")) {
-        return new ResponseEntity<>("El estado es obligatorio", HttpStatus.BAD_REQUEST);
     }
 
     if (categoria.getUbicacion().equals("")) {
@@ -74,8 +68,8 @@ public ResponseEntity<Object> consultarcategoriaJson() {
 
         try {
             // Guardar el archivo y generar la URL
-            String fileName = gestionArchivoService.storeFile(file);
-            categoria.setImagen_url("http://localhost:8080/api/downloadFile/" + fileName);
+            // String fileName = gestionArchivoService.storeFile(file);
+            // categoria.setImagen_url("http://localhost:8080/api/downloadFile/" + fileName);
             categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
 
             int resultado = categoriaService.guardarimagenJson(categoria);
@@ -92,7 +86,7 @@ public ResponseEntity<Object> consultarcategoriaJson() {
     // Filtros de categoría
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
-        var listaCategoria = categoriaService.categoriaExist(filtro, filtro, filtro);
+        var listaCategoria = categoriaService.categoriaExist(filtro, filtro);
         return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
     }
 
@@ -119,12 +113,11 @@ public ResponseEntity<Object> consultarcategoriaJson() {
 
     // Actualizar una categoría
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody categoria categoriaUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestParam("categoria") categoria categoriaUpdate) {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
-            categoria.setEstado(categoriaUpdate.getEstado());
             categoria.setUbicacion(categoriaUpdate.getUbicacion());
 
             categoriaService.save(categoria);
