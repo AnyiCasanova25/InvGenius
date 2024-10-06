@@ -132,23 +132,23 @@ public class emailService {
             String asunto = "Producto Próximo a Caducar";
 
             StringBuilder cuerpo = new StringBuilder()
-                    .append("<h1>Estimado Usuario</h1>")
-                    .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información de los productos:</p>")
-                    .append("<ul>");
+                    .append("<h1 style='color: black;'>Estimado Usuario</h1>")
+                    .append("<p style='color: black;'>Le informamos que uno de los productos en su inventario registrado en <strong style='color: black;'>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información de los productos:</p>")
+                    .append("<ul style='color: black;'>");
 
             for (lote l : listaLote) {
-                cuerpo.append("<li>")
-                        .append("<strong>Producto:</strong> ")
+                cuerpo.append("<li style='color: black;'>")
+                        .append("<strong style='color: black;'>Producto:</strong> ")
                         .append(l.getProducto().getNombreProducto())
-                        .append(" - <strong>Fecha de Caducidad:</strong> ")
+                        .append(" - <strong style='color: black;'>Fecha de Caducidad:</strong> ")
                         .append(l.getFechaVencimiento())
                         .append("</li>");
             }
 
             cuerpo.append("</ul>")
-                    .append("<p>Le recomendamos que venda o promocione estos productos antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>")
-                    .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
-                    .append("<p>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
+                    .append("<p style='color: black;'>Le recomendamos que venda o promocione estos productos antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>")
+                    .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p style='color: black;'>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
             if (retorno) {
@@ -161,6 +161,7 @@ public class emailService {
             return "Error al enviar: " + e.getMessage();
         }
     }
+
 
     // Correo para productos bajos en stock
     @GetMapping("/loteBajoStock/")
@@ -175,25 +176,25 @@ public class emailService {
             String asunto = "Producto con Bajo Stock";
 
             StringBuilder cuerpo = new StringBuilder()
-                    .append("<h1>Estimado Usuario</h1>")
-                    .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> tiene un stock bajo. A continuación, se detalla la información de los productos:</p>")
-                    .append("<ul>");
+                    .append("<h1 style='color: black;'>Estimado Usuario</h1>")
+                    .append("<p style='color: black;'>Le informamos que uno de los productos en su inventario registrado en <strong style='color: black;'>InvGenius</strong> tiene un stock bajo. A continuación, se detalla la información de los productos:</p>")
+                    .append("<ul style='color: black;'>");
 
             for (lote l : listaLote) {
-                cuerpo.append("<li>")
-                        .append("<strong>Producto:</strong> ")
+                cuerpo.append("<li style='color: black;'>")
+                        .append("<strong style='color: black;'>Producto:</strong> ")
                         .append(l.getProducto().getNombreProducto())
-                        .append(" - <strong>Número de Lote:</strong> ")
+                        .append(" - <strong style='color: black;'>Número de Lote:</strong> ")
                         .append(l.getNumeroLote())
-                        .append(" - <strong>Stock Actual:</strong> ")
+                        .append(" - <strong style='color: black;'>Stock Actual:</strong> ")
                         .append(l.getProducto().getStock())
                         .append("</li>");
             }
 
             cuerpo.append("</ul>")
-                    .append("<p>Le recomendamos reabastecer estos productos lo antes posible para evitar faltantes de inventario.</p>")
-                    .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
-                    .append("<p>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
+                    .append("<p style='color: black;'>Le recomendamos reabastecer estos productos lo antes posible para evitar faltantes de inventario.</p>")
+                    .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p style='color: black;'>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
             if (retorno) {
@@ -216,33 +217,33 @@ public class emailService {
                 return "No hay productos vencidos.";
             }
 
-            String destinatario = "yordierik05@gmail.com"; 
+            String destinatario = "yordierik05@gmail.com";
             String asunto = "Producto Vencido";
 
             StringBuilder cuerpo = new StringBuilder()
-                    .append("<h1>Estimado Usuario</h1>")
-                    .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> ha vencido. A continuación, se detalla la información de los productos vencidos:</p>")
-                    .append("<ul>");
+                    .append("<h1 style='color: black;'>Estimado Usuario</h1>")
+                    .append("<p style='color: black;'>Le informamos que uno de los productos en su inventario registrado en <strong style='color: black;'>InvGenius</strong> ha vencido. A continuación, se detalla la información de los productos vencidos:</p>")
+                    .append("<ul style='color: black;'>");
 
             for (lote l : listaLote) {
-                cuerpo.append("<li>")
-                        .append("<strong>Producto:</strong> ")
+                cuerpo.append("<li style='color: black;'>")
+                        .append("<strong style='color: black;'>Producto:</strong> ")
                         .append(l.getProducto().getNombreProducto())
-                        .append(" - <strong>Categoría:</strong> ")
+                        .append(" - <strong style='color: black;'>Categoría:</strong> ")
                         .append(l.getProducto().getCategoria().getNombreCategoria())
-                        .append(" - <strong>Unidad de Medida:</strong> ")
+                        .append(" - <strong style='color: black;'>Unidad de Medida:</strong> ")
                         .append(l.getProducto().getUnidadMedida())
-                        .append(" - <strong>Número de Lote:</strong> ")
+                        .append(" - <strong style='color: black;'>Número de Lote:</strong> ")
                         .append(l.getNumeroLote())
-                        .append(" - <strong>Fecha de Vencimiento:</strong> ")
+                        .append(" - <strong style='color: black;'>Fecha de Vencimiento:</strong> ")
                         .append(l.getFechaVencimiento())
                         .append("</li>");
             }
 
             cuerpo.append("</ul>")
-                    .append("<p>Estos productos ya han pasado su fecha de caducidad. Le recomendamos retirarlos del inventario y seguir los procedimientos apropiados para productos vencidos.</p>")
-                    .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
-                    .append("<p>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
+                    .append("<p style='color: black;'>Estos productos ya han pasado su fecha de caducidad. Le recomendamos retirarlos del inventario y seguir los procedimientos apropiados para productos vencidos.</p>")
+                    .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p style='color: black;'>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
             if (retorno) {
@@ -255,6 +256,7 @@ public class emailService {
             return "Error al enviar: " + e.getMessage();
         }
     }
+
 
     @GetMapping("/enviar-correo-retiro")
     public String enviarCorreoRetiro() {
