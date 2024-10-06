@@ -16,8 +16,8 @@ import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class emailService {
-    
-     @Autowired
+
+    @Autowired
     private JavaMailSender javaMailSender;
 
     @Autowired
@@ -27,32 +27,33 @@ public class emailService {
         this.javaMailSender = javaMailSender;
     }
 
-     @GetMapping("/enviar-correo-registro")
-    public String enviarCorreoRegistro(user user ,String password) {
+    @GetMapping("/enviar-correo-registro")
+    public String enviarCorreoRegistro(user user, String password) {
         try {
             String destinatario = user.getCorreo();
             String asunto = "Bienvenido a InvGenius";
-            String cuerpo = 
-            "<div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;'>"
-            + "  <div style='background-color: #e0e0e0; padding: 20px; text-align: center; border-top-left-radius: 8px;'>"
-            + "      <h1 style='margin: 20px 0 10px; font-size: 24px; color: #333333;'>¡Bienvenid@ a InvGenius!</h1>"
-            + "      <h3 style='font-size: 22px; color: #333333; margin-bottom: 20px; margin-top: -18px;'>" + user.getNombres() + " " + user.getApellidos() + "</h3>"
-            + "      <img src='https://i.postimg.cc/yNjnwxdQ/Logo.png' alt='InvGenius Logo' style='max-width: 150px;'>"
-            + "      <p style='font-size: 16px; color: #555555;'>Nos alegra que te unas a nuestra plataforma. Con InvGenius, gestionar el inventario de tu minimercado será más fácil y eficiente. Estamos aquí para ayudarte a optimizar tu negocio.</p>"
-            + "  </div>"
-            + "  <div style='padding: 20px; text-align: center;'>"
-            + "      <p style='font-size: 16px; color: #666666; margin-bottom: 20px;'>Nos complace informarle que su registro en <strong>Genius Inventory Company</strong> ha sido completado con éxito. Estamos ansiosos de que empiece a utilizar nuestro aplicativo.</p>"
-            + "      <div style='background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: left;'>"
-            + "          <p style='margin: 10px 0; font-size: 16px; color: #333333;'><strong>Nombre de Usuario:</strong> " + user.getCorreo() + "</p>"
-            + "          <p style='margin: 10px 0; font-size: 16px; color: #333333;'><strong>Contraseña:</strong> " + password + "</p>"
-            + "      </div>"
-            + "      <p style='font-size: 16px; color: #666666;'>Para acceder a su cuenta, por favor inicie sesión en nuestro portal utilizando la información proporcionada. Le recomendamos cambiar su contraseña después de su primer inicio de sesión por motivos de seguridad.</p>"
-            + "  </div>"
-            + "  <div style='background-color: #e0e0e0; padding: 10px; text-align: center; font-size: 14px; color: #666666; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;'>"
-            + "      <p>Centro de la Industria, la Empresa y los Servicios</p>"
-            + "      <p>invgenius2024@gmail.com</p>"
-            + "  </div>";
-        
+            String cuerpo = "<div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;'>"
+                    + "  <div style='background-color: #e0e0e0; padding: 20px; text-align: center; border-top-left-radius: 8px;'>"
+                    + "      <h1 style='margin: 20px 0 10px; font-size: 24px; color: #333333;'>¡Bienvenid@ a InvGenius!</h1>"
+                    + "      <h3 style='font-size: 22px; color: #333333; margin-bottom: 20px; margin-top: -18px;'>"
+                    + user.getNombres() + " " + user.getApellidos() + "</h3>"
+                    + "      <img src='https://i.postimg.cc/yNjnwxdQ/Logo.png' alt='InvGenius Logo' style='max-width: 150px;'>"
+                    + "      <p style='font-size: 16px; color: #555555;'>Nos alegra que te unas a nuestra plataforma. Con InvGenius, gestionar el inventario de tu minimercado será más fácil y eficiente. Estamos aquí para ayudarte a optimizar tu negocio.</p>"
+                    + "  </div>"
+                    + "  <div style='padding: 20px; text-align: center;'>"
+                    + "      <p style='font-size: 16px; color: #666666; margin-bottom: 20px;'>Nos complace informarle que su registro en <strong>Genius Inventory Company</strong> ha sido completado con éxito. Estamos ansiosos de que empiece a utilizar nuestro aplicativo.</p>"
+                    + "      <div style='background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: left;'>"
+                    + "          <p style='margin: 10px 0; font-size: 16px; color: #333333;'><strong>Nombre de Usuario:</strong> "
+                    + user.getCorreo() + "</p>"
+                    + "          <p style='margin: 10px 0; font-size: 16px; color: #333333;'><strong>Contraseña:</strong> "
+                    + password + "</p>"
+                    + "      </div>"
+                    + "      <p style='font-size: 16px; color: #666666;'>Para acceder a su cuenta, por favor inicie sesión en nuestro portal utilizando la información proporcionada. Le recomendamos cambiar su contraseña después de su primer inicio de sesión por motivos de seguridad.</p>"
+                    + "  </div>"
+                    + "  <div style='background-color: #e0e0e0; padding: 10px; text-align: center; font-size: 14px; color: #666666; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;'>"
+                    + "      <p>Centro de la Industria, la Empresa y los Servicios</p>"
+                    + "      <p>invgenius2024@gmail.com</p>"
+                    + "  </div>";
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo);
             if (retorno) {
@@ -94,7 +95,7 @@ public class emailService {
         }
     }
 
-    //Este solo debe tener un mensaje de que su contraseña se cambio correctamente
+    // Este solo debe tener un mensaje de que su contraseña se cambio correctamente
     @GetMapping("/enviar-correo-cambio")
     public String enviarCorreoCambio() {
         try {
@@ -118,7 +119,7 @@ public class emailService {
         }
     }
 
-    
+    // correo para lotes que estan proximos a caducar
     @GetMapping("/loteACaducar/")
     public String enviarCorreoCaducar() {
         try {
@@ -126,64 +127,75 @@ public class emailService {
             if (listaLote.isEmpty()) {
                 return "No hay productos próximos a caducar.";
             }
-    
-            String destinatario = "invgenius2024@gmail.com";
+
+            String destinatario = "yordierik05@gmail.com";
             String asunto = "Producto Próximo a Caducar";
-            
+
             StringBuilder cuerpo = new StringBuilder()
                     .append("<h1>Estimado Usuario</h1>")
                     .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información de los productos:</p>")
                     .append("<ul>");
-    
 
             for (lote l : listaLote) {
                 cuerpo.append("<li>")
-                      .append("<strong>Producto:</strong> ")
-                      .append(l.getProducto().getNombreProducto()) 
-                      .append(" - <strong>Fecha de Caducidad:</strong> ")
-                      .append(l.getFechaVencimiento())
-                      .append("</li>");
+                        .append("<strong>Producto:</strong> ")
+                        .append(l.getProducto().getNombreProducto())
+                        .append(" - <strong>Fecha de Caducidad:</strong> ")
+                        .append(l.getFechaVencimiento())
+                        .append("</li>");
             }
-    
+
             cuerpo.append("</ul>")
-                  .append("<p>Le recomendamos que venda o promocione estos productos antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>")
-                  .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
-                  .append("<p>Atentamente,<br>[Anyi Zujey Gomez Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>");
-    
+                    .append("<p>Le recomendamos que venda o promocione estos productos antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>")
+                    .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
+
             var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
             if (retorno) {
                 return "Se envió correctamente";
             } else {
                 return "No se pudo enviar";
             }
-    
+
         } catch (Exception e) {
             return "Error al enviar: " + e.getMessage();
         }
     }
-    
 
-    //Corregir este correo
+    // Correo para productos bajos en stock
     @GetMapping("/loteBajoStock/")
     public String enviarCorreoBajoStock() {
         try {
-            String destinatario = "invgenius2024@gmail.com";
-            String asunto = "Producto Próximo a Caducar";
-            String cuerpo = ""
-                    + "<h1>Estimado Usuario</h1>"
-                    + "<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información del producto:</p>\r\n"
-                    + "<ul>\r\n"
-                    + "    <li><strong>Producto:</strong> Leche Entera</li>\r\n"
-                    + "    <li><strong>Marca:</strong> Alpina</li>\r\n"
-                    + "    <li><strong>Cantidad:</strong> 5 unidades</li>\r\n"
-                    + "    <li><strong>Fecha de Caducidad:</strong> 15 de junio de 2024</li>\r\n"
-                    + "</ul>\r\n"
-                    + "<p>Le recomendamos que venda o promocione este producto antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>\r\n"
-                    + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
-                    + "<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>\r\n"
-                    + "<p>Atentamente,<br>[Anyi Zujey Gomez Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+            List<lote> listaLote = loteService.loteBajoStock();
+            if (listaLote.isEmpty()) {
+                return "No hay productos con bajo stock.";
+            }
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
+            String destinatario = "yordierik05@gmail.com";
+            String asunto = "Producto con Bajo Stock";
+
+            StringBuilder cuerpo = new StringBuilder()
+                    .append("<h1>Estimado Usuario</h1>")
+                    .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> tiene un stock bajo. A continuación, se detalla la información de los productos:</p>")
+                    .append("<ul>");
+
+            for (lote l : listaLote) {
+                cuerpo.append("<li>")
+                        .append("<strong>Producto:</strong> ")
+                        .append(l.getProducto().getNombreProducto())
+                        .append(" - <strong>Número de Lote:</strong> ")
+                        .append(l.getNumeroLote())
+                        .append(" - <strong>Stock Actual:</strong> ")
+                        .append(l.getProducto().getStock())
+                        .append("</li>");
+            }
+
+            cuerpo.append("</ul>")
+                    .append("<p>Le recomendamos reabastecer estos productos lo antes posible para evitar faltantes de inventario.</p>")
+                    .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
+
+            var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
             if (retorno) {
                 return "Se envió correctamente";
             } else {
@@ -195,27 +207,44 @@ public class emailService {
         }
     }
 
-    //Corregir este correo
+    // correo para lotes vencidos
     @GetMapping("/loteVencido/")
-    public String enviarCorreoLoteVencido() {
+    public String enviarCorreoVencido() {
         try {
-            String destinatario = "invgenius2024@gmail.com";
-            String asunto = "Producto Próximo a Caducar";
-            String cuerpo = ""
-                    + "<h1>Estimado Usuario</h1>"
-                    + "<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información del producto:</p>\r\n"
-                    + "<ul>\r\n"
-                    + "    <li><strong>Producto:</strong> Leche Entera</li>\r\n"
-                    + "    <li><strong>Marca:</strong> Alpina</li>\r\n"
-                    + "    <li><strong>Cantidad:</strong> 5 unidades</li>\r\n"
-                    + "    <li><strong>Fecha de Caducidad:</strong> 15 de junio de 2024</li>\r\n"
-                    + "</ul>\r\n"
-                    + "<p>Le recomendamos que venda o promocione este producto antes de la fecha de caducidad indicada para asegurar su frescura y evitar desperdicios.</p>\r\n"
-                    + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
-                    + "<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>\r\n"
-                    + "<p>Atentamente,<br>[Anyi Zujey Gomez Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+            List<lote> listaLote = loteService.loteVencido();
+            if (listaLote.isEmpty()) {
+                return "No hay productos vencidos.";
+            }
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
+            String destinatario = "yordierik05@gmail.com"; 
+            String asunto = "Producto Vencido";
+
+            StringBuilder cuerpo = new StringBuilder()
+                    .append("<h1>Estimado Usuario</h1>")
+                    .append("<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> ha vencido. A continuación, se detalla la información de los productos vencidos:</p>")
+                    .append("<ul>");
+
+            for (lote l : listaLote) {
+                cuerpo.append("<li>")
+                        .append("<strong>Producto:</strong> ")
+                        .append(l.getProducto().getNombreProducto())
+                        .append(" - <strong>Categoría:</strong> ")
+                        .append(l.getProducto().getCategoria().getNombreCategoria())
+                        .append(" - <strong>Unidad de Medida:</strong> ")
+                        .append(l.getProducto().getUnidadMedida())
+                        .append(" - <strong>Número de Lote:</strong> ")
+                        .append(l.getNumeroLote())
+                        .append(" - <strong>Fecha de Vencimiento:</strong> ")
+                        .append(l.getFechaVencimiento())
+                        .append("</li>");
+            }
+
+            cuerpo.append("</ul>")
+                    .append("<p>Estos productos ya han pasado su fecha de caducidad. Le recomendamos retirarlos del inventario y seguir los procedimientos apropiados para productos vencidos.</p>")
+                    .append("<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
+
+            var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
             if (retorno) {
                 return "Se envió correctamente";
             } else {

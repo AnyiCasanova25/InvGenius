@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.InvGenius.InvGenius.interfaceService.IloteService;
 import com.InvGenius.InvGenius.models.lote;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +22,7 @@ public class loteController {
 
     @Autowired
     private IloteService loteService;
+
 
     @PostMapping("/")
     public ResponseEntity<Object> save(@RequestBody lote lote) {
