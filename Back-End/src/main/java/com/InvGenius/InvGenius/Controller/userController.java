@@ -235,8 +235,8 @@ public class userController {
             user.setApellidos(userUpdate.getApellidos());
             user.setCelular(userUpdate.getCelular());
             user.setCorreo(userUpdate.getCorreo());
-            user.setPassword(userUpdate.getPassword());
-            user.setConfirmarPassword(userUpdate.getConfirmarPassword());
+            // user.setPassword(userUpdate.getPassword());
+            // user.setConfirmarPassword(userUpdate.getConfirmarPassword());
             user.setRol(userUpdate.getRol());
 
             userService.save(user);

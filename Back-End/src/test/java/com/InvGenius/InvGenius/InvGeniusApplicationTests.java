@@ -41,7 +41,7 @@ class InvGeniusApplicationTests {
 		user.setCelular("3123332332");
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
-		user.setConfirmarPassword("jajaja");
+		// user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
 		// user.setImagen_base("imagen_base");
 
@@ -59,7 +59,7 @@ class InvGeniusApplicationTests {
 		user.setCelular("3123332332");
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
-		user.setConfirmarPassword("jajaja");
+		// user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
 		// user.setImagen_base("imagen_base");
 
@@ -77,7 +77,7 @@ class InvGeniusApplicationTests {
 		user.setCelular("3123332332");
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
-		user.setConfirmarPassword("jajaja");
+		// user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
 		// user.setImagen_base("imagen_base");
 
@@ -116,7 +116,7 @@ class InvGeniusApplicationTests {
 		user.setCelular("3123332332");
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
-		user.setConfirmarPassword("jajaja");
+		// user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
 		// user.setImagen_base("imagen_base");
         // el resto de los datos
@@ -144,7 +144,7 @@ class InvGeniusApplicationTests {
 		user.setCelular("3123332332");
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
-		user.setConfirmarPassword("jajaja");
+		// user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
 		// user.setImagen_base("imagen_base");
         // el resto de los datos
@@ -172,7 +172,7 @@ class InvGeniusApplicationTests {
 		user.setCelular("3123332332");
 		user.setCorreo("julifierrocasanova@gmail.com");
 		user.setPassword("jajaja");
-		user.setConfirmarPassword("jajaja");
+		// user.setConfirmarPassword("jajaja");
 		user.setRol(rol.User);
 		// user.setImagen_base("imagen_base");
         // el resto de los datos

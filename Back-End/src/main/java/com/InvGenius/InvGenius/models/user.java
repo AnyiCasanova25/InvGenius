@@ -63,7 +63,7 @@ public class user implements UserDetails {
     @Column(name = "password", nullable = false, length = 60)
     private String password;
 
-    private String confirmarPassword;
+    // private String confirmarPassword;
 
     // @Column( name="imagen_base", nullable = true, columnDefinition = "MEDIUMBLOB")
 	// private String  imagen_base;
