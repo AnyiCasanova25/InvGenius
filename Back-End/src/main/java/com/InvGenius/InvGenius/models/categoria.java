@@ -44,7 +44,8 @@ public class categoria {
         this.nombreCategoria = nombreCategoria;
         this.estado = estado;
         this.ubicacion = ubicacion;
-		this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.imagen_base=imagen_base;
+		// this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
     }
 
     public String getIdCategoria() {
@@ -84,6 +85,7 @@ public class categoria {
     }
 
     public void setImagen_base(String imagen_base) {
-        this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        // this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.imagen_base=imagen_base;
     }
 }

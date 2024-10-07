@@ -7,6 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,13 +23,6 @@ import com.InvGenius.InvGenius.models.categoria;
 import com.InvGenius.InvGenius.models.response;
 import com.InvGenius.InvGenius.models.respuestaImagen;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-
 @RestController
 @RequestMapping("/api/v1/categoria")
 public class categoriaController {
@@ -31,9 +30,24 @@ public class categoriaController {
     @Autowired
     private IcategoriaService categoriaService;
 
-    @PostMapping("/")
-public ResponseEntity<Object> save(@RequestBody categoria categoria){
+    // @PostMapping("/")
+    // public ResponseEntity<Object> save(@RequestParam("file") MultipartFile file) throws IOException
+    // {
+    //     // var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
+    //     var categoria=categoriaService.findAll().get(0);
+    //     var imagen=Base64.getEncoder().encodeToString(file.getBytes());
+    //     categoria.setImagen_base(imagen);
+    //     categoriaService.save(categoria);
+    
+              
+    
+    //     // Guardar la categoría
+    //     return new ResponseEntity<>(categoria, HttpStatus.OK);
+    // }
 
+    @PostMapping("/")
+public ResponseEntity<Object> save( categoria categoria,  @RequestParam("file") MultipartFile file) throws IOException 
+{
     var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
 
         if (listaCategoria.size() != 0) {
@@ -53,6 +67,9 @@ public ResponseEntity<Object> save(@RequestBody categoria categoria){
     if (categoria.getUbicacion().equals("")) {
         return new ResponseEntity<>("La ubicación es obligatoria", HttpStatus.BAD_REQUEST);
     }
+    categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
+
+          
 
     // Guardar la categoría
     categoriaService.save(categoria);
