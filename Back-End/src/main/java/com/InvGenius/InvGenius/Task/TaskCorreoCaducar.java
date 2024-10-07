@@ -16,6 +16,7 @@ public class TaskCorreoCaducar {
     @Autowired
     private emailService email;
 
+
     // En este archivo task ira el loteProximoCaducar, loteBajoStock, loteVencido
     // Task para enviar el correo cuando un lote esta proximo a caducar
     @Scheduled(cron = "0 * * * * *")
@@ -26,6 +27,7 @@ public class TaskCorreoCaducar {
         if (listaLote != null && !listaLote.isEmpty()) {
 
             email.enviarCorreoCaducar();
+            // email.enviarCorreoCaducar();
         } else {
             System.out.println("No hay lotes próximos a caducar.");
         }

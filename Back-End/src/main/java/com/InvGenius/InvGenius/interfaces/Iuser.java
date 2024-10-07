@@ -17,5 +17,8 @@ public interface Iuser extends CrudRepository<user, String> {
 
     @Query("SELECT u FROM user u WHERE u.correo = ?1")
     Optional<user> findByUsername(String username);
-    
+
+    @Query("SELECT u FROM User u WHERE u.rol = 'Admin'")
+    List<user> buscarRol();
+     
 }

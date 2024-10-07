@@ -23,6 +23,7 @@ public class emailService {
     @Autowired
     private loteService loteService;
 
+
     emailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
@@ -69,15 +70,15 @@ public class emailService {
 
     // AQUI
     @GetMapping("/enviar-correo-recuperar")
-    public String enviarCorreoRecuperarContrasena() {
+    public String enviarCorreoRecuperarContrasena(user user, user cambiarPassword) {
         try {
-            String destinatario = "invgenius2024@gmail.com";
+            String destinatario = user.getCorreo();
             String asunto = "Recuperacion de contraseña";
             String cuerpo = ""
                     + "<h1>Estimado Usuario</h1>"
                     + "<p>Hemos Recibido su solicitud para restablecer la contraseña de su cuenta en \"InvGenius\".Aqui están los pasos para completar el proceso: </p>\r\n"
                     + "      <ol>\r\n"
-                    + "          <li>Haga clic en el siguiente enlace para restablecer su contraseña: [invgenius2024@gmail.com]</li>\r\n"
+                    + "          <li>Haga clic en el siguiente enlace para restablecer su contraseña:" +user.getPassword()+"</li>\r\n"
                     + "      </ol>\r\n"
                     + "<img src'https://i.postimg.cc/yNjnwxdQ/Logo.png' width'100px' heght='100'>"
                     + "      <p>Por motivos de seguridad, este enlace expirará en [Número de Horas] horas. Si no ha solicitado esta acción, le recomendamos que ignore este correo electronico.</p>\r\n"
@@ -120,7 +121,7 @@ public class emailService {
     }
 
     // correo para lotes que estan proximos a caducar
-    @GetMapping("/loteACaducar/")
+    @GetMapping("/loteACaducar")
     public String enviarCorreoCaducar() {
         try {
             List<lote> listaLote = loteService.loteACaducar();
@@ -128,7 +129,7 @@ public class emailService {
                 return "No hay productos próximos a caducar.";
             }
 
-            String destinatario = "yordierik05@gmail.com";
+            String destinatario = "()";
             String asunto = "Producto Próximo a Caducar";
 
             StringBuilder cuerpo = new StringBuilder()
