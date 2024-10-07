@@ -155,23 +155,25 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 .shop-card {
     background-color: #78909C;
     border: 1px solid #ddd;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    width: 100%;
     max-width: 150px;
-    height: 215px; /* Altura fija para todas las tarjetas */
     text-align: center;
     transition: transform 0.3s;
-    display: flex;
-    flex-direction: column; /* Asegura que el contenido se alinee verticalmente */
+}
+
+.shop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {
     padding: 10px;
-    flex: 1; /* Permite que el cuerpo de la tarjeta ocupe todo el espacio disponible */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,23 +182,16 @@ body {
 .card-body figure {
     margin: 0;
     width: 100%;
-    height: 120px; 
+    height: 100px;
     overflow: hidden;
     border-bottom: 2px solid #fff;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
 }
 
 .card-body img {
-    max-width: 100%;
-    max-height: 100%; 
-    object-fit: contain; 
-    width: auto; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-
-
 
 .title {
     font-family: 'Titillium Web', sans-serif;
@@ -316,4 +311,47 @@ body {
     background-color: #3e5059 !important;
     color: #fff !important;
     font-size: 1em !important;
+}
+
+
+.styled-select {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    background-color: #f9f9f9; 
+    font-size: 16px; 
+    color: #333;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="0,0 20,0 10,10" fill="%23333"/></svg>'); /* Flecha personalizada */
+    background-repeat: no-repeat; 
+    background-position: right 10px center; 
+    background-size: 10px; 
+    transition: border-color 0.3s ease;
+}
+
+.styled-select:focus {
+    border-color: #007bff; 
+    outline: none; 
+}
+
+.styled-Novedad {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    background-color: #f9f9f9; 
+    font-size: 16px; 
+    color: #333;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="0,0 20,0 10,10" fill="%23333"/></svg>'); /* Flecha personalizada */
+    background-repeat: no-repeat; 
+    background-position: right 10px center; 
+    background-size: 10px; 
+    transition: border-color 0.3s ease;
+}
+
+.styled-Novedad:focus {
+    border-color: #007bff; 
+    outline: none; 
 }

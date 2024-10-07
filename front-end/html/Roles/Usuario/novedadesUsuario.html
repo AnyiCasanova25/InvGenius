@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body onload="cargarListaUsuarios()">
     <!-- <div id="menuEstudiante"></div> -->
     <nav class="menun">
         <div class="logo-container">
@@ -136,6 +136,10 @@
                                             style="border: 1px solid black;" onfocusout="validarpara(this)"
                                             onkeypress="alfaNumericosSignos(event);" required>
                                     </div> -->
+                                    <div class="col col-xl-6 col-12">
+                                        <label for="para">para:</label>
+                                        <select id="para" class="form-select"></select>
+                                    </div>
                                     <div class="col col-xl-12 col-12">
                                         <label for="asunto"><i class="fas fa-font"></i> Asunto:</label>
                                         <input type="text" id="asunto" class="form-control"

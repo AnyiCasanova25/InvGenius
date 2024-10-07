@@ -84,24 +84,54 @@ public class novedadController {
         return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
     }
 
+    // @PutMapping("/{id}")
+    // public ResponseEntity<Object> update(@PathVariable String id, @RequestBody novedad novedadUpdate) {
+    //     var novedad = novedadService.findOne(id).get();
+
+    //     if (novedad != null) {
+            
+    //         // novedad.setPara(novedadUpdate.getPara());
+    //         // novedad.setAsunto(novedadUpdate.getAsunto());
+    //         // novedad.setCuerpo(novedadUpdate.getCuerpo());
+    //         novedad.setEstadoNovedad(novedadUpdate.getEstadoNovedad());
+
+    //         novedadService.save(novedad);
+
+    //         return new ResponseEntity<>(novedad, HttpStatus.OK);
+    //     }else {
+    //         return new ResponseEntity<>("Error novedad NO encontrada", HttpStatus.BAD_REQUEST);
+    //     }
+    // }
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable String id, @RequestBody novedad novedadUpdate) {
-        var novedad = novedadService.findOne(id).get();
+        var novedadOptional = novedadService.findOne(id);
 
-        if (novedad != null) {
-            
-            // novedad.setPara(novedadUpdate.getPara());
-            novedad.setAsunto(novedadUpdate.getAsunto());
-            novedad.setCuerpo(novedadUpdate.getCuerpo());
-            novedad.setEstadoNovedad(novedadUpdate.getEstadoNovedad());
+        if (novedadOptional.isPresent()) {
+            var novedad = novedadOptional.get();
+
+            // Verifica si los campos no son nulos o vacíos antes de actualizarlos
+            if (novedadUpdate.getPara() != null && !novedadUpdate.getPara().isEmpty()) {
+                novedad.setPara(novedadUpdate.getPara());
+            }
+            if (novedadUpdate.getAsunto() != null && !novedadUpdate.getAsunto().isEmpty()) {
+                novedad.setAsunto(novedadUpdate.getAsunto());
+            }
+            if (novedadUpdate.getCuerpo() != null && !novedadUpdate.getCuerpo().isEmpty()) {
+                novedad.setCuerpo(novedadUpdate.getCuerpo());
+            }
+
+            // Siempre se actualiza el estado, ya que es obligatorio para esta acción
+            if (novedadUpdate.getEstadoNovedad() != null) {
+                novedad.setEstadoNovedad(novedadUpdate.getEstadoNovedad());
+            }
 
             novedadService.save(novedad);
 
             return new ResponseEntity<>(novedad, HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>("Error novedad NO encontrada", HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>("Error: novedad NO encontrada", HttpStatus.BAD_REQUEST);
         }
     }
-
 
 }

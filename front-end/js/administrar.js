@@ -1,4 +1,5 @@
 
+
 $(document).ready(function () {
     listarNovedad();
     listarMarca();
@@ -246,33 +247,185 @@ function mostrarTablaNovedades(result) {
     }
 }
             // <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
-$(document).on("click", ".cambiarEstado", function () {
-    var idNovedad = $(this).data("id");
+// $(document).on("click", ".cambiarEstado", function () {
+//     var idNovedad = $(this).data("id");
+//     $.ajax({
+//         url: urlNovedad + idNovedad,
+//         type: "DELETE",
+//         success: function () {
+//             Swal.fire({
+//                 position: "top-end",
+//                 icon: "success",
+//                 title: "Cambio de estado exitoso",
+//                 showConfirmButton: false,
+//                 timer: 1500
+//             });
+//             listarNovedad();
+//         },
+//         error: function (xhr, status, error) {
+//             Swal.fire({
+//                 title: "Error",
+//                 text: "Error al cambiar el estado de la novedad: " + error,
+//                 icon: "error"
+//             });
+//         }
+//     });
+// });
+
+// Abrir el modal y cargar datos de la novedad
+$(document).on('click', '.ver', function () {
+    idNovedad = $(this).data('id'); 
+
+    // Hacer una solicitud AJAX para obtener los datos del usuario
     $.ajax({
-        url: urlNovedad + idNovedad,
-        type: "DELETE",
-        success: function () {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Cambio de estado exitoso",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            listarNovedad();
+        url: urlNovedad + idNovedad, 
+        type: 'GET',
+        success: function (novedad) {
+            $('#editAsunto').val(novedad.asunto);
+            $('#editCuerpo').val(novedad.cuerpo);
+
+            // Mostrar el modal
+            $('#editNovedadModal').modal('show');
         },
-        error: function (xhr, status, error) {
+        error: function (error) {
+            console.error("Error al obtener datos del usuario:", error);
+        }
+    });
+});
+
+
+
+
+// Función para actualizar la novedad
+// function actualizarNovedad(idNovedad) {
+//     var asunto = document.getElementById("editAsunto").value;
+//     var cuerpo = document.getElementById("editCuerpo").value;
+//     var estadoNovedad = document.getElementById("editEstado").value;
+
+//     var formData = {
+//         "asunto": asunto,
+//         "cuerpo": cuerpo,
+//         "estadoNovedad": estadoNovedad
+//     };
+
+//     $.ajax({
+//         url: urlNovedad + idNovedad, 
+//         type: "PUT",
+//         data: JSON.stringify(formData),
+//         contentType: "application/json",
+//         success: function (result) {
+//             Swal.fire({
+//                 title: "¡Actualizado!",
+//                 text: "Su respuesta se guardo exitosamente ",
+//                 icon: "success"
+//             });
+//             $('#editNovedadModal').modal('hide')
+//             listarNovedad(); 
+//         },
+//         error: function (error) {
+//             console.error("Error al actualizar su respuesta:", error);
+//             Swal.fire({
+//                 title: "Error",
+//                 text: "Ocurrió un error al actualizar su respuesta. Por favor, inténtelo de nuevo.",
+//                 icon: "error"
+//             });
+//         }
+//     });
+// }
+
+
+
+
+$(document).on('click', '.confirmar', function () {
+    var idNovedad = $(this).data('id');
+    mostrarConfirmacion(idNovedad, 'Aceptada', '¿Estás seguro de aceptar esta novedad?');
+});
+
+$(document).on('click', '.eliminar', function () {
+    var idNovedad = $(this).data('id');
+    mostrarConfirmacion(idNovedad, 'Rechazada', '¿Estás seguro de rechazar esta novedad?');
+});
+
+// Función para mostrar la confirmación antes de actualizar el estado
+function mostrarConfirmacion(idNovedad, nuevoEstado, mensaje) {
+    Swal.fire({
+        title: 'Confirmación',
+        text: mensaje,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, confirmar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            actualizarEstadoNovedad(idNovedad, nuevoEstado);
+        }
+    });
+}
+
+// Función para actualizar el estado de la novedad
+function actualizarEstadoNovedad(idNovedad, nuevoEstado) {
+    var formData = {
+        "estadoNovedad": nuevoEstado
+    };
+
+    $.ajax({
+        url: urlNovedad + idNovedad, 
+        type: "PUT",
+        data: JSON.stringify(formData),
+        contentType: "application/json",
+        success: function (result) {
+            Swal.fire({
+                title: "Estado Actualizado",
+                text: `El estado de la novedad se cambió a ${nuevoEstado}`,
+                icon: "success",
+                timer: 3000, // Se cierra automáticamente en 3 segundos
+                timerProgressBar: true, // Muestra la barra de progreso
+                showConfirmButton: true, // Sigue mostrando el botón "OK"
+                willClose: () => {
+                    listarNovedad(); // Actualizar la lista para reflejar el cambio cuando se cierre
+                }
+            });
+        },
+        error: function (error) {
+            console.error("Error al actualizar el estado de la novedad:", error);
             Swal.fire({
                 title: "Error",
-                text: "Error al cambiar el estado de la novedad: " + error,
+                text: "Ocurrió un error al actualizar el estado de la novedad. Por favor, inténtelo de nuevo.",
                 icon: "error"
             });
         }
     });
-});
+}
+
 function actualizarlistarNovedad() {
     listarNovedad();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Apartado Perfil
 function buscarUserrFiltro(filtro) {
@@ -321,74 +474,73 @@ function mostrarTablaPerfiles(result) {
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
                 <i class="fas fa-edit editar" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
-                <i class="fas fa-user-shield cambiarRolUser" data-id="${result[i]["idUser"]}" title="Cambiar Usuario de Rol"></i>
                 <i class="fas fa-toggle-on cambiarEstadoUser" data-id="${result[i]["idUser"]}" title="Cambiar Estado de Usuario"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
 }
-function registrarUser() {
-    var documentoIdentidad = document.getElementById("documentoIdentidad");
-    var nombres = document.getElementById("nombres");
-    var apellidos = document.getElementById("apellidos");
-    var celular = document.getElementById("celular");
-    var correo = document.getElementById("correo");
-    var rol = document.getElementById("rol");
-    var estado = document.getElementById("estado");
+// function registrarUser() {
+//     var documentoIdentidad = document.getElementById("documentoIdentidad");
+//     var nombres = document.getElementById("nombres");
+//     var apellidos = document.getElementById("apellidos");
+//     var celular = document.getElementById("celular");
+//     var correo = document.getElementById("correo");
+//     var rol = document.getElementById("rol");
+//     var estado = document.getElementById("estado");
 
-    // Verificar si algún campo obligatorio está vacío
-    if (!validarCamposPerfiles()) {
-        Swal.fire({
-            title: "¡Error!",
-            text: "¡Llene todos los campos correctamente!",
-            icon: "error"
-        });
-        return; // Salir si algún campo es inválido
-    }
+//     Verificar si algún campo obligatorio está vacío
+//     if (!validarCamposPerfiles()) {
+//         Swal.fire({
+//             title: "¡Error!",
+//             text: "¡Llene todos los campos correctamente!",
+//             icon: "error"
+//         });
+//         return; // Salir si algún campo es inválido
+//     }
 
-    var forData = {
-        "documentoIdentidad": documentoIdentidad.value,
-        "nombres": nombres.value,
-        "apellidos": apellidos.value,
-        "celular": celular.value,
-        "correo": correo.value,
-        "rol": rol.value,
-        "estado": estado.value,
-    };
+//     var forData = {
+//         "documentoIdentidad": documentoIdentidad.value,
+//         "nombres": nombres.value,
+//         "apellidos": apellidos.value,
+//         "celular": celular.value,
+//         "correo": correo.value,
+//         "rol": rol.value,
+//         "estado": estado.value,
+//     };
 
-    var metodo = registrarUserBandera ? "POST" : "PUT";
-    var urlLocal = registrarUserBandera ? urlUsuarios : urlUsuarios + idUser;
+//     var metodo = registrarUserBandera ? "POST" : "PUT";
+//     var urlLocal = registrarUserBandera ? urlUsuarios : urlUsuarios + idUser;
 
-    const token = localStorage.getItem('authTokens');
-    $.ajax({
-        url: urlLocal,
-        type: metodo,
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        contentType: "application/json",
-        data: JSON.stringify(forData),
-        success: function (response) {
-            limpiar();
-            Swal.fire({
-                title: "LISTO",
-                text: "Felicidades, Registro exitoso",
-                icon: "success"
-            }).then(function () {
-                $('#exampleModal').modal('hide');
-                listarUser(); // Refrescar la tabla
-            });
-        },
-        error: function (xhr, status, error) {
-            Swal.fire({
-                title: "Error",
-                text: "¡Error al registrar o actualizar este Proveedor!",
-                icon: "error"
-            });
-        }
-    });
-}
+//     const token = localStorage.getItem('authTokens');
+//     $.ajax({
+//         url: urlLocal,
+//         type: metodo,
+//         headers: {
+//             'Authorization': 'Bearer ' + token
+//         },
+//         contentType: "application/json",
+//         data: JSON.stringify(forData),
+//         success: function (response) {
+//             limpiar();
+//             Swal.fire({
+//                 title: "LISTO",
+//                 text: "Felicidades, Registro exitoso",
+//                 icon: "success"
+//             }).then(function () {
+//                 $('#exampleModal').modal('hide');
+//                 listarUser(); // Refrescar la tabla
+//             });
+//         },
+//         error: function (xhr, status, error) {
+//             Swal.fire({
+//                 title: "Error",
+//                 text: "¡Error al registrar o actualizar este Proveedor!",
+//                 icon: "error"
+//             });
+//         }
+//     });
+// }
 
 // Función para validar campos
 function validarCamposPerfiles() {
@@ -449,30 +601,7 @@ function limpiarModalPerfiles() {
     });
 }
 
-// Función para editar user
-$(document).on("click", ".editar", function () {
-    limpiarModalPerfiles();
-    idUser = $(this).data("id");
-    registrarUserBandera = false; // Cambiar bandera para editar
 
-    $.ajax({
-        url: urlUsuarios + idUser,
-        type: "GET",
-        success: function (user) {
-            document.getElementById("documentoIdentidad").value = user.documentoIdentidad;
-            document.getElementById("nombres").value = user.nombres;
-            document.getElementById("apellidos").value = user.apellidos;
-            document.getElementById("celular").value = user.celular;
-            document.getElementById("correo").value = user.correo;
-            // document.getElementById("rol").value = user.rol;
-            document.getElementById("estado").value = user.estado;
-            $('#exampleModal').modal('show');
-        },
-        error: function (error) {
-            alert("Error al obtener los datos del proveedor: " + error.statusText);
-        }
-    });
-});
 
 // Función para cambiar estado del user
 $(document).on("click", ".cambiarEstadoUser", function () {
@@ -492,24 +621,80 @@ $(document).on("click", ".cambiarEstadoUser", function () {
         }
     });
 });
-$(document).on("click", ".cambiarRolUser", function () {
-    var idUser = $(this).data("id");
+
+
+// Abrir el modal y cargar datos del usuario
+$(document).on('click', '.editar', function () {
+    idUser = $(this).data('id'); // Obtener el ID del usuario desde el botón de editar
+
+    // Hacer una solicitud AJAX para obtener los datos del usuario
     $.ajax({
-        url: urlUsuarios + idUser,
-        type: "DELETE",
-        success: function () {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Cambio de estado exitoso",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            listarUser();
+        url: urlUsuarios + idUser,  // URL de la API para obtener los datos del usuario
+        type: 'GET',
+        success: function (user) {
+            // Llenar los campos del modal con los datos obtenidos
+            $('#editDocumento').val(user.documentoIdentidad);
+            $('#editNombres').val(user.nombres);
+            $('#editApellidos').val(user.apellidos);
+            $('#editCelular').val(user.celular);
+            $('#editCorreo').val(user.correo);
+            $('#editrol').val(user.rol);
+
+            // Mostrar el modal
+            $('#editUserModal').modal('show');
+        },
+        error: function (error) {
+            console.error("Error al obtener datos del usuario:", error);
         }
     });
 });
+
+
+// Función para actualizar el usuario
+function actualizarusuario(idUser) {
+    var documentoIdentidad = document.getElementById("editDocumento").value;
+    var nombres = document.getElementById("editNombres").value;
+    var apellidos = document.getElementById("editApellidos").value;
+    var celular = document.getElementById("editCelular").value;
+    var correo = document.getElementById("editCorreo").value;
+    var rol = document.getElementById("editrol").value;
+
+    var formData = {
+        "documentoIdentidad": documentoIdentidad,
+        "nombres": nombres,
+        "apellidos": apellidos,
+        "celular": celular,
+        "correo": correo,
+        "rol": rol
+    };
+
+    $.ajax({
+        url: urlUsuarios + idUser, // Usar el idUser proporcionado
+        type: "PUT",
+        data: JSON.stringify(formData),
+        contentType: "application/json",
+        success: function (result) {
+            Swal.fire({
+                title: "¡Actualizado!",
+                text: "El usuario ha sido actualizado correctamente.",
+                icon: "success"
+            });
+            $('#editUserModal').modal('hide'); // Cerrar el modal
+            listarUser(); // Llamar a la función para listar usuarios
+        },
+        error: function (error) {
+            console.error("Error al actualizar el usuario:", error);
+            Swal.fire({
+                title: "Error",
+                text: "Ocurrió un error al actualizar el usuario. Por favor, inténtelo de nuevo.",
+                icon: "error"
+            });
+        }
+    });
+}
+
 // Función adicional para actualizar lista de Useres después de registrar/editar
 function actualizarlistarUser() {
     listarUser();
 }
+
