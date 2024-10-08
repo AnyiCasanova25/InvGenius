@@ -213,33 +213,40 @@
         <!-- Modal Admin Perfiles-->
         <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+            <div class="modal-dialog fondomodaldialog ">
+                <div class="modal-content col modal-custom">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editUserModalLabel">Editar Usuario</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="col centerLogoNombreModal">
+                        <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
+                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
+                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                        Editar usuario
+                    </h1>
+                </div>
                     <div class="modal-body">
                         <form id="editUserForm">
                             <div class="mb-3">
                                 <label for="editDocumento" class="form-label">Documento</label>
-                                <input type="number" class="form-control" id="editDocumento" required>
+                                <input type="number" class="form-control" id="editDocumento" onkeypress="soloNumeros(event);"  required>
                             </div>
                             <div class="mb-3">
                                 <label for="editNombres" class="form-label">Nombres</label>
-                                <input type="text" class="form-control" id="editNombres" required>
+                                <input type="text" class="form-control" id="editNombres" onkeypress="soloLetras(event);" required>
                             </div>
                             <div class="mb-3">
                                 <label for="editApellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="editApellidos" required>
+                                <input type="text" class="form-control" id="editApellidos" onkeypress="soloLetras(event);" required>
                             </div>
                             <div class="mb-3">
                                 <label for="editCelular" class="form-label">Teléfono</label>
-                                <input type="number" class="form-control" id="editCelular" required>
+                                <input type="number" class="form-control" id="editCelular" onkeypress="soloNumeros(event);"  required>
                             </div>
                             <div class="mb-3">
                                 <label for="editCorreo" class="form-label">Correo</label>
-                                <input type="email" class="form-control" id="editCorreo" required>
+                                <input type="email" class="form-control" id="editCorreo" onkeypress="alfaNumericosSignos(event);" required>
                             </div>
                             <div class="mb-3">
                                 <label for="editrol" class="form-label">Rol</label>
@@ -264,21 +271,28 @@
         <!--Modal Novedades-->
         <div class="modal fade" id="editNovedadModal" tabindex="-1" aria-labelledby="editNovedadModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+            <div class="modal-dialog fondomodaldialog">
+                <div class="modal-content col modal-custom">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editNovedadModalLabel">Novedades</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="col centerLogoNombreModal">
+                            <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
+                            <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                        </div>
+                        <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                            style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                            Novedad
+                        </h1>
                     </div>
                     <div class="modal-body">
                         <form id="editNovedadForm">
                             <div class="mb-3">
-                                <label for="editAsunto" class="form-label">Asunto</label>
+                                <label for="editAsunto" class="form-label">Asunto:</label>
                                 <textarea class="form-control" id="editAsunto" rows="1" readonly
                                     style="resize: none; overflow: hidden;"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="editCuerpo" class="form-label">Cuerpo</label>
+                                <label for="editCuerpo" class="form-label">Cuerpo:</label>
                                 <textarea class="form-control" id="editCuerpo" rows="3" readonly
                                     style="resize: none; overflow: hidden;"></textarea>
                             </div>
