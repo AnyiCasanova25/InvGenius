@@ -25,8 +25,8 @@ class adapterProductosCaducados(
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         val novedadesDeProductosCaducados = listNovedadesDeProductosCaducados[position]
-        holder.lblProductoCaducado.text = novedadesDeProductosCaducados.num
-        holder.lblVencimiento.text = novedadesDeProductosCaducados.date
+        holder.lblProductoCaducado.text = novedadesDeProductosCaducados.nombreProducto
+        holder.lblVencimiento.text = novedadesDeProductosCaducados.fechaVencimiento
     }
 
     override fun getItemCount(): Int = listNovedadesDeProductosCaducados.size

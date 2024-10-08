@@ -11,14 +11,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import com.example.invgeniusmovil.adapters.Novedades.adapterBajoStock
 import com.example.invgeniusmovil.adapters.Novedades.adapterProductosACaducar
 import com.example.invgeniusmovil.adapters.Novedades.adapterProductosCaducados
-import com.example.invgeniusmovil.adapters.Novedades.adapterUsuario
 import com.example.invgeniusmovil.databinding.FragmentNovedadesBinding
 import com.example.invgeniusmovil.models.Novedades.bajo_stock
 import com.example.invgeniusmovil.models.Novedades.productos_a_caducar
 import com.example.invgeniusmovil.models.Novedades.productos_caducados
+
 
 class NovedadesFragment : Fragment() {
 
@@ -26,11 +27,14 @@ class NovedadesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var novedadesViewModel: NovedadesViewModel
+    //
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
         // Inicializa el ViewModel
         novedadesViewModel = ViewModelProvider(this).get(NovedadesViewModel::class.java)
@@ -48,7 +52,7 @@ class NovedadesFragment : Fragment() {
             binding.textNovedades.text = text
         }
 
-        // Configura los botones para mostrar los LinearLayouts correspondiente
+        // Configura los botones para mostrar los LinearLayouts correspondientes
         binding.btnProductosCaducados.setOnClickListener {
             mostrarFragment(binding.btnProductosCaducados, binding.Linear2)
         }
@@ -58,6 +62,9 @@ class NovedadesFragment : Fragment() {
         binding.btnBajoStock.setOnClickListener {
             mostrarFragment(binding.btnBajoStock, binding.Linear4)
         }
+
+
+
 
         val listNovedadesDeProductosCaducados = mutableListOf(
             productos_caducados("1", "10/08/2024"),
@@ -76,8 +83,6 @@ class NovedadesFragment : Fragment() {
         recycler2.layoutManager = LinearLayoutManager(context)
         recycler2.adapter = adapterProductosCaducados(listNovedadesDeProductosCaducados)
 
-
-
         val listNovedadesDeProductosACaducar = mutableListOf(
             productos_a_caducar("1", "10/08/2024"),
             productos_a_caducar("2", "10/08/2024"),
@@ -95,8 +100,6 @@ class NovedadesFragment : Fragment() {
         recycler3.layoutManager = LinearLayoutManager(context)
         recycler3.adapter = adapterProductosACaducar(listNovedadesDeProductosACaducar)
 
-
-
         val listNovedadesBajoStock = mutableListOf(
             bajo_stock("1", "Leche"),
             bajo_stock("2", "Granos"),
@@ -113,13 +116,10 @@ class NovedadesFragment : Fragment() {
         val recycler4: RecyclerView = binding.RVBajoStock
         recycler4.layoutManager = LinearLayoutManager(context)
         recycler4.adapter = adapterBajoStock(listNovedadesBajoStock)
-
-
     }
 
     fun mostrarFragment(buttonMostrar: Button, Linear: LinearLayout) {
         // Ocultar todas las vistas cuando el botón no coincide
-
         if (binding.btnProductosCaducados != buttonMostrar) {
             binding.Linear2.visibility = View.GONE
         }
@@ -130,7 +130,7 @@ class NovedadesFragment : Fragment() {
             binding.Linear4.visibility = View.GONE
         }
 
-        // Alternar la visibilidad de RVOculto y barrabusqueda
+        // Alternar la visibilidad de los LinearLayouts
         if (Linear.isVisible) {
             Linear.visibility = View.GONE
         } else {
@@ -138,14 +138,8 @@ class NovedadesFragment : Fragment() {
         }
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-
-
-
-
