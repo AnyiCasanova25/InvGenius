@@ -1,6 +1,18 @@
 package com.InvGenius.InvGenius.Controller;
 
 
+// import java.awt.Font;
+// import java.awt.PageAttributes.MediaType;
+// import java.io.ByteArrayOutputStream;
+// import java.io.IOException;
+// import java.net.MalformedURLException;
+// import java.net.http.HttpHeaders;
+// import java.text.SimpleDateFormat;
+// import java.util.List;
+
+// import javax.swing.text.Document;
+// import javax.swing.text.html.ParagraphView;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,6 +80,68 @@ public class informeController {
         var listaInforme = informeService.informeExist(filtro, filtro, null);
         return new ResponseEntity<>(listaInforme, HttpStatus.OK);
     }
+
+    // @GetMapping("/pdf")
+    // public ResponseEntity<byte[]> downloadPdf() throws
+    // MalformedURLException, IOException {
+    //     Document document = new Document();
+    //     ByteArrayOutputStream out = new ByteArrayOutputStream();
+    //     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+    //     try {
+    //         PdfWriter.getInstance(document , out);
+    //         document.open();
+
+    //         //PARA AÑADIR TITULO AL PDF
+    //         Paragraph title = new Paragraph("Informe de movimientos realizados",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
+    //         Font.BOLD, BaseColor.BLACK));
+    //         title.setAlignment(Element.ALIGN_CENTER);
+    //         Document.add(title);
+
+    //         document.add(new Paragraph(""));
+
+    //         //CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
+    //         PdfTable table = new PdfTable(8); //Numero de columnas
+    //         table.setWidthPorcentage(100);
+
+    //         //AÑADIR CONTENIDO A LA TABLA
+    //         table.addCell("Hora");
+    //         table.addCell("Fecha");
+    //         table.addCell("movimientos");
+    //         table.addCell("categoria");
+    //         table.addCell("producto");
+    //         table.addCell("marca");
+    //         table.addCell("proveedor");
+    //         table.addCell("lote");
+
+    //         //AÑADIR CONTENIDO A LA TABLA
+    //         List<informe> informes = informeService.findAll()
+    //         for (informe informe : informes) {
+
+    //             table.addCell(informe.getHoraInforme());
+    //             table.addCell(informe.getFechaInforme());
+    //             table.addCell(informe.getMovimientos());
+    //             table.addCell(informe.getCategoria());
+    //             table.addCell(informe.getProducto());
+    //             table.addCell(informe.getMarca());
+    //             table.addCell(informe.getProveedor());
+    //             table.addCell(informe.getLote());
+    //         }
+
+    //         document.add(table);
+    //         document.close();
+
+    //     } catch (DocumentException e) {
+    //         e.printStackTrace();
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    //     }
+
+    //     HttpHeaders headers = new HttpHeaders();
+    //     headers.setContentType(MediaType.APPLICATION_PDF);
+    //     headers.setContextDispositionFormData("attachment","informe.pdf");
+
+    //     return ResponseEntity.ok().headers(headers).body(out.toByteArray());
+    // }
 
 
      @GetMapping("/")
