@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
 @Repository
@@ -18,7 +19,7 @@ public interface Iuser extends CrudRepository<user, String> {
     @Query("SELECT u FROM user u WHERE u.correo = ?1")
     Optional<user> findByUsername(String username);
 
-    // @Query("SELECT u FROM User u WHERE u.rol = 'Admin'")
-    // List<user> buscarRol(Enum rol);
+    @Query("SELECT u FROM user u WHERE u.rol = 'Admin'")
+    List<user> buscarRol(rol rol);
      
 }

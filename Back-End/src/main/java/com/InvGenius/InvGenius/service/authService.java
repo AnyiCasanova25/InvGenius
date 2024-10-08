@@ -118,6 +118,12 @@ public class authService implements IuserService{
             return listaUser;
     }
 
+    //Filtro para traer a todos los administradores
+    public List<user> buscarRol(rol rol){
+        List<user> listaUser = data.buscarRol(rol);
+        return listaUser;
+    }
+
     @Override
     public Optional<user> findOne(String id){
         Optional<user> user = data.findById(id);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.InvGenius.InvGenius.models.lote;
+import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
 import jakarta.mail.MessagingException;
@@ -22,6 +23,9 @@ public class emailService {
 
     @Autowired
     private loteService loteService;
+
+    @Autowired
+    private authService authService;
 
 
     emailService(JavaMailSender javaMailSender) {
@@ -129,9 +133,12 @@ public class emailService {
                 return "No hay productos próximos a caducar.";
             }
 
-            String destinatario = "()";
+            // Obtén la lista de administradores desde authService
+            List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
+
             String asunto = "Producto Próximo a Caducar";
 
+            // Construir el cuerpo del correo
             StringBuilder cuerpo = new StringBuilder()
                     .append("<h1 style='color: black;'>Estimado Usuario</h1>")
                     .append("<p style='color: black;'>Le informamos que uno de los productos en su inventario registrado en <strong style='color: black;'>InvGenius</strong> está próximo a caducar. A continuación, se detalla la información de los productos:</p>")
@@ -151,12 +158,16 @@ public class emailService {
                     .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
                     .append("<p style='color: black;'>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
-            if (retorno) {
-                return "Se envió correctamente";
-            } else {
-                return "No se pudo enviar";
+            // Enviar el correo a cada administrador
+            for (user admin : administradores) {
+                String destinatario = admin.getCorreo(); // Asumiendo que el modelo user tiene un campo email
+                var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
+                if (!retorno) {
+                    return "No se pudo enviar el correo a " + destinatario;
+                }
             }
+
+            return "Correos enviados correctamente a los administradores.";
 
         } catch (Exception e) {
             return "Error al enviar: " + e.getMessage();
@@ -173,9 +184,12 @@ public class emailService {
                 return "No hay productos con bajo stock.";
             }
 
-            String destinatario = "yordierik05@gmail.com";
+            // Obtén la lista de administradores desde authService
+            List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
+
             String asunto = "Producto con Bajo Stock";
 
+            // Construir el cuerpo del correo
             StringBuilder cuerpo = new StringBuilder()
                     .append("<h1 style='color: black;'>Estimado Usuario</h1>")
                     .append("<p style='color: black;'>Le informamos que uno de los productos en su inventario registrado en <strong style='color: black;'>InvGenius</strong> tiene un stock bajo. A continuación, se detalla la información de los productos:</p>")
@@ -197,17 +211,22 @@ public class emailService {
                     .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
                     .append("<p style='color: black;'>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
-            if (retorno) {
-                return "Se envió correctamente";
-            } else {
-                return "No se pudo enviar";
+            // Enviar el correo a cada administrador
+            for (user admin : administradores) {
+                String destinatario = admin.getCorreo(); // Asumiendo que el modelo user tiene un campo email
+                var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
+                if (!retorno) {
+                    return "No se pudo enviar el correo a " + destinatario;
+                }
             }
+
+            return "Correos enviados correctamente a los administradores.";
 
         } catch (Exception e) {
             return "Error al enviar: " + e.getMessage();
         }
     }
+    
 
     // correo para lotes vencidos
     @GetMapping("/loteVencido/")
@@ -218,9 +237,12 @@ public class emailService {
                 return "No hay productos vencidos.";
             }
 
-            String destinatario = "yordierik05@gmail.com";
+            // Obtén la lista de administradores desde authService
+            List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
+
             String asunto = "Producto Vencido";
 
+            // Construir el cuerpo del correo
             StringBuilder cuerpo = new StringBuilder()
                     .append("<h1 style='color: black;'>Estimado Usuario</h1>")
                     .append("<p style='color: black;'>Le informamos que uno de los productos en su inventario registrado en <strong style='color: black;'>InvGenius</strong> ha vencido. A continuación, se detalla la información de los productos vencidos:</p>")
@@ -246,12 +268,16 @@ public class emailService {
                     .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
                     .append("<p style='color: black;'>Atentamente,<br>Anyi Zujey Gomez Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>");
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
-            if (retorno) {
-                return "Se envió correctamente";
-            } else {
-                return "No se pudo enviar";
+            // Enviar el correo a cada administrador
+            for (user admin : administradores) {
+                String destinatario = admin.getCorreo(); // Asumiendo que el modelo user tiene un campo email
+                var retorno = enviarCorreo(destinatario, asunto, cuerpo.toString());
+                if (!retorno) {
+                    return "No se pudo enviar el correo a " + destinatario;
+                }
             }
+
+            return "Correos enviados correctamente a los administradores.";
 
         } catch (Exception e) {
             return "Error al enviar: " + e.getMessage();

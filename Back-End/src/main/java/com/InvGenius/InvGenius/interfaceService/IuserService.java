@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.InvGenius.InvGenius.models.authResponse;
 import com.InvGenius.InvGenius.models.registerRequest;
+import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
 public interface IuserService {
@@ -14,6 +15,9 @@ public interface IuserService {
     public List<user> findAll();
 
     public List<user> userExist(String correo, String documentoIdentidad);
+
+    //Filtro para traer todos los administradores
+    public List<user> buscarRol(rol rol);
 
     public Optional<user> findOne(String id);
 
