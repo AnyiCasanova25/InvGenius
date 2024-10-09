@@ -31,8 +31,8 @@ public class productoController {
     private IproductoService productoService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestParam("producto") producto producto) {
-
+public ResponseEntity<Object> save( producto producto,  @RequestParam("file") MultipartFile file) throws IOException
+{
         if (producto.getNombreProducto().equals("")) {
 
             return new ResponseEntity<>("El nombre del producto es un campo obligatorio", HttpStatus.BAD_REQUEST);
@@ -42,7 +42,9 @@ public class productoController {
 
             return new ResponseEntity<>("El estado del producto es un campo obligatorio", HttpStatus.BAD_REQUEST);
         }
+        producto.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
 
+        //guardar el producto
         productoService.save(producto);
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
@@ -78,6 +80,8 @@ public ResponseEntity<Object> consultarcategoriaJson() {
             return new ResponseEntity<>("Error al guardar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+   
 
     @GetMapping("/")
     public ResponseEntity<Object> findAll(){

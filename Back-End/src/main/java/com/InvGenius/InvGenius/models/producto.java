@@ -68,7 +68,8 @@ public class producto {
         this.stock = stock;
         this.descripcionProducto = descripcionProducto;
         this.unidadMedida = unidadMedida;
-        this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.imagen_base=imagen_base;
+        // this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
     }
 
     public String getIdProducto() {
@@ -140,7 +141,8 @@ public class producto {
     }
 
     public void setImagen_base(String imagen_base) {
-        this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.imagen_base=imagen_base;
+        // this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
     }
 
     

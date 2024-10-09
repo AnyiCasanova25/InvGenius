@@ -17,13 +17,6 @@ public class productoService implements IproductoService {
     private Iproducto data;
 
     @Override
-	public List<producto> consultarProducto() {
-
-		return (List<producto>) data.findAll();
-	}
-
-
-    @Override
     public String save(producto producto) {
         data.save(producto);
         return producto.getIdProducto();
@@ -71,7 +64,8 @@ public class productoService implements IproductoService {
         data.deleteById(id);
         return 1;
     }
-//funcion de guardar imagen 
+
+    //funcion de guardar imagen 
     @Override
 	public int guardarimagenJson(producto producto) {
 		int res=0;
@@ -80,5 +74,11 @@ public class productoService implements IproductoService {
 			res=1;
 		}
 		return res;
+	}
+
+    @Override
+	public List<producto> consultarProducto() {
+
+		return (List<producto>) data.findAll();
 	}
 }

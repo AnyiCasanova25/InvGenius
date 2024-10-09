@@ -80,7 +80,7 @@ public ResponseEntity<Object> save( categoria categoria,  @RequestParam("file") 
 @GetMapping("/consultar-imagenes")
 public ResponseEntity<Object> consultarcategoriaJson() {
     List<categoria> listaCategoria = categoriaService.consultarcategoria();
-    listaCategoria.forEach(c -> c.setImagen_base("")); // Aquí puedes ajustar cómo se manejan las imágenes
+    // listaCategoria.forEach(c -> c.setImagen_base("")); // Aquí puedes ajustar cómo se manejan las imágenes
     return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
 }
 
@@ -104,6 +104,37 @@ public ResponseEntity<Object> guardarImagenJson(
 
         } catch (IOException e) {
             return new ResponseEntity<>("Error al guardar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Editar imagen de una categoría
+    @PutMapping("/imagen/{id}")
+    public ResponseEntity<Object> updateCategoriaImage(
+            @PathVariable String id, 
+            @RequestParam("file") MultipartFile file) {
+        try {
+            // Buscar la categoría por su ID
+            var categoriaOptional = categoriaService.findOne(id);
+
+            // Verificar si la categoría existe
+            if (categoriaOptional.isPresent()) {
+                var categoria = categoriaOptional.get();
+
+                // Convertir la imagen a base64
+                String imagenBase64 = Base64.getEncoder().encodeToString(file.getBytes());
+
+                // Actualizar la imagen de la categoría
+                categoria.setImagen_base(imagenBase64);
+
+                // Guardar los cambios de la categoría
+                categoriaService.save(categoria);
+
+                return new ResponseEntity<>(categoria, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Error: Categoría no encontrada", HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException e) {
+            return new ResponseEntity<>("Error al actualizar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     // Filtros de categoría
