@@ -111,6 +111,9 @@ public class novedadController {
             var novedad = novedadOptional.get();
 
             // Verifica si los campos no son nulos o vacíos antes de actualizarlos
+            if (novedadUpdate.getDe() != null && !novedadUpdate.getDe().isEmpty()) {
+                novedad.setDe(novedadUpdate.getDe());
+            }
             if (novedadUpdate.getPara() != null && !novedadUpdate.getPara().isEmpty()) {
                 novedad.setPara(novedadUpdate.getPara());
             }

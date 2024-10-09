@@ -35,6 +35,9 @@ public class novedad {
     @Column(name = "idNovedad", nullable = false, length = 36)
     private String idNovedad;
 
+    @Column(name = "de", nullable = false, length = 100)
+    private String de;
+
     @Column(name = "para", nullable = false, length = 100)
     private String para;
 
