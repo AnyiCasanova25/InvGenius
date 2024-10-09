@@ -1,19 +1,33 @@
 package com.InvGenius.InvGenius.Controller;
 
+import org.springframework.http.MediaType;
 
-// import java.awt.Font;
-// import java.awt.PageAttributes.MediaType;
-// import java.io.ByteArrayOutputStream;
-// import java.io.IOException;
-// import java.net.MalformedURLException;
-// import java.net.http.HttpHeaders;
-// import java.text.SimpleDateFormat;
-// import java.util.List;
+import com.itextpdf.text.BaseColor;
 
-// import javax.swing.text.Document;
-// import javax.swing.text.html.ParagraphView;
+import com.itextpdf.text.Document;
+
+import com.itextpdf.text.DocumentException;
+
+import com.itextpdf.text.Element;
+
+import com.itextpdf.text.Font;
+
+import com.itextpdf.text.FontFactory;
+
+import com.itextpdf.text.Paragraph;
+
+import com.itextpdf.text.pdf.PdfPTable;
+
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,120 +48,121 @@ public class informeController {
 
     @Autowired
     private IInformeService informeService;
-    
+
     @PostMapping("/")
-    public ResponseEntity<Object> save(@RequestBody informe informe){
+    public ResponseEntity<Object> save(@RequestBody informe informe) {
 
         if (informe.getHoraInforme().equals("")) {
-            return new ResponseEntity<>("El campo de hora es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo de hora es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (informe.getFechaInforme().equals("")) {
-            return new ResponseEntity<>("El campo de fecha es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo de fecha es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (informe.getMovimientos().equals("")) {
-            return new ResponseEntity<>("El campo de movimientos es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo de movimientos es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
-        if (informe.getCategoria().equals("")){
-            return new ResponseEntity<>("El campo de categoria es obligatorio",HttpStatus.BAD_REQUEST);
+        if (informe.getCategoria().equals("")) {
+            return new ResponseEntity<>("El campo de categoria es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (informe.getProducto().equals("")) {
-            return new ResponseEntity<>("El campo de producto es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo de producto es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (informe.getMarca().equals("")) {
-            return new ResponseEntity<>("El campo de marca es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo de marca es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (informe.getProveedor().equals("")) {
-            return new ResponseEntity<>("El campo del proveedor es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo del proveedor es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         if (informe.getLote().equals("")) {
-            return new ResponseEntity<>("El campo del lote es obligatorio",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo del lote es obligatorio", HttpStatus.BAD_REQUEST);
         }
 
         informeService.save(informe);
-        return new ResponseEntity<>(informe,HttpStatus.OK);
+        return new ResponseEntity<>(informe, HttpStatus.OK);
     }
 
-    //Filtro de informe
+    // Filtro de informe
     @GetMapping("/busquedaFiltros/{filtro}")
-    public ResponseEntity<Object>findFiltro(@PathVariable String filtro){
+    public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
         var listaInforme = informeService.informeExist(filtro, filtro, null);
         return new ResponseEntity<>(listaInforme, HttpStatus.OK);
     }
 
-    // @GetMapping("/pdf")
-    // public ResponseEntity<byte[]> downloadPdf() throws
-    // MalformedURLException, IOException {
-    //     Document document = new Document();
-    //     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    //     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    @GetMapping("/pdf")
+    public ResponseEntity<byte[]> downloadPdf() throws MalformedURLException, IOException {
+        Document document = new Document();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-    //     try {
-    //         PdfWriter.getInstance(document , out);
-    //         document.open();
+        try {
+            PdfWriter.getInstance(document, out);
+            document.open();
 
-    //         //PARA AÑADIR TITULO AL PDF
-    //         Paragraph title = new Paragraph("Informe de movimientos realizados",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
-    //         Font.BOLD, BaseColor.BLACK));
-    //         title.setAlignment(Element.ALIGN_CENTER);
-    //         Document.add(title);
+            // PARA AÑADIR TITULO AL PDF
+            Paragraph title = new Paragraph("Informe de movimientos realizados",
+                    FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
+                            Font.BOLD, BaseColor.BLACK));
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
 
-    //         document.add(new Paragraph(""));
+            document.add(new Paragraph(""));
+            document.add(new Paragraph(""));
+            document.add(new Paragraph("texto prueba"));
+            document.add(new Paragraph("   "));
 
-    //         //CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
-    //         PdfTable table = new PdfTable(8); //Numero de columnas
-    //         table.setWidthPorcentage(100);
+            // CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
+            PdfPTable table = new PdfPTable(8); // Numero de columnas
+            table.setWidthPercentage(100);
 
-    //         //AÑADIR CONTENIDO A LA TABLA
-    //         table.addCell("Hora");
-    //         table.addCell("Fecha");
-    //         table.addCell("movimientos");
-    //         table.addCell("categoria");
-    //         table.addCell("producto");
-    //         table.addCell("marca");
-    //         table.addCell("proveedor");
-    //         table.addCell("lote");
+            // AÑADIR CONTENIDO A LA TABLA
+            table.addCell("Hora");
+            table.addCell("Fecha");
+            table.addCell("movimientos");
+            table.addCell("categoria");
+            table.addCell("producto");
+            table.addCell("marca");
+            table.addCell("proveedor");
+            table.addCell("lote");
 
-    //         //AÑADIR CONTENIDO A LA TABLA
-    //         List<informe> informes = informeService.findAll()
-    //         for (informe informe : informes) {
+            // AÑADIR CONTENIDO A LA TABLA
+            List<informe> informes = informeService.findAll();
+            for (informe informe : informes) {
+                table.addCell(informe.getHoraInforme().toString());
+                table.addCell(dateFormat.format(informe.getFechaInforme()));
+                table.addCell(informe.getMovimientos().getTipoMovimiento());
+                table.addCell(informe.getCategoria().getNombreCategoria());
+                table.addCell(informe.getProducto().getNombreProducto());
+                table.addCell(informe.getMarca().getNombreMarca());
+                table.addCell(informe.getProveedor().getNombreProveedor());
+                table.addCell(informe.getLote().getNumeroLote());
+            }
 
-    //             table.addCell(informe.getHoraInforme());
-    //             table.addCell(informe.getFechaInforme());
-    //             table.addCell(informe.getMovimientos());
-    //             table.addCell(informe.getCategoria());
-    //             table.addCell(informe.getProducto());
-    //             table.addCell(informe.getMarca());
-    //             table.addCell(informe.getProveedor());
-    //             table.addCell(informe.getLote());
-    //         }
+            document.add(table);
+            document.close();
 
-    //         document.add(table);
-    //         document.close();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-    //     } catch (DocumentException e) {
-    //         e.printStackTrace();
-    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    //     }
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("attachment", "informe.pdf");
 
-    //     HttpHeaders headers = new HttpHeaders();
-    //     headers.setContentType(MediaType.APPLICATION_PDF);
-    //     headers.setContextDispositionFormData("attachment","informe.pdf");
+        return ResponseEntity.ok().headers(headers).body(out.toByteArray());
+    }
 
-    //     return ResponseEntity.ok().headers(headers).body(out.toByteArray());
-    // }
-
-
-     @GetMapping("/")
-    public ResponseEntity<Object> findAll(){
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll() {
         var listaInforme = informeService.findAll();
-        return new ResponseEntity<>(listaInforme,HttpStatus.OK);
+        return new ResponseEntity<>(listaInforme, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -164,10 +179,10 @@ public class informeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody informe informeUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody informe informeUpdate) {
         var informe = informeService.findOne(id).get();
 
-        if (informe != null){
+        if (informe != null) {
 
             informe.setHoraInforme(informeUpdate.getHoraInforme());
             informe.setFechaInforme(informeUpdate.getFechaInforme());
@@ -180,9 +195,9 @@ public class informeController {
 
             informeService.save(informe);
 
-            return new ResponseEntity<>(informe,HttpStatus.OK);
+            return new ResponseEntity<>(informe, HttpStatus.OK);
 
-        }else {
+        } else {
             return new ResponseEntity<>("Error informer no encontrado", HttpStatus.BAD_REQUEST);
         }
     }
