@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.InvGenius.InvGenius.models.lote;
+import com.InvGenius.InvGenius.models.movimientos;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
@@ -80,12 +81,13 @@ public class emailService {
             String asunto = "Recuperacion de contraseña";
             String cuerpo = ""
                     + "<h1>Estimado Usuario</h1>"
-                    + "<p>Hemos Recibido su solicitud para restablecer la contraseña de su cuenta en \"InvGenius\".Aqui están los pasos para completar el proceso: </p>\r\n"
+                    + "<p>Hemos Recibido su solicitud para restablecer la contraseña de su cuenta en \"InvGenius\".Aqui tiene su nueva contraseña autogenerada por</p>\r\n"
+                    + "<p>cuestiones de seguridad, le recomendamos apenas inicie sesión, cambiarla a una que le sea más facil recordar:</p>\r\n"
                     + "      <ol>\r\n"
-                    + "          <li>Haga clic en el siguiente enlace para restablecer su contraseña:" +user.getPassword()+"</li>\r\n"
+                    + "          <li>Su nueva contraseña:" +user.getPassword()+"</li>\r\n"
                     + "      </ol>\r\n"
                     + "<img src'https://i.postimg.cc/yNjnwxdQ/Logo.png' width'100px' heght='100'>"
-                    + "      <p>Por motivos de seguridad, este enlace expirará en [Número de Horas] horas. Si no ha solicitado esta acción, le recomendamos que ignore este correo electronico.</p>\r\n"
+                    + "      <p>Por motivos de seguridad, este enlace expirará en [Número de Horas] horas. Si no ha solicitado esta acción, le recomendamos que se comunicque con nosotros.</p>\r\n"
                     + "      <p>Si experimenta algún problema o tiene alguna pregunta, no dude en comunicarse con nuestro equipo de soporte. Estamos aqui para ayudarle.</p>\r\n"
                     + "      <p>Atentamente,<br>[Yordy Erik Núñez Pineda]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
 
@@ -102,9 +104,9 @@ public class emailService {
 
     // Este solo debe tener un mensaje de que su contraseña se cambio correctamente
     @GetMapping("/enviar-correo-cambio")
-    public String enviarCorreoCambio() {
+    public String enviarCorreoCambio(user user, user correo) {
         try {
-            String destinatario = "invgenius2024@gmail.com";
+            String destinatario = user.getCorreo();
             String asunto = "Cambio de contraseña";
             String cuerpo = ""
                     + "<h1>Estimado Usuario</h1>"
@@ -123,6 +125,7 @@ public class emailService {
             return "Error al envíar" + e.getMessage();
         }
     }
+
 
     // correo para lotes que estan proximos a caducar
     @GetMapping("/loteACaducar")
@@ -286,61 +289,112 @@ public class emailService {
 
 
     @GetMapping("/enviar-correo-retiro")
-    public String enviarCorreoRetiro() {
+    public String enviarCorreoRetiro(List<movimientos> movimientosRetiro) {
         try {
-            String destinatario = "invgenius2024@gmail.com";
-            String asunto = "Producto Ha Retirar";
-            String cuerpo = ""
-                    + "<h1>Estimado Usuario</h1>"
-                    + "<p>Le informamos que uno de los productos en su inventario registrado en <strong>InvGenius</strong> será retirado del stock. A continuación, se detalla la información del producto:</p>\r\n"
-                    + "<ul>\r\n"
-                    + "    <li><strong>Razon:</strong> Error de empaquetaje</li>\r\n"
-                    + "    <li><strong>Producto:</strong> Leche Entera</li>\r\n"
-                    + "    <li><strong>Marca:</strong> Alpina</li>\r\n"
-                    + "    <li><strong>Cantidad:</strong> 5 unidades</li>\r\n"
-                    + "    <li><strong>Fecha de Caducidad:</strong> 15 de junio de 2024</li>\r\n"
-                    + "</ul>\r\n"
-                    + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>\r\n"
-                    + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
-                    + "<p>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>\r\n"
-                    + "<p>Atentamente,<br>[Cristian Jeanpool Bahamon Granados]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
-            if (retorno) {
-                return "Se envió correctamente";
-            } else {
-                return "No se pudo enviar";
+            // Obtén la lista de administradores desde authService
+            List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
+            if (administradores.isEmpty()) {
+                return "No hay administradores para enviar el correo.";
             }
+
+            String asunto = "Productos Retirados del Inventario";
+
+            StringBuilder cuerpo = new StringBuilder()
+                    .append("<h1 style='color: black;'>Estimado Usuario</h1>")
+                    .append("<p style='color: black;'>Le informamos que se han retirado los siguientes productos de su inventario registrado en <strong>InvGenius</strong>. A continuación, se detalla la información de los productos:</p>")
+                    .append("<table style='border-collapse: collapse; width: 100%; color: black;'>")
+                    .append("<thead>")
+                    .append("<tr>")
+                    .append("<th style='border: 1px solid black; padding: 8px;'>Categoría</th>")
+                    .append("<th style='border: 1px solid black; padding: 8px;'>Producto</th>")
+                    .append("<th style='border: 1px solid black; padding: 8px;'>Cantidad</th>")
+                    .append("<th style='border: 1px solid black; padding: 8px;'>Descripción del Movimiento</th>")
+                    .append("<th style='border: 1px solid black; padding: 8px;'>Fecha de Movimiento</th>")
+                    .append("</tr>")
+                    .append("</thead>")
+                    .append("<tbody>");
+
+            for (movimientos m : movimientosRetiro) {
+                cuerpo.append("<tr>")
+                        .append("<td style='border: 1px solid black; padding: 8px;'>")
+                        .append(m.getProducto().getCategoria().getNombreCategoria()) // Categoría del producto
+                        .append("</td>")
+                        .append("<td style='border: 1px solid black; padding: 8px;'>")
+                        .append(m.getProducto().getNombreProducto()) // Nombre del producto
+                        .append("</td>")
+                        .append("<td style='border: 1px solid black; padding: 8px;'>")
+                        .append(m.getCantidadProducto()) // Cantidad del producto
+                        .append("</td>")
+                        .append("<td style='border: 1px solid black; padding: 8px;'>")
+                        .append(m.getDescripcionMovimiento()) // Descripción del movimiento
+                        .append("</td>")
+                        .append("<td style='border: 1px solid black; padding: 8px;'>")
+                        .append(m.getFechaMovimiento()) // Fecha del movimiento
+                        .append("</td>")
+                        .append("</tr>");
+            }
+
+            cuerpo.append("</tbody>")
+                    .append("</table>")
+                    .append("<p style='color: black;'>Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo.</p>")
+                    .append("<p style='color: black;'>Atentamente,<br>[Cristian Jeanpool Bahamon Granados]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>");
+
+            // Enviar el correo
+            for (user admin : administradores) {
+                var retorno = enviarCorreo(admin.getCorreo(), asunto, cuerpo.toString());
+                if (!retorno) {
+                    return "No se pudo enviar el correo a: " + admin.getCorreo();
+                }
+            }
+
+            return "Se enviaron los correos correctamente a los administradores.";
 
         } catch (Exception e) {
             return "Error al enviar: " + e.getMessage();
         }
     }
+
 
     @GetMapping("/enviar-correo-solicitud")
-    public String enviarCorreoSolicitud() {
+    public String enviarCorreoSolicitud(user user) {
         try {
-            String destinatario = "invgenius2024@gmail.com";
-            String asunto = "Solicitud Cambio de Rol";
-            String cuerpo = ""
-                    + "<h1>Estimado Administrador</h1>"
-                    + "<p>Espero que este mensaje le encuentre bien. Me dirijo a usted para solicitar formalmente un cambio de rol dentro de nuestra organización. Actualmente, me desempeño en el rol de <strong>Usuario</strong> y me gustaría ser considerado para el rol de <strong>Administrador</strong>.</p>\r\n"
-                    + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>\r\n"
-                    + "<img src='https://example.com/images/leche.png' width='100px' height='100px'>"
-                    + "<p>Gracias por considerar mi solicitud. Espero su respuesta.</p>\r\n"
-                    + "<p>Atentamente,<br>[William Steban Gonzalez Cortes]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
-            if (retorno) {
-                return "Se envió correctamente";
-            } else {
-                return "No se pudo enviar";
+            // Obtén la lista de administradores desde authService
+            List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
+            if (administradores.isEmpty()) {
+                return "No hay administradores disponibles para enviar el correo.";
             }
+
+            String asunto = "Solicitud Formal de Cambio de Rol";
+
+            // Construir el cuerpo del correo de solicitud
+            String cuerpo = "<h1 style='color: black;'>Estimado Administrador,</h1>"
+                    + "<p style='color: black;'>Espero que este mensaje le encuentre bien. Mi nombre es <strong style='color: black;'>"
+                    + user.getNombres()
+                    + "</strong> y actualmente me desempeño en el rol de <strong style='color: black;'>Usuario</strong> en la plataforma <strong style='color: black;'>InvGenius</strong>.</p>"
+                    + "<p style='color: black;'>Me gustaría solicitar formalmente un cambio de rol a <strong style='color: black;'>Administrador</strong>. Considero que mi experiencia y dedicación me permitirán desempeñar con éxito las responsabilidades adicionales asociadas a este rol.</p>"
+                    + "<p style='color: black;'>Le agradecería que considerara mi solicitud. Si necesita información adicional o desea discutir esta solicitud con más detalle, estaré a su disposición.</p>"
+                    + "<p style='color: black;'>Gracias por su atención y espero su pronta respuesta.</p>"
+                    + "<p style='color: black;'>Atentamente,<br>"
+                    + user.getNombres() + " " + user.getApellidos()
+                    + "<br><strong style='color: black;'>Genius Inventory Company</strong><br><strong style='color: black;'>invgenius2024@gmail.com</strong></p>";
+
+            // Enviar el correo a cada administrador
+            for (user admin : administradores) {
+                var retorno = enviarCorreo(admin.getCorreo(), asunto, cuerpo);
+                if (!retorno) {
+                    return "No se pudo enviar el correo a: " + admin.getCorreo();
+                }
+            }
+
+            return "Se enviaron correctamente las solicitudes a los administradores.";
 
         } catch (Exception e) {
             return "Error al enviar: " + e.getMessage();
         }
     }
+    
 
     @GetMapping("/enviar-correo-novedad")
     public String enviarCorreoNovedad() {
