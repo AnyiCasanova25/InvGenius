@@ -110,6 +110,8 @@ public class informeController {
                     FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
                             Font.BOLD, BaseColor.BLACK));
             title.setAlignment(Element.ALIGN_CENTER);
+            
+            // document.add(new Paragraph("Genius Inventory Company"));
             document.add(title);
 
             document.add(new Paragraph(""));
@@ -118,30 +120,28 @@ public class informeController {
             document.add(new Paragraph("   "));
 
             // CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
-            PdfPTable table = new PdfPTable(8); // Numero de columnas
+            PdfPTable table = new PdfPTable(6); // Numero de columnas
             table.setWidthPercentage(100);
 
             // AÑADIR CONTENIDO A LA TABLA
-            table.addCell("Hora");
+            table.addCell("Movimientos");
+            table.addCell("Categoria");
+            table.addCell("Producto");
+            table.addCell("Lote");
             table.addCell("Fecha");
-            table.addCell("movimientos");
-            table.addCell("categoria");
-            table.addCell("producto");
-            table.addCell("marca");
-            table.addCell("proveedor");
-            table.addCell("lote");
+            table.addCell("Proveedor");
+            
 
             // AÑADIR CONTENIDO A LA TABLA
             List<informe> informes = informeService.findAll();
             for (informe informe : informes) {
-                table.addCell(informe.getHoraInforme().toString());
-                table.addCell(dateFormat.format(informe.getFechaInforme()));
+                // table.addCell(informe.getHoraInforme().toString());
                 table.addCell(informe.getMovimientos().getTipoMovimiento());
                 table.addCell(informe.getCategoria().getNombreCategoria());
                 table.addCell(informe.getProducto().getNombreProducto());
-                table.addCell(informe.getMarca().getNombreMarca());
-                table.addCell(informe.getProveedor().getNombreProveedor());
                 table.addCell(informe.getLote().getNumeroLote());
+                table.addCell(dateFormat.format(informe.getMovimientos().getFechaMovimiento()));
+                table.addCell(informe.getProveedor().getNombreProveedor());  
             }
 
             document.add(table);
