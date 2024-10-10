@@ -26,6 +26,7 @@ public class movimientosController {
     @Autowired
     private ImovimientoService movimientosService;
 
+
     @PostMapping("/")
     public ResponseEntity<Object> save(@RequestBody movimientos movimientos) {
 
