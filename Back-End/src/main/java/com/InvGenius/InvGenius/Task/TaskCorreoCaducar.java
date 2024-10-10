@@ -19,7 +19,7 @@ public class TaskCorreoCaducar {
 
     // En este archivo task ira el loteProximoCaducar, loteBajoStock, loteVencido
     // Task para enviar el correo cuando un lote esta proximo a caducar
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0 8 * * *")
     public void sendNotificacionLoteACaducar() {
         var listaLote = data.loteACaducar();
         System.out.println("Lotes próximos a caducar: " + listaLote);
@@ -34,7 +34,7 @@ public class TaskCorreoCaducar {
     }
 
     // Task para enviar el correo cuando el lote este bajo stock
-    @Scheduled(cron = "0 * * * * *") // Se ejecuta cada minuto para pruebas
+    @Scheduled(cron = "0 0 8 * * *") // Se ejecuta cada minuto para pruebas
     public void sendNotificacionLoteBajoStock() {
         var listaLote = data.loteBajoStock();
         System.out.println("Lotes con bajo stock: " + listaLote);
@@ -47,7 +47,7 @@ public class TaskCorreoCaducar {
     }
 
     // Task para enviar el correo cuando el lote este vencido
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 0 8 * * *")
     public void sendNotificacionLoteVencido() {
         var listaLote = data.loteVencido();
         System.out.println("Lotes vencidos: " + listaLote);
