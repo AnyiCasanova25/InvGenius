@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B5BDC1"
+    android:backgroundTint="#B5BDC1"
+    tools:context=".navegacionvista">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:background="#37474F"
+        android:backgroundTint="#37474F"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="291dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="277dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/titillium_web_semibold"
+                android:text="InvGenius"
+                android:textColor="#FFFFFF"
+                android:textSize="35dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/logoinvgenius" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnvistaPrevia"
+        android:layout_width="352dp"
+        android:layout_height="88dp"
+        android:backgroundTint="#37474F"
+        android:fontFamily="@font/titillium_web_semibold"
+        android:onClick="vistaPrevia"
+        android:text="Vista Previa"
+        android:textSize="30dp"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/bullhorn_solid"
+        app:iconGravity="end"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="352dp"
+        android:layout_height="85dp"
+        android:backgroundTint="#37474F"
+        android:fontFamily="@font/titillium_web_semibold"
+        android:onClick="categoria"
+        android:text="Categoría"
+        android:textSize="30dp"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/tags_solid"
+        app:iconGravity="end"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.294" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="352dp"
+        android:layout_height="88dp"
+        android:backgroundTint="#37474F"
+        android:fontFamily="@font/titillium_web_semibold"
+        android:onClick="miperfil"
+        android:text="Mi Perfil"
+        android:textSize="30dp"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/user_solid"
+        app:iconGravity="end"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="352dp"
+        android:layout_height="88dp"
+        android:backgroundTint="#37474F"
+        android:fontFamily="@font/titillium_web_semibold"
+        android:onClick="actualizar"
+        android:text="Cambiar Contraseña"
+        android:textSize="30dp"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/unlock_solid__2_"
+        app:iconGravity="end"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="283dp"
+        android:layout_height="141dp"
+        android:backgroundTint="#37474F"
+        android:fontFamily="@font/titillium_web_semibold"
+        android:onClick="cerrarSesion"
+        android:text="Cerrar Sesión"
+        android:textSize="30dp"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/door_open_solid"
+        app:iconGravity="textTop"
+        app:iconSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.945" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:fontFamily="sans-serif"
+        android:text="_________________________________________________________________"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="19dp"
+        android:fontFamily="sans-serif"
+        android:text="_________________________________________________________________"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
