@@ -1,6 +1,8 @@
 var registrarCategoriaBandera = true;
 var idCategoria = "";
 
+// var url = "http://localhost:8080/api/v1/categoria/";
+
 
 $(document).ready(function () {
     listarCategoria();
@@ -33,7 +35,7 @@ function listarCategoria() {
         url: urlCategoria,
         type: "GET",
         headers: {
-            'Authorization': 'Bearer ' + token
+            "Authorization": "Bearer" + token
         },
         success: function (result) {
             mostrarTarjetas(result);
@@ -88,9 +90,8 @@ function mostrarTarjetas(result) {
 // <p class="estado">Estado: ${result[i]["estado"]}</p>
 function registrarCategoria() {
     var nombreCategoria = document.getElementById("nombreCategoria");
-    var estado = document.getElementById("estado");
     var ubicacion = document.getElementById("ubicacion");
-    var imagen_base = document.getElementById("imagen_base");
+    var imagen_base = document.getElementById("imagen_base").files[0]; // Asegúrate de obtener el archivo de imagen
 
     // Verificar si algún campo obligatorio está vacío
     if (!validarCampos()) {
@@ -102,12 +103,12 @@ function registrarCategoria() {
         return; // Salir si algún campo es inválido
     }
 
-    var forData = {
-        "nombreCategoria": nombreCategoria.value,
-        "estado": estado.value,
-        "ubicacion": ubicacion.value,
-        "imagen_base": imagen_base.value,
-    };
+    // Crear un objeto FormData
+    var formData = new FormData();
+    formData.append("nombreCategoria", nombreCategoria.value);
+    formData.append("estado", "activo"); // Asignar el estado automáticamente a "activo"
+    formData.append("ubicacion", ubicacion.value);
+    formData.append("file", imagen_base); // Agregar el archivo de imagen
 
     var metodo = registrarCategoriaBandera ? "POST" : "PUT";
     var urlLocal = registrarCategoriaBandera ? urlCategoria : urlCategoria + idCategoria;
@@ -116,11 +117,14 @@ function registrarCategoria() {
     $.ajax({
         url: urlLocal,
         type: metodo,
+
         headers: {
             'Authorization': 'Bearer ' + token
         },
-        contentType: "application/json",
-        data: JSON.stringify(forData),
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: formData,
         success: function (response) {
             limpiar();
             Swal.fire({
@@ -128,16 +132,59 @@ function registrarCategoria() {
                 text: "Felicidades, Registro exitoso",
                 icon: "success"
             }).then(function () {
-                $('#exampleModal').modal('hide');
-                listarProveedor(); // Refrescar la tabla
+                $('#agregarCategoria').modal('hide');
+                listarCategoria(); // Refrescar la tabla
             });
         },
         error: function (xhr, status, error) {
+            console.error("Error en la petición:", xhr.responseText); // Agregar logs para depuración
             Swal.fire({
                 title: "Error",
-                text: "¡Error al registrar o actualizar este Proveedor!",
+                text: "¡Error al registrar esta categoría!",
                 icon: "error"
             });
         }
     });
+
+    function validarCampos() {
+        var nombreCategoria = document.getElementById("nombreCategoria").value.trim();
+        var ubicacion = document.getElementById("ubicacion").value.trim();
+        var imagen_base = document.getElementById("imagen_base").files.length;
+
+        return nombreCategoria !== "" && ubicacion !== "" && imagen_base > 0;
+    }
+
+    // Función para limpiar el formulario
+function limpiar() {
+    document.querySelectorAll(".form-control").forEach(function (input) {
+        input.value = "";
+        input.className = "form-control";
+    });
+}
+
+// Función para editar categoria
+$(document).on("click", ".editar", function () {
+    limpiar();
+    idCategoria = $(this).data("id");
+    registrarCategoriaBandera = false; // Cambiar bandera para editar
+
+    $.ajax({
+        url: urlCategoria + idCategoria,
+        type: "GET",
+        success: function (categoria) {
+            document.getElementById("nombreCategoria").value = categoria.nombreCategoria;
+            document.getElementById("ubicacion").value = categoria.ubicacion;
+            document.getElementById("file").value = categoria.imagen_base;
+            $('#agregarCategoria').modal('show');
+        },
+        error: function (error) {
+            alert("Error al obtener los datos de categoria: " + error.statusText);
+        }
+    });
+});
+   
+// Llamar a la función para listar proveedores al cargar la página
+$(document).ready(function () {
+    listarCategoria();
+});
 }

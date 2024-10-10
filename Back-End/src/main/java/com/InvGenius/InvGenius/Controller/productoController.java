@@ -81,7 +81,36 @@ public ResponseEntity<Object> consultarcategoriaJson() {
         }
     }
 
-   
+    // Editar imagen de un producto
+    @PutMapping("/imagen/{id}")
+    public ResponseEntity<Object> updateProductoImage(
+            @PathVariable String id, 
+            @RequestParam("file") MultipartFile file) {
+        try {
+            // Buscar la categoría por su ID
+            var productoOptional = productoService.findOne(id);
+
+            // Verificar si la categoría existe
+            if (productoOptional.isPresent()) {
+                var producto = productoOptional.get();
+
+                // Convertir la imagen a base64
+                String imagenBase64 = Base64.getEncoder().encodeToString(file.getBytes());
+
+                // Actualizar la imagen de la categoría
+                producto.setImagen_base(imagenBase64);
+
+                // Guardar los cambios de la categoría
+                productoService.save(producto);
+
+                return new ResponseEntity<>(producto, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Error: Categoría no encontrada", HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException e) {
+            return new ResponseEntity<>("Error al actualizar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/")
     public ResponseEntity<Object> findAll(){
