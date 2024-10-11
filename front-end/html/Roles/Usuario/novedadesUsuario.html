@@ -23,7 +23,7 @@
 
 </head>
 
-<body onload="cargarListaUsuarios()">
+<body>
     <!-- <div id="menuEstudiante"></div> -->
     <nav class="menun">
         <div class="logo-container">
@@ -48,7 +48,7 @@
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/mujer3.png" width="50px">
-                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Laura Ariza</p>
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
                     <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
@@ -136,10 +136,7 @@
                                             style="border: 1px solid black;" onfocusout="validarpara(this)"
                                             onkeypress="alfaNumericosSignos(event);" required>
                                     </div> -->
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="para">para:</label>
-                                        <select id="para" class="form-select"></select>
-                                    </div>
+                                
                                     <div class="col col-xl-12 col-12">
                                         <label for="asunto"><i class="fas fa-font"></i> Asunto:</label>
                                         <input type="text" id="asunto" class="form-control"

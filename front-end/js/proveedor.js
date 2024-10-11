@@ -3,6 +3,7 @@ var idProveedor = "";
 
 // Función para buscar proveedores por filtro
 function buscarProveedorPorFiltro(filtro) {
+    const token = localStorage.getItem('authTokens');
     if (filtro.trim() !== "") {
         $.ajax({
             url: urlProveedor + "busquedaFiltros/" + filtro,
@@ -190,9 +191,6 @@ $(document).on("click", ".editar", function () {
     $.ajax({
         url: urlProveedor + idProveedor,
         type: "GET",
-        headers: {
-            "Authorization": "Bearer " + token
-        },
         success: function (proveedor) {
             document.getElementById("nombreProveedor").value = proveedor.nombreProveedor;
             document.getElementById("apellidoProveedor").value = proveedor.apellidoProveedor;
@@ -214,9 +212,6 @@ $(document).on("click", ".cambiarEstado", function () {
     $.ajax({
         url: urlProveedor + idProveedor,
         type: "DELETE",
-        headers: {
-            "Authorization": "Bearer " + token
-        },
         success: function () {
             Swal.fire({
                 position: "top-end",

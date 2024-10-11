@@ -166,6 +166,11 @@ body {
     text-align: center;
     transition: transform 0.3s;
 }
+.shop-card {
+    width: 250px; /* Establece un ancho fijo para todas las tarjetas */
+    margin: 10px; /* Para agregar espacio entre tarjetas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Para una animación suave */
+}
 
 .shop-card:hover {
     transform: translateY(-5px);
@@ -192,6 +197,7 @@ body {
     height: 100%;
     object-fit: contain;
 }
+
 
 .title {
     font-family: 'Titillium Web', sans-serif;

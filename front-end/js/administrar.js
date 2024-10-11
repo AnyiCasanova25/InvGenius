@@ -404,29 +404,6 @@ function actualizarlistarNovedad() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Apartado Perfil
 function buscarUserrFiltro(filtro) {
     if (filtro.trim() !== "") {

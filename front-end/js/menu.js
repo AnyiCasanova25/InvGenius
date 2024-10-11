@@ -19,6 +19,20 @@ if (typeof window !== 'undefined') {
     window.initMenu = initMenu;
 }
 
-
-
-
+function cargarPerfil(){
+    const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlProfileUser,
+        type: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        success: function (result) {
+            // console.log(result);
+            document.getElementById("nombreUsuario").innerText=result["nombres"];
+        }
+    });
+}
+$(document).ready(function () {
+    cargarPerfil();
+});

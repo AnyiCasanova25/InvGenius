@@ -1,6 +1,9 @@
 function registrarUser() {
     // event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
+    // Obtener el token del localStorage
+    const token = localStorage.getItem('authTokens'); // Recuperar el token
+
     // Obtener los valores de los campos del formulario
     let nombres = document.getElementById("Nombres").value;
     let apellidos = document.getElementById("Apellidos").value;
@@ -20,7 +23,7 @@ function registrarUser() {
         "tipoDocumento": tipoDocumento,
         "documentoIdentidad": documentoIdentidad,
         "genero": genero,
-        "estado":estado ,
+        "estado": estado,
         "userName": userName,
         "celular": celular,
         "rol": rol,
@@ -32,10 +35,10 @@ function registrarUser() {
         url: urlUsuariosRegister + "register/",
         type: "POST",
         headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbnZnZW5pdXMyMDI0QGdtYWlsLmNvbSIsImlhdCI6MTcyODY3MDMxNSwiZXhwIjoxNzI4NzU2NzE1fQ.SMmY5M06TKy8KJ-wjTFY_EWrCdrRvKlMr-KnVEN5zsc",
+            "Authorization": "Bearer " + token, // Usar el token obtenido
             "Content-Type": "application/json"
         },
-        data: JSON.stringify(formData), // Convertir los datos a JSON
+        data: JSON.stringify(formData),
         success: function (result) {
             Swal.fire({
                 title: "Registro Exitoso",
@@ -59,6 +62,7 @@ function registrarUser() {
         }
     });
 }
+
 
 function limpiarFormulario() {
     document.getElementById("register-form").reset(); // Limpiar todos los campos del formulario

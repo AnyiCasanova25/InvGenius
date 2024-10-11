@@ -1,8 +1,8 @@
 var registrarProductoBandera = true;
 var idProducto = "";
 
-var urlMarca = "http://localhost:8080/api/v1/marca"; // URL para obtener las marcas
-var urlCategoria = "http://localhost:8080/api/v1/categoria"; // URL para obtener las categorías
+var urlMarca 
+var urlCategoria
 
 
 // Función para buscar proveedores por filtro

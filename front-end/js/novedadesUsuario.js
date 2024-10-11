@@ -64,7 +64,6 @@ function blanquearCampos() {
 
 // Función para registrar o actualizar un proveedor
 function registrarNovedad() {
-    var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
     var fechaNovedad = document.getElementById("fechaNovedad");
@@ -82,7 +81,6 @@ function registrarNovedad() {
     }
 
     var forData = {
-        "para": para.value,
         "asunto": asunto.value,
         "cuerpo": cuerpo.value,
         "fechaNovedad": fechaNovedad.value,
@@ -123,39 +121,12 @@ function registrarNovedad() {
     });
 }
 
-// Función para cargar la lista de libros
-function cargarListaUsuarios() {
-    var para = document.getElementById("para");
 
-    if (para) {
-        // Limpiar las opciones actuales
-        para.innerHTML = "";
-
-        $.ajax({
-            url:  urlUsuarios,
-            type: "GET",
-            success: function (result) {
-                for (var i = 0; i < result.length; i++) {
-                    var option = document.createElement("option");
-                    option.value = result[i].IdUser;
-                    option.text = result[i].nombres;
-                    para.appendChild(option);
-                }
-            },
-            error: function (error) {
-                console.error("Error al obtener la lista de usuario: " + error);
-            }
-        });
-    } else {
-        console.error("Elemento con ID 'usuario' no encontrado.");
-    }
-}
 
 
 
 // Función para validar campos
 function validarCampos() {
-    // var para = document.getElementById("para");
     var asunto = document.getElementById("asunto");
     var cuerpo = document.getElementById("cuerpo");
     var fechaNovedad = document.getElementById("fechaNovedad");
@@ -219,7 +190,6 @@ $(document).on("click", ".editar", function () {
         url: urlNovedad + idNovedad,
         type: "GET",
         success: function (novedad) {
-            // document.getElementById("para").value = novedad.para;
             document.getElementById("asunto").value = novedad.asunto;
             document.getElementById("cuerpo").value = novedad.cuerpo;
             document.getElementById("fechaNovedad").value = novedad.fechaNovedad;

@@ -187,7 +187,7 @@ public class userController {
 
     @GetMapping("/")
     public ResponseEntity<Object> findAll() {
-        var listaUser = userService.findAll();
+        var listaUser = userService.userExist("","");
         return new ResponseEntity<>(listaUser, HttpStatus.OK);
     }
 

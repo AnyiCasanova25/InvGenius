@@ -6,8 +6,6 @@ import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-// import jakarta.persistence.EnumType;
-// import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,11 +33,11 @@ public class novedad {
     @Column(name = "idNovedad", nullable = false, length = 36)
     private String idNovedad;
 
-    @Column(name = "de", nullable = false, length = 100)
-    private String de;
+    // @Column(name = "de", nullable = false, length = 100)
+    // private String de;
 
-    @Column(name = "para", nullable = false, length = 100)
-    private String para;
+    // @Column(name = "para", nullable = false, length = 100)
+    // private String para;
 
     @Column(name = "asunto", nullable = false, length = 80)
     private String asunto;

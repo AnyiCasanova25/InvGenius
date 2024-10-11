@@ -25,11 +25,14 @@ function Iniciar() {
       data: JSON.stringify(formData),
       contentType: "application/json",
       success: function (result) {
-         const token = result.token;
-         //let tokens = localStorage.getItem('authTokens');
-      
-         localStorage.setItem('authTokens',token);
-         window.location.href = "/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html";
+         const token = result.token; // Asegúrate de que esto sea correcto
+         localStorage.setItem('authTokens', token); // Almacenar el token
+         if(result.rol == "Admin"){
+            window.location.href = "/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html";
+         }else{
+            window.location.href = "/front-end/html/Roles/Usuario/vistaPrevia.html/productosCaducados.html";
+         }
+         
       },
       error: function (error) {
          Swal.fire({
@@ -39,8 +42,8 @@ function Iniciar() {
             confirmButtonText: "Aceptar"
          });
       }
-
    });
 }
+
 
 
