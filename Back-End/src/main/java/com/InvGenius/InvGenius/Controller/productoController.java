@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -131,7 +131,7 @@ public ResponseEntity<Object> consultarcategoriaJson() {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestParam("producto") producto productoUpdate){
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody producto productoUpdate){
         var producto= productoService.findOne(id).get();
 
         if (producto != null) {
@@ -140,6 +140,8 @@ public ResponseEntity<Object> consultarcategoriaJson() {
             producto.setNombreProducto(productoUpdate.getNombreProducto());
             producto.setEstadoProducto(productoUpdate.getEstadoProducto());
             producto.setStock(productoUpdate.getStock());
+            producto.setDescripcionProducto(productoUpdate.getDescripcionProducto());
+            producto.setUnidadMedida(productoUpdate.getUnidadMedida());
 
             productoService.save(producto);
 

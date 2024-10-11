@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -67,6 +66,10 @@ public ResponseEntity<Object> save( categoria categoria,  @RequestParam("file") 
     if (categoria.getUbicacion().equals("")) {
         return new ResponseEntity<>("La ubicación es obligatoria", HttpStatus.BAD_REQUEST);
     }
+
+    // if (categoria.getEstado().equals("")) {
+    //     return new ResponseEntity<>("El estado es obligatoria", HttpStatus.BAD_REQUEST);
+    // }
     categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
 
           
@@ -167,12 +170,15 @@ public ResponseEntity<Object> guardarImagenJson(
 
     // Actualizar una categoría
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody categoria categoriaUpdate) {
+    public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate, @RequestParam("file") MultipartFile file) throws IOException {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
             categoria.setUbicacion(categoriaUpdate.getUbicacion());
+            categoria.setEstado(categoriaUpdate.getEstado());
+
+            categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
 
             categoriaService.save(categoria);
             return new ResponseEntity<>(categoria, HttpStatus.OK);

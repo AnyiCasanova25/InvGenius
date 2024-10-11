@@ -1,4 +1,27 @@
-var url = "http://localhost:8080/v1/movimientos/";
+var registrarProductoBandera = true;
+var idProducto = "";
+
+var urlMarca = "http://localhost:8080/api/v1/marca"; // URL para obtener las marcas
+var urlCategoria = "http://localhost:8080/api/v1/categoria"; // URL para obtener las categorías
+
+
+// Función para buscar proveedores por filtro
+function buscarProductoPorFiltro(filtro) {
+    if (filtro.trim() !== "") {
+        $.ajax({
+            url: urlProveedor + "busquedaFiltros/" + filtro,
+            type: "GET",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            success: function (result) {
+                mostrarTabla(result);
+            },
+        });
+    } else {
+        listarProductos();
+    }
+}
 
 
 function registrarProducto() {
