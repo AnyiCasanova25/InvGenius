@@ -3,7 +3,9 @@ package com.InvGenius.InvGenius.Controller;
 import org.springframework.http.MediaType;
 
 import com.InvGenius.InvGenius.interfaceService.IloteService;
+import com.InvGenius.InvGenius.interfaceService.ImovimientoService;
 import com.InvGenius.InvGenius.models.lote;
+import com.InvGenius.InvGenius.models.movimientos;
 import com.itextpdf.text.BaseColor;
 
 import com.itextpdf.text.Document;
@@ -46,9 +48,11 @@ public class informeController {
     @Autowired
     private IloteService loteService;
 
-   
-        @GetMapping("/pdf")
-    public ResponseEntity<byte[]> downloadPdf() throws MalformedURLException, IOException {
+    @Autowired
+    private ImovimientoService movimientoService;
+
+    @GetMapping("/pdf/caducidad")
+    public ResponseEntity<byte[]> downloadCaducidadPdf() throws MalformedURLException, IOException {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -58,46 +62,69 @@ public class informeController {
             document.open();
 
             // PARA AÑADIR TITULO AL PDF
-            Paragraph title = new Paragraph("Informe de movimientos realizados",
+            Paragraph title = new Paragraph("Informe Novedades",
                     FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
                             Font.BOLD, BaseColor.BLACK));
             title.setAlignment(Element.ALIGN_CENTER);
-            
+
             // document.add(new Paragraph("Genius Inventory Company"));
             document.add(title);
             document.addCreationDate();
 
+            //PRODUCTOS PROXIMOS A CADUCAR
+
             document.add(new Paragraph(""));
             document.add(new Paragraph(""));
-            document.add(new Paragraph("bajo en stock"));
+            document.add(new Paragraph("Productos proximos a caducar"));
             document.add(new Paragraph("   "));
 
-            // CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
-            PdfPTable table = new PdfPTable(3); // Numero de columnas
-            table.setWidthPercentage(100);
+            PdfPTable tableProximo = new PdfPTable(5); // Numero de columnas
+            tableProximo.setWidthPercentage(100);
 
-            // AÑADIR CONTENIDO A LA TABLA
-            // table.addCell("Movimientos");
-            // table.addCell("Categoria");
-            table.addCell("Lote");
-            table.addCell("Cantidad");
-            table.addCell("Producto");
-            // table.addCell("Proveedor");
-            
+            tableProximo.addCell("Lote");
+            tableProximo.addCell("Producto");
+            tableProximo.addCell("Fecha ingreso");
+            tableProximo.addCell("Fecha Vencimiento");
+            tableProximo.addCell("Cantidad");
 
-            // AÑADIR CONTENIDO A LA TABLA
-            List<lote> lotes = loteService.findAll();
-            for (lote lote : lotes) {
-                // table.addCell(informe.getHoraInforme().toString());
-                table.addCell(lote.getNumeroLote());
-                table.addCell(lote.getCantidad());
-                table.addCell(lote.getProducto().getNombreProducto());
-                // table.addCell(lote.getLote().getNumeroLote());
-                // table.addCell(dateFormat.format(lote.getMovimientos().getFechaMovimiento()));
-                // table.addCell(lote.getProveedor().getNombreProveedor());  
+            List<lote> proximo = loteService.findAll();
+            for (lote lote : proximo) {
+
+                tableProximo.addCell(lote.getNumeroLote());
+                tableProximo.addCell(lote.getProducto().getNombreProducto());
+                tableProximo.addCell(dateFormat.format(lote.getFechaIngreso()));
+                tableProximo.addCell(dateFormat.format(lote.getFechaVencimiento()));
+                tableProximo.addCell(lote.getCantidad());
+            }
+            document.add(tableProximo);
+
+
+            document.add(new Paragraph(""));
+            document.add(new Paragraph(""));
+            document.add(new Paragraph("Productos caducados"));
+            document.add(new Paragraph("   "));
+
+            PdfPTable tableCaducados = new PdfPTable(5); // Numero de columnas
+            tableCaducados.setWidthPercentage(100);
+
+            tableCaducados.addCell("Lote");
+            tableCaducados.addCell("Producto");
+            tableCaducados.addCell("Fecha ingreso");
+            tableCaducados.addCell("Fecha Vencimiento");
+            tableCaducados.addCell("Cantidad");
+
+            List<lote> caducados = loteService.findAll();
+            for (lote lote : caducados) {
+
+                tableCaducados.addCell(lote.getNumeroLote());
+                tableCaducados.addCell(lote.getProducto().getNombreProducto());
+                tableCaducados.addCell(dateFormat.format(lote.getFechaIngreso()));
+                tableCaducados.addCell(dateFormat.format(lote.getFechaVencimiento()));
+                tableCaducados.addCell(lote.getCantidad());
             }
 
-            document.add(table);
+            document.add(tableProximo);
+
             document.close();
 
         } catch (DocumentException e) {
@@ -110,5 +137,147 @@ public class informeController {
         headers.setContentDispositionFormData("attachment", "informe.pdf");
 
         return ResponseEntity.ok().headers(headers).body(out.toByteArray());
-    }  
+    }
+
+    @GetMapping("/pdf/bajo")
+    public ResponseEntity<byte[]> downloadBajoPdf() throws MalformedURLException, IOException {
+        Document document = new Document();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+        try {
+            PdfWriter.getInstance(document, out);
+            document.open();
+
+            // PARA AÑADIR TITULO AL PDF
+            Paragraph title = new Paragraph("Informe Novedades",
+                    FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
+                            Font.BOLD, BaseColor.BLACK));
+            title.setAlignment(Element.ALIGN_CENTER);
+
+            // document.add(new Paragraph("Genius Inventory Company"));
+            document.add(title);
+            document.addCreationDate();
+
+            //  PRODUCTOS BAJOS EN STOCK
+
+           
+            document.add(new Paragraph(""));
+            document.add(new Paragraph(""));
+            document.add(new Paragraph("bajo en stock"));
+            document.add(new Paragraph("   "));
+
+            // CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
+            PdfPTable tableBajoStock = new PdfPTable(3); // Numero de columnas
+            tableBajoStock.setWidthPercentage(100);
+
+
+            // AÑADIR CONTENIDO A LA TABLA
+            // tableBajoStock.addCell("Movimientos");
+            // tableBajoStock.addCell("Categoria");
+            tableBajoStock.addCell("Lote");
+            tableBajoStock.addCell("Cantidad");
+            tableBajoStock.addCell("Producto");
+            // tableBajoStock.addCell("Proveedor");
+
+            // AÑADIR CONTENIDO A LA TABLA
+            List<lote> bajoStock = loteService.findAll();
+            for (lote lote : bajoStock) {
+                // tableBajoStock.addCell(informe.getHoraInforme().toString());
+                tableBajoStock.addCell(lote.getNumeroLote());
+                tableBajoStock.addCell(lote.getCantidad());
+                tableBajoStock.addCell(lote.getProducto().getNombreProducto());
+                // tableBajoStock.addCell(lote.getLote().getNumeroLote());
+                // tableBajoStock.addCell(dateFormat.format(lote.getMovimientos().getFechaMovimiento()));
+                // tableBajoStock.addCell(lote.getProveedor().getNombreProveedor());
+            }
+
+            document.add(tableBajoStock);
+
+            
+            document.close();
+
+        } catch (DocumentException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("attachment", "informe.pdf");
+
+        return ResponseEntity.ok().headers(headers).body(out.toByteArray());
+    }
+
+    // @GetMapping("/pdf/movimientos")
+    // public ResponseEntity<byte[]> downloadPdf() throws MalformedURLException, IOException {
+    //     Document document = new Document();
+    //     ByteArrayOutputStream out = new ByteArrayOutputStream();
+    //     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+    //     try {
+    //         PdfWriter.getInstance(document, out);
+    //         document.open();
+
+    //         // PARA AÑADIR TITULO AL PDF
+    //         Paragraph title = new Paragraph("Informe Novedades",
+    //                 FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18,
+    //                         Font.BOLD, BaseColor.BLACK));
+    //         title.setAlignment(Element.ALIGN_CENTER);
+
+    //         // document.add(new Paragraph("Genius Inventory Company"));
+    //         document.add(title);
+    //         document.addCreationDate();
+
+    //         //  PRODUCTOS BAJOS EN STOCK
+
+           
+    //         document.add(new Paragraph(""));
+    //         document.add(new Paragraph(""));
+    //         document.add(new Paragraph("Movimientos"));
+    //         document.add(new Paragraph("   "));
+
+    //         // CREAR UNA TABLA CON LAS COLUMNAS ESPECIFICADAS
+    //         PdfPTable table = new PdfPTable(5); // Numero de columnas
+    //         table.setWidthPercentage(100);
+
+
+    //         // AÑADIR CONTENIDO A LA TABLA
+    //         table.addCell("Movimientos");
+    //         table.addCell("Categoria");
+    //         table.addCell("Producto");
+    //         table.addCell("Cantidad");
+    //         table.addCell("Fecha");
+    //         table.addCell("Proveedor");
+    //         // table.addCell("Lote");
+
+    //         // AÑADIR CONTENIDO A LA TABLA
+    //         List<lote> pdfMovimientos = loteService.findAll();
+    //         for (lote lote : pdfMovimientos) {
+    //             // tableBajoStock.addCell(informe.getHoraInforme().toString());
+    //             // table.addCell(lote.getNumeroLote());
+    //             table.addCell(lote.);
+    //             table.addCell(lote.getCantidad());
+    //             table.addCell(lote.getProducto().getNombreProducto());
+    //             // table.addCell(lote.getLote().getNumeroLote());
+    //             // table.addCell(dateFormat.format(lote.getMovimientos().getFechaMovimiento()));
+    //             // table.addCell(lote.getProveedor().getNombreProveedor());
+    //         }
+
+    //         document.add(table);
+
+            
+    //         document.close();
+
+    //     } catch (DocumentException e) {
+    //         e.printStackTrace();
+    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    //     }
+
+    //     HttpHeaders headers = new HttpHeaders();
+    //     headers.setContentType(MediaType.APPLICATION_PDF);
+    //     headers.setContentDispositionFormData("attachment", "informe.pdf");
+
+    //     return ResponseEntity.ok().headers(headers).body(out.toByteArray());
+    // }
 }
