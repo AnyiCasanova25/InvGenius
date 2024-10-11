@@ -56,4 +56,19 @@ public class movimientos {
      @Column(name = "fechaMovimiento", nullable = false, length = 36)
      private Date fechaMovimiento;
 
+     @Column(name = "fechaSalida", nullable = false, length = 36)
+     private Date fechaSalida;
+
+     @ManyToOne
+     @JoinColumn(name = "idLote")
+     private lote lote;
+
+     @ManyToOne
+     @JoinColumn(name = "idProveedor")
+     private proveedor proveedor;
+
+     @ManyToOne
+     @JoinColumn(name = "idCategoria")
+     private categoria categoria;
+
 }

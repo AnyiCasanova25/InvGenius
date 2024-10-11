@@ -46,6 +46,12 @@ public class movimientosService implements ImovimientoService{
     }
 
     @Override
+    public List<movimientos> llamarInforme(){
+        List<movimientos> listaMovimientos = data.llamarInforme();
+        return listaMovimientos;
+    }
+
+    @Override
     public int delete(String id) {
         data.deleteById(id);
         return 1;

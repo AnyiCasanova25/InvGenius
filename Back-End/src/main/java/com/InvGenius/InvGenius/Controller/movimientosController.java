@@ -66,6 +66,10 @@ public class movimientosController {
 
             return new ResponseEntity<>("La descripcion de movimiento es obligatorio ", HttpStatus.BAD_REQUEST);
         }
+
+        if (movimientos.getFechaSalida().equals("")) {
+            return new ResponseEntity<>("La fecha de salidad es obligatoria", HttpStatus.BAD_REQUEST);
+        }
         // todo bien
         movimientosService.save(movimientos);
         return new ResponseEntity<>(movimientos, HttpStatus.OK);
@@ -82,6 +86,12 @@ public class movimientosController {
     public ResponseEntity<Object> findOne(@PathVariable String id) {
         var movimientos = movimientosService.findOne(id);
         return new ResponseEntity<>(movimientos, HttpStatus.OK);
+    }
+
+    @GetMapping("/busquedaFiltroInforme/")
+    public ResponseEntity<Object> findLlamarInforme(){
+        var listaMovimientos = movimientosService.llamarInforme();
+        return new ResponseEntity<>(listaMovimientos, HttpStatus.OK);
     }
 
     // @DeleteMapping("/{id}")
