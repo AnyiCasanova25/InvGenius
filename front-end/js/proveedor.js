@@ -7,6 +7,9 @@ function buscarProveedorPorFiltro(filtro) {
         $.ajax({
             url: urlProveedor + "busquedaFiltros/" + filtro,
             type: "GET",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
             success: function (result) {
                 mostrarTabla(result);
             },
@@ -187,6 +190,9 @@ $(document).on("click", ".editar", function () {
     $.ajax({
         url: urlProveedor + idProveedor,
         type: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         success: function (proveedor) {
             document.getElementById("nombreProveedor").value = proveedor.nombreProveedor;
             document.getElementById("apellidoProveedor").value = proveedor.apellidoProveedor;
@@ -208,6 +214,9 @@ $(document).on("click", ".cambiarEstado", function () {
     $.ajax({
         url: urlProveedor + idProveedor,
         type: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
         success: function () {
             Swal.fire({
                 position: "top-end",

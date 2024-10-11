@@ -31,8 +31,11 @@ function registrarUser() {
     $.ajax({
         url: urlUsuariosRegister + "register/",
         type: "POST",
+        headers: {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbnZnZW5pdXMyMDI0QGdtYWlsLmNvbSIsImlhdCI6MTcyODY3MDMxNSwiZXhwIjoxNzI4NzU2NzE1fQ.SMmY5M06TKy8KJ-wjTFY_EWrCdrRvKlMr-KnVEN5zsc",
+            "Content-Type": "application/json"
+        },
         data: JSON.stringify(formData), // Convertir los datos a JSON
-        contentType: "application/json", // Establecer el tipo de contenido
         success: function (result) {
             Swal.fire({
                 title: "Registro Exitoso",
@@ -42,13 +45,11 @@ function registrarUser() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     limpiarFormulario();
-                    refrescarPagina();
-                    // Redirigir a otra página
-                    window.location.href = "/front-end/html/Roles/Administrador/administrarPerfiles.html"; // Reemplaza 'url_de_destino' por la URL a la que quieras redirigir
+                    // Redirigir a otra página después del registro exitoso
+                    window.location.href = "/front-end/html/Roles/Administrador/administrarPerfiles.html";
                 }
             });
         },
-        
         error: function (error) {
             Swal.fire({
                 title: "Error",
@@ -62,8 +63,3 @@ function registrarUser() {
 function limpiarFormulario() {
     document.getElementById("register-form").reset(); // Limpiar todos los campos del formulario
 }
-
-function refrescarPagina() {
-    location.reload(); // Recargar la página
-}
-
