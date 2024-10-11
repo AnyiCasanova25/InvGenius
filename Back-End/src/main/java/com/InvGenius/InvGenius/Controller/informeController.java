@@ -3,9 +3,7 @@ package com.InvGenius.InvGenius.Controller;
 import org.springframework.http.MediaType;
 
 import com.InvGenius.InvGenius.interfaceService.IloteService;
-import com.InvGenius.InvGenius.interfaceService.ImovimientoService;
 import com.InvGenius.InvGenius.models.lote;
-import com.InvGenius.InvGenius.models.movimientos;
 import com.itextpdf.text.BaseColor;
 
 import com.itextpdf.text.Document;
@@ -47,9 +45,6 @@ public class informeController {
 
     @Autowired
     private IloteService loteService;
-
-    @Autowired
-    private ImovimientoService movimientoService;
 
     @GetMapping("/pdf/caducidad")
     public ResponseEntity<byte[]> downloadCaducidadPdf() throws MalformedURLException, IOException {
@@ -143,7 +138,7 @@ public class informeController {
     public ResponseEntity<byte[]> downloadBajoPdf() throws MalformedURLException, IOException {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        // SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         try {
             PdfWriter.getInstance(document, out);
