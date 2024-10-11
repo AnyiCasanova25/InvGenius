@@ -16,6 +16,8 @@ public interface ImovimientoService {
 
     public List<movimientos> movimientosExist(Date FechaMovimiento);
 
+    public List<movimientos> llamarInforme();
+
     public Optional<movimientos> findOne(String id);
 
     public int delete(String id);

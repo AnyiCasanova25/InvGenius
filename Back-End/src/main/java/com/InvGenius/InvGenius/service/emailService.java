@@ -1,15 +1,18 @@
 package com.InvGenius.InvGenius.service;
 
 import java.util.List;
+//import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
 
 import com.InvGenius.InvGenius.models.lote;
 import com.InvGenius.InvGenius.models.movimientos;
+//import com.InvGenius.InvGenius.models.novedad;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
 
@@ -27,6 +30,9 @@ public class emailService {
 
     @Autowired
     private authService authService;
+
+    // @Autowired
+    // private novedadService novedadService;
 
 
     emailService(JavaMailSender javaMailSender) {
@@ -396,36 +402,63 @@ public class emailService {
     }
     
 
-    @GetMapping("/enviar-correo-novedad")
-    public String enviarCorreoNovedad() {
-        try {
-            String destinatario = "invgenius2024@gmail.com";
-            String asunto = "Novedades en el Inventario - Productos con Bajo Stock";
-            String cuerpo = ""
-                    + "<h1>Estimado Usuario</h1>"
-                    + "<p>Le informamos que los siguientes productos están con bajo stock:</p>"
-                    + "<ul>"
-                    + "<li><strong>Categoría:</strong> Lácteos - <strong>Marca:</strong> Leche Vida</li>"
-                    + "<li><strong>Categoría:</strong> Cereales - <strong>Marca:</strong> Granola Plus</li>"
-                    + "<li><strong>Categoría:</strong> Bebidas - <strong>Marca:</strong> Jugo Natural</li>"
-                    + "</ul>"
-                    + "<p>Le recomendamos que se comunique con su proveedor para detalles de la novedad.</p>"
-                    + "<img src='https://example.com/images/stock-bajo.png' width='100px' height='100px'>"
-                    + "<p>Gracias por su atención.</p>"
-                    + "<p>Atentamente,<br>[Julian David Fierro Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>";
+    // @GetMapping("/enviar-correo-novedad/{idNovedad}")
+    // public String enviarCorreoNovedad(@PathVariable String idNovedad) {
+    //     try {
+    //         // Obtener la novedad por idNovedad
+    //         Optional<novedad> novedadOpt = novedadService.findOne(idNovedad);
 
-            var retorno = enviarCorreo(destinatario, asunto, cuerpo);
-            if (retorno) {
-                return "Correo enviado correctamente";
-            } else {
-                return "No se pudo enviar el correo";
-            }
+    //         if (novedadOpt.isPresent()) {
+    //             novedad novedad = novedadOpt.get();
 
-        } catch (Exception e) {
-            return "Error al enviar: " + e.getMessage();
-        }
-    }
+    //             // Obtener correos de administradores
+    //             List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
+    //             if (administradores.isEmpty()) {
+    //                 return "No hay administradores para enviar el correo.";
+    //             }
 
+    //             // Asunto del correo
+    //             String asunto = "Nueva Novedad: " + novedad.getAsunto();
+
+    //             // Construir el cuerpo del correo con formato similar al ejemplo
+    //             StringBuilder cuerpo = new StringBuilder()
+    //                     .append("<h1 style='color: black;'>Estimado Administrador</h1>")
+    //                     .append("<p style='color: black;'><strong>De:</strong> ").append(novedad.getDe()).append("</p>")
+    //                     .append("<p style='color: black;'><strong>Asunto:</strong> ").append(novedad.getAsunto())
+    //                     .append("</p>")
+    //                     .append("<p style='color: black;'><strong>Mensaje:</strong> ").append(novedad.getCuerpo())
+    //                     .append("</p>")
+    //                     .append("<p style='color: black;'>Por favor, revise la evidencia adjunta si es necesario.</p>");
+
+    //             // Incluir imagen si existe
+    //             if (novedad.getImagenNovedad() != null && !novedad.getImagenNovedad().isEmpty()) {
+    //                 cuerpo.append("<p><img src='").append(novedad.getImagenNovedad())
+    //                         .append("' width='100px' height='100px'></p>");
+    //             }
+
+    //             cuerpo.append("<p style='color: black;'><strong>Fecha de novedad:</strong> ")
+    //                     .append(novedad.getFechaNovedad()).append("</p>")
+    //                     .append("<p style='color: black;'>Gracias por su atención.</p>")
+    //                     .append("<p style='color: black;'>Atentamente,<br>[InvGenius Team]</p>");
+
+    //             // Enviar el correo a cada administrador
+    //             for (user admin : administradores) {
+    //                 var retorno = enviarCorreo(admin.getCorreo(), asunto, cuerpo.toString());
+    //                 if (!retorno) {
+    //                     return "No se pudo enviar el correo a: " + admin.getCorreo();
+    //                 }
+    //             }
+
+    //             return "Correo de novedad enviado correctamente";
+    //         } else {
+    //             return "No se encontró la novedad";
+    //         }
+
+    //     } catch (Exception e) {
+    //         return "Error al enviar el correo de novedad: " + e.getMessage();
+    //     }
+    // }
+    
     public boolean enviarCorreo(String destinatario, String asunto, String cuerpo) throws MessagingException {
         try {
             MimeMessage message = javaMailSender.createMimeMessage();
