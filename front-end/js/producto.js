@@ -23,56 +23,155 @@ function buscarProductoPorFiltro(filtro) {
     }
 }
 
-
-function registrarProducto() {
-    let categoria = document.getElementById("categoria").value;
-    let nombreProducto = document.getElementById("nombreProducto").value;
-    let proveedor = document.getElementById("proveedor").value;
-    let cantidadProducto = document.getElementById("cantidadProducto").value;
-    let precioEntrada = document.getElementById("precioEntrada").value;
-    let precioUnitario = document.getElementById("precioUnitario").value;
-    let fechaIngreso = document.getElementById("fechaIngreso").value;
-    let fechaCaducidad = document.getElementById("fechaCaducidad").value;
-
-
-    // Crear el objeto producto
-    let formData = {
-        categoria: categoria,
-        nombreProducto: nombreProducto,
-        proveedor: proveedor,
-        precioEntrada: precioEntrada,
-        cantidadProducto: cantidadProducto,
-        precioUnitario:precioUnitario,
-        fechaIngreso:fechaIngreso,
-        fechaCaducidad:fechaCaducidad
-    };
-
-    // Enviar el producto al servidor
+function listarProductos() {
+    const token = localStorage.getItem('authTokens');
     $.ajax({
-        url: url,
-        type: "POST",
-        data: formData,
-        success: function (result) {
-            Swal.fire({
-                title: "Registro Exitoso",
-                text: "El producto se registró exitosamente.",
-                icon: "success",
-                confirmButtonText: "Aceptar"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    limpiarFormulario();
-                    listarProductos(); // Actualizar la lista de productos
-                }
-            });
+        url: urlProducto,
+        type: "GET",
+        headers: {
+            "Authorization": "Bearer" + token
         },
-        error: function (error) {
-            Swal.fire({
-                title: "Error",
-                text: "Error al registrar el producto.",
-                icon: "error"
-            });
+        success: function (result) {
+            mostrarTarjetas(result);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error en la petición:", xhr.responseText);
+            alert("Error en la petición: " + error);
         }
     });
 }
+
+
+
+function registrarProducto() {
+    var nombreProducto = document.getElementById("nombreProducto");
+    var marca = document.getElementById("marca");
+    var unidadMedida = document.getElementById("unidadMedida");
+    var categoria = document.getElementById("categoria");
+    var imagen_base = document.getElementById("imagen_base").files[0]; // Asegúrate de obtener el archivo de imagen
+    var descripcionProducto = document.getElementById("descripcionProducto");
+
+    // Verificar si algún campo obligatorio está vacío
+    if (!validarCampos()) {
+        Swal.fire({
+            title: "¡Error!",
+            text: "¡Llene todos los campos correctamente!",
+            icon: "error"
+        });
+        return; // Salir si algún campo es inválido
+    }
+
+    // Crear un objeto FormData
+    var formData = new FormData();
+    formData.append("nombreProducto", nombreProducto.value);
+    formData.append("marca", marca.value);
+    formData.append("unidadMedida", unidadMedida.value);
+    formData.append("categoria", categoria.value);
+    formData.append("file", imagen_base); // Agregar el archivo de imagen
+    formData.append("descripcionProducto", descripcionProducto.value);
+
+
+    var metodo = registrarProductoBandera ? "POST" : "PUT";
+    var urlLocal = registrarProductoBandera ? urlProducto : urlProducto + idProducto;
+
+    const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlLocal,
+        type: metodo,
+
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        processData: false,
+        contentType: false,
+        mimeType: "multipart/form-data",
+        data: formData,
+        success: function (response) {
+            limpiar();
+            Swal.fire({
+                title: "LISTO",
+                text: "Felicidades, Registro exitoso",
+                icon: "success"
+            }).then(function () {
+                $('#exampleModalLabel').modal('hide');
+                listarProductos(); // Refrescar la tabla
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error en la petición:", xhr.responseText); // Agregar logs para depuración
+            Swal.fire({
+                title: "Error",
+                text: "¡Error al registrar el producto!",
+                icon: "error"
+            });
+        }
+    });  
+}
+
+function validarCampos() {
+    var nombreProducto = document.getElementById("nombreProducto").value.trim();
+    var marca = document.getElementById("marca").value;
+    var unidadMedida = document.getElementById("unidadMedida").value;
+    var categoria = document.getElementById("categoria").value;
+    var imagen_base = document.getElementById("imagen_base").files.length;
+    var descripcionProducto = document.getElementById("descripcionProducto").value.trim();
+
+    return nombreProducto && marca && unidadMedida && categoria && imagen_base > 0 && descripcionProducto.length >= 50;
+}
+
+function cargarMarca() {
+    var marca = document.getElementById("marca");
+
+    if (marca) {
+        // Limpiar las opciones actuales
+        marca.innerHTML = "";
+
+        $.ajax({
+            url: urlMarca,
+            type: "GET",
+            success: function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = result[i].idMarca;
+                    option.text = result[i].nombreMarca;
+                    marca.appendChild(option);
+                }
+            },
+            error: function (error) {
+                console.error("Error al obtener la lista de marcas: " + error);
+            }
+        });
+    } else {
+        console.error("Elemento con ID 'marca' no encontrado.");
+    }
+}
+
+function cargarCategoria() {
+    var categoria = document.getElementById("categoria");
+
+    if (categoria) {
+        // Limpiar las opciones actuales
+        categoria.innerHTML = "";
+
+        $.ajax({
+            url: urlCategoria,
+            type: "GET",
+            success: function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = result[i].idCategoria;
+                    option.text = result[i].nombreCategoria;
+                    categoria.appendChild(option);
+                }
+            },
+            error: function (error) {
+                console.error("Error al obtener la lista de marcas: " + error);
+            }
+        });
+    } else {
+        console.error("Elemento con ID 'marca' no encontrado.");
+    }
+}
+
 
 

@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body onload="cargarMarca(); cargarCategoria();">
     <!-- <div id="menuEstudiante"></div> -->
     <nav class="menun">
         <div class="logo-container">
@@ -94,11 +94,11 @@
                                     <div class="input-group mb-3">
                                         <input type="text" id="texto" class="form-control" placeholder="Buscar..."
                                             aria-label="Buscar"
-                                            onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                                            onkeyup="buscarProductoPorFiltro(document.getElementById('texto').value)"
                                             aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-custom"
-                                                onclick="listarProveedor(); blanquearCampos()">
+                                                onclick="listarProductos(); blanquearCampos()">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <i class="fa-solid fa-eraser"></i>
                                                 </div>
@@ -199,20 +199,20 @@
                                 <form class="row table-hover needs-validation">
 
                                     <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Nombre:</label>
-                                        <input type="text" id="nombreProveedor" class="form-control"
+                                        <label for="nombreProducto"><i class="fas fa-user"></i> Nombre:</label>
+                                        <input type="text" id="nombreProducto" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarnombreProducto(this)"
                                             onkeypress="soloLetras(event);" required>
                                     </div>
                                     <div class="col col-xl-6 col-12">
-                                        <label for="Marca"><i class="fa-solid fa-tag"></i> Marca:</label>
-                                        <select id="Marca" class="form-select" style="border: 1px solid black;"required>
+                                        <label for="marca"><i class="fa-solid fa-tag"></i> Marca:</label>
+                                        <select id="marca" class="form-select" style="border: 1px solid black;"required>
                                         </select>
                                     </div>
                                     <div class="col col-xl-6 col-12">
-                                        <label for="Medida"><i class="fas fa-sort-numeric-up"></i> Unidad de
+                                        <label for="unidadMedida"><i class="fas fa-sort-numeric-up"></i> Unidad de
                                             Medida:</label>
-                                        <select id="Medida" class="form-control" style="border: 1px solid black;"
+                                        <select id="unidadMedida" class="form-control" style="border: 1px solid black;"
                                             required>
                                             <option value="">Seleccione una medida</option>
                                             <option value="gramos">Gramos (g)</option>
@@ -223,19 +223,19 @@
                                         </select>
                                     </div> 
                                     <div class="col col-xl-6 col-12">
-                                        <label for="Marca"><i class="fa-solid fa-tags"></i> Categoría:</label>
-                                        <select id="Marca" class="form-select" style="border: 1px solid black;"required>
+                                        <label for="categoria"><i class="fa-solid fa-tags"></i> Categoría:</label>
+                                        <select id="categoria" class="form-select" style="border: 1px solid black;"required>
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                        <label for="imagen"><i class="fa-solid fa-image"></i> Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control" accept="image/*"
+                                        <label for="imagen_base"><i class="fa-solid fa-image"></i> Cargar imagen:</label>
+                                        <input type="file" id="imagen_base" class="form-control" accept="image/*"
                                             style="border: 1px solid black;" required>
                                     </div>
                                     <div class="col col-xl-12 col-12">
-                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
+                                        <label for="descripcionProducto"><i class="fas fa-pencil-alt"></i> Descripción del
                                             producto:</label>
-                                        <textarea id="descripcion" class="form-control" rows="5"
+                                        <textarea id="descripcionProducto" class="form-control" rows="5"
                                             style="border: 1px solid black;" onkeypress="alfaNumericosSignos(event);"
                                             required minlength="50"></textarea>
                                         <small id="descripcionHelp" class="form-text text-muted">La descripción debe
@@ -452,6 +452,7 @@
     </script> -->
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
     <script src="/front-end/js/producto.js"></script>
+    <script src="/front-end/js/jsUrl/Urls.js"></script>
 </body>
 
 </html>
