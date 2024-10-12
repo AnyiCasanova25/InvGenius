@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.InvGenius.InvGenius.interfaceService.IuserService;
 import com.InvGenius.InvGenius.interfaces.Iuser;
@@ -97,20 +99,26 @@ public class authService implements IuserService {
         // Encontrar el usuario autenticado por su nombre de usuario
         UserDetails user = findByUsername(request.getUserName()).orElseThrow();
 
+        // Verificar si el estado es 'Activo'
+        String estado = ((user) user).getEstado();
+        if (!"Activo".equals(estado)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Usuario inactivo, contacta al administrador");
+        }
+
         // Obtener el token JWT
         String token = jwtService.getToken(user);
 
-        // Obtener el rol del usuario (esto depende de cómo hayas implementado los roles
-        // en tu sistema)
+        // Obtener el rol del usuario
         String rol = user.getAuthorities().stream()
                 .findFirst()
                 .map(GrantedAuthority::getAuthority)
-                .orElse("User"); // Si no tiene rol, por defecto le asigna "USER"
+                .orElse("User");
 
-        // Devolver la respuesta con el token y el rol
+        // Devolver la respuesta con el token, estado y rol
         return authResponse.builder()
                 .token(token)
-                .rol(rol) // Incluir el rol en la respuesta
+                .estado(estado)
+                .rol(rol)
                 .build();
     }
 
