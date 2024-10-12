@@ -36,7 +36,7 @@ class navegacionvista : AppCompatActivity() {
     }
 
     fun actualizar(view: View) {
-        val intent = Intent(application, actualizar_contrasena::class.java)
+        val intent = Intent(application, cambiar_contrasena::class.java)
         startActivity(intent)
     }
 

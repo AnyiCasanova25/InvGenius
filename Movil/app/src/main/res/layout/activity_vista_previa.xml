@@ -68,7 +68,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
         android:background="#37474F"
         android:backgroundTint="#37474F"
@@ -82,7 +82,7 @@
 
         <Button
             android:id="@+id/recuperar"
-            android:layout_width="wrap_content"
+            android:layout_width="36dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#37474F"
@@ -96,7 +96,7 @@
             android:layout_weight="1" />
 
         <LinearLayout
-            android:layout_width="291dp"
+            android:layout_width="237dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -104,20 +104,13 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="277dp"
-                android:layout_height="48dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/titillium_web_semibold"
                 android:text="Vista Previa"
                 android:textColor="#FFFFFF"
                 android:textSize="35dp" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="87dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/logoinvgenius" />
 
     </LinearLayout>
 
