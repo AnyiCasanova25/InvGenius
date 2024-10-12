@@ -259,9 +259,10 @@ function eliminarCategoria(id) {
             console.error("Error en la petición:", xhr.responseText);
             Swal.fire({
                 title: "Error",
-                text: "¡Error al eliminar la categoría!",
-                icon: "error"
-            });
+                html: "¡Error al eliminar la categoría!<br>Tiene productos activos, deberás reubicarlos en otras categorías para poder eliminarlos o acabar con el stock.",
+                icon: "error",
+                confirmButtonText: "Aceptar"
+            });            
         }
     });
 }
