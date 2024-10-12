@@ -211,62 +211,65 @@
             </div>
         </div>
         <!-- Modal Admin Perfiles-->
-        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog fondomodaldialog ">
-                <div class="modal-content col modal-custom">
+        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog fondomodaldialog">
+                <div class="modal-content modal-custom">
                     <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="col centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
-                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                        <button type="button" class="col-1 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="col centerLogoNombreModal">
+                            <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
+                            <img src="/front-end/img/Pagina/Nombre.png" width="50%">
+                        </div>
+                        <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
+                            style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                            Editar usuario
+                        </h1>
                     </div>
-                    <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Editar usuario
-                    </h1>
-                </div>
                     <div class="modal-body">
-                        <form id="editUserForm">
-                            <div class="mb-3">
-                                <label for="editDocumento" class="form-label">Documento</label>
-                                <input type="number" class="form-control" id="editDocumento" onkeypress="soloNumeros(event);"  required>
+                        <form id="editUserForm" class="row g-3">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="editDocumento" class="form-label"><i class="fas fa-id-card"></i> Documento</label>
+                                <input type="number" class="form-control" 
+                                style="border: 1px solid black;" id="editDocumento" onkeypress="soloNumeros(event);" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="editNombres" class="form-label">Nombres</label>
-                                <input type="text" class="form-control" id="editNombres" onkeypress="soloLetras(event);" required>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="editNombres" class="form-label"><i class="fas fa-user"></i> Nombres</label>
+                                <input type="text" class="form-control"
+                                style="border: 1px solid black;"  id="editNombres" onkeypress="soloLetras(event);" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="editApellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="editApellidos" onkeypress="soloLetras(event);" required>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="editApellidos" class="form-label"><i class="fas fa-user"></i> Apellidos</label>
+                                <input type="text" class="form-control"
+                                style="border: 1px solid black;"  id="editApellidos" onkeypress="soloLetras(event);" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="editCelular" class="form-label">Teléfono</label>
-                                <input type="number" class="form-control" id="editCelular" onkeypress="soloNumeros(event);"  required>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="editCelular" class="form-label"><i class="fas fa-phone"></i> Teléfono</label>
+                                <input type="number" class="form-control"
+                                style="border: 1px solid black;"  id="editCelular" onkeypress="soloNumeros(event);" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="editCorreo" class="form-label">Correo</label>
-                                <input type="email" class="form-control" id="editCorreo" onkeypress="alfaNumericosSignos(event);" required>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="editCorreo" class="form-label"><i class="fas fa-envelope"></i> Correo</label>
+                                <input type="email" class="form-control" 
+                                style="border: 1px solid black;" id="editCorreo" onkeypress="alfaNumericosSignos(event);" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="editrol" class="form-label">Rol</label>
-                                <select id="editrol" class="styled-select">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="editrol" class="form-label"><i class="fas fa-user-tag"></i> Rol</label>
+                                <select id="editrol" class="form-control"
+                                style="border: 1px solid black;" required>
                                     <option value="User">Usuario</option>
                                     <option value="Admin">Administrador</option>
                                 </select>
                             </div>
-
-
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="saveUserBtn"
-                            onclick="actualizarusuario(idUser)">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" id="saveUserBtn" onclick="actualizarusuario(idUser)">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
+        
+        
 
         <!--Modal Novedades-->
         <div class="modal fade" id="editNovedadModal" tabindex="-1" aria-labelledby="editNovedadModalLabel"

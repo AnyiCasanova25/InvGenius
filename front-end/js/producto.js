@@ -1,9 +1,16 @@
 var registrarProductoBandera = true;
 var idProducto = "";
 
-var urlMarca 
-var urlCategoria
 
+$(document).ready(function () {
+    listarProductos();
+});
+
+
+function blanquearCampos() {
+    document.getElementById('texto1').value = "";
+    document.getElementById('texto2').value = "";
+}
 
 // Función para buscar proveedores por filtro
 function buscarProductoPorFiltro(filtro) {
