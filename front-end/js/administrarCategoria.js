@@ -56,9 +56,10 @@ function mostrarTarjetas(result) {
             </figure>
                 <h3 class="title">${result[i]["nombreCategoria"]}</h3>
                 <div class="card-actions">
-                    <a href="../Categoria/categoriaProductos.html?id=${result[i]["idCategoria"]}" class="action-icon">
-                        <i class="fas fa-eye"></i>
-                    </a>
+                <a href="/front-end/html/Roles/Administrador/Categoria/categoriaProductos.html?id=${result[i]["idCategoria"]}" class="action-icon">
+                    <i class="fas fa-eye" title="Ver Productos"></i>
+                </a>
+
                     <a class="action-icon" data-bs-toggle="modal" data-bs-target="#agregarCategoria">
                         <i class="fas fa-edit editar" data-id="${result[i]["idCategoria"]}" title="Editar Categoria"></i>
                     </a>
@@ -117,7 +118,8 @@ function registrarCategoria() {
             'Authorization': 'Bearer ' + token
         },
         processData: false,
-        contentType: false, // No establecer el tipo de contenido, FormData lo hace por ti
+        contentType: false,
+        mimeType: "multipart/form-data",
         data: formData,
         success: function (response) {
             limpiar();
@@ -180,8 +182,6 @@ function limpiar() {
     });
 }
 
-// Función para editar categoria
-// Función para editar proveedor
 // Función para editar categoría
 $(document).on("click", ".editar", function () {
     limpiar();
