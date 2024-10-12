@@ -239,13 +239,13 @@ function mostrarTablaNovedades(result) {
             <td class="text-center align-middle">${result[i]["estadoNovedad"]}</td>
             <td class="text-center align-middle">
                 <i class="fas fa-eye ver" data-id="${result[i]['idNovedad']}" title="Ver la Solicitud del Usuario"></i>
-                <i class="fas fa-check confirmar" data-id="${result[i]['idNovedad']}" title="Aceptar Novedad"></i>
-                <i class="fas fa-times eliminar" data-id="${result[i]['idNovedad']}" title="Rechazar Novedad"></i>
+                <i class="fas fa-check confirmar" data-id="${result[i]['idNovedad']}" title="Atender Novedad"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
 }
+                // <i class="fas fa-times eliminar" data-id="${result[i]['idNovedad']}" title="Rechazar Novedad"></i>
             // <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
 // $(document).on("click", ".cambiarEstado", function () {
 //     var idNovedad = $(this).data("id");
@@ -338,7 +338,7 @@ $(document).on('click', '.ver', function () {
 
 $(document).on('click', '.confirmar', function () {
     var idNovedad = $(this).data('id');
-    mostrarConfirmacion(idNovedad, 'Aceptada', '¿Estás seguro de aceptar esta novedad?');
+    mostrarConfirmacion(idNovedad, 'Atendida', '¿Estás seguro de atender esta novedad?');
 });
 
 $(document).on('click', '.eliminar', function () {
@@ -378,7 +378,7 @@ function actualizarEstadoNovedad(idNovedad, nuevoEstado) {
         success: function (result) {
             Swal.fire({
                 title: "Estado Actualizado",
-                text: `El estado de la novedad se cambió a ${nuevoEstado}`,
+                text: `El estado de la novedad se cambió a "${nuevoEstado}"`,
                 icon: "success",
                 timer: 3000, // Se cierra automáticamente en 3 segundos
                 timerProgressBar: true, // Muestra la barra de progreso
@@ -450,7 +450,7 @@ function mostrarTablaPerfiles(result) {
             <td class="text-center align-middle">${result[i]["rol"]}</td>
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
+                <i class="fas fa-edit editar1" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
                 <i class="fas fa-toggle-on cambiarEstadoUser" data-id="${result[i]["idUser"]}" title="Cambiar Estado de Usuario"></i>
             </td>
         `;
@@ -601,7 +601,7 @@ $(document).on("click", ".cambiarEstadoUser", function () {
 
 
 // Abrir el modal y cargar datos del usuario
-$(document).on('click', '.editar', function () {
+$(document).on('click', '.editar1', function () {
     idUser = $(this).data('id'); // Obtener el ID del usuario desde el botón de editar
 
     // Hacer una solicitud AJAX para obtener los datos del usuario

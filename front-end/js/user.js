@@ -1,6 +1,4 @@
 function registrarUser() {
-    // event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
-
     // Obtener el token del localStorage
     const token = localStorage.getItem('authTokens'); // Recuperar el token
 
@@ -15,6 +13,17 @@ function registrarUser() {
     let celular = document.getElementById("Celular").value;
     let rol = document.getElementById("rol").value;
     let imagenUser = document.getElementById("imagenUser").value;
+
+    // Validar si todos los campos están llenos
+    if (!nombres || !apellidos || !documentoIdentidad || !tipoDocumento || !estado || !genero || !userName || !celular || !rol || !imagenUser) {
+        Swal.fire({
+            title: "Campos incompletos",
+            text: "Por favor complete todos los campos del formulario antes de enviar.",
+            icon: "warning",
+            confirmButtonText: "Aceptar"
+        });
+        return; // Detener la ejecución si hay campos vacíos
+    }
 
     // Datos del formulario
     let formData = {
@@ -53,16 +62,17 @@ function registrarUser() {
                 }
             });
         },
-        error: function (error) {
+        error: function (xhr) {
+            // Extraer el mensaje de error desde el JSON retornado
+            let errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "Error al guardar el usuario.";
             Swal.fire({
                 title: "Error",
-                text: "Error al guardar el usuario",
+                text: errorMessage,
                 icon: "error"
             });
         }
     });
 }
-
 
 function limpiarFormulario() {
     document.getElementById("register-form").reset(); // Limpiar todos los campos del formulario
