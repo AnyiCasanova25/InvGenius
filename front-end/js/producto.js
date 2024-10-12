@@ -16,7 +16,7 @@ function blanquearCampos() {
 function buscarProductoPorFiltro(filtro) {
     if (filtro.trim() !== "") {
         $.ajax({
-            url: urlProveedor + "busquedaFiltros/" + filtro,
+            url: urlProducto + "busquedaFiltros/" + filtro,
             type: "GET",
             headers: {
                 "Authorization": "Bearer " + token
@@ -39,7 +39,7 @@ function listarProductos() {
             "Authorization": "Bearer" + token
         },
         success: function (result) {
-            mostrarTarjetas(result);
+            mostrarTabla(result);
         },
         error: function (xhr, status, error) {
             console.error("Error en la petición:", xhr.responseText);
@@ -48,6 +48,24 @@ function listarProductos() {
     });
 }
 
+function mostrarTabla(result) {
+    var cuerpoTabla = document.getElementById("cuerpoTablaEntradaProducto");
+    cuerpoTabla.innerHTML = "";
+
+    for (var i = 0; i < result.length; i++) {
+        var trRegistro = document.createElement("tr");
+        trRegistro.innerHTML = `
+            <td class="text-center align-middle">${result[i]["categoria"]["nombreCategoria"]}</td>
+            <td class="text-center align-middle">${result[i]["nombreProducto"]}</td>
+            <td class="text-center align-middle">${result[i]["marca"]["nombreMarca"]}</td>
+            <td class="text-center align-middle">${result[i]["unidadMedida"]}</td>
+            <td class="text-center align-middle">
+                <i class="fa-solid fa-box editar" data-id="${result[i]["idProducto"]}" title="Entrar Producto"></i>
+            </td>
+        `;
+        cuerpoTabla.appendChild(trRegistro);
+    }
+}
 
 
 function registrarProducto() {
@@ -72,11 +90,15 @@ function registrarProducto() {
     var formData = new FormData();
     formData.append("nombreProducto", nombreProducto.value);
     formData.append("marca", marca.value);
+    formData.append("estadoProducto", "Activo");
     formData.append("unidadMedida", unidadMedida.value);
     formData.append("categoria", categoria.value);
-    formData.append("file", imagen_base); // Agregar el archivo de imagen
     formData.append("descripcionProducto", descripcionProducto.value);
 
+    // Solo agregar la imagen si se selecciona una nueva
+    if (imagen_base) {
+        formData.append("file", imagen_base);
+    }
 
     var metodo = registrarProductoBandera ? "POST" : "PUT";
     var urlLocal = registrarProductoBandera ? urlProducto : urlProducto + idProducto;
@@ -85,13 +107,11 @@ function registrarProducto() {
     $.ajax({
         url: urlLocal,
         type: metodo,
-
         headers: {
             'Authorization': 'Bearer ' + token
         },
         processData: false,
         contentType: false,
-        mimeType: "multipart/form-data",
         data: formData,
         success: function (response) {
             limpiar();
@@ -100,7 +120,7 @@ function registrarProducto() {
                 text: "Felicidades, Registro exitoso",
                 icon: "success"
             }).then(function () {
-                $('#exampleModalLabel').modal('hide');
+                $('#exampleModalLabel').modal('hide'); // Cerrar modal si el registro es exitoso
                 listarProductos(); // Refrescar la tabla
             });
         },
@@ -108,23 +128,62 @@ function registrarProducto() {
             console.error("Error en la petición:", xhr.responseText); // Agregar logs para depuración
             Swal.fire({
                 title: "Error",
-                text: "¡Error al registrar el producto!",
+                text: "¡Error al registrar el producto! Corrija los errores y vuelva a intentar.",
                 icon: "error"
             });
+            // No cerrar el modal aquí para permitir corrección de errores
         }
-    });  
+    });
 }
+
 
 function validarCampos() {
-    var nombreProducto = document.getElementById("nombreProducto").value.trim();
-    var marca = document.getElementById("marca").value;
-    var unidadMedida = document.getElementById("unidadMedida").value;
-    var categoria = document.getElementById("categoria").value;
-    var imagen_base = document.getElementById("imagen_base").files.length;
-    var descripcionProducto = document.getElementById("descripcionProducto").value.trim();
+    var nombreProducto = document.getElementById("nombreProducto");
+    var marca = document.getElementById("marca");
+    var unidadMedida = document.getElementById("unidadMedida");
+    var categoria = document.getElementById("categoria");
+    var imagen_base = document.getElementById("imagen_base");
+    var descripcionProducto = document.getElementById("descripcionProducto");
 
-    return nombreProducto && marca && unidadMedida && categoria && imagen_base > 0 && descripcionProducto.length >= 50;
+    return validarnombreProducto(nombreProducto) && validarmarca(marca) 
+    && validarunidadMedida(unidadMedida) && validarcategoria(categoria) 
+    && validardescripcionProducto(descripcionProducto) 
+    && validarimagen_base(imagen_base.files.length);
 }
+
+// Función de validación genérica
+function validarCampo(cuadroNumero, minLength, maxLength) {
+    var valor = cuadroNumero.value.trim();  // `cuadroNumero` es el input, no su valor directamente
+    var valido = (valor.length >= minLength && valor.length <= maxLength);
+    cuadroNumero.className = "form-control " + (valido ? "is-valid" : "is-invalid");
+    return valido;
+}
+
+function validarnombreProducto(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 41);  // Aquí pasas el input completo
+}
+
+function validarmarca(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 41);  // Aquí pasas el input completo
+}
+
+function validarunidadMedida(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 41);  // Aquí pasas el input completo
+}
+
+function validarcategoria(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 41);  // Aquí pasas el input completo
+}
+
+function validardescripcionProducto(cuadroNumero) {
+    return validarCampo(cuadroNumero, 1, 101);  // Aquí pasas el input completo
+}
+
+function validarimagen_base(imagenLength) {
+    // La imagen no tiene `.trim()`, así que no puedes usar `validarCampo`
+    return imagenLength > 0;  // Verifica si hay una imagen seleccionada
+}
+
 
 function cargarMarca() {
     var marca = document.getElementById("marca");
@@ -180,5 +239,11 @@ function cargarCategoria() {
     }
 }
 
+function limpiar() {
+    document.querySelectorAll(".form-control").forEach(function (input) {
+        input.value = "";
+        input.className = "form-control";
+    });
+}
 
 

@@ -3,10 +3,12 @@
 var Servidor = "http://82.112.245.162:8080/api/v1/"
 var urlMarca = Servidor + "marca/";
 var urlNovedad = Servidor + "novedad/";
-var urlUsuarios = Servidor + "user/";
-var urlUsuariosRegister = Servidor + "user/";
-var urlLogin = Servidor + "public/user/login";
+var urlProducto = Servidor + "producto/";
 var urlProveedor = Servidor + "proveedor/";
 var urlCategoria = Servidor + "categoria/";
+//usuario
+var urlUsuarios = Servidor + "user/";
+var urlLogin = Servidor + "public/user/login";
+var urlUsuariosRegister = Servidor + "user/";
 var urlProfileUser = urlUsuariosRegister + "profile/";
 
