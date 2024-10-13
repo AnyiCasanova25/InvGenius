@@ -113,6 +113,8 @@ function Iniciar() {
       success: function (result) {
          const token = result.token;
          localStorage.setItem('authTokens', token); // Almacenar el token
+         localStorage.setItem('userRol', result.rol);
+         localStorage.setItem('userEstado', result.estado);
    
          const rol = result.rol;
          const estado = result.estado;

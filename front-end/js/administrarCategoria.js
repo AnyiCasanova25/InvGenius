@@ -56,15 +56,11 @@ function mostrarTarjetas(result) {
             </figure>
                 <h3 class="title">${result[i]["nombreCategoria"]}</h3>
                 <div class="card-actions">
-                <a href="/front-end/html/Roles/Administrador/Categoria/categoriaProductos.html?id=${result[i]["idCategoria"]}" class="action-icon">
-                    <i class="fas fa-eye" title="Ver Productos"></i>
-                </a>
-
+                    <a href="/front-end/html/Roles/Administrador/Categoria/categoriaProductos.html?id=${result[i]["idCategoria"]}" class="action-icon">
+                        <i class="fas fa-eye" title="Ver Productos"></i>
+                    </a>
                     <a class="action-icon" data-bs-toggle="modal" data-bs-target="#agregarCategoria">
                         <i class="fas fa-edit editar" data-id="${result[i]["idCategoria"]}" title="Editar Categoria"></i>
-                    </a>
-                    <a class="action-icon">
-                        <i class="fas fa-trash eliminar" data-id="${result[i]["idCategoria"]}" title="Eliminar Categoria"></i>
                     </a>
                 </div>
             </div>
@@ -74,6 +70,9 @@ function mostrarTarjetas(result) {
         shopGrid.appendChild(divTarjeta);
     }
 }
+//<a class="action-icon">
+//    <i class="fas fa-trash eliminar" data-id="${result[i]["idCategoria"]}" title="Eliminar Categoria"></i>
+//</a>
 
 
 function blanquearCampos() {

@@ -457,67 +457,6 @@ function mostrarTablaPerfiles(result) {
         cuerpoTabla.appendChild(trRegistro);
     }
 }
-// function registrarUser() {
-//     var documentoIdentidad = document.getElementById("documentoIdentidad");
-//     var nombres = document.getElementById("nombres");
-//     var apellidos = document.getElementById("apellidos");
-//     var celular = document.getElementById("celular");
-//     var correo = document.getElementById("correo");
-//     var rol = document.getElementById("rol");
-//     var estado = document.getElementById("estado");
-
-//     Verificar si algún campo obligatorio está vacío
-//     if (!validarCamposPerfiles()) {
-//         Swal.fire({
-//             title: "¡Error!",
-//             text: "¡Llene todos los campos correctamente!",
-//             icon: "error"
-//         });
-//         return; // Salir si algún campo es inválido
-//     }
-
-//     var forData = {
-//         "documentoIdentidad": documentoIdentidad.value,
-//         "nombres": nombres.value,
-//         "apellidos": apellidos.value,
-//         "celular": celular.value,
-//         "correo": correo.value,
-//         "rol": rol.value,
-//         "estado": estado.value,
-//     };
-
-//     var metodo = registrarUserBandera ? "POST" : "PUT";
-//     var urlLocal = registrarUserBandera ? urlUsuarios : urlUsuarios + idUser;
-
-//     const token = localStorage.getItem('authTokens');
-//     $.ajax({
-//         url: urlLocal,
-//         type: metodo,
-//         headers: {
-//             'Authorization': 'Bearer ' + token
-//         },
-//         contentType: "application/json",
-//         data: JSON.stringify(forData),
-//         success: function (response) {
-//             limpiar();
-//             Swal.fire({
-//                 title: "LISTO",
-//                 text: "Felicidades, Registro exitoso",
-//                 icon: "success"
-//             }).then(function () {
-//                 $('#exampleModal').modal('hide');
-//                 listarUser(); // Refrescar la tabla
-//             });
-//         },
-//         error: function (xhr, status, error) {
-//             Swal.fire({
-//                 title: "Error",
-//                 text: "¡Error al registrar o actualizar este Proveedor!",
-//                 icon: "error"
-//             });
-//         }
-//     });
-// }
 
 // Función para validar campos
 function validarCamposPerfiles() {

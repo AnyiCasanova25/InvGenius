@@ -14,50 +14,48 @@
 
     <div class="container">
         <div class="container-form">
-            <form class="sign-in">
+            <form class="sign-in" id="editUserModal">
                 <h2 class="fuente1">Mi Información</h2>
-                <!-- <span>Ingrese su nueva contraseña</span> -->
                 <div class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Nombres" readonly>
+                    <input type="text" placeholder="Nombres" id="nombre" readonly>
                     <ion-icon class="lock-icon" name="lock-closed-outline"></ion-icon>
                 </div>
                 <div class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Apellidos" readonly>
+                    <input type="text" placeholder="Apellidos" id="apellido" readonly>
                     <ion-icon class="lock-icon" name="lock-closed-outline"></ion-icon>
                 </div>
                 <div class="container-input">
                     <ion-icon name="card-outline"></ion-icon>
-                    <input type="text" placeholder="Tipo Documento" readonly>
+                    <input type="text" placeholder="Tipo Documento" id="tipodocu" readonly>
                     <ion-icon class="lock-icon" name="lock-closed-outline"></ion-icon>
                 </div>
                 <div class="container-input">
                     <ion-icon name="card-outline"></ion-icon>
-                    <input type="text" placeholder="N° Documento" readonly>
+                    <input type="text" placeholder="N° Documento" id="numerodocu" readonly>
                     <ion-icon class="lock-icon" name="lock-closed-outline"></ion-icon>
                 </div>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" placeholder="Correo Electrónico">
+                    <input type="email" placeholder="Correo Electrónico" id="correo" readonly>
                     <ion-icon class="unlock-icon" name="lock-closed-outline"></ion-icon>
                 </div>
                 <div class="container-input">
                     <ion-icon name="call-outline"></ion-icon>
-                    <input type="tel" placeholder="Celular">
-                    <ion-icon class="unlock-icon" name="lock-open-outline"></ion-icon>
+                    <input type="tel" id="Celular" placeholder="Celular" readonly>
+                    <ion-icon class="unlock-icon" name="lock-closed-outline"></ion-icon>
                 </div>
-
-                <button class="button">GUARDAR</button>
             </form>
         </div>
+        
 
         <div class="container-form">
         </div>
 
         <div class="container-welcome">
             <div class="welcome-sign-up welcome padding1">
-                <h3 class="fuente11">Administrador</h3>
+                <h3 class="fuente11" id="rolUsuario"></h3>
                 <div class="profile-image-container">
                     <img id="profileImage" src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="170px"
                         style="margin-bottom: -30px;">
@@ -66,9 +64,9 @@
                 </div>
 
                 <p class="fuente2 ">
-                <h2 class="centrar">Julian David Fierro Casanova</h2>
+                <h2 class="centrar" id="nombreUsuario"></h2>
                 </p>
-                <button class="button"><a href="/front-end/html/index.html">Volver</a></button>
+                <button class="button" onclick="salirDeMiPerfil()">Volver</button>
             </div>
         </div>
 
@@ -92,9 +90,13 @@
         });
 
     </script>
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="/front-end/js/jsUrl/Urls.js"></script>
+    <script src="/front-end/js/miperfil.js"></script>
 </body>
 
 </html>
