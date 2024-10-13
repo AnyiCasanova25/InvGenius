@@ -64,3 +64,29 @@ $(document).ready(function () {
     cargarRolyNombresApellidos();
 });
 
+
+function verificarSesion() {
+    const token = localStorage.getItem('authTokens');
+
+    // Si no hay token, redirigir a la página de inicio
+    if (!token) {
+        window.location.href = "/front-end/html/index.html";
+    }
+}
+
+// Llamar a la función de verificación cuando cargue la página
+window.onload = verificarSesion;
+
+function cerrarSesion() {
+    // Limpiar el localStorage
+    localStorage.removeItem('authTokens');
+    localStorage.removeItem('userRol');
+    localStorage.removeItem('userEstado');
+
+    // También puedes usar clear() para limpiar todo el localStorage
+    // localStorage.clear();
+
+    // Redirigir al usuario a la página de inicio (opcional si el href ya lo hace)
+    window.location.href = "/front-end/html/index.html";
+}
+
