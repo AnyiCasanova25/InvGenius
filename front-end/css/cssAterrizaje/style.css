@@ -6039,7 +6039,8 @@ html [class*='section-'].section-bottom-0 {
 	bottom: 0;
 	right: 0;
 	content: '';
-	background: linear-gradient(360deg, rgba(18, 18, 18, 0.6) 0.91%, rgba(18, 18, 18, 0.28) 47.77%, rgba(39, 42, 55, 0.75) 99.52%);
+	
+    background: linear-gradient(360deg, rgba(120, 120, 120, 0.6) 0.91%, rgba(73, 73, 73, 0.28) 47.77%, rgb(88 88 88 / 75%) 99.52%);
 	z-index: 1;
 }
 
