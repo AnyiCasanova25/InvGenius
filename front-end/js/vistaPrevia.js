@@ -1,10 +1,14 @@
-var url = "http://localhost:8080/api/v1/lote/";
+var idLote = "";
+
+$(document).ready(function () {
+    listarLotes();
+});
 
 //Intento de hacer el filtro, no se si sirva
-function bajoStockFiltro(filtro){
-    if(filtro.trim() !== ""){
+function vistaPreviaFiltro(filtro) {
+    if(filtro.trim() !== "") {
         $.ajax({
-            url: urlLote + "busquedaFiltros/" + filtro,
+            url: urlLote + "busquedaFiltros/" + filtro, // Asegúrate de pasar 'filtro' aquí
             type: "GET",
             headers: {
                 "Authorization": "Bearer " + token
@@ -12,134 +16,59 @@ function bajoStockFiltro(filtro){
             success: function (result) {
                 mostrarTabla(result);
             },
+            error: function (xhr, status, error) {
+                console.error("Error en la petición:", xhr.responseText);
+                alert("Error en la petición: " + error);
+            }
         });
     } else {
-        listarLote();
+        listarLotes(); // Si no hay filtro, llamas al listado normal
     }
-} 
+}
 
 //Esto es para lo de bajo stock
-
-$(document).ready(function() {
-    listarLotesBajoStock(); // Llama a la función cuando la página se cargue
-});
-
 function listarLotesBajoStock() {
+    const token = localStorage.getItem('authTokens');
     $.ajax({
-        url: '/api/v1/lote/loteBajoStock/',
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            const cuerpoTabla = document.getElementById('cuerpoTabla');
-            cuerpoTabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
-
-            if (response.length > 0) {
-                response.forEach(producto => {
-                    const fila = document.createElement('tr');
-                    fila.innerHTML = `
-                        <td class="text-center align-middle">${producto.lote}</td>
-                        <td class="text-center align-middle">${producto.categoria}</td>
-                        <td class="text-center align-middle">${producto.producto}</td>
-                        <td class="text-center align-middle">${producto.marca}</td>
-                        <td class="text-center align-middle">${producto.cantidad}</td>
-                        <td class="text-center align-middle">
-                            <button class="btn btn-secondary">Ver Lote</button>
-                        </td>
-                    `;
-                    cuerpoTabla.appendChild(fila);
-                });
-            } else {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `<td colspan="6" class="text-center">No se encontraron productos con bajo stock</td>`;
-                cuerpoTabla.appendChild(fila);
-            }
+        url: urlLote + "loteBajoStock/",
+        type: "GET",
+        headers: {
+            "Authorization": "Bearer" + token
         },
-        error: function(error) {
-            console.error('Error al obtener los productos con bajo stock:', error);
+        success: function (result) {
+            mostrarTablaBajoStock(result);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error en la petición:", xhr.responseText);
+            alert("Error en la petición: " + error);
         }
     });
 }
 
 
-//Esto es para lo de producto caducados
-$(document).ready(function() {
-    listarProductosCaducados(); // Llama a la función cuando la página se cargue
-});
+function mostrarTablaBajoStock(result) {
+    var cuerpoTabla = document.getElementById("cuerpoTabla");
+    cuerpoTabla.innerHTML = "";
 
-function listarProductosCaducados() {
-    $.ajax({
-        url: '/api/v1/lote/loteVencido/',
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            const cuerpoTabla = document.getElementById('cuerpoTabla');
-            cuerpoTabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
-
-            if (response.length > 0) {
-                response.forEach(producto => {
-                    const fila = document.createElement('tr');
-                    fila.innerHTML = `
-                        <td class="text-center align-middle">${producto.numeroLote}</td>
-                        <td class="text-center align-middle">${producto.nombreCategoria}</td>
-                        <td class="text-center align-middle">${producto.nombreProducto}</td>
-                        <td class="text-center align-middle">${producto.nombreMarca}</td>
-                        <td class="text-center align-middle">${producto.fechaVencimiento}</td>
-                        <td class="text-center align-middle">
-                            <button class="btn btn-secondary">Ver Lote</button>
-                        </td>
-                    `;
-                    cuerpoTabla.appendChild(fila);
-                });
-            } else {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `<td colspan="6" class="text-center">No se encontraron productos caducados</td>`;
-                cuerpoTabla.appendChild(fila);
-            }
-        },
-        error: function(error) {
-            console.error('Error al obtener los productos caducados:', error);
-        }
-    });
+    for (var i = 0; i < result.length; i++) {
+        var lote = result[i]; // Asigna cada lote directamente desde result[i]
+        var trRegistro = document.createElement("tr");
+        trRegistro.innerHTML = `
+             <td class="text-center align-middle">${lote.numeroLote}</td>
+                <td class="text-center align-middle">${lote.producto.categoria.nombreCategoria}</td>
+                <td class="text-center align-middle">${lote.producto.nombreProducto}</td>
+                <td class="text-center align-middle">${lote.producto.marca.nombreMarca}</td>
+                <td class="text-center align-middle">${lote.producto.stock}</td>
+                <td class="text-center align-middle">
+                    <button class="btn btn-secondary" onclick="verLote('${lote.numeroLote}')">Ver Lote</button>
+                </td>
+        `;
+        cuerpoTabla.appendChild(trRegistro);
+    }
 }
 
 
-//Esto es para los de proximos a caducar
-$(document).ready(function() {
-    listarProductosProximosACaducar(); // Llama a la función cuando la página se cargue
-});
+// //Esto es para lo de producto caducados
 
-function listarProductosProximosACaducar() {
-    $.ajax({
-        url: '/api/v1/lote/loteACaducar/',
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            const cuerpoTabla = document.getElementById('cuerpoTabla');
-            cuerpoTabla.innerHTML = ''; // Limpiar la tabla antes de llenarla
 
-            if (response.length > 0) {
-                response.forEach(producto => {
-                    const fila = document.createElement('tr');
-                    fila.innerHTML = `
-                        <td class="text-center align-middle">${producto.numeroLote}</td>
-                        <td class="text-center align-middle">${producto.nombreCategoria}</td>
-                        <td class="text-center align-middle">${producto.nombreProducto}</td>
-                        <td class="text-center align-middle">${producto.nombreMarca}</td>
-                        <td class="text-center align-middle">${producto.fechaVencimiento}</td>
-                        <td class="text-center align-middle">
-                            <button class="btn btn-secondary">Ver Lote</button>
-                        </td>
-                    `;
-                    cuerpoTabla.appendChild(fila);
-                });
-            } else {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `<td colspan="6" class="text-center">No se encontraron productos próximos a caducar</td>`;
-                cuerpoTabla.appendChild(fila);
-            }
-        },
-        error: function(error) {
-            console.error('Error al obtener los productos próximos a caducar:', error);
-        }
-    });
-}
+// //Esto es para los de proximos a caducar

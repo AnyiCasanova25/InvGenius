@@ -6,6 +6,7 @@ var urlNovedad = Servidor + "novedad/";
 var urlProducto = Servidor + "producto/";
 var urlProveedor = Servidor + "proveedor/";
 var urlCategoria = Servidor + "categoria/";
+var urlLote = Servidor + "lote/";
 //usuario
 var urlUsuarios = Servidor + "user/";
 var urlLogin = Servidor + "public/user/login";
