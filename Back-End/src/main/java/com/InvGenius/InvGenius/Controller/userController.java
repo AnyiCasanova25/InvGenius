@@ -236,6 +236,7 @@ public class userController {
             user.setCelular(userUpdate.getCelular());
             user.setCorreo(userUpdate.getCorreo());
             // user.setPassword(userUpdate.getPassword());
+            
             // user.setConfirmarPassword(userUpdate.getConfirmarPassword());
             user.setRol(userUpdate.getRol());
 
@@ -246,5 +247,6 @@ public class userController {
             return new ResponseEntity<>("Error usuario NO encontrado", HttpStatus.BAD_REQUEST);
         }
     }
+    
 
 }

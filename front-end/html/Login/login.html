@@ -18,11 +18,11 @@
                 <span>Use su correo y contraseña</span>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" id="userName" placeholder="Correo electrónico">
+                    <input type="email" id="userName" placeholder="Correo electrónico" onkeypress="alfaNumericosSignos(event);">
                 </div>                
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" id="password" placeholder="Contraseña">
+                    <input type="password" id="password" placeholder="Contraseña" onkeypress="alfaNumericosSignos(event);">
                 </div>
                 <a id="btn-sign-up"><u>¿Olvidaste tu contraseña?</u></a>
                 <button class="button" onclick="Iniciar()"><a>INICIAR</a></button>
@@ -35,7 +35,7 @@
                     <span style="text-align: center;">Utilice su correo electrónico para restablecer <br> su contraseña.</span><br>
                     <div class="container-input">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" placeholder="Correo electrónico">
+                        <input type="email" placeholder="Correo electrónico" onkeypress="alfaNumericosSignos(event);">
                     </div>
                     
                 <br>
@@ -70,5 +70,6 @@
 
     <script src="/front-end/js/jsUrl/Urls.js"></script>
     <script src="/front-end/js/login.js"></script>
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
 </body>
 </html>

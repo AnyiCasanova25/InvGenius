@@ -145,7 +145,7 @@ function Iniciar() {
          const errorMsg = error.responseJSON ? error.responseJSON.message : "Los datos ingresados son incorrectos.";
          Swal.fire({
             title: "Error de Validación",
-            text: errorMsg,
+            text: "Acceso denegado",
             icon: "error",
             confirmButtonText: "Aceptar"
          });

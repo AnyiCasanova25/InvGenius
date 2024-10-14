@@ -12,4 +12,5 @@ var urlUsuarios = Servidor + "user/";
 var urlLogin = Servidor + "public/user/login";
 var urlUsuariosRegister = Servidor + "user/";
 var urlProfileUser = urlUsuariosRegister + "profile/";
+var urlCambiarContraseña = urlUsuarios + "changePassword";
 
