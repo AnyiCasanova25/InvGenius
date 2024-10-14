@@ -50,12 +50,32 @@
                     <input type="number" id="documentoIdentidad" placeholder="N° Documento"
                         onkeypress="soloNumeros(event);" required>
                 </div>
-
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" id="userName" placeholder="Correo Electrónico"
-                        onkeypress="alfaNumericosSignos(event);" required>
+                    <input type="email" id="userName" placeholder="Correo Electrónico" onblur="validarCorreo();"
+                        required>
                 </div>
+
+                <script>
+                    function validarCorreo() {
+                        var correo = document.getElementById("userName").value;
+                        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                        if (!regex.test(correo)) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Correo inválido',
+                                text: 'Por favor, ingrese un correo electrónico válido con la estructura (nombre@example.com).',
+                                confirmButtonText: 'Aceptar'
+                            }).then(() => {
+                                document.getElementById("correo").focus(); // Cambié "userName" por "correo"
+                            });
+                        }
+
+
+                    }
+                </script>
+
 
                 <div class="container-input">
                     <ion-icon name="call-outline"></ion-icon>
@@ -108,7 +128,7 @@
             } else if (selectedValue === 'Otro') {
                 genderIcon.setAttribute('name', 'male-female-outline');
             }
-            
+
         });
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

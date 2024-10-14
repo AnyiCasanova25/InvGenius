@@ -120,7 +120,7 @@ function registrarProducto() {
                 text: "Felicidades, Registro exitoso",
                 icon: "success"
             }).then(function () {
-                $('#exampleModalLabel').modal('hide'); // Cerrar modal si el registro es exitoso
+                $('#modalProducto').modal('hide'); // Cerrar modal si el registro es exitoso
                 listarProductos(); // Refrescar la tabla
             });
         },

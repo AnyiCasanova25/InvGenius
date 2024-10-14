@@ -132,7 +132,7 @@ function actualizarPassword(event) {
                 icon: "success",
                 confirmButtonText: "Aceptar"
             }).then(() => {
-                window.location.href = "/front-end/html/index.html"; // Redirigir al login
+                cerrarSesion(); // Llamar a la función para cerrar sesión
             });
         } else {
             return response.text().then(text => { throw new Error(text); });
