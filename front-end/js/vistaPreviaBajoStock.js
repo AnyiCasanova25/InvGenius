@@ -1,32 +1,25 @@
 var idLote = "";
 
-$(document).ready(function () {
-    listarLotes();
-});
-
-//Intento de hacer el filtro, no se si sirva
-function vistaPreviaFiltro(filtro) {
-    if(filtro.trim() !== "") {
+//Filtro por codigo del lote
+function buscarLotePorFiltro(filtro) {
+    if (filtro.trim() !== "") {
         $.ajax({
-            url: urlLote + "busquedaFiltros/" + filtro, // Asegúrate de pasar 'filtro' aquí
+            url: urlLote + "busquedaFiltros/" + filtro,
             type: "GET",
-            headers: {
-                "Authorization": "Bearer " + token
-            },
             success: function (result) {
-                mostrarTabla(result);
+                mostrarTablaBajoStock(result);
             },
-            error: function (xhr, status, error) {
-                console.error("Error en la petición:", xhr.responseText);
-                alert("Error en la petición: " + error);
-            }
         });
     } else {
-        listarLotes(); // Si no hay filtro, llamas al listado normal
+        listarLotesBajoStock();
     }
 }
 
 //Esto es para lo de bajo stock
+$(document).ready(function () {
+    listarLotesBajoStock();
+});
+
 function listarLotesBajoStock() {
     const token = localStorage.getItem('authTokens');
     $.ajax({
@@ -44,8 +37,7 @@ function listarLotesBajoStock() {
         }
     });
 }
-
-
+//parte de lo de productos bajo stock
 function mostrarTablaBajoStock(result) {
     var cuerpoTabla = document.getElementById("cuerpoTabla");
     cuerpoTabla.innerHTML = "";
@@ -54,7 +46,7 @@ function mostrarTablaBajoStock(result) {
         var lote = result[i]; // Asigna cada lote directamente desde result[i]
         var trRegistro = document.createElement("tr");
         trRegistro.innerHTML = `
-             <td class="text-center align-middle">${lote.numeroLote}</td>
+             <td class="text-center align-middle">${lote.codigoLote}</td>
                 <td class="text-center align-middle">${lote.producto.categoria.nombreCategoria}</td>
                 <td class="text-center align-middle">${lote.producto.nombreProducto}</td>
                 <td class="text-center align-middle">${lote.producto.marca.nombreMarca}</td>
@@ -66,9 +58,3 @@ function mostrarTablaBajoStock(result) {
         cuerpoTabla.appendChild(trRegistro);
     }
 }
-
-
-// //Esto es para lo de producto caducados
-
-
-// //Esto es para los de proximos a caducar

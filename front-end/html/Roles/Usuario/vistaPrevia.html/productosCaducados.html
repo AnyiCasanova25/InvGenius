@@ -98,11 +98,11 @@
             <div class="card-body">
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                           onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                           onkeyup="buscarLotePorFiltro(document.getElementById('texto').value)"
                            aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-custom"
-                                onclick="listarProveedor(); blanquearCampos()">
+                                onclick="listarLotesVencido(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
                             </div>
@@ -131,7 +131,8 @@
     
 
     <script src="/front-end/js/jsUrl/Urls.js"></script>
-    <script>
+    <script src="/front-end/js/vistaPreviaProductoCad.js"></script>
+    <!-- <script>
     
         // Selecciona el cuerpo de la tabla
         const cuerpoTabla = document.getElementById('cuerpoTabla');
@@ -151,6 +152,6 @@
             `;
             cuerpoTabla.appendChild(fila);
         });
-    </script>
+    </script> -->
 </body>
 </html>
