@@ -92,13 +92,14 @@ function validarPassword() {
     }
 }
 
-function actualizarPassword() {
+function actualizarPassword(event) {
+    event.preventDefault(); // Evitar que el formulario se envíe de manera predeterminada
+
     const token = localStorage.getItem('authTokens');
     const contrasenaAntigua = document.getElementById('contrasenaAntigua').value;
     const nuevaPassword = document.getElementById('new-password').value;
     const confirmarPassword = document.getElementById('confirm-password').value;
 
-    // Validar si la nueva contraseña es válida
     if (nuevaPassword !== confirmarPassword) {
         Swal.fire({
             title: "Error",
@@ -124,29 +125,23 @@ function actualizarPassword() {
         body: JSON.stringify(datosActualizar)
     })
     .then(response => {
-        console.log(response); // Ver la respuesta del servidor
         if (response.ok) {
-            return response.json();
+            Swal.fire({
+                title: "Éxito",
+                text: "Contraseña actualizada correctamente.",
+                icon: "success",
+                confirmButtonText: "Aceptar"
+            }).then(() => {
+                window.location.href = "/front-end/html/index.html"; // Redirigir al login
+            });
         } else {
             return response.text().then(text => { throw new Error(text); });
         }
     })
-    .then(data => {
-        console.log("Contraseña actualizada:", data); // Verificar el resultado de la actualización
-        Swal.fire({
-            title: "Éxito",
-            text: "Contraseña actualizada correctamente.",
-            icon: "success",
-            confirmButtonText: "Aceptar"
-        }).then(() => {
-            cerrarSesion(); // Cerrar sesión
-        });
-    })
     .catch(error => {
-        console.error(error); // Ver el error en la consola
         Swal.fire({
             title: "Error",
-            text: "Hubo un problema al actualizar la contraseña. " + error.message,
+            text: "Hubo un problema al actualizar la contraseña. ",
             icon: "error",
             confirmButtonText: "Aceptar"
         });
