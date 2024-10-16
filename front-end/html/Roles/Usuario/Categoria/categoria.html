@@ -95,58 +95,57 @@
             </div>
         </div>
     </div>
-    <!-- Modal para agregar categoría -->
+    <!-- Modal para agregar categoría -->   
     <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="agregarCategoriaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
-                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                    </div>
-                    <h1 class="modal-title fs-5" id="agregarCategoriaLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Registrar Categoría
-                    </h1>
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="centerLogoNombreModal">
+                    <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
+                    <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                 </div>
-                <div class="modal-body">
-                    <div>
-                        <form class="row needs-validation" enctype="multipart/form-data">
-                            <div class="col-12">
-                                <label for="nombreCategoria"><i class="fa-solid fa-tag"></i> Nombre de
-                                    Categoría:</label>
-                                <input type="text" id="nombreCategoria" class="form-control"
-                                    style="border: 1px solid black;" onfocusout="validarnombreCategoria(this)"
-                                    onkeypress="soloLetras(event);" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="ubicacion"><i class="fa-solid fa-location-pin"></i>
-                                    Ubicación:</label>
-                                <input type="text" id="ubicacion" class="form-control" style="border: 1px solid black;"
-                                    onfocusout="validarubicacion(this)" onkeypress="alfaNumericosSignos(event);"
-                                    required>
-                            </div>
-                            <div class="col-12">
-                                <label for="imagen_base"><i class="fa-solid fa-image"></i>
-                                    Cargar imagen:</label>
-                                <input type="file" id="imagen_base" class="form-control" accept="image/*"
-                                    onfocusout="validarimagen_base(this)" style="border: 1px solid black;"
-                                    required>
-                            </div>
-                        </form>
-                    </div>
+                <h1 class="modal-title fs-5 fuentetiti" id="agregarCategoriaLabel"
+                style="font-family: 'Titillium Web', sans-serif; text-align: center;">
+                    Registrar Categoría
+                </h1>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form class="row needs-validation" enctype="multipart/form-data">
+                        <div class="col-12">
+                            <label for="nombreCategoria"><i class="fa-solid fa-tag"></i> Nombre:</label>
+                            <input type="text" id="nombreCategoria" class="form-control"
+                                style="border: 1px solid black;" onfocusout="validarnombreCategoria(this)"
+                                onkeypress="soloLetras(event);" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="ubicacion"><i class="fa-solid fa-location-pin"></i>
+                                Ubicación:</label>
+                            <input type="text" id="ubicacion" class="form-control" style="border: 1px solid black;"
+                                onfocusout="validarubicacion(this)" onkeypress="alfaNumericosSignos(event);"
+                                required>
+                        </div>
+                        <div class="col-12">
+                            <label for="imagen_base"><i class="fa-solid fa-image"></i>
+                                Cargar imagen:</label>
+                            <input type="file" id="imagen_base" class="form-control" accept="image/*"
+                                onfocusout="validarimagen_base(this)" style="border: 1px solid black;"
+                                required>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="registrarCategoria()">Agregar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="registrarCategoria()">Agregar</button>
             </div>
         </div>
     </div>
-    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
-    <script src="/front-end/js/administrarCategoria.js"></script>
-    <script src="/front-end/js/jsUrl/Urls.js"></script>
+</div>
+<script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+<script src="/front-end/js/administrarCategoria.js"></script>
+<script src="/front-end/js/jsUrl/Urls.js"></script>
 </body>
 
 </html>

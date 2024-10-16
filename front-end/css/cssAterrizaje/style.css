@@ -6040,7 +6040,7 @@ html [class*='section-'].section-bottom-0 {
     bottom: 0;
     right: 0;
     content: '';
-    background: linear-gradient(360deg, rgba(80, 80, 80, 0.464) 0.91%, rgba(73, 73, 73, 0.28) 47.77%, rgba(80, 80, 80, 0.464) 99.52%), 
+    background: linear-gradient(360deg, rgba(80, 80, 80, 0.464) 0.91%, rgba(208, 208, 208, 0.538) 47.77%, rgba(80, 80, 80, 0.464) 99.52%), 
                 url('/front-end/img/Pagina/Fondoword.jpg'); /* Ruta de tu imagen */
     background-size: cover; /* Asegura que la imagen ocupe el 100% del ancho y alto */
     background-position: center; /* Centra la imagen en la sección */
