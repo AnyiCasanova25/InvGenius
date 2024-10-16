@@ -10,7 +10,7 @@ body {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #3E5059;
 }
 .info-card {
     background-color: #3E5059;
@@ -78,7 +78,7 @@ body {
     width: 98%;
 }
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #3E5059;
     border: none;
     color: #fff;
 }

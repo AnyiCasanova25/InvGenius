@@ -6034,16 +6034,20 @@ html [class*='section-'].section-bottom-0 {
 }
 
 .section-main-bunner.section-main-bunner-filter:before {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	content: '';
-	
-    background: linear-gradient(360deg, rgba(80, 80, 80, 0.6) 0.91%, rgba(73, 73, 73, 0.28) 47.77%, rgb(80 80 80 / 75%) 99.52%);
-	z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+    background: linear-gradient(360deg, rgba(80, 80, 80, 0.464) 0.91%, rgba(73, 73, 73, 0.28) 47.77%, rgba(80, 80, 80, 0.464) 99.52%), 
+                url('/front-end/img/Pagina/Fondoword.jpg'); /* Ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen ocupe el 100% del ancho y alto */
+    background-position: center; /* Centra la imagen en la sección */
+    z-index: 1;
 }
+
+
 
 @keyframes bunner-img {
 	0% {

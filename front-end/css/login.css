@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap'); /* Asegúrate de importar la fuente */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Titillium Web", sans-serif;
-    font-weight: bold;
+    font-family: "Titillium Web", sans-serif; /* Aplicar a todos los elementos */
+    font-weight: bold; /* Este se puede ajustar según sea necesario */
 }
 
 body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
@@ -18,34 +20,38 @@ body.swal2-height-auto {
     height: auto !important;
 }
 
-
 body {
-    width: 100%; /* Asegura que el ancho del body ocupe el 100% del viewport */
-    height: 100vh; /* Ocupa toda la altura de la ventana del navegador */
-    display: flex; /* Habilita Flexbox para el body */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    background-color: #f4f5f7; /* Color de fondo claro */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: 
+        linear-gradient(360deg, rgba(80, 80, 80, 0.341) 0.91%, rgba(73, 73, 73, 0.28) 47.77%, rgba(80, 80, 80, 0.341) 99.52%), 
+        url('/front-end/img/Pagina/Fondoword.jpg'); /* Ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen ocupe el 100% del ancho y alto */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
-
 
 .fuente1 {
     color: #000000;
-    font-family: "Titillium Web", cursive;
-    font-weight: bold;
+    font-family: "Titillium Web", sans-serif; /* Asegurando que la fuente se aplique aquí */
+    font-weight: 600;
 }
 
 .fuente11 {
     color: #ffffff;
-    font-family: "Titillium Web", cursive;
+    font-family: "Titillium Web", sans-serif; /* Asegurando que la fuente se aplique aquí */
     font-weight: bold;
 }
 
 .fuente2 {
     color: #ffffff;
-    font-family: "Titillium Web", sans-serif;
-    font-weight: bold;
+    font-family: "Titillium Web", sans-serif; /* Asegurando que la fuente se aplique aquí */
+    font-weight: 100; /* Peso regular de la fuente */
 }
+
 
 .container {
     width: 800px;
@@ -75,6 +81,7 @@ body {
     width: 100%; 
     height: 100%; 
 }
+
 .container-form a {
     color: #ffffff !important;
     font-size: 14px;
@@ -117,7 +124,7 @@ body {
     cursor: pointer;
 }
 
-.centrar{
+.centrar {
     text-align: center;
 }
 
@@ -147,14 +154,6 @@ body {
     background-color: inherit;
 }
 
-.container-form a {
-    color: black;
-    font-size: 14px;
-    margin-bottom: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
-
 .button {
     width: 30%;
     height: 10%;
@@ -176,7 +175,6 @@ body {
 .button a:hover {
     color: inherit; /* Evita que el color cambie al pasar el cursor */
 }
-
 
 .sign-up {
     transform: translateX(-100%);
@@ -298,7 +296,8 @@ select option {
     font-weight: bold;
 }
 
-select option:hover, select option:focus {
+select option:hover,
+select option:focus {
     background-color: #3e5059; /* Azul oscuro al pasar el cursor */
     color: white; /* Texto blanco cuando está resaltado */
 }
