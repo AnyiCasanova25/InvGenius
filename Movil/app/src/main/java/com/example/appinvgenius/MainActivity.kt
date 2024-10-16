@@ -2,27 +2,75 @@ package com.example.appinvgenius
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var requestQueue: RequestQueue
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        requestQueue = Volley.newRequestQueue(this)
+
+        val loginButton = findViewById<Button>(R.id.loginButton)
+        loginButton.setOnClickListener {
+            iniciarSesion()
         }
     }
 
-    fun iniciarSesion(view: View) {
-        val intent = Intent(application, navegacionvista::class.java)
-        startActivity(intent)
+    private fun iniciarSesion() {
+        val usernameEditText = findViewById<EditText>(R.id.usernameEditText)
+        val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
+
+        val username = usernameEditText.text.toString().trim()
+        val password = passwordEditText.text.toString().trim()
+
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val url = "http://10.192.80.165:8080/api/v1/public/user/login"
+
+        val params = JSONObject()
+        params.put("userName", username)
+        params.put("password", password)
+
+        val request = JsonObjectRequest(
+            Request.Method.POST, url, params,
+            Response.Listener { response ->
+                try {
+                    val token = response.getString("token")
+                    Log.d("Login", "JWT Token: $token")
+
+                    // Guardar el token JWT y navegar a la siguiente pantalla
+                    val intent = Intent(this, navegacionvista::class.java)
+                    intent.putExtra("TOKEN", token)
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(this, "Error parsing response", Toast.LENGTH_SHORT).show()
+                }
+            },
+            Response.ErrorListener { error ->
+                error.printStackTrace()
+                Toast.makeText(this, "Login failed: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        requestQueue.add(request)
     }
 
     fun olvidarContrasena(view: View) {

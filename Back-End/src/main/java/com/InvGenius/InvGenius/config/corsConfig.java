@@ -18,7 +18,9 @@ public class corsConfig {
         //  config.addAllowedOrigin("*");
         config.addAllowedOrigin("http://invgenius.com");
         config.addAllowedOrigin("http://82.112.245.162:80");
-        // config.addAllowedOrigin("http://127.0.0.1:5502");
+        // config.addAllowedOrigin("http://127.0.0.1:5502");}
+
+       
 
         //permitir solicitudes con estos metodos HTTP
         config.addAllowedMethod("GET");
