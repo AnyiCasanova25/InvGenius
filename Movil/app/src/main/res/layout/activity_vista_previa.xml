@@ -35,7 +35,7 @@
         android:layout_height="200dp"
         android:backgroundTint="#37474F"
         android:fontFamily="@font/titillium_web_bold"
-        android:text="Productos a Caducados"
+        android:text="Productos a Caducar"
         android:textSize="30dp"
         app:cornerRadius="10dp"
         app:icon="@drawable/box_open_solid"
