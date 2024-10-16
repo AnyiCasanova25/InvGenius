@@ -13,6 +13,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.appinvgenius.Config.config
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
@@ -42,14 +43,12 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val url = "http://10.192.80.26:8080/api/v1/public/user/login"
-
         val params = JSONObject()
         params.put("userName", username)
         params.put("password", password)
 
         val request = JsonObjectRequest(
-            Request.Method.POST, url, params,
+            Request.Method.POST, config.urlLogin, params,
             Response.Listener { response ->
                 try {
                     val token = response.getString("token")

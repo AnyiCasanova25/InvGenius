@@ -24,4 +24,10 @@ class vista_previa : AppCompatActivity() {
         val intent = Intent(application, navegacionvista::class.java)
         startActivity(intent)
     }
+
+    // Nuevo método para ir a productos caducados
+    fun irAProductosCaducados(view: View) {
+        val intent = Intent(application, productos_caducados::class.java)
+        startActivity(intent)
+    }
 }
