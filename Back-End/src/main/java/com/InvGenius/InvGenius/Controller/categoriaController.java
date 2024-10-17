@@ -1,7 +1,6 @@
 package com.InvGenius.InvGenius.Controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -32,42 +31,41 @@ public class categoriaController {
     private IcategoriaService categoriaService;
 
     // @PostMapping("/")
-    // public ResponseEntity<Object> save(@RequestParam("file") MultipartFile file) throws IOException
+    // public ResponseEntity<Object> save(@RequestParam("file") MultipartFile file)
+    // throws IOException
     // {
-    //     // var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
-    //     var categoria=categoriaService.findAll().get(0);
-    //     var imagen=Base64.getEncoder().encodeToString(file.getBytes());
-    //     categoria.setImagen_base(imagen);
-    //     categoriaService.save(categoria);
-    
-              
-    
-    //     // Guardar la categoría
-    //     return new ResponseEntity<>(categoria, HttpStatus.OK);
+    // // var listaCategoria =
+    // categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
+    // var categoria=categoriaService.findAll().get(0);
+    // var imagen=Base64.getEncoder().encodeToString(file.getBytes());
+    // categoria.setImagen_base(imagen);
+    // categoriaService.save(categoria);
+
+    // // Guardar la categoría
+    // return new ResponseEntity<>(categoria, HttpStatus.OK);
     // }
 
-    String extensionesPermitidas[]={"png","jpg"};
+    String extensionesPermitidas[] = { "png", "jpg" };
 
     @PostMapping("/")
-public ResponseEntity<Object> save( categoria categoria,  @RequestParam("file") MultipartFile file) throws IOException 
-{
-    var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
-    String extension="";
-    if (file.getOriginalFilename() != null && file.getOriginalFilename().contains(".")) {
-        extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-    } else {
-        extension = "";  // O cualquier texto que desees si no hay archivo
-    }
-    if(!Arrays.asList(extensionesPermitidas).contains(extension)){
-        response respuesta = response.builder()
+    public ResponseEntity<Object> save(categoria categoria, @RequestParam("file") MultipartFile file)
+            throws IOException {
+        var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), categoria.getUbicacion());
+        String extension = "";
+        if (file.getOriginalFilename() != null && file.getOriginalFilename().contains(".")) {
+            extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+        } else {
+            extension = ""; // O cualquier texto que desees si no hay archivo
+        }
+        if (!Arrays.asList(extensionesPermitidas).contains(extension)) {
+            response respuesta = response.builder()
                     .message("Extensión no permitida")
                     .build();
             // Retornar el objeto como JSON
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
-    }
-    var tamano=file.getSize();
-    
-    
+        }
+        // var tamano=file.getSize();
+
         if (listaCategoria.size() != 0) {
             // Construir una respuesta con el mensaje y el estado
             response respuesta = response.builder()
@@ -77,88 +75,61 @@ public ResponseEntity<Object> save( categoria categoria,  @RequestParam("file") 
             return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
         }
 
-    // Verifica que los campos requeridos no estén vacíos
-    if (categoria.getNombreCategoria().equals("")) {
-        return new ResponseEntity<>("El nombre es obligatorio", HttpStatus.BAD_REQUEST);
+        // Verifica que los campos requeridos no estén vacíos
+        if (categoria.getNombreCategoria().equals("")) {
+            return new ResponseEntity<>("El nombre es obligatorio", HttpStatus.BAD_REQUEST);
+        }
+
+        if (categoria.getUbicacion().equals("")) {
+            return new ResponseEntity<>("La ubicación es obligatoria", HttpStatus.BAD_REQUEST);
+        }
+
+        // if (categoria.getEstado().equals("")) {
+        // return new ResponseEntity<>("El estado es obligatoria",
+        // HttpStatus.BAD_REQUEST);
+        // }
+        categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
+
+        // Guardar la categoría
+        categoriaService.save(categoria);
+        return new ResponseEntity<>(categoria, HttpStatus.OK);
     }
 
-    if (categoria.getUbicacion().equals("")) {
-        return new ResponseEntity<>("La ubicación es obligatoria", HttpStatus.BAD_REQUEST);
+    // Método para consultar categorías con manejo de imágenes (ruta cambiada)
+    @GetMapping("/consultar-imagenes")
+    public ResponseEntity<Object> consultarcategoriaJson() {
+        List<categoria> listaCategoria = categoriaService.consultarcategoria();
+        // listaCategoria.forEach(c -> c.setImagen_base("")); // Aquí puedes ajustar
+        // cómo se manejan las imágenes
+        return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
     }
 
-    // if (categoria.getEstado().equals("")) {
-    //     return new ResponseEntity<>("El estado es obligatoria", HttpStatus.BAD_REQUEST);
-    // }
-    categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
-
-          
-
-    // Guardar la categoría
-    categoriaService.save(categoria);
-    return new ResponseEntity<>(categoria, HttpStatus.OK);
-}
-
-// Método para consultar categorías con manejo de imágenes (ruta cambiada)
-@GetMapping("/consultar-imagenes")
-public ResponseEntity<Object> consultarcategoriaJson() {
-    List<categoria> listaCategoria = categoriaService.consultarcategoria();
-    // listaCategoria.forEach(c -> c.setImagen_base("")); // Aquí puedes ajustar cómo se manejan las imágenes
-    return new ResponseEntity<>(listaCategoria, HttpStatus.OK);
-}
-
-@PostMapping("/imagen")  // Aquí no debe haber una barra adicional
-public ResponseEntity<Object> guardarImagenJson(
-        categoria categoria, 
-        @RequestParam("file") MultipartFile file) throws IOException {
+    @PostMapping("/imagen") // Aquí no debe haber una barra adicional
+    public ResponseEntity<Object> guardarImagenJson(
+            categoria categoria,
+            @RequestParam("file") MultipartFile file) throws IOException {
 
         try {
             // Guardar el archivo y generar la URL
             // String fileName = gestionArchivoService.storeFile(file);
-            // categoria.setImagen_url("http://localhost:8080/api/downloadFile/" + fileName);
+            // categoria.setImagen_url("http://localhost:8080/api/downloadFile/" +
+            // fileName);
             categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
 
             int resultado = categoriaService.guardarimagenJson(categoria);
             if (resultado == 0) {
                 return new ResponseEntity<>(new respuestaImagen("ok", "Se guardó correctamente"), HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(new respuestaImagen("error", "Error al guardar"), HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(new respuestaImagen("error", "Error al guardar"),
+                        HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
         } catch (IOException e) {
-            return new ResponseEntity<>("Error al guardar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al guardar la imagen: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    // Editar imagen de una categoría
-    @PutMapping("/imagen/{id}")
-    public ResponseEntity<Object> updateCategoriaImage(
-            @PathVariable String id, 
-            @RequestParam("file") MultipartFile file) {
-        try {
-            // Buscar la categoría por su ID
-            var categoriaOptional = categoriaService.findOne(id);
-
-            // Verificar si la categoría existe
-            if (categoriaOptional.isPresent()) {
-                var categoria = categoriaOptional.get();
-
-                // Convertir la imagen a base64
-                String imagenBase64 = Base64.getEncoder().encodeToString(file.getBytes());
-
-                // Actualizar la imagen de la categoría
-                categoria.setImagen_base(imagenBase64);
-
-                // Guardar los cambios de la categoría
-                categoriaService.save(categoria);
-
-                return new ResponseEntity<>(categoria, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("Error: Categoría no encontrada", HttpStatus.NOT_FOUND);
-            }
-        } catch (IOException e) {
-            return new ResponseEntity<>("Error al actualizar la imagen: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
     // Filtros de categoría
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
@@ -189,13 +160,16 @@ public ResponseEntity<Object> guardarImagenJson(
 
     // Actualizar una categoría
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate, @RequestParam("file") MultipartFile file) throws IOException  {
+    public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate,
+            @RequestParam("file") MultipartFile file) throws IOException {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
             categoria.setUbicacion(categoriaUpdate.getUbicacion());
-            categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
+            if (!file.isEmpty()) {
+                categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
+            }
 
             categoriaService.save(categoria);
             return new ResponseEntity<>(categoria, HttpStatus.OK);
