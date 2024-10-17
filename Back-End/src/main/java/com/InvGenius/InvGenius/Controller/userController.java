@@ -6,6 +6,7 @@ package com.InvGenius.InvGenius.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 // import org.springframework.mail.javamail.JavaMailSender;
@@ -28,6 +29,7 @@ import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.response;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
+import com.InvGenius.InvGenius.service.emailService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,6 +46,9 @@ public class userController {
 
     @Autowired
     private final AuthenticationManager authenticationManager;
+
+    @Autowired
+    private emailService email;
 
     // @Autowired
     // private JavaMailSender javaMailSender;
@@ -168,6 +173,7 @@ public class userController {
         user.setCambiarPassword(false); // Cambiar el estado de la contraseña a no
         // temporal
         userService.save(user);
+        email.enviarCorreoCambio(user);
         return new ResponseEntity<>("Contraseña cambiada exitosamente", HttpStatus.OK);
     }
 

@@ -105,7 +105,8 @@
                                 <th class="text-center align-middle">Proveedor</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="cuerpoTabla"></tbody>
+                        <!-- <tbody>
                             <tr>
                                 <td class="text-center align-middle">Entrada</td>
                                 <td class="text-center align-middle">Lácteos</td>
@@ -122,7 +123,7 @@
                                 <td class="text-center align-middle">24/04/2024</td>
                                 <td class="text-center align-middle">Lácteos S.A.</td>
                             </tr>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
@@ -160,6 +161,17 @@
                                         <label for="fechaHasta"><i class="fas fa-calendar-alt"></i> Fecha Hasta:</label>
                                         <input type="date" id="fechaHasta" class="form-control" style="border: 1px solid black;" required>
                                     </div>
+
+                                    <div class="col col-xl-12 col-12 table-hover mt-3">
+                                        <label for="tipoInforme"><i class="fas fa-check-circle"></i> Tipo De Informe</label>
+                                        <select id="tipoInforme" class="form-control"
+                                            style="border: 1px solid black;" onfocusout="validarTipoInforme(this)"
+                                            onkeypress="soloLetras(event);" required>
+                                            <option value="Movimientos" selected>Movimientos</option>
+                                            <option value="BajoStock">BajoStock</option>
+                                            <option value="Caducidad">Caducidad</option>
+                                        </select>
+                                    </div>
                                 </form>
                                 <br>
                             </div>
@@ -167,7 +179,7 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-secondary" onclick="registrarProveedor() ">Descargar</button>
+                    <button type="button" class="btn btn-secondary" onclick="descargarInforme() ">Descargar</button>
                 </div>
             </div>
         </div>

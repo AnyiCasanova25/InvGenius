@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
 
+import com.InvGenius.InvGenius.Controller.userController;
 import com.InvGenius.InvGenius.models.lote;
 import com.InvGenius.InvGenius.models.movimientos;
 //import com.InvGenius.InvGenius.models.novedad;
@@ -81,7 +82,7 @@ public class emailService {
 
     // AQUI
     @GetMapping("/enviar-correo-recuperar")
-    public String enviarCorreoRecuperarContrasena(user user, user cambiarPassword) {
+    public String enviarCorreoRecuperarContrasena(user user) {
         try {
             String destinatario = user.getCorreo();
             String asunto = "Recuperacion de contraseña";
@@ -110,7 +111,7 @@ public class emailService {
 
     // Este solo debe tener un mensaje de que su contraseña se cambio correctamente
     @GetMapping("/enviar-correo-cambio")
-    public String enviarCorreoCambio(user user, user correo) {
+    public String enviarCorreoCambio(user user) {
         try {
             String destinatario = user.getCorreo();
             String asunto = "Cambio de contraseña";
