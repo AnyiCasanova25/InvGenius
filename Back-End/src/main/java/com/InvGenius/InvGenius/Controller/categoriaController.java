@@ -1,6 +1,8 @@
 package com.InvGenius.InvGenius.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -44,11 +46,28 @@ public class categoriaController {
     //     return new ResponseEntity<>(categoria, HttpStatus.OK);
     // }
 
+    String extensionesPermitidas[]={"png","jpg"};
+
     @PostMapping("/")
 public ResponseEntity<Object> save( categoria categoria,  @RequestParam("file") MultipartFile file) throws IOException 
 {
     var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(),categoria.getUbicacion());
-
+    String extension="";
+    if (file.getOriginalFilename() != null && file.getOriginalFilename().contains(".")) {
+        extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+    } else {
+        extension = "";  // O cualquier texto que desees si no hay archivo
+    }
+    if(!Arrays.asList(extensionesPermitidas).contains(extension)){
+        response respuesta = response.builder()
+                    .message("Extensión no permitida")
+                    .build();
+            // Retornar el objeto como JSON
+            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+    }
+    var tamano=file.getSize();
+    
+    
         if (listaCategoria.size() != 0) {
             // Construir una respuesta con el mensaje y el estado
             response respuesta = response.builder()
