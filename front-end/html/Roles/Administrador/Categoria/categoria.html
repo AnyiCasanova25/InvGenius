@@ -50,7 +50,8 @@
         </ul>
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
-                <img src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="50px">
+                <img id="imgPerfil" width="50px">
+
                 <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
@@ -133,12 +134,30 @@
                                     required>
                             </div>
                             <div class="col-12">
-                                <label for="imagen_base"><i class="fa-solid fa-image"></i>
-                                    Cargar imagen:</label>
-                                <input type="file" id="imagen_base" class="form-control" accept="image/*"
-                                    onfocusout="validarimagen_base(this)" style="border: 1px solid black;"
-                                    required>
+                                <label for="imagen_base"><i class="fa-solid fa-image"></i> Cargar imagen:</label>
+                                <input type="file" id="imagen_base" class="form-control" accept=".jpg, .png"
+                                    onchange="validarImagen()" style="border: 1px solid black;" required>
                             </div>
+                            
+                            <script>
+                                function validarImagen() {
+                                    const input = document.getElementById('imagen_base');
+                                    const filePath = input.value;
+                                    const allowedExtensions = /(\.jpg|\.png)$/i;
+                            
+                                    if (!allowedExtensions.exec(filePath)) {
+                                        Swal.fire({
+                                            title: 'Error de formato',
+                                            text: 'Solo puedes cargar archivos .jpg o .png',
+                                            icon: 'error',
+                                            confirmButtonText: 'Aceptar'
+                                        });
+                                        input.value = ''; // Limpiar el campo de archivo
+                                        return false;
+                                    } 
+                                }
+                            </script>
+                            
                         </form>
                     </div>
                 </div>

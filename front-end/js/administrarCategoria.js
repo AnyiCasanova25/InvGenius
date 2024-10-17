@@ -133,12 +133,26 @@ function registrarCategoria() {
         },
         error: function (xhr, status, error) {
             console.error("Error en la petición:", xhr.responseText);
+            
+            // Parsear la respuesta JSON si es posible
+            let errorMessage = "¡Error al registrar esta categoría!";
+            
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.message) {
+                    errorMessage = response.message;
+                }
+            } catch (e) {
+                console.error("No se pudo parsear la respuesta JSON:", e);
+            }
+        
             Swal.fire({
                 title: "Error",
-                text: "¡Error al registrar esta categoría!",
+                text: errorMessage,
                 icon: "error"
             });
         }
+        
     });
 }
 
@@ -165,7 +179,7 @@ function validarnombreCategoria(cuadroNumero) {
 }
 
 function validarubicacion(cuadroNumero) {
-    return validarCampo(cuadroNumero, 1, 41);
+    return validarCampo(cuadroNumero, 1, 21);
 }
 
 function validarimagen_base(imagenLength) {

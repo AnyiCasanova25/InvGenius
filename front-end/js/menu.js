@@ -28,11 +28,25 @@ function cargarPerfil() {
             "Authorization": "Bearer " + token
         },
         success: function (result) {
-            // console.log(result);
+            // Actualizar el nombre de usuario
             document.getElementById("nombreUsuario").innerText = result["nombres"];
+
+            // Obtener el elemento de imagen (asegúrate de que el ID coincida con el HTML)
+            const imgPerfil = document.getElementById("imgPerfil"); // Cambié "genero" por "imgPerfil"
+
+            // Cambiar la imagen según el género
+            if (result["genero"] === "Femenino") {
+                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/mujer1.png"; 
+            } else if (result["genero"] === "Masculino") {
+                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/hombre1.png"; 
+            } else {
+                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/otro3.png"; 
+            }
         }
     });
 }
+
+
 $(document).ready(function () {
     cargarPerfil();
 });
