@@ -197,10 +197,13 @@ function cargarMarca() {
             type: "GET",
             success: function (result) {
                 for (var i = 0; i < result.length; i++) {
-                    var option = document.createElement("option");
-                    option.value = result[i].idMarca;
-                    option.text = result[i].nombreMarca;
-                    marca.appendChild(option);
+                    // Filtrar solo las marcas cuyo estado sea 'Activo'
+                    if (result[i].estado === "Activo") {
+                        var option = document.createElement("option");
+                        option.value = result[i].idMarca;
+                        option.text = result[i].nombreMarca;
+                        marca.appendChild(option);
+                    }
                 }
             },
             error: function (error) {
@@ -211,6 +214,7 @@ function cargarMarca() {
         console.error("Elemento con ID 'marca' no encontrado.");
     }
 }
+
 
 function cargarCategoria() {
     var categoria = document.getElementById("categoria");
@@ -224,20 +228,24 @@ function cargarCategoria() {
             type: "GET",
             success: function (result) {
                 for (var i = 0; i < result.length; i++) {
-                    var option = document.createElement("option");
-                    option.value = result[i].idCategoria;
-                    option.text = result[i].nombreCategoria;
-                    categoria.appendChild(option);
+                    // Si existe una propiedad 'estado', filtrar solo las categorías activas
+                    if (result[i].estado === "Activo") {
+                        var option = document.createElement("option");
+                        option.value = result[i].idCategoria;
+                        option.text = result[i].nombreCategoria;
+                        categoria.appendChild(option);
+                    }
                 }
             },
             error: function (error) {
-                console.error("Error al obtener la lista de marcas: " + error);
+                console.error("Error al obtener la lista de categorías: " + error);
             }
         });
     } else {
-        console.error("Elemento con ID 'marca' no encontrado.");
+        console.error("Elemento con ID 'categoria' no encontrado.");
     }
 }
+
 
 function limpiar() {
     document.querySelectorAll(".form-control").forEach(function (input) {
