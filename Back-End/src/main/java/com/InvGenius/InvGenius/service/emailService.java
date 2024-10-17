@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
 
-import com.InvGenius.InvGenius.Controller.userController;
 import com.InvGenius.InvGenius.models.lote;
 import com.InvGenius.InvGenius.models.movimientos;
 //import com.InvGenius.InvGenius.models.novedad;
