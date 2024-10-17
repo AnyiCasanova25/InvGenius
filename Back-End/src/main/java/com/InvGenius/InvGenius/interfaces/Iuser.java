@@ -13,7 +13,7 @@ import com.InvGenius.InvGenius.models.user;
 @Repository
 public interface Iuser extends CrudRepository<user, String> {
 
-    @Query("SELECT u FROM user u WHERE u.correo LIKE %?1% OR u.documentoIdentidad LIKE %?2%")
+    @Query("SELECT u FROM user u WHERE (u.correo LIKE %?1% OR u.documentoIdentidad LIKE %?2%) AND u.correo != 'invgenius2024@gmail.com'")
     List<user> userExist(String correo, String documentoIdentidad);
 
     @Query("SELECT u FROM user u WHERE u.correo = ?1")

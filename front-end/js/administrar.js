@@ -239,13 +239,13 @@ function mostrarTablaNovedades(result) {
             <td class="text-center align-middle">${result[i]["estadoNovedad"]}</td>
             <td class="text-center align-middle">
                 <i class="fas fa-eye ver" data-id="${result[i]['idNovedad']}" title="Ver la Solicitud del Usuario"></i>
-                <i class="fas fa-check confirmar" data-id="${result[i]['idNovedad']}" title="Aceptar Novedad"></i>
-                <i class="fas fa-times eliminar" data-id="${result[i]['idNovedad']}" title="Rechazar Novedad"></i>
+                <i class="fas fa-check confirmar" data-id="${result[i]['idNovedad']}" title="Atender Novedad"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
 }
+                // <i class="fas fa-times eliminar" data-id="${result[i]['idNovedad']}" title="Rechazar Novedad"></i>
             // <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
 // $(document).on("click", ".cambiarEstado", function () {
 //     var idNovedad = $(this).data("id");
@@ -338,7 +338,7 @@ $(document).on('click', '.ver', function () {
 
 $(document).on('click', '.confirmar', function () {
     var idNovedad = $(this).data('id');
-    mostrarConfirmacion(idNovedad, 'Aceptada', '¿Estás seguro de aceptar esta novedad?');
+    mostrarConfirmacion(idNovedad, 'Atendida', '¿Estás seguro de atender esta novedad?');
 });
 
 $(document).on('click', '.eliminar', function () {
@@ -378,7 +378,7 @@ function actualizarEstadoNovedad(idNovedad, nuevoEstado) {
         success: function (result) {
             Swal.fire({
                 title: "Estado Actualizado",
-                text: `El estado de la novedad se cambió a ${nuevoEstado}`,
+                text: `El estado de la novedad se cambió a "${nuevoEstado}"`,
                 icon: "success",
                 timer: 3000, // Se cierra automáticamente en 3 segundos
                 timerProgressBar: true, // Muestra la barra de progreso
@@ -402,29 +402,6 @@ function actualizarEstadoNovedad(idNovedad, nuevoEstado) {
 function actualizarlistarNovedad() {
     listarNovedad();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //Apartado Perfil
@@ -473,74 +450,13 @@ function mostrarTablaPerfiles(result) {
             <td class="text-center align-middle">${result[i]["rol"]}</td>
             <td class="text-center align-middle">${result[i]["estado"]}</td>
             <td class="text-center align-middle">
-                <i class="fas fa-edit editar" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
+                <i class="fas fa-edit editar1" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
                 <i class="fas fa-toggle-on cambiarEstadoUser" data-id="${result[i]["idUser"]}" title="Cambiar Estado de Usuario"></i>
             </td>
         `;
         cuerpoTabla.appendChild(trRegistro);
     }
 }
-// function registrarUser() {
-//     var documentoIdentidad = document.getElementById("documentoIdentidad");
-//     var nombres = document.getElementById("nombres");
-//     var apellidos = document.getElementById("apellidos");
-//     var celular = document.getElementById("celular");
-//     var correo = document.getElementById("correo");
-//     var rol = document.getElementById("rol");
-//     var estado = document.getElementById("estado");
-
-//     Verificar si algún campo obligatorio está vacío
-//     if (!validarCamposPerfiles()) {
-//         Swal.fire({
-//             title: "¡Error!",
-//             text: "¡Llene todos los campos correctamente!",
-//             icon: "error"
-//         });
-//         return; // Salir si algún campo es inválido
-//     }
-
-//     var forData = {
-//         "documentoIdentidad": documentoIdentidad.value,
-//         "nombres": nombres.value,
-//         "apellidos": apellidos.value,
-//         "celular": celular.value,
-//         "correo": correo.value,
-//         "rol": rol.value,
-//         "estado": estado.value,
-//     };
-
-//     var metodo = registrarUserBandera ? "POST" : "PUT";
-//     var urlLocal = registrarUserBandera ? urlUsuarios : urlUsuarios + idUser;
-
-//     const token = localStorage.getItem('authTokens');
-//     $.ajax({
-//         url: urlLocal,
-//         type: metodo,
-//         headers: {
-//             'Authorization': 'Bearer ' + token
-//         },
-//         contentType: "application/json",
-//         data: JSON.stringify(forData),
-//         success: function (response) {
-//             limpiar();
-//             Swal.fire({
-//                 title: "LISTO",
-//                 text: "Felicidades, Registro exitoso",
-//                 icon: "success"
-//             }).then(function () {
-//                 $('#exampleModal').modal('hide');
-//                 listarUser(); // Refrescar la tabla
-//             });
-//         },
-//         error: function (xhr, status, error) {
-//             Swal.fire({
-//                 title: "Error",
-//                 text: "¡Error al registrar o actualizar este Proveedor!",
-//                 icon: "error"
-//             });
-//         }
-//     });
-// }
 
 // Función para validar campos
 function validarCamposPerfiles() {
@@ -624,7 +540,7 @@ $(document).on("click", ".cambiarEstadoUser", function () {
 
 
 // Abrir el modal y cargar datos del usuario
-$(document).on('click', '.editar', function () {
+$(document).on('click', '.editar1', function () {
     idUser = $(this).data('id'); // Obtener el ID del usuario desde el botón de editar
 
     // Hacer una solicitud AJAX para obtener los datos del usuario

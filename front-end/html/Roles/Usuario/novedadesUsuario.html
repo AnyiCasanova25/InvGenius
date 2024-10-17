@@ -23,7 +23,7 @@
 
 </head>
 
-<body onload="cargarListaUsuarios()">
+<body>
     <!-- <div id="menuEstudiante"></div> -->
     <nav class="menun">
         <div class="logo-container">
@@ -48,12 +48,13 @@
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/mujer3.png" width="50px">
-                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Laura Ariza</p>
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
+                    <a href="/front-end/doc/Manual_Rol_Usuario_Web.pdf" download>Manual de Usuario</a>
                     <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
-                    <a href="/front-end/html/index.html">Cerrar Sesión</a>
+                    <a href="/front-end/html/index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -97,7 +98,7 @@
                                 <th class="text-center align-middle">Cuerpo</th>
                                 <th class="text-center align-middle">Fecha Envio</th>
                                 <th class="text-center align-middle">Estado</th>
-                                <th class="text-center align-middle">Opciones</th>
+                                <!-- <th class="text-center align-middle">Opciones</th> -->
                             </tr>
                         </thead>
                         <tbody id="cuerpoTabla"></tbody>
@@ -120,7 +121,7 @@
                         <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                    style="font-family: 'Titillium Web', sans-serif; text-align: center;">
                         Registro Novedades
                     </h1>
                 </div>
@@ -136,10 +137,7 @@
                                             style="border: 1px solid black;" onfocusout="validarpara(this)"
                                             onkeypress="alfaNumericosSignos(event);" required>
                                     </div> -->
-                                    <div class="col col-xl-6 col-12">
-                                        <label for="para">para:</label>
-                                        <select id="para" class="form-select"></select>
-                                    </div>
+                                
                                     <div class="col col-xl-12 col-12">
                                         <label for="asunto"><i class="fas fa-font"></i> Asunto:</label>
                                         <input type="text" id="asunto" class="form-control"
@@ -155,7 +153,7 @@
                                         <div class="count-characters"><span id="charCount">0</span> / 500 caracteres</div>
                                     </div>
                                     <div class="col col-xl-12 col-12">
-                                        <label for="imagenNovedad"><i class="fas fa-font"></i> Cargar evidencia::</label>
+                                        <label for="imagenNovedad"><i class="fas fa-font"></i> Cargar imagen:</label>
                                         <input type="text" id="imagenNovedad" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarasunto(this)"
                                             onkeypress="soloLetras(event);" required>
@@ -208,8 +206,8 @@
     </div>
 
     <script src="/front-end/js/jsUrl/Urls.js"></script>
-    <script src="/Front-end/js/novedadesUsuario.js"></script>
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+    <script src="/front-end/js/novedadesUsuario.js"></script>
 </body>
 
 </html>

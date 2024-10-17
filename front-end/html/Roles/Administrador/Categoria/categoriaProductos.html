@@ -51,14 +51,15 @@
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="50px">
-                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Julian Fierro</p>
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
                     <a href="/front-end/html/Roles/Administrador/administrarPerfiles.html">Administrar</a>
                     <a href="/front-end/html/Login/registrarUsuario.html">Registrar Usuario</a>
+                    <a href="/front-end/doc/Manual_Rol_Administrador_Web.pdf" download>Manual de Usuario</a>
                     <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
-                    <a href="/front-end/html/index.html">Cerrar Sesión</a>
+                    <a href="/front-end/html/index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -161,7 +162,7 @@
                         <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                    style="font-family: 'Titillium Web', sans-serif; text-align: center;">
                         Registrar Producto
                     </h1>
                 </div>
@@ -173,7 +174,7 @@
                                 <form class="row table-hover needs-validation">
 
                                     <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="nombreProveedor"><i class="fas fa-user"></i> Nombre:</label>
+                                        <label for="nombreProveedor"><i class="fas fa-box"></i> Nombre:</label>
                                         <input type="text" id="nombreProveedor" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarnombreProducto(this)"
                                             onkeypress="soloLetras(event);" required>
@@ -237,6 +238,7 @@
         </div>
     </div>
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+    <script src="/front-end/js/jsUrl/Urls.js"></script>
 </body>
 
 </html>

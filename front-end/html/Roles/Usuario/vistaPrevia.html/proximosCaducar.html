@@ -46,12 +46,13 @@
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/mujer3.png" width="50px">
-                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Laura Ariza</p>
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
+                    <a href="/front-end/doc/Manual_Rol_Usuario_Web.pdf" download>Manual de Usuario</a>
                     <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
-                    <a href="/front-end/html/index.html">Cerrar Sesión</a>
+                    <a href="/front-end/html/index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -97,11 +98,11 @@
             <div class="card-body">
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                           onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                           onkeyup="buscarLotePorFiltro(document.getElementById('texto').value)"
                            aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-custom"
-                                onclick="listarProveedor(); blanquearCampos()">
+                                onclick="listarLotesACaducar(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
                             </div>
@@ -128,16 +129,10 @@
     
     </div>
     
-
-    <script>
-        // Datos de ejemplo
-        const productos = [
-            { lote: '001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', fechaVencimiento: '2024-09-01' },
-            { lote: '002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', fechaVencimiento: '2024-08-20' },
-            { lote: '003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', fechaVencimiento: '2024-08-25' },
-            { lote: '004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', fechaVencimiento: '2025-01-15' }
-        ];
-    
+    <script src="/front-end/js/jsUrl/Urls.js"></script>
+    <script src="/front-end/js/vistaPreviaProximosACad.js"></script>
+    <!-- <script>
+        
         // Selecciona el cuerpo de la tabla
         const cuerpoTabla = document.getElementById('cuerpoTabla');
     
@@ -156,6 +151,6 @@
             `;
             cuerpoTabla.appendChild(fila);
         });
-    </script>
+    </script> -->
 </body>
 </html>

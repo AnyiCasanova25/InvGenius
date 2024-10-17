@@ -170,14 +170,12 @@ public ResponseEntity<Object> guardarImagenJson(
 
     // Actualizar una categoría
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate, @RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate, @RequestParam("file") MultipartFile file) throws IOException  {
         var categoria = categoriaService.findOne(id).get();
 
         if (categoria != null) {
             categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
             categoria.setUbicacion(categoriaUpdate.getUbicacion());
-            categoria.setEstado(categoriaUpdate.getEstado());
-
             categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
 
             categoriaService.save(categoria);

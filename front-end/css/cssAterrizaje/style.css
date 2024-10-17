@@ -47,11 +47,12 @@ html.lt-ie-10 .ie-panel {
 }
 
 .rd-navbar-panel {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 20px;
-	background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    width: 100%;
 }
 
 .login-button {
@@ -6033,15 +6034,20 @@ html [class*='section-'].section-bottom-0 {
 }
 
 .section-main-bunner.section-main-bunner-filter:before {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	content: '';
-	background: linear-gradient(360deg, rgba(18, 18, 18, 0.6) 0.91%, rgba(18, 18, 18, 0.28) 47.77%, rgba(39, 42, 55, 0.75) 99.52%);
-	z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+    background: linear-gradient(360deg, rgba(80, 80, 80, 0.464) 0.91%, rgba(208, 208, 208, 0.538) 47.77%, rgba(80, 80, 80, 0.464) 99.52%), 
+                url('/front-end/img/Pagina/Fondoword.jpg'); /* Ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen ocupe el 100% del ancho y alto */
+    background-position: center; /* Centra la imagen en la sección */
+    z-index: 1;
 }
+
+
 
 @keyframes bunner-img {
 	0% {
@@ -8900,11 +8906,11 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-classic.rd-navbar-static .rd-navbar-main {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 32px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
 }
 
 .rd-navbar-classic.rd-navbar-static .rd-navbar-brand img {

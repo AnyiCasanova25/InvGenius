@@ -48,12 +48,13 @@
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/mujer3.png" width="50px">
-                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Laura Ariza</p>
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
+                    <a href="/front-end/doc/Manual_Rol_Usuario_Web.pdf" download>Manual de Usuario</a>
                     <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
-                    <a href="/front-end/html/index.html">Cerrar Sesión</a>
+                    <a href="/front-end/html/index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -65,7 +66,7 @@
             <div class="col-lg-4 col-md-6 mb-3">
                 <div class="info-card">
                     <a class="text-white text-decoration-none" data-bs-toggle="modal"
-                        data-bs-target="#agregarCategoria">
+                        onclick="registrarCategoriaBandera=true; limpiar();" data-bs-target="#agregarCategoria">
                         <i class="fa-solid fa-tags fa-3x"></i>
                         <div class="Position-information">
                             <h5><b>Registrar Categoría</b></h5>
@@ -78,10 +79,10 @@
             <div class="card-body">
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                        onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                        onkeyup="buscarCategoriaPorFiltro(document.getElementById('texto').value)"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-custom" onclick="listarProveedor(); blanquearCampos()">
+                        <button type="button" class="btn btn-custom" onclick="listarCategoria(); blanquearCampos()">
                             <div class="d-flex justify-content-center align-items-center">
                                 <i class="fa-solid fa-eraser"></i>
                             </div>
@@ -89,131 +90,62 @@
                     </div>
                 </div>
                 <!-- Categorías -->
-                <div class="shop-grid">
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/001/001.png" alt="Lácteos">
-                            </figure>
-                            <h3 class="title">Lácteos</h3>
-                            <div class="card-actions">
-                                <a href="../Categoria/categoriaProductos.html" class="action-icon"><i
-                                        class="fas fa-eye"></i></a>
-                                <a class="action-icon" data-bs-toggle="modal" data-bs-target="#agregarCategoria">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a class="action-icon" data-bs-toggle="modal" data-bs-target="#eliminarCategoria">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/002/001.png" alt="Carnes">
-                            </figure>
-                            <h3 class="title">Carnes</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/003/001.png" alt="Granos">
-                            </figure>
-                            <h3 class="title">Granos</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/004/001.png" alt="Verduras">
-                            </figure>
-                            <h3 class="title">Verduras</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/005/001.png" alt="Frutas">
-                            </figure>
-                            <h3 class="title">Frutas</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="shop-grid" id="cuerpoTarjetas">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal para agregar categoría -->
+    <!-- Modal para agregar categoría -->   
     <div class="modal fade" id="agregarCategoria" tabindex="-1" aria-labelledby="agregarCategoriaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="centerLogoNombreModal">
-                        <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
-                        <img src="/front-end/img/Pagina/Nombre.png" width="50%">
-                    </div>
-                    <h1 class="modal-title fs-5" id="agregarCategoriaLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
-                        Registrar Categoría
-                    </h1>
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="centerLogoNombreModal">
+                    <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
+                    <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                 </div>
-                <div class="modal-body">
-                    <div>
-                        <form class="row needs-validation" enctype="multipart/form-data">
-                            <div class="col-12">
-                                <label for="nombre"><i class="fa-solid fa-tag"></i> Nombre de Categoría:</label>
-                                <input type="text" id="nombre" class="form-control" style="border: 1px solid black;"
-                                    onkeypress="soloLetras(event);" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="Ubicacion"><i class="fa-solid fa-location-pin"></i>
-                                    Ubicación:</label>
-                                <input type="text" id="Ubicacion" class="form-control" style="border: 1px solid black;"
-                                    onkeypress="alfaNumericosSignos(event);" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="imagen"><i class="fa-solid fa-image"></i>
-                                    Cargar imagen:</label>
-                                <input type="file" id="imagen" class="form-control" accept="image/*"
-                                    style="border: 1px solid black;" required>
-                            </div>
-                        </form>
-                    </div>
+                <h1 class="modal-title fs-5 fuentetiti" id="agregarCategoriaLabel"
+                style="font-family: 'Titillium Web', sans-serif; text-align: center;">
+                    Registrar Categoría
+                </h1>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form class="row needs-validation" enctype="multipart/form-data">
+                        <div class="col-12">
+                            <label for="nombreCategoria"><i class="fa-solid fa-tag"></i> Nombre:</label>
+                            <input type="text" id="nombreCategoria" class="form-control"
+                                style="border: 1px solid black;" onfocusout="validarnombreCategoria(this)"
+                                onkeypress="soloLetras(event);" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="ubicacion"><i class="fa-solid fa-location-pin"></i>
+                                Ubicación:</label>
+                            <input type="text" id="ubicacion" class="form-control" style="border: 1px solid black;"
+                                onfocusout="validarubicacion(this)" onkeypress="alfaNumericosSignos(event);"
+                                required>
+                        </div>
+                        <div class="col-12">
+                            <label for="imagen_base"><i class="fa-solid fa-image"></i>
+                                Cargar imagen:</label>
+                            <input type="file" id="imagen_base" class="form-control" accept="image/*"
+                                onfocusout="validarimagen_base(this)" style="border: 1px solid black;"
+                                required>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Agregar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="registrarCategoria()">Agregar</button>
             </div>
         </div>
     </div>
-    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+</div>
+<script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+<script src="/front-end/js/administrarCategoria.js"></script>
+<script src="/front-end/js/jsUrl/Urls.js"></script>
 </body>
 
 </html>

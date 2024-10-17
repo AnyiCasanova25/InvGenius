@@ -51,14 +51,15 @@
         <div style="display: flex; align-items: center;">
             <div class="profile" style="display: flex; align-items: center; position: relative;">
                 <img src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="50px">
-                <p style="margin-left: 10px; margin-top:15px; color: #ffffff">Julian Fierro</p>
+                <p style="margin-left: 10px; margin-top:15px; color: #ffffff" id="nombreUsuario"></p>
                 <div class="dropdown-content">
                     <a href="/front-end/html/Login/perfilUser.html">Mi Perfil</a>
                     <a href="/front-end/html/Roles/Administrador/administrarPerfiles.html">Administrar</a>
                     <a href="/front-end/html/Login/registrarUsuario.html">Registrar Usuario</a>
+                    <a href="/front-end/doc/Manual_Rol_Administrador_Web.pdf" download>Manual de Usuario</a>
                     <a href="/front-end/html/Login/actualizarContrasena.html">Cambiar Contraseña</a>
                     <hr>
-                    <a href="/front-end/html/index.html">Cerrar Sesión</a>
+                    <a href="/front-end/html/index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -70,7 +71,7 @@
             <div class="col-lg-4 col-md-6 mb-3">
                 <div class="info-card">
                     <a class="text-white text-decoration-none" data-bs-toggle="modal"
-                        data-bs-target="#agregarCategoria">
+                        onclick="registrarCategoriaBandera=true; limpiar();" data-bs-target="#agregarCategoria">
                         <i class="fa-solid fa-tags fa-3x"></i>
                         <div class="Position-information">
                             <h5><b>Registrar Categoría</b></h5>
@@ -95,81 +96,6 @@
                 </div>
                 <!-- Categorías -->
                 <div class="shop-grid" id="cuerpoTarjetas">
-                    
-                    <!-- <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/001/001.png" alt="Lácteos">
-                            </figure>
-                            <h3 class="title">Lácteos</h3>
-                            <div class="card-actions">
-                                <a href="../Categoria/categoriaProductos.html" class="action-icon"><i
-                                        class="fas fa-eye"></i></a>
-                                <a class="action-icon" data-bs-toggle="modal" data-bs-target="#agregarCategoria">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a class="action-icon" data-bs-toggle="modal" data-bs-target="#eliminarCategoria">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/002/001.png" alt="Carnes">
-                            </figure>
-                            <h3 class="title">Carnes</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/003/001.png" alt="Granos">
-                            </figure>
-                            <h3 class="title">Granos</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/004/001.png" alt="Verduras">
-                            </figure>
-                            <h3 class="title">Verduras</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/005/001.png" alt="Frutas">
-                            </figure>
-                            <h3 class="title">Frutas</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="action-icon"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -185,8 +111,8 @@
                         <img src="/front-end/img/Pagina/logoInvGenius.png" width="15%" style="margin-right: 3%;">
                         <img src="/front-end/img/Pagina/Nombre.png" width="50%">
                     </div>
-                    <h1 class="modal-title fs-5" id="agregarCategoriaLabel"
-                        style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">
+                    <h1 class="modal-title fs-5 fuentetiti" id="agregarCategoriaLabel"
+                    style="font-family: 'Titillium Web', sans-serif; text-align: center;">
                         Registrar Categoría
                     </h1>
                 </div>
@@ -194,21 +120,24 @@
                     <div>
                         <form class="row needs-validation" enctype="multipart/form-data">
                             <div class="col-12">
-                                <label for="nombreCategoria"><i class="fa-solid fa-tag"></i> Nombre de Categoría:</label>
-                                <input type="text" id="nombreCategoria" class="form-control" style="border: 1px solid black;"
+                                <label for="nombreCategoria"><i class="fa-solid fa-tag"></i> Nombre:</label>
+                                <input type="text" id="nombreCategoria" class="form-control"
+                                    style="border: 1px solid black;" onfocusout="validarnombreCategoria(this)"
                                     onkeypress="soloLetras(event);" required>
                             </div>
                             <div class="col-12">
                                 <label for="ubicacion"><i class="fa-solid fa-location-pin"></i>
                                     Ubicación:</label>
                                 <input type="text" id="ubicacion" class="form-control" style="border: 1px solid black;"
-                                    onkeypress="alfaNumericosSignos(event);" required>
+                                    onfocusout="validarubicacion(this)" onkeypress="alfaNumericosSignos(event);"
+                                    required>
                             </div>
                             <div class="col-12">
                                 <label for="imagen_base"><i class="fa-solid fa-image"></i>
                                     Cargar imagen:</label>
                                 <input type="file" id="imagen_base" class="form-control" accept="image/*"
-                                    style="border: 1px solid black;" required>
+                                    onfocusout="validarimagen_base(this)" style="border: 1px solid black;"
+                                    required>
                             </div>
                         </form>
                     </div>

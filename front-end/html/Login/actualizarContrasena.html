@@ -8,31 +8,46 @@
     <title>InvGenius</title>
     <link rel="stylesheet" href="/front-end/css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 </head>
+
 <body>
-        
+
     <div class="container">
         <div class="container-form">
-            <form class="sign-in">
+            <form class="sign-in" onsubmit="actualizarPassword(event)">
                 <h2 class="fuente1">Actualizar contraseña</h2>
                 <span>Ingrese su contraseña y nueva contraseña</span>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Contraseña Actual">
+                    <input type="password" id="contrasenaAntigua" placeholder="Contraseña Actual" 
+                    onkeypress="alfaNumericosSignos(event);">
                 </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Nueva Contraseña">
+                    <input type="password" id="new-password" placeholder="Nueva Contraseña"
+                        onkeypress="alfaNumericosSignos(event);" onblur="validarPassword();">
                 </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Confirmar Contraseña">
+                    <input type="password" id="confirm-password" placeholder="Confirmar Contraseña"
+                        onkeypress="alfaNumericosSignos(event);" onblur="validarPassword();">
+                </div>
+
+                <div id="password-error" class="alert" style="display:none;">
+                    <strong>¡Error!</strong> La contraseña debe tener al menos 8 caracteres, incluyendo una letra, un
+                    número y un signo permitido (<span style="font-weight:bold">. , @ _ - # ( )</span>).
+                </div>
+
+                <div id="password-mismatch-error" class="alert" style="display:none;">
+                    <strong>¡Error!</strong> Las contraseñas no coinciden. Por favor, verifica que ambas sean iguales.
                 </div>
                 <br>
                 <button class="button">ACTUALIZAR</button>
             </form>
         </div>
-
         <div class="container-form">
         </div>
 
@@ -40,16 +55,45 @@
             <div class="welcome-sign-up welcome padding1">
                 <img src="/front-end/img/Pagina/logoInvGenius.png" width="170px" style="margin-bottom: -30px;">
                 <h3 class="fuente11">InvGenius</h3>
-                <p class="fuente2">Ingrese su contraseña actual, su nueva contraseña y confírmela para restablecer el acceso a todas las funcionalidades del sistema de inventario.</p>
-                <button class="button"><a href="/front-end/html/Roles/Administrador/vistaPrevia.html/productosCaducados.html">Volver</a></button>
+                <p class="fuente2">Ingrese su contraseña actual, su nueva contraseña y confírmela para restablecer el
+                    acceso a todas las funcionalidades del sistema de inventario.</p>
+                <button class="button" onclick="salirDeCambioContraseña()">Volver</button>
             </div>
         </div>
-
     </div>
 
-
-    <script src="/front-end/js/login.js"></script>
+    <!-- <script src="/front-end/js/login.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
+    <script src="/front-end/js/jsUrl/Urls.js"></script>
+    <script src="/front-end/js/actualizarContrasena.js"></script>
+
+    <style>
+        .alert {
+            padding: 15px;
+            width: 70%;
+            margin-top: 10px;
+            border: 1px solid #f5c6cb;
+            background-color: #f8d7da;
+            color: #721c24;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert strong {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .alert span {
+            font-weight: normal;
+        }
+    </style>
 </body>
+
 </html>

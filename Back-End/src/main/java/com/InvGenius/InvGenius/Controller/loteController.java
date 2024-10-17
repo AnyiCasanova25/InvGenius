@@ -73,14 +73,14 @@ public class loteController {
     }
 
     @GetMapping("/loteBajoStock/")
-    public ResponseEntity<Object>findLoteBajoStock(@PathVariable String filtro){
-       var listaLote = loteService.loteExist(filtro);
+    public ResponseEntity<Object>findLoteBajoStock(){
+       var listaLote = loteService.loteBajoStock();
        return new ResponseEntity<>(listaLote, HttpStatus.OK);
     }
 
-    @GetMapping("/loteVencido")
-    public ResponseEntity<Object>findLoteVencido(@PathVariable String filtro){
-       var listaLote = loteService.loteExist(filtro);
+    @GetMapping("/loteVencido/")
+    public ResponseEntity<Object>findLoteVencido(){
+       var listaLote = loteService.loteVencido();
        return new ResponseEntity<>(listaLote, HttpStatus.OK);
     }
 

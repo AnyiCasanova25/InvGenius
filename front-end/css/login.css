@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -9,42 +11,45 @@
 body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
     overflow: hidden;
     display: flex;
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;      /* Centra verticalmente */
-    min-height: 100vh;        /* Asegura que tome todo el alto de la pantalla */
+    justify-content: center;  
+    align-items: center;      
+    min-height: 100vh;        
 }
 
 body.swal2-height-auto {
     height: auto !important;
 }
 
-
 body {
-    width: 100%; /* Asegura que el ancho del body ocupe el 100% del viewport */
-    height: 100vh; /* Ocupa toda la altura de la ventana del navegador */
-    display: flex; /* Habilita Flexbox para el body */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    background-color: #f4f5f7; /* Color de fondo claro */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: 
+        linear-gradient(360deg, rgba(80, 80, 80, 0.341) 0.91%, rgba(73, 73, 73, 0.28) 47.77%, rgba(80, 80, 80, 0.341) 99.52%), 
+        url('/front-end/img/Pagina/Fondoword.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
-
 
 .fuente1 {
     color: #000000;
-    font-family: "Titillium Web", cursive;
-    font-weight: bold;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
 }
 
 .fuente11 {
     color: #ffffff;
-    font-family: "Titillium Web", cursive;
+    font-family: "Titillium Web", sans-serif;
     font-weight: bold;
 }
 
 .fuente2 {
     color: #ffffff;
     font-family: "Titillium Web", sans-serif;
-    font-weight: bold;
+    font-weight: 100;
 }
 
 .container {
@@ -65,6 +70,7 @@ body {
     justify-content: center; 
     align-items: center; 
     overflow: hidden;
+    padding: 20px; /* Añadir padding para no estar pegado a los bordes */
 }
 
 .sign-in {
@@ -75,6 +81,7 @@ body {
     width: 100%; 
     height: 100%; 
 }
+
 .container-form a {
     color: #ffffff !important;
     font-size: 14px;
@@ -117,7 +124,7 @@ body {
     cursor: pointer;
 }
 
-.centrar{
+.centrar {
     text-align: center;
 }
 
@@ -147,14 +154,6 @@ body {
     background-color: inherit;
 }
 
-.container-form a {
-    color: black;
-    font-size: 14px;
-    margin-bottom: 20px;
-    margin-top: 5px;
-    font-weight: bold;
-}
-
 .button {
     width: 30%;
     height: 10%;
@@ -169,14 +168,13 @@ body {
 }
 
 .button a {
-    text-decoration: none; /* Elimina el subrayado */
-    color: inherit; /* Mantiene el color del botón sin cambiarlo */
+    text-decoration: none; 
+    color: inherit; 
 }
 
 .button a:hover {
-    color: inherit; /* Evita que el color cambie al pasar el cursor */
+    color: inherit; 
 }
-
 
 .sign-up {
     transform: translateX(-100%);
@@ -272,12 +270,12 @@ body {
     padding: 5px;
     border-radius: 3px;
     font-size: 14px;
-    display: none; /* Oculto por defecto */
+    display: none; 
     cursor: pointer;
 }
 
 .profile-image-container:hover .change-label {
-    display: block; /* Mostrar cuando el cursor está sobre la imagen */
+    display: block; 
 }
 
 #profileImage {
@@ -293,18 +291,19 @@ select {
 }
 
 select option {
-    background-color: #eeeeee; /* Fondo gris para las opciones */
+    background-color: #eeeeee; 
     color: black;
     font-weight: bold;
 }
 
-select option:hover, select option:focus {
-    background-color: #3e5059; /* Azul oscuro al pasar el cursor */
-    color: white; /* Texto blanco cuando está resaltado */
+select option:hover,
+select option:focus {
+    background-color: #3e5059; 
+    color: white; 
 }
 
 select:focus {
-    outline: none; /* Elimina el contorno cuando está enfocado */
+    outline: none; 
 }
 
 .swal2-container .swal2-styled.swal2-confirm {
@@ -312,5 +311,32 @@ select:focus {
     border-radius: .25em !important;
     background-color: #3e5059 !important;
     color: #fff !important;
-    font-size: 1em !important;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Cambiar el ancho a 90% en móviles */
+        height: auto; 
+        flex-direction: column; 
+    }
+
+    .container-welcome {
+        display: none; 
+    }
+
+    .container-form {
+        width: 100%; 
+        padding: 20px; /* Asegurarse de que haya padding en móviles también */
+    }
+
+    .sign-in {
+        width: 100%; 
+        justify-content: center; /* Asegura que el contenido esté centrado */
+        text-align: center; /* Asegura que el texto esté centrado horizontalmente */
+    }
+
+    .social-networks {
+        justify-content: center; 
+    }
 }

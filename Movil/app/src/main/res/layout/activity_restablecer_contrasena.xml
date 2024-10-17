@@ -131,7 +131,7 @@
                             android:orientation="vertical">
 
                             <EditText
-                                android:id="@+id/editTextText"
+                                android:id="@+id/usernameEditText"
                                 android:layout_width="250dp"
                                 android:layout_height="45dp"
                                 android:ems="10"
@@ -141,7 +141,7 @@
                                 android:textSize="15sp" />
 
                             <EditText
-                                android:id="@+id/editTextText2"
+                                android:id="@+id/passwordEditText"
                                 android:layout_width="250dp"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
