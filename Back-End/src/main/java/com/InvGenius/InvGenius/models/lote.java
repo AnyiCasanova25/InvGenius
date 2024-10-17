@@ -48,4 +48,7 @@ public class lote {
     @JoinColumn(name = "idProducto")
     private producto producto;
 
+    @ManyToOne
+    @JoinColumn(name = "idMovimiento")
+    private movimientos movimientos;
 }
