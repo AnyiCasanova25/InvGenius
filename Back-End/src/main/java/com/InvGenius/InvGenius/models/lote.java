@@ -51,4 +51,12 @@ public class lote {
     @ManyToOne
     @JoinColumn(name = "idMovimiento")
     private movimientos movimientos;
+
+    @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "idProveedor")
+    private proveedor proveedor;
 }
