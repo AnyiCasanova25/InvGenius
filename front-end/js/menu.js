@@ -34,6 +34,15 @@ function cargarPerfil() {
             // Obtener el elemento de imagen (asegúrate de que el ID coincida con el HTML)
             const imgPerfil = document.getElementById("imgPerfil"); // Cambié "genero" por "imgPerfil"
 
+            if (result["tipoDocumento"] === "Otro") {
+                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/compania.png"; 
+            } else {
+                if (result["rol"] === "Otro") {
+
+            }
+
+
+
             // Cambiar la imagen según el género
             if (result["genero"] === "Femenino") {
                 imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/mujer1.png"; 
