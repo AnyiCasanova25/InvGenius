@@ -58,10 +58,8 @@
             <div class="welcome-sign-up welcome padding1">
                 <h3 class="fuente11" id="rolUsuario"></h3>
                 <div class="profile-image-container">
-                    <img id="profileImage" src="/front-end/img/ImgPerfilPredeterminados/hombre1.png" width="170px"
+                    <img id="imgPerfil" width="170px"
                         style="margin-bottom: -30px;">
-                    <label for="fileInput" class="change-label">Cambiar</label>
-                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
                 </div>
 
                 <p class="fuente2 ">
@@ -71,25 +69,6 @@
         </div>
 
     </div>
-
-    <script>
-        document.getElementById('fileInput').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
-                if (validImageTypes.includes(file.type)) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        document.getElementById('profileImage').src = e.target.result; // Actualiza la imagen
-                    };
-                    reader.readAsDataURL(file); // Lee el archivo seleccionado
-                } else {
-                    alert("Por favor, selecciona un archivo de imagen válido (JPEG, PNG, JPG, GIF).");
-                }
-            }
-        });
-
-    </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

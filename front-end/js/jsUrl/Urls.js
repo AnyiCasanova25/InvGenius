@@ -10,6 +10,7 @@ var urlLote = Servidor + "lote/";
 //usuario
 var urlUsuarios = Servidor + "user/";
 var urlLogin = Servidor + "public/user/login";
+var urlPreRegistro = Servidor + "public/user/register";
 var urlUsuariosRegister = Servidor + "user/";
 var urlProfileUser = urlUsuariosRegister + "profile/";
 var urlCambiarContraseña = urlUsuarios + "changePassword";

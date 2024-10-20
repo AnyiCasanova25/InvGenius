@@ -34,7 +34,6 @@ public class emailService {
     // @Autowired
     // private novedadService novedadService;
 
-
     emailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
@@ -90,7 +89,7 @@ public class emailService {
                     + "<p>Hemos Recibido su solicitud para restablecer la contraseña de su cuenta en \"InvGenius\".Aqui tiene su nueva contraseña autogenerada por</p>\r\n"
                     + "<p>cuestiones de seguridad, le recomendamos apenas inicie sesión, cambiarla a una que le sea más facil recordar:</p>\r\n"
                     + "      <ol>\r\n"
-                    + "          <li>Su nueva contraseña:" +user.getPassword()+"</li>\r\n"
+                    + "          <li>Su nueva contraseña:" + user.getPassword() + "</li>\r\n"
                     + "      </ol>\r\n"
                     + "<img src'https://i.postimg.cc/yNjnwxdQ/Logo.png' width'100px' heght='100'>"
                     + "      <p>Por motivos de seguridad, este enlace expirará en [Número de Horas] horas. Si no ha solicitado esta acción, le recomendamos que se comunicque con nosotros.</p>\r\n"
@@ -114,12 +113,22 @@ public class emailService {
         try {
             String destinatario = user.getCorreo();
             String asunto = "Cambio de contraseña";
-            String cuerpo = ""
-                    + "<h1>Estimado Usuario</h1>"
-                    + "<p>Este correo electrónico es para informarle que la contraseña de su cuenta en \"InvGenius\" ha sido cambiada con éxito. Si usted realizó este cambio, puede ignorar este mensaje. En caso contrario, le recomendamos que se comunique con nuestro equipo de soporte de inmediato.</p>\r\n "
-                    + "<img src='https://i.postimg.cc/yNjnwxdQ/Logo.png' width='100px' heght='100px'>"
-                    + "      <p>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nosotros. Estamos aquí para ayudarle. </p>\r\n"
-                    + "      <p>Atentamente,<br>[Julian David Fierro Casanova]<br>[Genius Inventory Company]<br>[invgenius2024@gmail.com]</p>\r\n";
+            String cuerpo = "<div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;'>"
+                    + "  <div style='background-color: #e0e0e0; padding: 20px; text-align: center; border-top-left-radius: 8px; border-top-right-radius: 8px;'>"
+                    + "      <h1 style='margin: 20px 0 10px; font-size: 24px; color: #333333;'>Cambio de Contraseña</h1>"
+                    + "      <img src='https://i.postimg.cc/yNjnwxdQ/Logo.png' alt='InvGenius Logo' style='max-width: 100px;'>"
+                    + "  </div>"
+                    + "  <div style='padding: 20px; text-align: center;'>"
+                    + "      <p style='font-size: 16px; color: #555555;'>Este correo electrónico es para informarle que la contraseña de su cuenta en <strong>InvGenius</strong> ha sido cambiada con éxito.</p>"
+                    + "      <p style='font-size: 16px; color: #555555;'>Si usted realizó este cambio, puede ignorar este mensaje. En caso contrario, le recomendamos que se comunique con nuestro equipo de soporte de inmediato.</p>"
+                    + "  </div>"
+                    + "  <div style='background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: left;'>"
+                    + "      <p style='font-size: 16px; color: #333333;'>Si tiene alguna pregunta o necesita asistencia, no dude en ponerse en contacto con nosotros. Estamos aquí para ayudarle.</p>"
+                    + "  </div>"
+                    + "  <div style='background-color: #e0e0e0; padding: 10px; text-align: center; font-size: 14px; color: #666666; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;'>"
+                    + "      <p>Atentamente,<br>Julian David Fierro Casanova<br>Genius Inventory Company<br>invgenius2024@gmail.com</p>"
+                    + "  </div>"
+                    + "</div>";
 
             var retorno = enviarCorreo(destinatario, asunto, cuerpo);
             if (retorno) {
@@ -131,7 +140,6 @@ public class emailService {
             return "Error al envíar" + e.getMessage();
         }
     }
-
 
     // correo para lotes que estan proximos a caducar
     @GetMapping("/loteACaducar")
@@ -182,7 +190,6 @@ public class emailService {
             return "Error al enviar: " + e.getMessage();
         }
     }
-
 
     // Correo para productos bajos en stock
     @GetMapping("/loteBajoStock/")
@@ -235,7 +242,6 @@ public class emailService {
             return "Error al enviar: " + e.getMessage();
         }
     }
-    
 
     // correo para lotes vencidos
     @GetMapping("/loteVencido/")
@@ -292,7 +298,6 @@ public class emailService {
             return "Error al enviar: " + e.getMessage();
         }
     }
-
 
     @GetMapping("/enviar-correo-retiro")
     public String enviarCorreoRetiro(List<movimientos> movimientosRetiro) {
@@ -361,7 +366,6 @@ public class emailService {
         }
     }
 
-
     @GetMapping("/enviar-correo-solicitud")
     public String enviarCorreoSolicitud(user user) {
         try {
@@ -400,65 +404,70 @@ public class emailService {
             return "Error al enviar: " + e.getMessage();
         }
     }
-    
 
     // @GetMapping("/enviar-correo-novedad/{idNovedad}")
     // public String enviarCorreoNovedad(@PathVariable String idNovedad) {
-    //     try {
-    //         // Obtener la novedad por idNovedad
-    //         Optional<novedad> novedadOpt = novedadService.findOne(idNovedad);
+    // try {
+    // // Obtener la novedad por idNovedad
+    // Optional<novedad> novedadOpt = novedadService.findOne(idNovedad);
 
-    //         if (novedadOpt.isPresent()) {
-    //             novedad novedad = novedadOpt.get();
+    // if (novedadOpt.isPresent()) {
+    // novedad novedad = novedadOpt.get();
 
-    //             // Obtener correos de administradores
-    //             List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class, "Admin"));
-    //             if (administradores.isEmpty()) {
-    //                 return "No hay administradores para enviar el correo.";
-    //             }
-
-    //             // Asunto del correo
-    //             String asunto = "Nueva Novedad: " + novedad.getAsunto();
-
-    //             // Construir el cuerpo del correo con formato similar al ejemplo
-    //             StringBuilder cuerpo = new StringBuilder()
-    //                     .append("<h1 style='color: black;'>Estimado Administrador</h1>")
-    //                     .append("<p style='color: black;'><strong>De:</strong> ").append(novedad.getDe()).append("</p>")
-    //                     .append("<p style='color: black;'><strong>Asunto:</strong> ").append(novedad.getAsunto())
-    //                     .append("</p>")
-    //                     .append("<p style='color: black;'><strong>Mensaje:</strong> ").append(novedad.getCuerpo())
-    //                     .append("</p>")
-    //                     .append("<p style='color: black;'>Por favor, revise la evidencia adjunta si es necesario.</p>");
-
-    //             // Incluir imagen si existe
-    //             if (novedad.getImagenNovedad() != null && !novedad.getImagenNovedad().isEmpty()) {
-    //                 cuerpo.append("<p><img src='").append(novedad.getImagenNovedad())
-    //                         .append("' width='100px' height='100px'></p>");
-    //             }
-
-    //             cuerpo.append("<p style='color: black;'><strong>Fecha de novedad:</strong> ")
-    //                     .append(novedad.getFechaNovedad()).append("</p>")
-    //                     .append("<p style='color: black;'>Gracias por su atención.</p>")
-    //                     .append("<p style='color: black;'>Atentamente,<br>[InvGenius Team]</p>");
-
-    //             // Enviar el correo a cada administrador
-    //             for (user admin : administradores) {
-    //                 var retorno = enviarCorreo(admin.getCorreo(), asunto, cuerpo.toString());
-    //                 if (!retorno) {
-    //                     return "No se pudo enviar el correo a: " + admin.getCorreo();
-    //                 }
-    //             }
-
-    //             return "Correo de novedad enviado correctamente";
-    //         } else {
-    //             return "No se encontró la novedad";
-    //         }
-
-    //     } catch (Exception e) {
-    //         return "Error al enviar el correo de novedad: " + e.getMessage();
-    //     }
+    // // Obtener correos de administradores
+    // List<user> administradores = authService.buscarRol(Enum.valueOf(rol.class,
+    // "Admin"));
+    // if (administradores.isEmpty()) {
+    // return "No hay administradores para enviar el correo.";
     // }
-    
+
+    // // Asunto del correo
+    // String asunto = "Nueva Novedad: " + novedad.getAsunto();
+
+    // // Construir el cuerpo del correo con formato similar al ejemplo
+    // StringBuilder cuerpo = new StringBuilder()
+    // .append("<h1 style='color: black;'>Estimado Administrador</h1>")
+    // .append("<p style='color: black;'><strong>De:</strong>
+    // ").append(novedad.getDe()).append("</p>")
+    // .append("<p style='color: black;'><strong>Asunto:</strong>
+    // ").append(novedad.getAsunto())
+    // .append("</p>")
+    // .append("<p style='color: black;'><strong>Mensaje:</strong>
+    // ").append(novedad.getCuerpo())
+    // .append("</p>")
+    // .append("<p style='color: black;'>Por favor, revise la evidencia adjunta si
+    // es necesario.</p>");
+
+    // // Incluir imagen si existe
+    // if (novedad.getImagenNovedad() != null &&
+    // !novedad.getImagenNovedad().isEmpty()) {
+    // cuerpo.append("<p><img src='").append(novedad.getImagenNovedad())
+    // .append("' width='100px' height='100px'></p>");
+    // }
+
+    // cuerpo.append("<p style='color: black;'><strong>Fecha de novedad:</strong> ")
+    // .append(novedad.getFechaNovedad()).append("</p>")
+    // .append("<p style='color: black;'>Gracias por su atención.</p>")
+    // .append("<p style='color: black;'>Atentamente,<br>[InvGenius Team]</p>");
+
+    // // Enviar el correo a cada administrador
+    // for (user admin : administradores) {
+    // var retorno = enviarCorreo(admin.getCorreo(), asunto, cuerpo.toString());
+    // if (!retorno) {
+    // return "No se pudo enviar el correo a: " + admin.getCorreo();
+    // }
+    // }
+
+    // return "Correo de novedad enviado correctamente";
+    // } else {
+    // return "No se encontró la novedad";
+    // }
+
+    // } catch (Exception e) {
+    // return "Error al enviar el correo de novedad: " + e.getMessage();
+    // }
+    // }
+
     public boolean enviarCorreo(String destinatario, String asunto, String cuerpo) throws MessagingException {
         try {
             MimeMessage message = javaMailSender.createMimeMessage();

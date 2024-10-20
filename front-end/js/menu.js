@@ -31,25 +31,34 @@ function cargarPerfil() {
             // Actualizar el nombre de usuario
             document.getElementById("nombreUsuario").innerText = result["nombres"];
 
+            
             // Obtener el elemento de imagen (asegúrate de que el ID coincida con el HTML)
             const imgPerfil = document.getElementById("imgPerfil"); // Cambié "genero" por "imgPerfil"
 
             if (result["tipoDocumento"] === "Otro") {
-                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/compania.png"; 
+                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/compania.png";
             } else {
-                if (result["rol"] === "Otro") {
+                if (result["rol"] === "Admin") {
 
-            }
+                    if (result["genero"] === "Femenino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminFemenino.png";
+                    } else if (result["genero"] === "Masculino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminMasculino.png";
+                    } else {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminOtro.png";
+                    }
 
+                } else {
 
+                    if (result["genero"] === "Femenino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/userFemenino.png";
+                    } else if (result["genero"] === "Masculino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/userMasculino.png";
+                    } else {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminOtro.png";
+                    }
 
-            // Cambiar la imagen según el género
-            if (result["genero"] === "Femenino") {
-                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/mujer1.png"; 
-            } else if (result["genero"] === "Masculino") {
-                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/hombre1.png"; 
-            } else {
-                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/otro3.png"; 
+                }
             }
         }
     });

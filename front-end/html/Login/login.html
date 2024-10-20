@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="/front-end/css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-        
+
     <div class="container">
         <div class="container-form">
             <div class="sign-in">
@@ -18,13 +19,18 @@
                 <span>Use su correo y contraseña</span>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" id="userName" placeholder="Correo electrónico" onkeypress="alfaNumericosSignos(event);">
-                </div>                
+                    <input type="email" id="userName" placeholder="Correo electrónico"
+                        onkeypress="alfaNumericosSignos(event);">
+                </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" id="password" placeholder="Contraseña" onkeypress="alfaNumericosSignos(event);">
+                    <input type="password" id="password" placeholder="Contraseña"
+                        onkeypress="alfaNumericosSignos(event);">
                 </div>
-                <a href="/front-end/html/Login/olvideMiContraseña.html"><u>¿Olvidaste tu contraseña?</u></a>
+                <div>
+                    <a href="/front-end/html/Login/preRegistrarUsuario.html"><u>Registrarme</u></a> o
+                    <a href="/front-end/html/Login/olvideMiContraseña.html"><u>¿Olvidaste tu contraseña?</u></a>
+                </div>
                 <button class="button" onclick="Iniciar()"><a>INICIAR</a></button>
             </div>
         </div>
@@ -36,7 +42,8 @@
             <div class="welcome-sign-up welcome padding1">
                 <img src="/front-end/img/Pagina/logoInvGenius.png" width="170px" style="margin-bottom: -30px;">
                 <h3 class="fuente11">InvGenius</h3>
-                <p class="fuente2">Ingrese sus datos para acceder a todas las funcionalidades del sistema de inventario.</p>
+                <p class="fuente2">Ingrese sus datos para acceder a todas las funcionalidades del sistema de inventario.
+                </p>
                 <button class="button"><a href="/front-end/html/index.html">Salir</a></button>
 
             </div>
@@ -54,4 +61,5 @@
     <script src="/front-end/js/login.js"></script>
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
 </body>
+
 </html>

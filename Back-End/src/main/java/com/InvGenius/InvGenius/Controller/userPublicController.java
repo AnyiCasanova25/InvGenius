@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.models.authResponse;
 import com.InvGenius.InvGenius.models.loginRequest;
+import com.InvGenius.InvGenius.models.registerRequest;
 // import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.service.authService;
 
@@ -29,9 +30,9 @@ public class userPublicController {
         return new ResponseEntity<authResponse>(response,HttpStatus.OK);
     }
 
-    // @PostMapping("/register/")
-    // public ResponseEntity<authResponse> register(@RequestBody registerRequest request) {
-    //    authResponse response = authService.register(request);
-    //    return new ResponseEntity<authResponse>(response,HttpStatus.OK); 
-    // }
+    @PostMapping("/register/")
+    public ResponseEntity<authResponse> register(@RequestBody registerRequest request) {
+       authResponse response = authService.register(request);
+       return new ResponseEntity<authResponse>(response,HttpStatus.OK); 
+    }
 }

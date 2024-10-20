@@ -56,13 +56,40 @@ function cargarRolyNombresApellidos(){
             document.getElementById("correo").value = result["correo"];
             document.getElementById("Celular").value = result["celular"];
 
+            const imgPerfil = document.getElementById("imgPerfil"); // Cambié "genero" por "imgPerfil"
 
+            if (result["tipoDocumento"] === "Otro") {
+                imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/compania.png";
+            } else {
+                if (result["rol"] === "Admin") {
+
+                    if (result["genero"] === "Femenino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminFemenino.png";
+                    } else if (result["genero"] === "Masculino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminMasculino.png";
+                    } else {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminOtro.png";
+                    }
+
+                } else {
+
+                    if (result["genero"] === "Femenino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/userFemenino.png";
+                    } else if (result["genero"] === "Masculino") {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/userMasculino.png";
+                    } else {
+                        imgPerfil.src = "/front-end/img/ImgPerfilPredeterminados/adminOtro.png";
+                    }
+
+                }
+            }
         }
     });
 }
 $(document).ready(function () {
     cargarRolyNombresApellidos();
 });
+
 
 
 function verificarSesion() {
