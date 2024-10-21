@@ -163,8 +163,17 @@ function validarCampos() {
     var ubicacion = document.getElementById("ubicacion");
     var imagen_base = document.getElementById("imagen_base");
 
-    return validarnombreCategoria(nombreCategoria) && validarubicacion(ubicacion) && validarimagen_base(imagen_base.files.length);
+    // Validar solo si es un registro nuevo, no durante la edición
+    if (registrarCategoriaBandera) {
+        return validarnombreCategoria(nombreCategoria) &&
+               validarubicacion(ubicacion) &&
+               validarimagen_base(imagen_base.files.length);
+    } else {
+        // Solo validar nombre y ubicación durante la edición
+        return validarnombreCategoria(nombreCategoria) && validarubicacion(ubicacion);
+    }
 }
+
 
 // Función de validación genérica
 function validarCampo(cuadroNumero, minLength, maxLength) {
@@ -279,4 +288,5 @@ function eliminarCategoria(id) {
         }
     });
 }
+
 

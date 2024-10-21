@@ -1,7 +1,7 @@
 package com.InvGenius.InvGenius.Controller;
 
 import java.io.IOException;
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -51,19 +51,19 @@ public class categoriaController {
     public ResponseEntity<Object> save(categoria categoria, @RequestParam("file") MultipartFile file)
             throws IOException {
         var listaCategoria = categoriaService.categoriaExist(categoria.getNombreCategoria(), categoria.getUbicacion());
-        String extension = "";
-        if (file.getOriginalFilename() != null && file.getOriginalFilename().contains(".")) {
-            extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-        } else {
-            extension = ""; // O cualquier texto que desees si no hay archivo
-        }
-        if (!Arrays.asList(extensionesPermitidas).contains(extension)) {
-            response respuesta = response.builder()
-                    .message("Extensión no permitida")
-                    .build();
-            // Retornar el objeto como JSON
-            return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
-        }
+        // String extension = "";
+        // if (file.getOriginalFilename() != null && file.getOriginalFilename().contains(".")) {
+        //     extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+        // } else {
+        //     extension = ""; // O cualquier texto que desees si no hay archivo
+        // }
+        // if (!Arrays.asList(extensionesPermitidas).contains(extension)) {
+        //     response respuesta = response.builder()
+        //             .message("Extensión no permitida")
+        //             .build();
+        //     // Retornar el objeto como JSON
+        //     return new ResponseEntity<>(respuesta, HttpStatus.BAD_REQUEST);
+        // }
         // var tamano=file.getSize();
 
         if (listaCategoria.size() != 0) {
@@ -158,23 +158,29 @@ public class categoriaController {
         return new ResponseEntity<>("Registro eliminado", HttpStatus.OK);
     }
 
-    // Actualizar una categoría
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate,
-            @RequestParam("file") MultipartFile file) throws IOException {
-        var categoria = categoriaService.findOne(id).get();
+   // Actualizar una categoría
+@PutMapping("/{id}")
+public ResponseEntity<Object> update(@PathVariable String id, categoria categoriaUpdate,
+        @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+    
+    var categoria = categoriaService.findOne(id).orElse(null);
 
-        if (categoria != null) {
-            categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
-            categoria.setUbicacion(categoriaUpdate.getUbicacion());
-            if (!file.isEmpty()) {
-                categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
-            }
+    if (categoria != null) {
+        // Actualiza los campos de la categoría
+        categoria.setNombreCategoria(categoriaUpdate.getNombreCategoria());
+        categoria.setUbicacion(categoriaUpdate.getUbicacion());
 
-            categoriaService.save(categoria);
-            return new ResponseEntity<>(categoria, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Error: categoría no encontrada", HttpStatus.BAD_REQUEST);
+        // Verifica si se ha enviado un nuevo archivo
+        if (file != null && !file.isEmpty()) {
+            categoria.setImagen_base(Base64.getEncoder().encodeToString(file.getBytes()));
         }
+
+        // Guarda la categoría actualizada
+        categoriaService.save(categoria);
+        return new ResponseEntity<>(categoria, HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>("Error: categoría no encontrada", HttpStatus.BAD_REQUEST);
     }
+}
+
 }
