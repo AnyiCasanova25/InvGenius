@@ -51,15 +51,20 @@ public class producto {
     @Column(name = "unidadMedida", nullable = false,length = 199)
     private String unidadMedida;
 
+    @Column(name = "precioEntrada", nullable = false,length = 199)
+    private String precioEntrada;
+
     @Column( name="imagen_base", nullable = true, columnDefinition = "MEDIUMBLOB")
 	private String  imagen_base;
 
     public producto() {
     }
 
+    
+
     public producto(String idProducto, String nombreProducto, String estadoProducto,
             com.InvGenius.InvGenius.models.marca marca, com.InvGenius.InvGenius.models.categoria categoria, int stock,
-            String descripcionProducto, String unidadMedida, String imagen_base) {
+            String descripcionProducto, String unidadMedida, String precioEntrada, String imagen_base) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.estadoProducto = estadoProducto;
@@ -68,83 +73,129 @@ public class producto {
         this.stock = stock;
         this.descripcionProducto = descripcionProducto;
         this.unidadMedida = unidadMedida;
-        this.imagen_base=imagen_base;
-        // this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.precioEntrada = precioEntrada;
+        this.imagen_base = imagen_base;
     }
+
+
 
     public String getIdProducto() {
         return idProducto;
     }
 
+
+
     public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
+
+
 
     public String getNombreProducto() {
         return nombreProducto;
     }
 
+
+
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
     }
+
+
 
     public String getEstadoProducto() {
         return estadoProducto;
     }
 
+
+
     public void setEstadoProducto(String estadoProducto) {
         this.estadoProducto = estadoProducto;
     }
+
+
 
     public marca getMarca() {
         return marca;
     }
 
+
+
     public void setMarca(marca marca) {
         this.marca = marca;
     }
+
+
 
     public categoria getCategoria() {
         return categoria;
     }
 
+
+
     public void setCategoria(categoria categoria) {
         this.categoria = categoria;
     }
+
+
 
     public int getStock() {
         return stock;
     }
 
+
+
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+
 
     public String getDescripcionProducto() {
         return descripcionProducto;
     }
 
+
+
     public void setDescripcionProducto(String descripcionProducto) {
         this.descripcionProducto = descripcionProducto;
     }
+
+
 
     public String getUnidadMedida() {
         return unidadMedida;
     }
 
+
+
     public void setUnidadMedida(String unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
+
+
+
+    public String getPrecioEntrada() {
+        return precioEntrada;
+    }
+
+
+
+    public void setPrecioEntrada(String precioEntrada) {
+        this.precioEntrada = precioEntrada;
+    }
+
+
 
     public String getImagen_base() {
         return imagen_base;
     }
 
+
+
     public void setImagen_base(String imagen_base) {
-        this.imagen_base=imagen_base;
-        // this.imagen_base = "data:image/jpeg;base64,"+ imagen_base;
+        this.imagen_base = imagen_base;
     }
 
     
-
 }
