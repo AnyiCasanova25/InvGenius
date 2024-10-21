@@ -56,10 +56,6 @@ function mostrarTabla(result) {
     }
 }
 
-// Función para blanquear los campos del formulario
-function blanquearCampos() {
-    document.getElementById('texto').value = "";
-}
 
 // Funciones de validación por campo
 function validarCampo(cuadroNumero, minLength, maxLength) {
@@ -101,55 +97,7 @@ function limpiar() {
     });
 }
 
-// Función para editar proveedor
-$(document).on("click", ".editar", function () {
-    limpiar();
-    idProveedor = $(this).data("id");
-    registrarProveedorBandera = false; // Cambiar bandera para editar
-
-    $.ajax({
-        url: urlProveedor + idProveedor,
-        type: "GET",
-        success: function (proveedor) {
-            document.getElementById("nombreProveedor").value = proveedor.nombreProveedor;
-            document.getElementById("apellidoProveedor").value = proveedor.apellidoProveedor;
-            document.getElementById("documentoProveedor").value = proveedor.documentoProveedor;
-            document.getElementById("numeroProveedor").value = proveedor.numeroProveedor;
-            document.getElementById("empresaProveedor").value = proveedor.empresaProveedor;
-            document.getElementById("estadoProveedor").value = proveedor.estadoProveedor;
-            $('#exampleModal').modal('show');
-        },
-        error: function (error) {
-            alert("Error al obtener los datos del proveedor: " + error.statusText);
-        }
-    });
-});
-
-// Función para cambiar estado del proveedor
-$(document).on("click", ".cambiarEstado", function () {
-    var idProveedor = $(this).data("id");
-    $.ajax({
-        url: urlProveedor + idProveedor,
-        type: "DELETE",
-        success: function () {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Cambio de estado exitoso",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            listarProveedor();
-        }
-    });
-});
-
 // Llamar a la función para listar proveedores al cargar la página
 $(document).ready(function () {
     listarProveedor();
 });
-
-// Función adicional para actualizar lista de proveedores después de registrar/editar
-function actualizarlistarProveedor() {
-    listarProveedor();
-}
