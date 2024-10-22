@@ -1,6 +1,45 @@
 var registrarCategoriaBandera = true;
 var idCategoria = "";
 
+function redireccionCategoriaProducto() {
+    // Obtener los valores almacenados en localStorage
+    const token = localStorage.getItem('authTokens');
+    const rol = localStorage.getItem('userRol');
+    const estado = localStorage.getItem('userEstado');
+
+    // Verificar que el token exista
+    if (token) {
+        // Verificar el estado y redirigir según el rol
+        if (estado === "Activo") {
+            if (rol === "Admin") {
+                window.location.href = "/front-end/html/Roles/Administrador/Categoria/categoriaProductos.html";
+            } else if (rol === "User") {
+                window.location.href = "/front-end/html/Roles/Usuario/Categoria/categoriaProductos.html";
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: "Rol desconocido. Contacta con el administrador.",
+                    icon: "error",
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        } else {
+            Swal.fire({
+                title: "Cuenta Inactiva",
+                text: "Tu cuenta está inactiva. Por favor, contacta al administrador.",
+                icon: "warning",
+                confirmButtonText: "Aceptar"
+            });
+        }
+    } else {
+        Swal.fire({
+            title: "Error",
+            text: "Token no encontrado. Inicia sesión nuevamente.",
+            icon: "error",
+            confirmButtonText: "Aceptar"
+        });
+    }
+}
 // Función para buscar proveedores por filtro
 function buscarCategoriaPorFiltro(filtro) {
     if (filtro.trim() !== "") {
@@ -56,9 +95,10 @@ function mostrarTarjetas(result) {
             </figure>
                 <h3 class="title">${result[i]["nombreCategoria"]}</h3>
                 <div class="card-actions">
-                    <a href="/front-end/html/Roles/Administrador/Categoria/categoriaProductos.html?id=${result[i]["idCategoria"]}" class="action-icon">
-                        <i class="fas fa-eye" title="Ver Productos"></i>
-                    </a>
+                <a class="action-icon" onclick="redireccionCategoriaProducto()">
+                    <i class="fas fa-eye" title="Ver Productos"></i>
+                </a>
+
                     <a class="action-icon" data-bs-toggle="modal" data-bs-target="#agregarCategoria">
                         <i class="fas fa-edit editar" data-id="${result[i]["idCategoria"]}" title="Editar Categoria"></i>
                     </a>
@@ -133,10 +173,10 @@ function registrarCategoria() {
         },
         error: function (xhr, status, error) {
             console.error("Error en la petición:", xhr.responseText);
-            
+
             // Parsear la respuesta JSON si es posible
             let errorMessage = "¡Error al registrar esta categoría!";
-            
+
             try {
                 const response = JSON.parse(xhr.responseText);
                 if (response.message) {
@@ -145,14 +185,14 @@ function registrarCategoria() {
             } catch (e) {
                 console.error("No se pudo parsear la respuesta JSON:", e);
             }
-        
+
             Swal.fire({
                 title: "Error",
                 text: errorMessage,
                 icon: "error"
             });
         }
-        
+
     });
 }
 
@@ -166,8 +206,8 @@ function validarCampos() {
     // Validar solo si es un registro nuevo, no durante la edición
     if (registrarCategoriaBandera) {
         return validarnombreCategoria(nombreCategoria) &&
-               validarubicacion(ubicacion) &&
-               validarimagen_base(imagen_base.files.length);
+            validarubicacion(ubicacion) &&
+            validarimagen_base(imagen_base.files.length);
     } else {
         // Solo validar nombre y ubicación durante la edición
         return validarnombreCategoria(nombreCategoria) && validarubicacion(ubicacion);

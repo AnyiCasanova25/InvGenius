@@ -25,6 +25,16 @@ function registrarUser() {
         return; // Detener la ejecución si hay campos vacíos
     }
 
+    // Mostrar alerta de carga
+    Swal.fire({
+        title: "Registrando...",
+        text: "Por favor espere mientras procesamos su registro.",
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); // Mostrar el indicador de carga
+        }
+    });
+
     // Datos del formulario
     let formData = {
         "nombres": nombres,
@@ -102,4 +112,3 @@ function cerrarSesion() {
     // Redirigir al usuario a la página de inicio (opcional si el href ya lo hace)
     window.location.href = "/front-end/html/index.html";
 }
-

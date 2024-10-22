@@ -38,7 +38,6 @@ function salirDeCambioContraseña() {
     }
 }
 
-
 function verificarSesion() {
     const token = localStorage.getItem('authTokens');
 
@@ -57,10 +56,7 @@ function cerrarSesion() {
     localStorage.removeItem('userRol');
     localStorage.removeItem('userEstado');
 
-    // También puedes usar clear() para limpiar todo el localStorage
-    // localStorage.clear();
-
-    // Redirigir al usuario a la página de inicio (opcional si el href ya lo hace)
+    // Redirigir al usuario a la página de inicio
     window.location.href = "/front-end/html/index.html";
 }
 
@@ -116,6 +112,16 @@ function actualizarPassword(event) {
         confirmPassword: confirmarPassword
     };
 
+    // Mostrar alerta de carga
+    Swal.fire({
+        title: "Actualizando...",
+        text: "Por favor espere mientras actualizamos su contraseña.",
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); // Mostrar el indicador de carga
+        }
+    });
+
     fetch(urlCambiarContraseña, {
         method: 'PUT',
         headers: {
@@ -141,7 +147,7 @@ function actualizarPassword(event) {
     .catch(error => {
         Swal.fire({
             title: "Error",
-            text: "Hubo un problema al actualizar la contraseña. ",
+            text: "Hubo un problema al actualizar la contraseña.",
             icon: "error",
             confirmButtonText: "Aceptar"
         });
