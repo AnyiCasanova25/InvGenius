@@ -312,8 +312,6 @@
                                         <select id="proveedor" class="form-control" style="border: 1px solid black;"
                                             required>
                                             <option value="" disabled selected>Seleccione un proveedor</option>
-                                            <option value="1112132434">Julian Fierro - 1112132434</option>
-                                            <option value="83283828382">William Gonzalez - 83283828382</option>
                                         </select>
                                     </div>
 
@@ -394,71 +392,6 @@
     </div>
 
     <script src="/front-end/js/jsUrl/Urls.js"></script>
-
-
-    <!-- <script>
-        // Datos quemados
-        const datos = [
-            { categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', unidadMedida: 'Gramos' },
-            { categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', unidadMedida: 'Gramos' },
-            { categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', unidadMedida: 'Gramos' },
-            { categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', unidadMedida: 'Gramos' }
-        ];
-
-        // Selecciona el cuerpo de la tabla
-        const cuerpoTabla = document.getElementById('cuerpoTabla');
-
-        // Recorre los datos y añade filas a la tabla
-        datos.forEach(dato => {
-            const fila = document.createElement('tr');
-            fila.innerHTML = `
-            <td class="text-center align-middle">${dato.categoria}</td>
-            <td class="text-center align-middle">${dato.producto}</td>
-            <td class="text-center align-middle">${dato.marca}</td>
-            <td class="text-center align-middle">${dato.unidadMedida}</td>
-            <td class="text-center align-middle">
-                <i class="fa-solid fa-box" data-bs-toggle="modal" data-bs-target="#modalEntrada" style="cursor: pointer;" data-bs-toggle="tooltip" title="Entrar producto"></i>
-            </td>
-        `;
-            cuerpoTabla.appendChild(fila);
-        });
-
-        const datos2 = [
-            { lote: 'L001', categoria: 'Lácteos', producto: 'Leche', marca: 'Marca A', proveedor: 'Proveedor 1', stock: '100' },
-            { lote: 'L002', categoria: 'Bebidas', producto: 'Jugo de Naranja', marca: 'Marca B', proveedor: 'Proveedor 2', stock: '150' },
-            { lote: 'L003', categoria: 'Panadería', producto: 'Pan Integral', marca: 'Marca C', proveedor: 'Proveedor 3', stock: '200' },
-            { lote: 'L004', categoria: 'Cereales', producto: 'Avena', marca: 'Marca D', proveedor: 'Proveedor 4', stock: '120' }
-        ];
-
-        // Selecciona el cuerpo de la segunda tabla
-        const cuerpoTabla2 = document.getElementById('cuerpoTabla2');
-
-        // Recorre los datos y añade filas a la tabla
-        datos2.forEach(dato => {
-            const fila = document.createElement('tr');
-            fila.innerHTML = `
-            <td class="text-center align-middle">${dato.lote}</td>
-            <td class="text-center align-middle">${dato.categoria}</td>
-            <td class="text-center align-middle">${dato.producto}</td>
-            <td class="text-center align-middle">${dato.marca}</td>
-            <td class="text-center align-middle">${dato.proveedor}</td>
-            <td class="text-center align-middle">${dato.stock}</td>
-            <td class="text-center align-middle">
-                <i class="fa-solid fa-box-open" data-bs-toggle="modal" data-bs-target="#modalSalida" style="cursor: pointer;" data-bs-toggle="tooltip" title="Sacar producto"></i>
-            </td>
-        `;
-            cuerpoTabla2.appendChild(fila);
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl, {
-                    delay: { "show": 0, "hide": 0 } // Mostrar inmediatamente, ocultar con un pequeño retraso
-                });
-            });
-        });
-    </script> -->
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
     <script src="/front-end/js/producto.js"></script>
     <script src="/front-end/js/jsUrl/Urls.js"></script>
