@@ -27,7 +27,7 @@ public interface IuserService {
 
     public authResponse register(registerRequest request);
 
-    // public preRegister(preRegisterRequest request);
+    public authResponse preRegister(preRegisterRequest request);
 
     public Optional<user> findByUsername(String userName);
 

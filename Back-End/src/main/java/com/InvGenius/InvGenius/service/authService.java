@@ -90,34 +90,34 @@ public class authService implements IuserService {
                 .build();
     }
 
-    // @Override
-    // public authResponse preRegister(preRegisterRequest request) {
-    //     String password = codigoAleatorio();// llamar al método encargado de generar la contraseña aleatoria
-    //     user userData = user.builder()
-    //             .nombres(request.getNombres())
-    //             .apellidos(request.getApellidos())
-    //             .rol(rol.Otro)
-    //             .correo(request.getUserName())
-    //             .documentoIdentidad(request.getDocumentoIdentidad())
-    //             .celular(request.getCelular())
-    //             .estado(request.getEstado())
-    //             .tipoDocumento(request.getTipoDocumento())
-    //             .genero(request.getGenero())
-    //             .password(passwordEncoder.encode(password))
-    //             .cambiarPassword(true)
-    //             // .password(passwordEncoder.encode(request.getPassword())) //cuando se solicita
-    //             // la contraseña al usuario
-    //             .build();
+    @Override
+    public authResponse preRegister(preRegisterRequest request) {
+        String password = codigoAleatorio();// llamar al método encargado de generar la contraseña aleatoria
+        user userData = user.builder()
+                .nombres(request.getNombres())
+                .apellidos(request.getApellidos())
+                .rol(rol.Otro)
+                .correo(request.getUserName())
+                .documentoIdentidad(request.getDocumentoIdentidad())
+                .celular(request.getCelular())
+                .estado(request.getEstado())
+                .tipoDocumento(request.getTipoDocumento())
+                .genero(request.getGenero())
+                .password(passwordEncoder.encode(password))
+                .cambiarPassword(true)
+                // .password(passwordEncoder.encode(request.getPassword())) //cuando se solicita
+                // la contraseña al usuario
+                .build();
 
-    //     data.save(userData);
-    //     emailService email = new emailService(javaMailSender);
-    //     email.enviarCorreoRegistro(userData, password);
-    //     // envíar correo electronico que confirme el registro con la contraseña
-    //     // recomendado hacerlo con un scheuler para que no se demore en el registro
-    //     return authResponse.builder()
-    //             .token(jwtService.getToken(userData))
-    //             .build();
-    // }
+        data.save(userData);
+        emailService email = new emailService(javaMailSender);
+        email.enviarCorreoRegistro(userData, password);
+        // envíar correo electronico que confirme el registro con la contraseña
+        // recomendado hacerlo con un scheuler para que no se demore en el registro
+        return authResponse.builder()
+                .token(jwtService.getToken(userData))
+                .build();
+    }
 
     public authResponse login(loginRequest request) {
         // Autenticación del usuario
