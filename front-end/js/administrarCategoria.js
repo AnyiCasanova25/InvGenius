@@ -46,9 +46,6 @@ function buscarCategoriaPorFiltro(filtro) {
         $.ajax({
             url: urlCategoria + "busquedaFiltros/" + filtro,
             type: "GET",
-            headers: {
-                "Authorization": "Bearer " + token
-            },
             success: function (result) {
                 mostrarTarjetas(result);
             },
