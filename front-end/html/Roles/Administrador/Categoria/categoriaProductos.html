@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body onload="cargarMarca(); cargarCategoria();">
     <!-- <div id="menuEstudiante"></div> -->
     <nav class="menun">
         <div class="logo-container">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" id="texto" class="form-control" placeholder="Buscar..." aria-label="Buscar"
-                        onkeyup="buscarProveedorPorFiltro(document.getElementById('texto').value)"
+                        onkeyup="buscarProductosPorFiltro(document.getElementById('texto').value)"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-custom" onclick="listarProductos(); blanquearCampos()">
@@ -87,69 +87,12 @@
                         </button>
                     </div>
                 </div>
-                <!-- Categorías -->
-                <div class="shop-grid">
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/001/002.png">
-                            </figure>
-                            <h3 class="title">Leche Entera</h3>
-                            <div class="card-actions">
-                                <a href="./lote.html" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon" data-bs-toggle="modal"
-                                    data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/001/003.png">
-                            </figure>
-                            <h3 class="title">Yogurt Alpina</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon" data-bs-toggle="modal"
-                                    data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/001/004.png">
-                            </figure>
-                            <h3 class="title">Leche Colun</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon" data-bs-toggle="modal"
-                                    data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="shop-card">
-                        <div class="card-body">
-                            <figure>
-                                <img src="/front-end/img/Categorias/001/005.png">
-                            </figure>
-                            <h3 class="title">Mantequilla</h3>
-                            <div class="card-actions">
-                                <a href="#" class="action-icon"><i class="fas fa-eye"></i></a>
-                                <a href="#" class="action-icon" data-bs-toggle="modal"
-                                    data-bs-target="#modalProducto"><i class="fas fa-edit"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="shop-grid" id="cuerpoTarjetasProductos"></div>
 
             </div>
         </div>
     </div>
-    <!-- Modal para agregar productos de datos -->
+    <!-- Modal para editar productos de datos -->
     <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog fondomodaldialog ">
             <div class="modal-content col modal-custom">
@@ -163,7 +106,7 @@
                     </div>
                     <h1 class="modal-title fs-5 col-11" id="exampleModalLabel"
                     style="font-family: 'Titillium Web', sans-serif; text-align: center;">
-                        Registrar Producto
+                        Editar Producto
                     </h1>
                 </div>
                 <div class="modal-body">
@@ -174,55 +117,52 @@
                                 <form class="row table-hover needs-validation">
 
                                     <div class="col col-xl-6 col-12 table-hover">
-                                        <label for="nombreProveedor"><i class="fas fa-box"></i> Nombre:</label>
-                                        <input type="text" id="nombreProveedor" class="form-control"
+                                        <label for="nombreProducto"><i class="fas fa-box"></i> Nombre:</label>
+                                        <input type="text" id="nombreProducto" class="form-control"
                                             style="border: 1px solid black;" onfocusout="validarnombreProducto(this)"
                                             onkeypress="soloLetras(event);" required>
                                     </div>
                                     <div class="col col-xl-6 col-12">
-                                        <label for="Marca"><i class="fa-solid fa-tag"></i> Marca:</label>
-                                        <select id="Marca" class="form-control" style="border: 1px solid black;"
+                                        <label for="marca"><i class="fa-solid fa-tag"></i> Marca:</label>
+                                        <select id="marca" class="form-select" style="border: 1px solid black;" onfocusout="validarmarca(this)"
                                             required>
-                                            <option value="">Seleccione una unidad</option>
-                                            <option value="Diana">Diana</option>
-                                            <option value="Alpina">Alpina</option>
                                         </select>
                                     </div>
                                     <div class="col col-xl-6 col-12">
-                                        <label for="Medida"><i class="fas fa-sort-numeric-up"></i> Unidad de
+                                        <label for="unidadMedida"><i class="fas fa-sort-numeric-up"></i> Unidad de
                                             Medida:</label>
-                                        <select id="Medida" class="form-control" style="border: 1px solid black;"
+                                        <select id="unidadMedida" class="form-control" style="border: 1px solid black;" onfocusout="validarunidadMedida(this)"
                                             required>
-                                            <option value="">Seleccione una unidad</option>
-                                            <option value="gramos">Gramos (g)</option>
-                                            <option value="kilogramos">Kilogramos (kg)</option>
-                                            <option value="toneladas">Toneladas (t)</option>
-                                            <option value="libras">Libras (lb)</option>
-                                            <option value="onzas">Onzas (oz)</option>
+                                            <option value="">Seleccione una medida</option>
+                                            <option value="Gramos (g)">Gramos (g)</option>
+                                            <option value="Kilogramos (kg)">Kilogramos (kg)</option>
+                                            <option value="Toneladas (t)">Toneladas (t)</option>
+                                            <option value="Libras (lb)">Libras (lb)</option>
+                                            <option value="Onzas (oz)">Onzas (oz)</option>
                                         </select>
                                     </div>
                                     <div class="col col-xl-6 col-12">
-                                        <label for="Marca"><i class="fa-solid fa-tags"></i> Categoria:</label>
-                                        <select id="Marca" class="form-control" style="border: 1px solid black;"
+                                        <label for="categoria"><i class="fa-solid fa-tags"></i> Categoría:</label>
+                                        <select id="categoria" class="form-select" style="border: 1px solid black;" onfocusout="validarcategoria(this)"
                                             required>
-                                            <option value="">Seleccione una unidad</option>
-                                            <option value="Lacteos">Lacteos</option>
-                                            <option value="Carnes">Carnes</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
-                                        <label for="imagen"><i class="fa-solid fa-image"></i> Cargar imagen:</label>
-                                        <input type="file" id="imagen" class="form-control" accept="image/*"
-                                            style="border: 1px solid black;" required>
+                                        <label for="imagen_base"><i class="fa-solid fa-image"></i> Cargar
+                                            imagen:</label>
+                                        <input type="file" id="imagen_base" class="form-control" accept=".jpg, .png"
+                                            style="border: 1px solid black;" onfocusout="validarimagen_base(this)" required>
                                     </div>
+                                    
                                     <div class="col col-xl-12 col-12">
-                                        <label for="descripcion"><i class="fas fa-pencil-alt"></i> Descripción del
+                                        <label for="descripcionProducto"><i class="fas fa-pencil-alt"></i> Descripción
+                                            del
                                             producto:</label>
-                                        <textarea id="descripcion" class="form-control" rows="5"
-                                            style="border: 1px solid black;" onkeypress="alfaNumericosSignos(event);"
+                                        <textarea id="descripcionProducto" class="form-control" rows="5"
+                                            style="border: 1px solid black;" onfocusout="validardescripcionProducto(this)" onkeypress="alfaNumericosSignos(event);"
                                             required minlength="50"></textarea>
                                         <small id="descripcionHelp" class="form-text text-muted">La descripción debe
-                                            tener al menos 10 caracteres.</small>
+                                            tener al menos 100 caracteres.</small>
                                     </div>
 
                                 </form>
@@ -239,6 +179,7 @@
     </div>
     <script src="/front-end/js/caracteresPermitidos/caracteres.js"></script>
     <script src="/front-end/js/jsUrl/Urls.js"></script>
+    <script src="/front-end/js/administrarCategoriaProductos.js"></script>
 </body>
 
 </html>
