@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.InvGenius.InvGenius.models.authResponse;
+import com.InvGenius.InvGenius.models.preRegisterRequest;
 import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.models.rol;
 import com.InvGenius.InvGenius.models.user;
@@ -25,6 +26,8 @@ public interface IuserService {
     public int delete(String id);
 
     public authResponse register(registerRequest request);
+
+    // public preRegister(preRegisterRequest request);
 
     public Optional<user> findByUsername(String userName);
 

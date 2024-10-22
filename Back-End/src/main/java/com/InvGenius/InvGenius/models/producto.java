@@ -51,9 +51,6 @@ public class producto {
     @Column(name = "unidadMedida", nullable = false,length = 199)
     private String unidadMedida;
 
-    @Column(name = "precioEntrada", nullable = false,length = 199)
-    private String precioEntrada;
-
     @Column( name="imagen_base", nullable = true, columnDefinition = "MEDIUMBLOB")
 	private String  imagen_base;
 
@@ -64,7 +61,7 @@ public class producto {
 
     public producto(String idProducto, String nombreProducto, String estadoProducto,
             com.InvGenius.InvGenius.models.marca marca, com.InvGenius.InvGenius.models.categoria categoria, int stock,
-            String descripcionProducto, String unidadMedida, String precioEntrada, String imagen_base) {
+            String descripcionProducto, String unidadMedida, String imagen_base) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.estadoProducto = estadoProducto;
@@ -73,7 +70,6 @@ public class producto {
         this.stock = stock;
         this.descripcionProducto = descripcionProducto;
         this.unidadMedida = unidadMedida;
-        this.precioEntrada = precioEntrada;
         this.imagen_base = imagen_base;
     }
 
@@ -172,20 +168,6 @@ public class producto {
     public void setUnidadMedida(String unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
-
-
-
-    public String getPrecioEntrada() {
-        return precioEntrada;
-    }
-
-
-
-    public void setPrecioEntrada(String precioEntrada) {
-        this.precioEntrada = precioEntrada;
-    }
-
-
 
     public String getImagen_base() {
         return imagen_base;

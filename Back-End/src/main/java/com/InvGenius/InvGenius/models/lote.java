@@ -43,9 +43,9 @@ public class lote {
 
     @Column(name = "detalleLote", nullable = false, length = 199)
     private String detalleLote;
-
-    @Column(name = "perecedero", nullable = false, length = 199)
-    private String perecedero;
+    
+    @Column(name = "precioEntrada", nullable = false, length = 199)
+    private String precioEntrada;
 
     @ManyToOne
     @JoinColumn(name = "idProducto")
