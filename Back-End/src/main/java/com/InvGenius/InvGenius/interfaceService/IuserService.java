@@ -16,6 +16,7 @@ public interface IuserService {
     public List<user> findAll();
 
     public List<user> userExist(String correo, String documentoIdentidad);
+    public List<user> userPreRegister(String correo, String documentoIdentidad);
 
     //Filtro para traer todos los administradores
     public List<user> buscarRol(rol rol);

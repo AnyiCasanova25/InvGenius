@@ -4,6 +4,7 @@ $(document).ready(function () {
     listarNovedad();
     listarMarca();
     listarUser();
+    listarPreRegistros();
 });
 
 
@@ -11,6 +12,7 @@ function blanquearCampos() {
     document.getElementById('texto1').value = "";
     document.getElementById('texto2').value = "";
     document.getElementById('texto3').value = "";
+    document.getElementById('texto4').value = "";
 }
 
 //Apartado de marca
@@ -449,6 +451,59 @@ function buscarUserrFiltro(filtro) {
         });
     } else {
         listarUser();
+    }
+}
+function buscarPreRegistroFiltro(filtro) {
+    if (filtro.trim() !== "") {
+        $.ajax({
+            url: urlUsuarios + "busquedaFiltrosPreRegistro/" + filtro,
+            type: "GET",
+            success: function (result) {
+                cuerpoTablaPreRegistro(result);
+            },
+        });
+    } else {
+        listarPreRegistros();
+    }
+}
+function listarPreRegistros() {
+    // const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlUsuarios,
+        type: "GET",
+        // headers: {
+        //     'Authorization': 'Bearer ' + token
+        // },
+        success: function (result) {
+            mostrarTablaPreRegistro(result);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error en la petición:", xhr.responseText);
+            alert("Error en la petición: " + error);
+        }
+    });
+}
+
+function mostrarTablaPreRegistro(result) {
+    var cuerpoTabla = document.getElementById("cuerpoTablaPreRegistro");
+    cuerpoTabla.innerHTML = "";
+
+    for (var i = 0; i < result.length; i++) {
+        var trRegistro = document.createElement("tr");
+        trRegistro.innerHTML = `
+            <td class="text-center align-middle">${result[i]["documentoIdentidad"]}</td>
+            <td class="text-center align-middle">${result[i]["nombres"]}</td>
+            <td class="text-center align-middle">${result[i]["apellidos"]}</td>
+            <td class="text-center align-middle">${result[i]["celular"]}</td>
+            <td class="text-center align-middle">${result[i]["correo"]}</td>
+            <td class="text-center align-middle">${result[i]["rol"]}</td>
+            <td class="text-center align-middle">${result[i]["estado"]}</td>
+            <td class="text-center align-middle">
+                <i class="fas fa-check editar1" data-id="${result[i]["idUser"]}" title="Editar Información del Usuario"></i>
+                <i class="fas fa-times cambiarEstadoUser" data-id="${result[i]["idUser"]}" title="Cambiar Estado de Usuario"></i>
+            </td>
+        `;
+        cuerpoTabla.appendChild(trRegistro);
     }
 }
 function listarUser() {

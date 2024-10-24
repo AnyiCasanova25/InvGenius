@@ -1,6 +1,5 @@
 package com.InvGenius.InvGenius.Controller;
 
-
 // import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -139,6 +138,7 @@ public class userController {
         // email.enviarCorreoRegistro(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
     @GetMapping("profile/")
     public ResponseEntity<user> getProfile() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -191,13 +191,19 @@ public class userController {
 
     @GetMapping("/")
     public ResponseEntity<Object> findAll() {
-        var listaUser = userService.userExist("","");
+        var listaUser = userService.userExist("", "");
         return new ResponseEntity<>(listaUser, HttpStatus.OK);
     }
 
     @GetMapping("/busquedaFiltros/{filtro}")
     public ResponseEntity<Object> findFiltro(@PathVariable String filtro) {
         var listaUser = userService.userExist(filtro, filtro);
+        return new ResponseEntity<>(listaUser, HttpStatus.OK);
+    }
+
+    @GetMapping("/busquedaFiltrosPreRegistro/{filtro}")
+    public ResponseEntity<Object> findFiltroPreRegistro(@PathVariable String filtro) { // Cambio de nombre aquí
+        var listaUser = userService.userPreRegister(filtro, filtro);
         return new ResponseEntity<>(listaUser, HttpStatus.OK);
     }
 
@@ -240,7 +246,7 @@ public class userController {
             user.setCelular(userUpdate.getCelular());
             user.setCorreo(userUpdate.getCorreo());
             // user.setPassword(userUpdate.getPassword());
-            
+
             // user.setConfirmarPassword(userUpdate.getConfirmarPassword());
             user.setRol(userUpdate.getRol());
 
@@ -251,6 +257,5 @@ public class userController {
             return new ResponseEntity<>("Error usuario NO encontrado", HttpStatus.BAD_REQUEST);
         }
     }
-    
 
 }

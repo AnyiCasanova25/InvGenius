@@ -170,6 +170,12 @@ public class authService implements IuserService {
         return listaUser;
     }
 
+    @Override
+    public List<user> userPreRegister(String correo, String documentoIdentidad) {
+        List<user> listaUser = data.userPreRegister(correo, documentoIdentidad);
+        return listaUser;
+    }
+
     // Filtro para traer a todos los administradores
     public List<user> buscarRol(rol rol) {
         List<user> listaUser = data.buscarRol(rol);
