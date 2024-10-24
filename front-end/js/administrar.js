@@ -233,19 +233,52 @@ function mostrarTablaNovedades(result) {
 
     for (var i = 0; i < result.length; i++) {
         var trRegistro = document.createElement("tr");
+
+        // Crear la estructura básica de las celdas
         trRegistro.innerHTML = `
             <td class="text-center align-middle">${result[i]["asunto"]}</td>
             <td class="text-center align-middle">${result[i]["fechaNovedad"]}</td>
             <td class="text-center align-middle">${result[i]["estadoNovedad"]}</td>
-            <td class="text-center align-middle">
-                <i class="fas fa-eye ver" data-id="${result[i]['idNovedad']}" title="Ver la Solicitud del Usuario"></i>
-                <i class="fas fa-check confirmar" data-id="${result[i]['idNovedad']}" title="Atender Novedad"></i>
-            </td>
         `;
+
+        // Crear la celda de acciones (iconos) con condicional
+        var accionesTd = document.createElement("td");
+        accionesTd.classList.add("text-center", "align-middle");
+
+        // Icono de ver (siempre visible)
+        var verIcon = document.createElement("i");
+        verIcon.classList.add("fas", "fa-eye", "ver", "me-2"); // Agregar clase 'me-2' para espacio
+        verIcon.setAttribute("data-id", result[i]['idNovedad']);
+        verIcon.setAttribute("title", "Ver la Solicitud del Usuario");
+        accionesTd.appendChild(verIcon);
+
+        // Verificar el estado de la novedad
+        var estadoNovedad = result[i]["estadoNovedad"];
+        if (estadoNovedad !== "Atendida" && estadoNovedad !== "Rechazada") {
+            // Icono de confirmar
+            var confirmarIcon = document.createElement("i");
+            confirmarIcon.classList.add("fas", "fa-check", "confirmar", "me-2"); // Agregar clase 'me-2' para espacio
+            confirmarIcon.setAttribute("data-id", result[i]['idNovedad']);
+            confirmarIcon.setAttribute("title", "Atender Novedad");
+            accionesTd.appendChild(confirmarIcon);
+
+            // Icono de rechazar
+            var eliminarIcon = document.createElement("i");
+            eliminarIcon.classList.add("fas", "fa-times", "eliminar"); // No necesita 'me-2' porque es el último
+            eliminarIcon.setAttribute("data-id", result[i]['idNovedad']);
+            eliminarIcon.setAttribute("title", "Rechazar Novedad");
+            accionesTd.appendChild(eliminarIcon);
+        }
+
+        // Agregar la celda de acciones a la fila
+        trRegistro.appendChild(accionesTd);
+
+        // Agregar la fila completa al cuerpo de la tabla
         cuerpoTabla.appendChild(trRegistro);
     }
 }
-                // <i class="fas fa-times eliminar" data-id="${result[i]['idNovedad']}" title="Rechazar Novedad"></i>
+
+
             // <td class="text-center align-middle">${result[i]["cuerpo"]}</td>
 // $(document).on("click", ".cambiarEstado", function () {
 //     var idNovedad = $(this).data("id");
@@ -297,41 +330,41 @@ $(document).on('click', '.ver', function () {
 
 
 // Función para actualizar la novedad
-// function actualizarNovedad(idNovedad) {
-//     var asunto = document.getElementById("editAsunto").value;
-//     var cuerpo = document.getElementById("editCuerpo").value;
-//     var estadoNovedad = document.getElementById("editEstado").value;
+function actualizarNovedad(idNovedad) {
+    var asunto = document.getElementById("editAsunto").value;
+    var cuerpo = document.getElementById("editCuerpo").value;
+    var estadoNovedad = document.getElementById("editEstado").value;
 
-//     var formData = {
-//         "asunto": asunto,
-//         "cuerpo": cuerpo,
-//         "estadoNovedad": estadoNovedad
-//     };
+    var formData = {
+        "asunto": asunto,
+        "cuerpo": cuerpo,
+        "estadoNovedad": estadoNovedad
+    };
 
-//     $.ajax({
-//         url: urlNovedad + idNovedad, 
-//         type: "PUT",
-//         data: JSON.stringify(formData),
-//         contentType: "application/json",
-//         success: function (result) {
-//             Swal.fire({
-//                 title: "¡Actualizado!",
-//                 text: "Su respuesta se guardo exitosamente ",
-//                 icon: "success"
-//             });
-//             $('#editNovedadModal').modal('hide')
-//             listarNovedad(); 
-//         },
-//         error: function (error) {
-//             console.error("Error al actualizar su respuesta:", error);
-//             Swal.fire({
-//                 title: "Error",
-//                 text: "Ocurrió un error al actualizar su respuesta. Por favor, inténtelo de nuevo.",
-//                 icon: "error"
-//             });
-//         }
-//     });
-// }
+    $.ajax({
+        url: urlNovedad + idNovedad, 
+        type: "PUT",
+        data: JSON.stringify(formData),
+        contentType: "application/json",
+        success: function (result) {
+            Swal.fire({
+                title: "¡Actualizado!",
+                text: "Su respuesta se guardo exitosamente ",
+                icon: "success"
+            });
+            $('#editNovedadModal').modal('hide')
+            listarNovedad(); 
+        },
+        error: function (error) {
+            console.error("Error al actualizar su respuesta:", error);
+            Swal.fire({
+                title: "Error",
+                text: "Ocurrió un error al actualizar su respuesta. Por favor, inténtelo de nuevo.",
+                icon: "error"
+            });
+        }
+    });
+}
 
 
 

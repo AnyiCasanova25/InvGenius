@@ -15,10 +15,10 @@ public class corsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         //permitir solicitudes desde todos los origenes
-        //  config.addAllowedOrigin("*");
-        config.addAllowedOrigin("http://invgenius.com");
-        config.addAllowedOrigin("http://82.112.245.162:80");
-        // config.addAllowedOrigin("http://127.0.0.1:5502");
+        // //  config.addAllowedOrigin("*");
+        // config.addAllowedOrigin("http://invgenius.com");
+        // config.addAllowedOrigin("http://82.112.245.162:80");
+        config.addAllowedOrigin("http://127.0.0.1:5502");
 
        
 

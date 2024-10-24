@@ -46,9 +46,9 @@ public class authService implements IuserService {
     }
 
     private String codigoAleatorio() {
-        int longitud = 25;
+        int longitud = 8;
         // El banco de caracteres
-        String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String banco = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ123456789";
         // La cadena en donde iremos agregando un carácter aleatorio
         String cadena = "";
         for (int x = 0; x < longitud; x++) {

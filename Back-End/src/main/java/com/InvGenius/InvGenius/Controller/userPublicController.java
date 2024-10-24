@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.InvGenius.InvGenius.models.authResponse;
 import com.InvGenius.InvGenius.models.loginRequest;
+import com.InvGenius.InvGenius.models.preRegisterRequest;
 import com.InvGenius.InvGenius.models.registerRequest;
 // import com.InvGenius.InvGenius.models.registerRequest;
 import com.InvGenius.InvGenius.service.authService;
@@ -23,16 +24,18 @@ import lombok.RequiredArgsConstructor;
 public class userPublicController {
 
     private final authService authService;
-    
+
     @PostMapping("/login")
     public ResponseEntity<authResponse> login(@RequestBody loginRequest request) {
         authResponse response = authService.login(request);
-        return new ResponseEntity<authResponse>(response,HttpStatus.OK);
+        return new ResponseEntity<authResponse>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/register/")
-    public ResponseEntity<authResponse> register(@RequestBody registerRequest request) {
-       authResponse response = authService.register(request);
-       return new ResponseEntity<authResponse>(response,HttpStatus.OK); 
+    @PostMapping("/pre-register/")
+    public ResponseEntity<authResponse> preRegister(@RequestBody preRegisterRequest request) {
+        // Llamar al servicio de preRegistro
+        authResponse response = authService.preRegister(request);
+        // Devolver la respuesta con el token
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
