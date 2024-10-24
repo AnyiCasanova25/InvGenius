@@ -54,4 +54,7 @@ public class novedad {
     @Column(name = "estadoNovedad", nullable = false, length = 30)
     private String estadoNovedad;
 
+    @Column( name="imagen_base", nullable = true, columnDefinition = "MEDIUMBLOB")
+	private String  imagen_base;
+
 }

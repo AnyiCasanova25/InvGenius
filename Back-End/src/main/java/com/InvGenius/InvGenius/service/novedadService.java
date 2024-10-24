@@ -52,4 +52,14 @@ public class novedadService implements InovedadService {
         data.deleteById(id);
         return 1;
     }
+
+        @Override
+	public int guardarimagenJson(novedad novedad) {
+		int res=0;
+		novedad =data.save(novedad);
+		if(novedad.equals(null)) {
+			res=1;
+		}
+		return res;
+	}
 }

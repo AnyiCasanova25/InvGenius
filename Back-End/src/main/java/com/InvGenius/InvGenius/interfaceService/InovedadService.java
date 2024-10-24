@@ -19,4 +19,6 @@ public interface InovedadService {
     public Optional<novedad> findOne(String id);
 
     public int delete(String id);
+
+    public int guardarimagenJson(novedad novedad);
 }
