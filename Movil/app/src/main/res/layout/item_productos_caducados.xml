@@ -4,28 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="3dp">
 
     <TextView
-        android:id="@+id/tvNumeroLote"
-        android:layout_width="121dp"
+        android:id="@+id/lblNumeroLote"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="13dp"
-        android:text="TextView" />
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="lote" />
 
     <TextView
-        android:id="@+id/tvFecha_de_Vencimiento"
-        android:layout_width="wrap_content"
+        android:id="@+id/lblFecha_de_Vencimiento"
+        android:layout_width="23dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="fecha" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="47dp"
+        android:layout_width="4dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:backgroundTint="#3E5059"
         android:text="Ver lote"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="30dp"
         app:cornerRadius="4dp" />
+
 </LinearLayout>
