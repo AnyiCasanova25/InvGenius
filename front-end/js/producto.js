@@ -243,6 +243,34 @@ function cargarCategoria() {
     }
 }
 
+// cargar a los proveedores
+// function cargarProveedor() {
+//     var proveedor = document.getElementById("proveedor");
+
+//     if (proveedor) {
+//         // Limpiar las opciones actuales
+//         proveedor.innerHTML = "";
+
+//         $.ajax({
+//             url: urlProveedor,
+//             type: "GET",
+//             success: function (result) {
+//                 for (var i = 0; i < result.length; i++) {
+//                     var option = document.createElement("option");
+//                     option.value = result[i].idProveedor;
+//                     option.text = result[i].nombreProveedor;
+//                     categoria.appendChild(option);
+//                 }
+//             },
+//             error: function (error) {
+//                 console.error("Error al obtener la lista de marcas: " + error);
+//             }
+//         });
+//     } else {
+//         console.error("Elemento con ID 'marca' no encontrado.");
+//     }
+// }
+
 function limpiar() {
     document.querySelectorAll(".form-control").forEach(function (input) {
         input.value = "";
@@ -251,3 +279,71 @@ function limpiar() {
 }
 
 
+//para traer el modal para darle una entrada al producto
+$(document).ready(function () {
+    listarProductos();
+    cargarProveedor();  
+
+    // Evento para abrir el modal y cargar datos del producto al hacer clic en el ícono de "entrar producto"
+    $(document).on("click", ".editar", function () {
+        var idProducto = $(this).data("id");
+        cargarProductoSeleccionado(idProducto);
+        $("#modalEntrada").modal("show");
+    });
+});
+//cargamos el producto seleccionado
+function cargarProductoSeleccionado(idProducto) {
+    const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlProducto + idProducto,
+        type: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        success: function (producto) {
+            // Llenar el campo del nombre del producto
+            $("#nombreProductoModal").val(producto.nombreProducto);
+
+            // Configurar la fecha de ingreso como la fecha actual
+            const fechaIngreso = new Date().toISOString().split("T")[0];
+            $("#fechaIngresoModal").val(fechaIngreso);
+
+            // Configurar la fecha de caducidad como 30 días después de la fecha actual
+            const fechaCaducidad = new Date();
+            fechaCaducidad.setDate(fechaCaducidad.getDate() + 30);
+            $("#fechaCaducidadModal").val(fechaCaducidad.toISOString().split("T")[0]);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar información del producto:", xhr.responseText);
+            alert("Error al cargar información del producto.");
+        }
+    });
+}
+
+// Función para cargar proveedores en el select
+function cargarProveedor() {
+    const token = localStorage.getItem('authTokens');
+    $.ajax({
+        url: urlProveedor,  // Reemplaza con la URL para obtener los proveedores
+        type: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        success: function (proveedores) {
+            // Limpiar opciones previas
+            $("#proveedor").empty();
+            $("#proveedor").append('<option value="" disabled selected>Seleccione un proveedor</option>');
+            
+            // Añadir cada proveedor al select
+            proveedores.forEach(proveedor => {
+                $("#proveedor").append(
+                    `<option value="${proveedor.id}">${proveedor.nombreProveedor}</option>`
+                );
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al cargar proveedores:", xhr.responseText);
+            alert("Error al cargar proveedores.");
+        }
+    });
+}

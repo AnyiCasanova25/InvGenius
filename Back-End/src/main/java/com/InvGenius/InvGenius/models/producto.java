@@ -50,6 +50,10 @@ public class producto {
     @JoinColumn(name = "idCategoria")
     private categoria categoria;
 
+    @ManyToOne
+    @JoinColumn(name = "idProveedor")
+    private proveedor proveedor;
+
     @Column(name = "stock" , nullable = false, length = 36)
     private int stock;
 
