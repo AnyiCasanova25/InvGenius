@@ -243,34 +243,6 @@ function cargarCategoria() {
     }
 }
 
-// cargar a los proveedores
-// function cargarProveedor() {
-//     var proveedor = document.getElementById("proveedor");
-
-//     if (proveedor) {
-//         // Limpiar las opciones actuales
-//         proveedor.innerHTML = "";
-
-//         $.ajax({
-//             url: urlProveedor,
-//             type: "GET",
-//             success: function (result) {
-//                 for (var i = 0; i < result.length; i++) {
-//                     var option = document.createElement("option");
-//                     option.value = result[i].idProveedor;
-//                     option.text = result[i].nombreProveedor;
-//                     categoria.appendChild(option);
-//                 }
-//             },
-//             error: function (error) {
-//                 console.error("Error al obtener la lista de marcas: " + error);
-//             }
-//         });
-//     } else {
-//         console.error("Elemento con ID 'marca' no encontrado.");
-//     }
-// }
-
 function limpiar() {
     document.querySelectorAll(".form-control").forEach(function (input) {
         input.value = "";
@@ -282,7 +254,7 @@ function limpiar() {
 //para traer el modal para darle una entrada al producto
 $(document).ready(function () {
     listarProductos();
-    cargarProveedor();  
+    cargarProveedor();
 
     // Evento para abrir el modal y cargar datos del producto al hacer clic en el ícono de "entrar producto"
     $(document).on("click", ".editar", function () {
@@ -290,8 +262,58 @@ $(document).ready(function () {
         cargarProductoSeleccionado(idProducto);
         $("#modalEntrada").modal("show");
     });
+
+    // Evento para el botón "Agregar"
+    $("#btnAgregarProducto").on("click", function () {
+        if (validarFormularioEntrada()) {
+            moverProductoASalida();
+            Swal.fire("Éxito", "Producto agregado exitosamente", "success");
+            $("#modalEntrada").modal("hide");
+        }
+    });
 });
-//cargamos el producto seleccionado
+
+function validarFormularioEntrada() {
+    const cantidad = $("#cantidadModal").val();
+    const fechaIngreso = new Date($("#fechaIngresoModal").val());
+    const fechaCaducidad = new Date($("#fechaCaducidadModal").val());
+    const proveedor = $("#proveedor").val(); // Obtener el valor del proveedor
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0); // Resetear horas para comparar solo la fecha
+
+    // Validaciones
+    if (!cantidad || isNaN(cantidad) || cantidad <= 0) {
+        Swal.fire("Error", "La cantidad es obligatoria y debe ser un número positivo.", "error");
+        return false;
+    }
+    
+    // Validar que la fecha de caducidad sea mayor que la de ingreso
+    if (fechaCaducidad <= fechaIngreso) {
+        Swal.fire("Error", "La fecha de caducidad debe ser mayor a la fecha de ingreso.", "error");
+        return false;
+    }
+
+    // Validar que se haya seleccionado un proveedor
+    if (!proveedor) {
+        Swal.fire("Error", "El proveedor es obligatorio.", "error");
+        return false;
+    }
+
+    return true; // Si todas las validaciones pasan
+}
+
+function moverProductoASalida() {
+    const idProducto = $("#nombreProductoModal").data("id"); // Obtener el ID del producto
+
+    // Selecciona el elemento en la lista de entrada y lo oculta
+    $(`#productoEntrada-${idProducto}`).hide();
+
+    // Muestra el producto en la lista de salida (asegúrate de tener un contenedor con el ID `#listaSalidaProductos`)
+    $("#listaSalidaProductos").append(
+        `<li id="productoSalida-${idProducto}">${$("#nombreProductoModal").val()} - Cantidad: ${$("#cantidadModal").val()}</li>`
+    );
+}
+
 function cargarProductoSeleccionado(idProducto) {
     const token = localStorage.getItem('authTokens');
     $.ajax({
@@ -301,40 +323,36 @@ function cargarProductoSeleccionado(idProducto) {
             "Authorization": "Bearer " + token
         },
         success: function (producto) {
-            // Llenar el campo del nombre del producto
-            $("#nombreProductoModal").val(producto.nombreProducto);
+            $("#nombreProductoModal").val(producto.nombreProducto).data("id", idProducto);
 
-            // Configurar la fecha de ingreso como la fecha actual
+            // Configurar la fecha de ingreso como la fecha actual y hacerla de solo lectura
             const fechaIngreso = new Date().toISOString().split("T")[0];
-            $("#fechaIngresoModal").val(fechaIngreso);
+            $("#fechaIngresoModal").val(fechaIngreso).prop("readonly", true);
 
-            // Configurar la fecha de caducidad como 30 días después de la fecha actual
+            // Configurar la fecha de caducidad como 30 días después
             const fechaCaducidad = new Date();
             fechaCaducidad.setDate(fechaCaducidad.getDate() + 30);
             $("#fechaCaducidadModal").val(fechaCaducidad.toISOString().split("T")[0]);
         },
         error: function (xhr, status, error) {
             console.error("Error al cargar información del producto:", xhr.responseText);
-            alert("Error al cargar información del producto.");
+            Swal.fire("Error", "Error al cargar información del producto.", "error");
         }
     });
 }
 
-// Función para cargar proveedores en el select
 function cargarProveedor() {
     const token = localStorage.getItem('authTokens');
     $.ajax({
-        url: urlProveedor,  // Reemplaza con la URL para obtener los proveedores
+        url: urlProveedor,
         type: "GET",
         headers: {
             "Authorization": "Bearer " + token
         },
         success: function (proveedores) {
-            // Limpiar opciones previas
             $("#proveedor").empty();
             $("#proveedor").append('<option value="" disabled selected>Seleccione un proveedor</option>');
-            
-            // Añadir cada proveedor al select
+
             proveedores.forEach(proveedor => {
                 $("#proveedor").append(
                     `<option value="${proveedor.id}">${proveedor.nombreProveedor}</option>`
@@ -343,7 +361,8 @@ function cargarProveedor() {
         },
         error: function (xhr, status, error) {
             console.error("Error al cargar proveedores:", xhr.responseText);
-            alert("Error al cargar proveedores.");
+            Swal.fire("Error", "Error al cargar proveedores.", "error");
         }
     });
 }
+

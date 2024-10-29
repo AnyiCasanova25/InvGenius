@@ -295,11 +295,10 @@
                                         style="border: 1px solid black;" onkeypress="soloNumeros(event);" required>
                                 </div>
                                 <div class="col col-xl-4 col-12">
-                                    <label for="fechaIngresoModal"><i class="fas fa-calendar-day"></i> Fecha de
-                                        Ingreso:</label>
-                                    <input type="date" id="fechaIngresoModal" class="form-control"
-                                        style="border: 1px solid black;" required>
+                                    <label for="fechaIngreso"><i class="fas fa-calendar-day"></i> Fecha de Ingreso:</label>
+                                    <input type="date" id="fechaIngresoModal" class="form-control" style="border: 1px solid black;" readonly>
                                 </div>
+                                
                                 <div class="col col-xl-5 col-12">
                                     <label for="fechaCaducidadModal"><i class="fas fa-calendar-times"></i> Fecha de
                                         Caducidad:</label>
@@ -321,8 +320,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="">Agregar</button>
+                <button type="button" class="btn btn-secondary" id="btnAgregarProducto">Agregar</button>
             </div>
+            
         </div>
     </div>
 </div>
